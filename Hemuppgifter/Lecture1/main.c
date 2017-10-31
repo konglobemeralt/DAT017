@@ -6,17 +6,13 @@ int main(int argc, char **argv)
    char str[] = "String for stuff\n";
    
    printStuff(str, 10);
-   newline();
    
    reverseStuff(str);
-   newline();
    
    convertCharToByte(9);
-   newline();
+      
+   convertShortToByte(129);
    
-   convertShortToByte(9);
-   newline();
+   convertIntToByte(9123);
    
-   convertIntToByte(9);
-   newline();
 }

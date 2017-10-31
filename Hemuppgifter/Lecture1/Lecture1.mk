@@ -5,8 +5,8 @@
 ## Debug
 ProjectName            :=Lecture1
 ConfigurationName      :=Debug
-WorkspacePath          :=/Users/konglobemeralt/Documents/Hemuppgifter
-ProjectPath            :=/Users/konglobemeralt/Documents/Hemuppgifter/Lecture1
+WorkspacePath          :=/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter
+ProjectPath            :=/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Lecture1
 IntermediateDirectory  :=./Debug
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
@@ -92,7 +92,7 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/main.c$(ObjectSuffix): main.c $(IntermediateDirectory)/main.c$(DependSuffix)
-	$(CC) $(SourceSwitch) "/Users/konglobemeralt/Documents/Hemuppgifter/Lecture1/main.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IncludePath)
+	$(CC) $(SourceSwitch) "/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Lecture1/main.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/main.c$(DependSuffix): main.c
 	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/main.c$(ObjectSuffix) -MF$(IntermediateDirectory)/main.c$(DependSuffix) -MM main.c
 
@@ -100,7 +100,7 @@ $(IntermediateDirectory)/main.c$(PreprocessSuffix): main.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.c$(PreprocessSuffix) main.c
 
 $(IntermediateDirectory)/functions.c$(ObjectSuffix): functions.c $(IntermediateDirectory)/functions.c$(DependSuffix)
-	$(CC) $(SourceSwitch) "/Users/konglobemeralt/Documents/Hemuppgifter/Lecture1/functions.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/functions.c$(ObjectSuffix) $(IncludePath)
+	$(CC) $(SourceSwitch) "/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Lecture1/functions.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/functions.c$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/functions.c$(DependSuffix): functions.c
 	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/functions.c$(ObjectSuffix) -MF$(IntermediateDirectory)/functions.c$(DependSuffix) -MM functions.c
 

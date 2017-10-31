@@ -35,7 +35,7 @@ void convertCharToByte(char byte){
         newline();
     }
     
-void convertShortToByte(char byte){
+void convertShortToByte(short byte){
     
     for(int i=15; i>=0; i--) {
         int bit = (byte >> i) & 0x01;
@@ -44,7 +44,7 @@ void convertShortToByte(char byte){
         newline();
     }
     
-void convertIntToByte(char byte){
+void convertIntToByte(int byte){
     
     for(int i=31; i>=0; i--) {
         int bit = (byte >> i) & 0x01;
