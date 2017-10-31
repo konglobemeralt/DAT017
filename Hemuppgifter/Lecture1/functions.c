@@ -9,6 +9,7 @@ void printStuff(char arr[], int times){
      for(int i = 0; i<times; i++){
         	printf(arr);
         }
+     newline();
     }
     
 void reverseStuff(char strArr[]){
@@ -31,6 +32,7 @@ void convertCharToByte(char byte){
         int bit = (byte >> i) & 0x01;
         printf("%d", bit);
         }
+        newline();
     }
     
 void convertShortToByte(char byte){
@@ -39,6 +41,7 @@ void convertShortToByte(char byte){
         int bit = (byte >> i) & 0x01;
         printf("%d", bit);
         }
+        newline();
     }
     
 void convertIntToByte(char byte){
@@ -47,4 +50,5 @@ void convertIntToByte(char byte){
         int bit = (byte >> i) & 0x01;
         printf("%d", bit);
         }
+        newline();
     }
