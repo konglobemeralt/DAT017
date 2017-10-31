@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 #include "functions.h"
 
 void newline(){
@@ -51,4 +52,10 @@ void convertIntToByte(int byte){
         printf("%d", bit);
         }
         newline();
+    }
+    
+void convertBitsToInt(char byte[7]){
+    int value = 0;
+    
+
     }

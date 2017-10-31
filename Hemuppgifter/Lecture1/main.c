@@ -15,4 +15,5 @@ int main(int argc, char **argv)
    
    convertIntToByte(9123);
    
+   convertBitsToInt("00000101");
 }
