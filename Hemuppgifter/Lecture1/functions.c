@@ -54,7 +54,7 @@ void convertIntToByte(int byte){
         newline();
     }
     
-void convertBitsToInt(char byte[]){
+void convertBitsToInt(unsigned char byte[]){
     unsigned char value = 0;
     for(int i = 0; i<8; i++){
         if(byte[i] == '1'){
@@ -64,5 +64,12 @@ void convertBitsToInt(char byte[]){
             
     }
     printf("%d", value);
+    newline();
+    }
+    
+    
+void setBits135To1(unsigned char byte){
+    unsigned char result = byte | 42;
+    printf("%d", result);
     newline();
     }
