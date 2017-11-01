@@ -58,7 +58,8 @@ void convertBitsToInt(char byte[]){
     unsigned char value = 0;
     for(int i = 0; i<8; i++){
         if(byte[i] == '1'){
-            value |= (1<<(7-i));
+            int tempValue = 1<<(7-i);
+            value |= tempValue;
             }
             
     }
