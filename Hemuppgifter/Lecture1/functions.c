@@ -54,8 +54,14 @@ void convertIntToByte(int byte){
         newline();
     }
     
-void convertBitsToInt(char byte[7]){
-    int value = 0;
-    
-
+void convertBitsToInt(char byte[]){
+    unsigned char value = 0;
+    for(int i = 0; i<8; i++){
+        if(byte[i] == '1'){
+            value |= (1<<(7-i));
+            }
+            
+    }
+    printf("%d", value);
+    newline();
     }

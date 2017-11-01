@@ -5,10 +5,13 @@
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
       <Project Name="Lecture1" ConfigName="Debug"/>
+      <Project Name="bitWise" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
       <Project Name="Lecture1" ConfigName="Release"/>
+      <Project Name="bitWise" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
+  <Project Name="bitWise" Path="bitWise/bitWise.project"/>
 </CodeLite_Workspace>
