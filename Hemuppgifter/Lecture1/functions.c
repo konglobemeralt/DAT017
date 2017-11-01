@@ -42,7 +42,7 @@ void convertShortToByte(short byte){
         int bit = (byte >> i) & 0x01;
         printf("%d", bit);
         }
-        newline();
+  newline();
     }
     
 void convertIntToByte(int byte){
@@ -63,13 +63,30 @@ void convertBitsToInt(unsigned char byte[]){
             }
             
     }
-    printf("%d", value);
-    newline();
+    printf("%d", value);newline();
     }
     
     
 void setBits135To1(unsigned char byte){
     unsigned char result = byte | 42;
-    printf("%d", result);
-    newline();
+    printf("%d", result);newline();
     }
+    
+    
+//Exampel Solutions to things: 
+void printBinary(unsigned char byte)
+    {
+    for(int i=7; i>=0; i--) {
+        int bit = (byte >> i) & 0x01;
+        printf("%d", bit);
+    }
+}
+   
+void setBitsToStuff2CoolForSchool(unsigned char byte){
+    printBinary(byte); printf("\n");
+    byte |= (1<<1 | 1<<3 | 1<<5);
+    printBinary(byte); printf("\n");
+    printf("%d\n", byte);
+    
+    }
+    

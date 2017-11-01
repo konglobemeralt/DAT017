@@ -18,4 +18,5 @@ int main(int argc, char **argv)
    convertBitsToInt("00001001");
    
    setBits135To1(128);
+   setBitsToStuff2CoolForSchool(128);
 }
