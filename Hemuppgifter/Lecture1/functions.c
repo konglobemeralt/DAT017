@@ -71,7 +71,10 @@ void setBits135To1(unsigned char byte){
     unsigned char result = byte | 42;
     printf("%d", result);newline();
     }
-    
+   
+void hexToDecimal(unsigned char hex){
+    printf("%x\n", hex);
+    } 
     
 //Exampel Solutions to things: 
 void printBinary(unsigned char byte)
@@ -89,4 +92,6 @@ void setBitsToStuff2CoolForSchool(unsigned char byte){
     printf("%d\n", byte);
     
     }
+    
+
     
