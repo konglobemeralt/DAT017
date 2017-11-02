@@ -3,8 +3,8 @@
 @
 
 start: 	LDR	R0,=0x55555555
-	LDT	R1,=0x40020C00 @ config port D
-	STR	R0, [R1]
+	LDR	R1,=0x40020C00 @ config port D
+	STR	R0,[R1]
 
 	LDR	R1,=0x40020C14 @ outport GPIO D
 	LDR	R2,=0x40021010 @ inport	GPIO E
