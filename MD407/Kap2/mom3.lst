@@ -1,0 +1,16 @@
+
+mom3.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+20000000 <start>:
+start:
+	LDR	R1, ='s'
+20000000:	2173      	movs	r1, #115	; 0x73
+	LDR	R2, ='c'
+20000002:	2263      	movs	r2, #99	; 0x63
+	LDRH	R0, [R1]
+20000004:	8808      	ldrh	r0, [r1, #0]
+	STRB	R0, [R2]
+20000006:	7010      	strb	r0, [r2, #0]
