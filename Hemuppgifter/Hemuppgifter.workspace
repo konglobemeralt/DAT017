@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Workspace Name="Hemuppgifter" Database="" Version="10.0.0">
-  <Project Name="Lecture1" Path="Lecture1/Lecture1.project" Active="Yes"/>
+  <Project Name="Lecture1" Path="Lecture1/Lecture1.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
@@ -13,5 +13,5 @@
       <Project Name="bitWise" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
-  <Project Name="bitWise" Path="bitWise/bitWise.project"/>
+  <Project Name="bitWise" Path="bitWise/bitWise.project" Active="Yes"/>
 </CodeLite_Workspace>
