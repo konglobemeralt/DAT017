@@ -32,5 +32,7 @@ int main(int argc, char **argv)
    convertBitsToInt("10010010");
    convertCharToByte(146);
    hexToDecimal(0x92);
+
+   flipBitsOfSignedChar(27);
    
 }

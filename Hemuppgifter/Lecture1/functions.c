@@ -76,6 +76,13 @@ void hexToDecimal(unsigned char hex){
     printf("%x\n", hex);
     } 
     
+void flipBitsOfSignedChar(signed char x){
+    x = ~x;
+    x = x + 0x01;
+    printf("%d\n", x);
+    }
+    
+    
 //Exampel Solutions to things: 
 void printBinary(unsigned char byte)
     {
