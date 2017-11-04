@@ -23,6 +23,12 @@ int main(int argc, char **argv)
     
         var2 = var2 << 1;
         
+        
+        if(var == 0x00){
+            var = 0x8000; 
+            var2 = 0x01;
+        }
+        
         getchar();
         system("clear");
     }
