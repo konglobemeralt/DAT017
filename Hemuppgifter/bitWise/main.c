@@ -12,13 +12,19 @@ int main(int argc, char **argv)
 {
 	system("clear");
     short var = 0x8000; 
+    short var2 = 0x01;
     
     do{
-        convertShortToByte(var);
+        convertShortToByte(var | var2);
+        
         short tempBitmask = ~var;
         var = var >> 1;
         var &= tempBitmask; 
+    
+        var2 = var2 << 1;
+        
         getchar();
+        system("clear");
     }
     while(1);
         
