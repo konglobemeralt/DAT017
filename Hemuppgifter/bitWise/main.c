@@ -7,6 +7,12 @@ void convertShortToByte(short byte){
         printf("%d", bit);
         }
     }
+    
+void printCurrentOffset(short var2){
+    for(int i = 1; i< var2; i++){
+        printf(" ");
+        }
+    }
 
 int main(int argc, char **argv)
 {
@@ -15,6 +21,7 @@ int main(int argc, char **argv)
     short var2 = 0x01;
     
     do{
+        //printCurrentOffset(var2); //offset with whatever is in var2 to animate
         convertShortToByte(var | var2);
         
         short tempBitmask = ~var;
