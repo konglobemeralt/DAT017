@@ -8,6 +8,6 @@
 	LDR	R0, =100000
 	STR	R0, [R1]
 	.ALIGN
-i:	.SPACE	4
-s:	.SPACE	2
-c:	.SPACE	1
+i:	.WORD	4
+s:	.HWORD	2
+c:	.BYTE	1

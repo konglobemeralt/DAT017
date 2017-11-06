@@ -14,9 +14,6 @@ s:	.SPACE	2
 c:	.SPACE	1
 
 
-	LDR 	R1,
-
-
 	LDR	R1,=s
 	LDR	R2,=c
 	LDRH	R0, [R1]
