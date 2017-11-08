@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <math.h>
 
+#define WINDOW_WIDTH 800 
+#define WINDOW_HEIGHT 600
+
 GfxObject ship, background;
 
 void close(); 
@@ -12,7 +15,7 @@ int main( int argc, char* args[] )
     // Project->Settings->General->"This program is a GUI application" and uncheck that flag.
     
 	// Start up SDL and create window of width=800, height = 600
-	initRenderer(800, 600); 
+	initRenderer(WINDOW_WIDTH, WINDOW_HEIGHT); 
     
     // Create an object
     ship = createGfxObject(  "../ship.png" );
@@ -20,8 +23,8 @@ int main( int argc, char* args[] )
     ship.outputHeight = 200;
     
     background = createGfxObject( "../background.jpg" );
-    background.outputWidth = 800;
-    background.outputHeight = 600;
+    background.outputWidth = WINDOW_WIDTH;
+    background.outputHeight = WINDOW_HEIGHT;
     
     while(true) // The real-time loop
     {
