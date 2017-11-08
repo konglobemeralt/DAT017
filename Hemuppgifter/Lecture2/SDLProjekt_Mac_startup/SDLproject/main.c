@@ -25,6 +25,9 @@ int main( int argc, char* args[] )
     background = createGfxObject( "../background.jpg" );
     background.outputWidth = WINDOW_WIDTH;
     background.outputHeight = WINDOW_HEIGHT;
+    //Background angle osv
+    float backgroundRotAngle = 0;
+    float backgroundZoomLevel = 1;
     
     while(true) // The real-time loop
     {
@@ -44,10 +47,14 @@ int main( int argc, char* args[] )
         SDL_RenderClear( gRenderer );
 
         // Render our object(s) - background objects first, and then forward objects (like a painter)
-        renderGfxObject(&background, 400, 300, 0, 1.0f);
+        renderGfxObject(&background, 400, 300, backgroundRotAngle, backgroundZoomLevel);
         renderGfxObject(&ship, 400, 300, 0, 1.0f);
         renderText("Hello World!", 300, 150);
-         
+        
+        //update rotation
+        backgroundRotAngle += 0.1;
+        backgroundZoomLevel += 0.001;
+        
         // This function updates the screen and also sleeps ~16 ms or so (based on the screen's refresh rate),  
         // because we used the flag SDL_RENDERER_PRESENTVSYNC in function initRenderer()
         SDL_RenderPresent( gRenderer );
