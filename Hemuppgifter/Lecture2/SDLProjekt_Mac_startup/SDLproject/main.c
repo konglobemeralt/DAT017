@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <math.h>
 
-GfxObject ship;
+GfxObject ship, background;
 
 void close(); 
 
@@ -18,6 +18,10 @@ int main( int argc, char* args[] )
     ship = createGfxObject(  "../ship.png" );
     ship.outputWidth  = 200;
     ship.outputHeight = 200;
+    
+    background = createGfxObject( "../background.jpg" );
+    background.outputWidth = 800;
+    background.outputHeight = 600;
     
     while(true) // The real-time loop
     {
@@ -37,6 +41,7 @@ int main( int argc, char* args[] )
         SDL_RenderClear( gRenderer );
 
         // Render our object(s) - background objects first, and then forward objects (like a painter)
+        renderGfxObject(&background, 400, 300, 0, 1.0f);
         renderGfxObject(&ship, 400, 300, 0, 1.0f);
         renderText("Hello World!", 300, 150);
          
