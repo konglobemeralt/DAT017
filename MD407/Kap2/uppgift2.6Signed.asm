@@ -12,8 +12,10 @@ start:
 	LDR	R6, =0x40021010
 
 main:
-	LDRSB	R0, [R6] @read PE0-E7
-	LDRSB	R1, [R6, #1] @read PE8-E15
+	LDR 	R3, =0
+	LDRSB	R0, [R6, R3] @read PE0-E7
+	LDR	R3, =1
+	LDRSB	R1, [R6, R3] @read PE8-E15
 	ADD	R0, R0, R1
 	STRH	R0, [R5]
 	B 	main
