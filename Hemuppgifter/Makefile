@@ -1,8 +1,8 @@
 .PHONY: clean All
 
 All:
-	@echo "----------Building project:[ hemuppgifter - Debug ]----------"
-	@cd "SDLProjekt_Mac_startup" && "$(MAKE)" -f  "hemuppgifter.mk"
+	@echo "----------Building project:[ Lecture2 - Debug ]----------"
+	@cd "Lecture2" && "$(MAKE)" -f  "Lecture2.mk"
 clean:
-	@echo "----------Cleaning project:[ hemuppgifter - Debug ]----------"
-	@cd "SDLProjekt_Mac_startup" && "$(MAKE)" -f  "hemuppgifter.mk" clean
+	@echo "----------Cleaning project:[ Lecture2 - Debug ]----------"
+	@cd "Lecture2" && "$(MAKE)" -f  "Lecture2.mk" clean

@@ -21,6 +21,7 @@ int main( int argc, char* args[] )
     ship = createGfxObject(  "../ship.png" );
     ship.outputWidth  = 200;
     ship.outputHeight = 200;
+    float shipXpos = 400, shipYpos = 300, ShipSpeed = 15;
     
     background = createGfxObject( "../background.jpg" );
     background.outputWidth = WINDOW_WIDTH;
@@ -28,6 +29,10 @@ int main( int argc, char* args[] )
     //Background angle osv
     float backgroundRotAngle = 0;
     float backgroundZoomLevel = 1;
+    
+    
+    // get pointer to key states
+    const Uint8 *state = SDL_GetKeyboardState(NULL); 
     
     while(true) // The real-time loop
     {
@@ -39,6 +44,22 @@ int main( int argc, char* args[] )
                 close(); 
                 exit(0);
             }
+            
+              if (state[SDL_SCANCODE_RIGHT]) {
+                    shipXpos = shipXpos + ShipSpeed;
+                }
+                
+            if (state[SDL_SCANCODE_LEFT]) {
+                    shipXpos = shipXpos - ShipSpeed;
+            }
+                
+                if (state[SDL_SCANCODE_UP]) {
+                    shipYpos = shipYpos - ShipSpeed;
+            }
+                
+                if (state[SDL_SCANCODE_DOWN]) {
+                    shipYpos = shipYpos + ShipSpeed;
+            }
         }
         
         // Clear screen with a grey background color, red=0x33, blue=0x33, green=0x33, alpha=0xff. 0=minimum, 0xff=maximum.
@@ -48,7 +69,7 @@ int main( int argc, char* args[] )
 
         // Render our object(s) - background objects first, and then forward objects (like a painter)
         renderGfxObject(&background, 400, 300, backgroundRotAngle, backgroundZoomLevel);
-        renderGfxObject(&ship, 400, 300, 0, 1.0f);
+        renderGfxObject(&ship, shipXpos, shipYpos, 0, 1.0f);
         renderText("Hello World!", 300, 150);
         
         //update rotation

@@ -14,7 +14,18 @@ asm volatile(
 	) ;
 }
 
+void app_init(void)
+{
+    *((unsigned long*) 0x40020C00) = 0x00005555;
+}
+
 void main(void)
 {
+    unsigned char c;
+    app_init();
+    while(1){
+            c = (unsigned char) * ((unsigned short *) 0x40021010);
+            * ((unsigned char *) 0x40020C14) = c;
+        }
 }
 
