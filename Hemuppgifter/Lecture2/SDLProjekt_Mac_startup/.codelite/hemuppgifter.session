@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Session Name="/Users/ulfassarsson/Desktop/hemuppgifter/SDLProjekt_Mac_startup/hemuppgifter.workspace">
-  <int Value="0" Name="m_selectedTab"/>
-  <wxString Value="/Users/ulfassarsson/Desktop/hemuppgifter/SDLProjekt_Mac_startup/hemuppgifter.workspace" Name="m_workspaceName"/>
+<Session Name="/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Lecture2/SDLProjekt_Mac_startup/hemuppgifter.workspace">
+  <int Value="1" Name="m_selectedTab"/>
+  <wxString Value="/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Lecture2/SDLProjekt_Mac_startup/hemuppgifter.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
-      <wxString Value="/Users/ulfassarsson/Desktop/hemuppgifter/SDLProjekt_Mac_startup/SDLproject/main.c" Name="FileName"/>
-      <int Value="23" Name="FirstVisibleLine"/>
-      <int Value="25" Name="CurrentLine"/>
+      <wxString Value="/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Lecture2/SDLProjekt_Mac_startup/SDLproject/renderer.c" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="0" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Lecture2/SDLProjekt_Mac_startup/SDLproject/main.c" Name="FileName"/>
+      <int Value="46" Name="FirstVisibleLine"/>
+      <int Value="18" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
