@@ -12,8 +12,8 @@ start:
 20000000:	4e04      	ldr	r6, [pc, #16]	; (20000014 <main+0xa>)
 	LDR	R5, =0x40020C00
 20000002:	4d05      	ldr	r5, [pc, #20]	; (20000018 <main+0xe>)
-	STR	R6, [R6]
-20000004:	6036      	str	r6, [r6, #0]
+	STR	R6, [R5]
+20000004:	602e      	str	r6, [r5, #0]
 @ Adressen till port D utregister till R5
 	LDR	R5, =0x40020C14
 20000006:	4d05      	ldr	r5, [pc, #20]	; (2000001c <main+0x12>)
@@ -28,8 +28,8 @@ main:
 2000000a:	7830      	ldrb	r0, [r6, #0]
 	LDRB	R1, [R6, #1]
 2000000c:	7871      	ldrb	r1, [r6, #1]
-	EOR	R0, R0, R1
-2000000e:	4048      	eors	r0, r1
+	MVN	R0, R1
+2000000e:	43c8      	mvns	r0, r1
 	STRB	R0, [R5]
 20000010:	7028      	strb	r0, [r5, #0]
 	B	main

@@ -28,8 +28,8 @@ main:
 2000000a:	7830      	ldrb	r0, [r6, #0]
 	LDRB	R1, [R6, #1]
 2000000c:	7871      	ldrb	r1, [r6, #1]
-	EOR	R0, R0, R1
-2000000e:	4048      	eors	r0, r1
+	MVN	R0, R1
+2000000e:	43c8      	mvns	r0, r1
 	STRB	R0, [R5]
 20000010:	7028      	strb	r0, [r5, #0]
 	B	main

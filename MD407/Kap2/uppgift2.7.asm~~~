@@ -12,6 +12,6 @@ start:
 main:
 	LDRB	R0, [R6]
 	LDRB	R1, [R6, #1]
-	AND	R0, R0, R1
+	BIC	R0, R0, R1
 	STRB	R0, [R5]
 	B	main
