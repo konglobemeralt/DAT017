@@ -25,12 +25,6 @@ asm volatile(
 	) ;
 }
 
-
-
-void main(void)
-{
-}
-
 void app_init(void)
 {    
     //Define high bits as out and low as input.
@@ -57,14 +51,37 @@ void kbdActivate(unsigned int row){
     }
     
 int kdbGetCol(void){
-        unsigned char c;
-        c = *GPIO_IDR_HIGH;
+        unsigned char idr;
+        idr = *GPIO_IDR_HIGH;
         
-        if(c & 0x8) return 4;
-        if(c & 0x4) return 3;
-        if(c & 0x2) return 2;
-        if(c & 0x1) return 1;
+        if(idr & 0x8) return 4;
+        if(idr & 0x4) return 3;
+        if(idr & 0x2) return 2;
+        if(idr & 0x1) return 1;
         return 0;
+    }
+    
+void outSeg7(unsigned char in)
+    {
+        unsigned char odr = *PORT_ODR_LOW;
+        
+        if(in == 0x0) odr = 0x3F;
+        if(in == 0x1) odr = 0x06;
+        if(in == 0x2) odr = 0x5B;
+        if(in == 0x3) odr = 0x4F;
+        if(in == 0x4) odr = 0x66;
+        if(in == 0x5) odr = 0x6D;
+        if(in == 0x6) odr = 0x7D;
+        if(in == 0x7) odr = 0x07;
+        if(in == 0x8) odr = 0x7F;
+        if(in == 0x9) odr = 0x67;
+        if(in == 0xA) odr = 0x77;
+        if(in == 0xB) odr = 0x7F;
+        if(in == 0xC) odr = 0xFF;
+        if(in == 0xD) odr = 0xBF;
+        if(in == 0xE) odr = 0x79;
+        if(in == 0xF) odr = 0x71;
+        
     }
 
 unsigned char keyb(void){
@@ -81,6 +98,16 @@ unsigned char keyb(void){
             }
         kbdActivate(0);
         return 0xFF;
+}
+
+
+void main(void)
+{
+    app_init(void);
+    
+    while(1){
+        outSeg7(keyb(void));
+    }
 }
 
 
