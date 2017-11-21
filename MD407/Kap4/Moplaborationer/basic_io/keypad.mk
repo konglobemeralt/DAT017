@@ -5,8 +5,8 @@
 ## Debug
 ProjectName            :=keypad
 ConfigurationName      :=Debug
-WorkspacePath          :=/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter
-ProjectPath            :=/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/keypad
+WorkspacePath          :=/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap4/Moplaborationer
+ProjectPath            :=/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap4/Moplaborationer/basic_io
 IntermediateDirectory  :=./Debug
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
@@ -15,8 +15,8 @@ CurrentFileFullPath    :=
 User                   :=Jesper Blidkvist
 Date                   :=21/11/2017
 CodeLitePath           :="/Users/konglobemeralt/Library/Application Support/codelite"
-LinkerName             :=/usr/bin/llvm-g++
-SharedObjectLinkerName :=/usr/bin/llvm-g++ -shared -fPIC
+LinkerName             :=/Applications/gcc-arm-none-eabi-6-2017-q1-update/bin/arm-none-eabi-g++
+SharedObjectLinkerName :=/Applications/gcc-arm-none-eabi-6-2017-q1-update/bin/arm-none-eabi-g++ -shared -fPIC
 ObjectSuffix           :=.o
 DependSuffix           :=.o.d
 PreprocessSuffix       :=.i
@@ -47,13 +47,13 @@ LibPath                := $(LibraryPathSwitch). $(LibraryPathSwitch)$(GccArmDir)
 ## Common variables
 ## AR, CXX, CC, AS, CXXFLAGS and CFLAGS can be overriden using an environment variables
 ##
-AR       := /usr/bin/llvm-ar rcu
-CXX      := /usr/bin/llvm-g++
-CC       := /usr/bin/llvm-gcc
+AR       := /Applications/gcc-arm-none-eabi-6-2017-q1-update/bin/arm-none-eabi-ar rcu
+CXX      := /Applications/gcc-arm-none-eabi-6-2017-q1-update/bin/arm-none-eabi-g++
+CC       := /Applications/gcc-arm-none-eabi-6-2017-q1-update/bin/arm-none-eabi-gcc
 CXXFLAGS :=  -g -O0 -Wall $(Preprocessors)
 CFLAGS   :=  -g -O0 -mthumb -Wall -march=armv6-m -msoft-float -Wa,-adhln=test.s $(Preprocessors)
 ASFLAGS  := 
-AS       := /usr/bin/llvm-as
+AS       := /Applications/gcc-arm-none-eabi-6-2017-q1-update/bin/arm-none-eabi-as
 
 
 ##
@@ -98,7 +98,7 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/startup.c$(ObjectSuffix): startup.c $(IntermediateDirectory)/startup.c$(DependSuffix)
-	$(CC) $(SourceSwitch) "/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/keypad/startup.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/startup.c$(ObjectSuffix) $(IncludePath)
+	$(CC) $(SourceSwitch) "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap4/Moplaborationer/basic_io/startup.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/startup.c$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/startup.c$(DependSuffix): startup.c
 	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/startup.c$(ObjectSuffix) -MF$(IntermediateDirectory)/startup.c$(DependSuffix) -MM startup.c
 

@@ -4,6 +4,13 @@
   <wxString Value="/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Hemuppgifter.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
+      <wxString Value="/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/keypad/startup.c" Name="FileName"/>
+      <int Value="83" Name="FirstVisibleLine"/>
+      <int Value="70" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
       <wxString Value="/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Lecture2/functions.c" Name="FileName"/>
       <int Value="0" Name="FirstVisibleLine"/>
       <int Value="0" Name="CurrentLine"/>
@@ -11,21 +18,28 @@
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
-      <wxString Value="/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Lecture2/main.c" Name="FileName"/>
+      <wxString Value="/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/LectureSomething/main.c" Name="FileName"/>
       <int Value="0" Name="FirstVisibleLine"/>
       <int Value="0" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
-      <wxString Value="/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Lecture1/functions.c" Name="FileName"/>
+      <wxString Value="/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/LectureSomething/startup.c" Name="FileName"/>
+      <int Value="2" Name="FirstVisibleLine"/>
+      <int Value="0" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/bitWise/main.c" Name="FileName"/>
       <int Value="0" Name="FirstVisibleLine"/>
       <int Value="0" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
-      <wxString Value="/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Lecture1/main.c" Name="FileName"/>
+      <wxString Value="/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/LectureSomething/startup.h" Name="FileName"/>
       <int Value="0" Name="FirstVisibleLine"/>
       <int Value="0" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
