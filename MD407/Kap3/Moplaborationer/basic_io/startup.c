@@ -15,13 +15,13 @@
 
 void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
 
-void main(void)
-{
-    app_init();
-    
-    while(1){
-        outSeg7(keyb(void));
-    }
+void startup ( void ) {
+__asm volatile(
+	" LDR R0,=0x2001C000\n"		/* set stack */
+	" MOV SP,R0\n"
+	" BL main\n"				/* call main */
+	"_exit: B .\n"				/* never return */
+	) ;
 }
 
 void app_init(void)
@@ -101,14 +101,15 @@ unsigned char keyb(void){
 }
 
 
-void startup ( void ) {
-__asm volatile(
-	" LDR R0,=0x2001C000\n"		/* set stack */
-	" MOV SP,R0\n"
-	" B main\n"				/* call main */
-	"_exit: B .\n"				/* never return */
-	) ;
+void main(void)
+{
+    app_init(void);
+    
+    while(1){
+        outSeg7(keyb(void));
+    }
 }
+
 
 
 
