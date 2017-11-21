@@ -4,6 +4,7 @@
   <Project Name="bitWise" Path="bitWise/bitWise.project" Active="No"/>
   <Project Name="Lecture2" Path="Lecture2/Lecture2.project" Active="Yes"/>
   <Project Name="LectureSomething" Path="LectureSomething/LectureSomething.project" Active="No"/>
+  <Project Name="keypad" Path="keypad/keypad.project"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
@@ -11,6 +12,7 @@
       <Project Name="bitWise" ConfigName="Debug"/>
       <Project Name="Lecture2" ConfigName="Debug"/>
       <Project Name="LectureSomething" ConfigName="Debug"/>
+      <Project Name="keypad" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
@@ -18,6 +20,7 @@
       <Project Name="bitWise" ConfigName="Release"/>
       <Project Name="Lecture2" ConfigName="Release"/>
       <Project Name="LectureSomething" ConfigName="Release"/>
+      <Project Name="keypad" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>
