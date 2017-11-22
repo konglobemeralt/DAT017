@@ -16,9 +16,11 @@
 #define GPIO_IDR_HIGH ((volatile unsigned char *) (GPIO_E+0x11))
 #define GPIO_ODR_LOW ((volatile unsigned char *) (GPIO_E+0x14))
 #define GPIO_ODR_HIGH ((volatile unsigned char *) (GPIO_E+0x15))
+
 void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
 
 void startup ( void ) {
+    
 __asm volatile(
 	" LDR R0,=0x2001C000\n"		/* set stack */
 	" MOV SP,R0\n"
@@ -68,8 +70,6 @@ void delay_milli(unsigned int ms) {
 		delay_micro(1000 * ms);
 	#endif
 }
-
-
 
 void main(void)
 {
