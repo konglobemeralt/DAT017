@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Session Name="/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Hemuppgifter.workspace">
+<Session Name="/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap4/Moplaborationer/Moplaborationer.workspace">
   <int Value="0" Name="m_selectedTab"/>
-  <wxString Value="/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Hemuppgifter.workspace" Name="m_workspaceName"/>
+  <wxString Value="/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap4/Moplaborationer/Moplaborationer.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
-      <wxString Value="/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/LectureGPIO/startup.c" Name="FileName"/>
-      <int Value="21" Name="FirstVisibleLine"/>
-      <int Value="22" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/keypad/startup.c" Name="FileName"/>
+      <wxString Value="/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap3/Moplaborationer/basic_io/startup.c" Name="FileName"/>
       <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="11" Name="CurrentLine"/>
+      <int Value="0" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
@@ -21,8 +14,8 @@
   <SerializedObject Name="m_breakpoints">
     <long Value="1" Name="Count"/>
     <SerializedObject Name="Breakpoint0">
-      <wxString Value="/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Lecture2/main.c" Name="file"/>
-      <int Value="2" Name="lineno"/>
+      <wxString Value="/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap3/Moplaborationer/basic_io/startup.c" Name="file"/>
+      <int Value="102" Name="lineno"/>
       <wxString Value="" Name="function_name"/>
       <wxString Value="" Name="memory_address"/>
       <int Value="1" Name="bp_type"/>
