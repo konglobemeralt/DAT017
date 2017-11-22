@@ -59,7 +59,7 @@ void delay_250ns(void) {
 	*STK_CTRL = 0;
 }
 
-void delay_mikro(unsigned int us) {
+void delay_micro(unsigned int us) {
 	while(us--) {
 		delay_250ns();
 		delay_250ns();
@@ -99,7 +99,7 @@ void ascii_write_controller( unsigned char c ) {
 
 unsigned char ascii_read_controller( void )
 {
-    unsigned char c;
+    unsigned char rv;
     ascii_ctrl_bit_set( B_E );
     delay_250ns();
     delay_250ns();
@@ -127,7 +127,8 @@ unsigned char ascii_read_status(void){
 	unsigned char rv = ascii_read_controller();
 	*GPIO_MODER &= 0x0000FFFF;
 	*GPIO_MODER |= 0x55550000;	
-	return rv;}
+	return rv;
+    }
 
 unsigned char ascii_read_data(void){
     *GPIO_MODER &= 0x0000FFFF;	
@@ -136,7 +137,35 @@ unsigned char ascii_read_data(void){
 	unsigned char rv = ascii_read_controller();
 	*GPIO_MODER &= 0x0000FFFF;
 	*GPIO_MODER |= 0x55550000;	
-	return rv;}
+	return rv;
+    }
+
+void ascii_command(char command, unsigned int delayMicroSec){
+    while(ascii_read_status() & 0x80 == 0x80){
+            //TODO implement pip subroutine
+        }
+    delay_micro(8);
+    ascii_write_cmd(command);
+    delay_micro(delayMicroSec);
+    }
+
+void ascii_init(void){
+        ascii_ctrl_bit_set(B_SELECT);
+        ascii_command(0x38, 40); //Set disp size, delay 40 ms
+        ascii_command(0xE, 40); //delay set to 40 bcs DR.eHugo
+        ascii_command(0x01, 1530); // Cls
+        ascii_command(0x6, 40); // Inc
+}
+
+ascii_write_char(char c){
+    while(ascii_read_status() & 0x80 == 0x80){
+            //TODO implement pip subroutine
+        }
+    delay_micro(8);
+    ascii_write_data(c);
+    delay_micro(45);
+    }
+    
 
 
 void main(int argc, char **argv) {
