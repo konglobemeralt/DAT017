@@ -98,7 +98,7 @@
   64              		.cfi_offset 14, -4
   65 0002 00AF     		add	r7, sp, #0
   66              		.cfi_def_cfa_register 7
-  38:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	// Setup output pins for asciidisplay
+  38:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	// set pins for asciidisplay
   39:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	*GPIO_MODER = 0x55555555;
   67              		.loc 1 39 0
   68 0004 0A4B     		ldr	r3, .L3
@@ -736,278 +736,503 @@
  629 0266 0549     		ldr	r1, .L30+4
  630 0268 0A43     		orrs	r2, r1
  631 026a 1A60     		str	r2, [r3]
- 130:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	return rv;}
+ 130:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	return rv;
  632              		.loc 1 130 0
  633 026c FB1D     		adds	r3, r7, #7
  634 026e 1B78     		ldrb	r3, [r3]
- 635 0270 1800     		movs	r0, r3
- 636 0272 BD46     		mov	sp, r7
- 637 0274 03B0     		add	sp, sp, #12
- 638              		@ sp needed
- 639 0276 90BD     		pop	{r4, r7, pc}
- 640              	.L31:
- 641              		.align	2
- 642              	.L30:
- 643 0278 00100240 		.word	1073876992
- 644 027c 00005555 		.word	1431633920
- 645              		.cfi_endproc
- 646              	.LFE11:
- 648              		.align	1
- 649              		.global	ascii_read_data
- 650              		.syntax unified
- 651              		.code	16
- 652              		.thumb_func
- 653              		.fpu softvfp
- 655              	ascii_read_data:
- 656              	.LFB12:
- 131:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 
- 132:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** unsigned char ascii_read_data(void){
- 657              		.loc 1 132 0
- 658              		.cfi_startproc
- 659              		@ args = 0, pretend = 0, frame = 8
- 660              		@ frame_needed = 1, uses_anonymous_args = 0
- 661 0280 90B5     		push	{r4, r7, lr}
- 662              		.cfi_def_cfa_offset 12
- 663              		.cfi_offset 4, -12
- 664              		.cfi_offset 7, -8
- 665              		.cfi_offset 14, -4
- 666 0282 83B0     		sub	sp, sp, #12
- 667              		.cfi_def_cfa_offset 24
- 668 0284 00AF     		add	r7, sp, #0
- 669              		.cfi_def_cfa_register 7
- 133:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     *GPIO_MODER &= 0x0000FFFF;	
- 670              		.loc 1 133 0
- 671 0286 114B     		ldr	r3, .L34
- 672 0288 104A     		ldr	r2, .L34
- 673 028a 1268     		ldr	r2, [r2]
- 674 028c 1204     		lsls	r2, r2, #16
- 675 028e 120C     		lsrs	r2, r2, #16
- 676 0290 1A60     		str	r2, [r3]
- 134:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	ascii_ctrl_bit_set(B_RS);
- 677              		.loc 1 134 0
- 678 0292 0020     		movs	r0, #0
- 679 0294 FFF7FEFF 		bl	ascii_ctrl_bit_set
- 135:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	ascii_ctrl_bit_set(B_RW);
- 680              		.loc 1 135 0
- 681 0298 0120     		movs	r0, #1
- 682 029a FFF7FEFF 		bl	ascii_ctrl_bit_set
- 136:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	unsigned char rv = ascii_read_controller();
- 683              		.loc 1 136 0
- 684 029e FC1D     		adds	r4, r7, #7
- 685 02a0 FFF7FEFF 		bl	ascii_read_controller
- 686 02a4 0300     		movs	r3, r0
- 687 02a6 2370     		strb	r3, [r4]
- 137:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	*GPIO_MODER &= 0x0000FFFF;
- 688              		.loc 1 137 0
- 689 02a8 084B     		ldr	r3, .L34
- 690 02aa 084A     		ldr	r2, .L34
- 691 02ac 1268     		ldr	r2, [r2]
- 692 02ae 1204     		lsls	r2, r2, #16
- 693 02b0 120C     		lsrs	r2, r2, #16
- 694 02b2 1A60     		str	r2, [r3]
- 138:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	*GPIO_MODER |= 0x55550000;	
- 695              		.loc 1 138 0
- 696 02b4 054B     		ldr	r3, .L34
- 697 02b6 054A     		ldr	r2, .L34
- 698 02b8 1268     		ldr	r2, [r2]
- 699 02ba 0549     		ldr	r1, .L34+4
- 700 02bc 0A43     		orrs	r2, r1
- 701 02be 1A60     		str	r2, [r3]
- 139:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	return rv;}
- 702              		.loc 1 139 0
- 703 02c0 FB1D     		adds	r3, r7, #7
- 704 02c2 1B78     		ldrb	r3, [r3]
- 705 02c4 1800     		movs	r0, r3
- 706 02c6 BD46     		mov	sp, r7
- 707 02c8 03B0     		add	sp, sp, #12
- 708              		@ sp needed
- 709 02ca 90BD     		pop	{r4, r7, pc}
- 710              	.L35:
- 711              		.align	2
- 712              	.L34:
- 713 02cc 00100240 		.word	1073876992
- 714 02d0 00005555 		.word	1431633920
- 715              		.cfi_endproc
- 716              	.LFE12:
- 718              		.align	1
- 719              		.global	ascii_command
- 720              		.syntax unified
- 721              		.code	16
- 722              		.thumb_func
- 723              		.fpu softvfp
- 725              	ascii_command:
- 726              	.LFB13:
- 140:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 
- 141:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** void ascii_command(char command, unsigned int delayMicroSec){
- 727              		.loc 1 141 0
- 728              		.cfi_startproc
- 729              		@ args = 0, pretend = 0, frame = 8
- 730              		@ frame_needed = 1, uses_anonymous_args = 0
- 731 02d4 80B5     		push	{r7, lr}
- 732              		.cfi_def_cfa_offset 8
- 733              		.cfi_offset 7, -8
- 734              		.cfi_offset 14, -4
- 735 02d6 82B0     		sub	sp, sp, #8
- 736              		.cfi_def_cfa_offset 16
- 737 02d8 00AF     		add	r7, sp, #0
- 738              		.cfi_def_cfa_register 7
- 739 02da 0200     		movs	r2, r0
- 740 02dc 3960     		str	r1, [r7]
- 741 02de FB1D     		adds	r3, r7, #7
- 742 02e0 1A70     		strb	r2, [r3]
- 142:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     while(ascii_read_status() & 0x80 == 0x80){
- 743              		.loc 1 142 0
- 744 02e2 C046     		nop
- 745              	.L37:
- 746              		.loc 1 142 0 is_stmt 0 discriminator 1
- 747 02e4 FFF7FEFF 		bl	ascii_read_status
- 748 02e8 0300     		movs	r3, r0
- 749 02ea 1A00     		movs	r2, r3
- 750 02ec 0123     		movs	r3, #1
- 751 02ee 1340     		ands	r3, r2
- 752 02f0 F8D1     		bne	.L37
- 143:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****             //TODO implement pip subroutine
- 144:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****         }
- 145:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     delay_micro(8);
- 753              		.loc 1 145 0 is_stmt 1
- 754 02f2 0820     		movs	r0, #8
- 755 02f4 FFF7FEFF 		bl	delay_micro
- 146:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     ascii_write_cmd(command);
- 756              		.loc 1 146 0
- 757 02f8 FB1D     		adds	r3, r7, #7
- 758 02fa 1B78     		ldrb	r3, [r3]
- 759 02fc 1800     		movs	r0, r3
- 760 02fe FFF7FEFF 		bl	ascii_write_cmd
- 147:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     delay_micro(delayMicroSec);
- 761              		.loc 1 147 0
- 762 0302 3B68     		ldr	r3, [r7]
- 763 0304 1800     		movs	r0, r3
- 764 0306 FFF7FEFF 		bl	delay_micro
- 148:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     }
- 765              		.loc 1 148 0
- 766 030a C046     		nop
- 767 030c BD46     		mov	sp, r7
- 768 030e 02B0     		add	sp, sp, #8
- 769              		@ sp needed
- 770 0310 80BD     		pop	{r7, pc}
- 771              		.cfi_endproc
- 772              	.LFE13:
- 774              		.align	1
- 775              		.global	ascii_init
- 776              		.syntax unified
- 777              		.code	16
- 778              		.thumb_func
- 779              		.fpu softvfp
- 781              	ascii_init:
- 782              	.LFB14:
- 149:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 
- 150:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** void ascii_init(void){
- 783              		.loc 1 150 0
- 784              		.cfi_startproc
- 785              		@ args = 0, pretend = 0, frame = 0
- 786              		@ frame_needed = 1, uses_anonymous_args = 0
- 787 0312 80B5     		push	{r7, lr}
- 788              		.cfi_def_cfa_offset 8
- 789              		.cfi_offset 7, -8
- 790              		.cfi_offset 14, -4
- 791 0314 00AF     		add	r7, sp, #0
- 792              		.cfi_def_cfa_register 7
- 151:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****         ascii_ctrl_bit_set(B_SELECT);
- 793              		.loc 1 151 0
- 794 0316 0220     		movs	r0, #2
- 795 0318 FFF7FEFF 		bl	ascii_ctrl_bit_set
- 152:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****         ascii_command(0x38, 40); //Set disp size, delay 40 ms
- 796              		.loc 1 152 0
- 797 031c 2821     		movs	r1, #40
- 798 031e 3820     		movs	r0, #56
- 799 0320 FFF7FEFF 		bl	ascii_command
- 153:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****         ascii_command(0xE, 40); //delay set to 40 bcs DR.eHugo
- 800              		.loc 1 153 0
- 801 0324 2821     		movs	r1, #40
- 802 0326 0E20     		movs	r0, #14
- 803 0328 FFF7FEFF 		bl	ascii_command
- 154:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****         ascii_command(0x01, 1530); // Clear display
- 804              		.loc 1 154 0
- 805 032c 054B     		ldr	r3, .L39
- 806 032e 1900     		movs	r1, r3
- 807 0330 0120     		movs	r0, #1
- 808 0332 FFF7FEFF 		bl	ascii_command
- 155:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****         ascii_command(0x6, 40); // Inc, no shift
- 809              		.loc 1 155 0
- 810 0336 2821     		movs	r1, #40
- 811 0338 0620     		movs	r0, #6
- 812 033a FFF7FEFF 		bl	ascii_command
- 156:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     }
- 813              		.loc 1 156 0
- 814 033e C046     		nop
- 815 0340 BD46     		mov	sp, r7
- 816              		@ sp needed
- 817 0342 80BD     		pop	{r7, pc}
- 818              	.L40:
- 819              		.align	2
- 820              	.L39:
- 821 0344 FA050000 		.word	1530
- 822              		.cfi_endproc
- 823              	.LFE14:
- 825              		.align	1
- 826              		.global	main
- 827              		.syntax unified
- 828              		.code	16
- 829              		.thumb_func
- 830              		.fpu softvfp
- 832              	main:
- 833              	.LFB15:
- 157:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 
- 158:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** void main(int argc, char **argv) {
- 834              		.loc 1 158 0
- 835              		.cfi_startproc
- 836              		@ args = 0, pretend = 0, frame = 8
- 837              		@ frame_needed = 1, uses_anonymous_args = 0
- 838 0348 80B5     		push	{r7, lr}
- 839              		.cfi_def_cfa_offset 8
- 840              		.cfi_offset 7, -8
- 841              		.cfi_offset 14, -4
- 842 034a 82B0     		sub	sp, sp, #8
- 843              		.cfi_def_cfa_offset 16
- 844 034c 00AF     		add	r7, sp, #0
- 845              		.cfi_def_cfa_register 7
- 846 034e 7860     		str	r0, [r7, #4]
- 847 0350 3960     		str	r1, [r7]
- 159:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     init_app();
- 848              		.loc 1 159 0
- 849 0352 FFF7FEFF 		bl	init_app
- 850              	.L42:
- 160:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     while(1)
- 161:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     {
- 162:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****         *GPIO_ODR_LOW = 0;
- 851              		.loc 1 162 0 discriminator 1
- 852 0356 084B     		ldr	r3, .L43
- 853 0358 0022     		movs	r2, #0
- 854 035a 1A70     		strb	r2, [r3]
- 163:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****         delay_milli(500);
- 855              		.loc 1 163 0 discriminator 1
- 856 035c FA23     		movs	r3, #250
- 857 035e 5B00     		lsls	r3, r3, #1
- 858 0360 1800     		movs	r0, r3
- 859 0362 FFF7FEFF 		bl	delay_milli
- 164:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****         *GPIO_ODR_LOW = 0xFF;
- 860              		.loc 1 164 0 discriminator 1
- 861 0366 044B     		ldr	r3, .L43
- 862 0368 FF22     		movs	r2, #255
- 863 036a 1A70     		strb	r2, [r3]
- 165:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****         delay_milli(500);
- 864              		.loc 1 165 0 discriminator 1
- 865 036c FA23     		movs	r3, #250
- 866 036e 5B00     		lsls	r3, r3, #1
- 867 0370 1800     		movs	r0, r3
- 868 0372 FFF7FEFF 		bl	delay_milli
- 162:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****         delay_milli(500);
- 869              		.loc 1 162 0 discriminator 1
- 870 0376 EEE7     		b	.L42
- 871              	.L44:
- 872              		.align	2
- 873              	.L43:
- 874 0378 14100240 		.word	1073877012
- 875              		.cfi_endproc
- 876              	.LFE15:
- 878              	.Letext0:
+ 131:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     }
+ 635              		.loc 1 131 0
+ 636 0270 1800     		movs	r0, r3
+ 637 0272 BD46     		mov	sp, r7
+ 638 0274 03B0     		add	sp, sp, #12
+ 639              		@ sp needed
+ 640 0276 90BD     		pop	{r4, r7, pc}
+ 641              	.L31:
+ 642              		.align	2
+ 643              	.L30:
+ 644 0278 00100240 		.word	1073876992
+ 645 027c 00005555 		.word	1431633920
+ 646              		.cfi_endproc
+ 647              	.LFE11:
+ 649              		.align	1
+ 650              		.global	ascii_read_data
+ 651              		.syntax unified
+ 652              		.code	16
+ 653              		.thumb_func
+ 654              		.fpu softvfp
+ 656              	ascii_read_data:
+ 657              	.LFB12:
+ 132:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 
+ 133:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** unsigned char ascii_read_data(void){
+ 658              		.loc 1 133 0
+ 659              		.cfi_startproc
+ 660              		@ args = 0, pretend = 0, frame = 8
+ 661              		@ frame_needed = 1, uses_anonymous_args = 0
+ 662 0280 90B5     		push	{r4, r7, lr}
+ 663              		.cfi_def_cfa_offset 12
+ 664              		.cfi_offset 4, -12
+ 665              		.cfi_offset 7, -8
+ 666              		.cfi_offset 14, -4
+ 667 0282 83B0     		sub	sp, sp, #12
+ 668              		.cfi_def_cfa_offset 24
+ 669 0284 00AF     		add	r7, sp, #0
+ 670              		.cfi_def_cfa_register 7
+ 134:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     *GPIO_MODER &= 0x0000FFFF;	
+ 671              		.loc 1 134 0
+ 672 0286 114B     		ldr	r3, .L34
+ 673 0288 104A     		ldr	r2, .L34
+ 674 028a 1268     		ldr	r2, [r2]
+ 675 028c 1204     		lsls	r2, r2, #16
+ 676 028e 120C     		lsrs	r2, r2, #16
+ 677 0290 1A60     		str	r2, [r3]
+ 135:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	ascii_ctrl_bit_set(B_RS);
+ 678              		.loc 1 135 0
+ 679 0292 0020     		movs	r0, #0
+ 680 0294 FFF7FEFF 		bl	ascii_ctrl_bit_set
+ 136:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	ascii_ctrl_bit_set(B_RW);
+ 681              		.loc 1 136 0
+ 682 0298 0120     		movs	r0, #1
+ 683 029a FFF7FEFF 		bl	ascii_ctrl_bit_set
+ 137:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	unsigned char rv = ascii_read_controller();
+ 684              		.loc 1 137 0
+ 685 029e FC1D     		adds	r4, r7, #7
+ 686 02a0 FFF7FEFF 		bl	ascii_read_controller
+ 687 02a4 0300     		movs	r3, r0
+ 688 02a6 2370     		strb	r3, [r4]
+ 138:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	*GPIO_MODER &= 0x0000FFFF;
+ 689              		.loc 1 138 0
+ 690 02a8 084B     		ldr	r3, .L34
+ 691 02aa 084A     		ldr	r2, .L34
+ 692 02ac 1268     		ldr	r2, [r2]
+ 693 02ae 1204     		lsls	r2, r2, #16
+ 694 02b0 120C     		lsrs	r2, r2, #16
+ 695 02b2 1A60     		str	r2, [r3]
+ 139:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	*GPIO_MODER |= 0x55550000;	
+ 696              		.loc 1 139 0
+ 697 02b4 054B     		ldr	r3, .L34
+ 698 02b6 054A     		ldr	r2, .L34
+ 699 02b8 1268     		ldr	r2, [r2]
+ 700 02ba 0549     		ldr	r1, .L34+4
+ 701 02bc 0A43     		orrs	r2, r1
+ 702 02be 1A60     		str	r2, [r3]
+ 140:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	return rv;
+ 703              		.loc 1 140 0
+ 704 02c0 FB1D     		adds	r3, r7, #7
+ 705 02c2 1B78     		ldrb	r3, [r3]
+ 141:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     }
+ 706              		.loc 1 141 0
+ 707 02c4 1800     		movs	r0, r3
+ 708 02c6 BD46     		mov	sp, r7
+ 709 02c8 03B0     		add	sp, sp, #12
+ 710              		@ sp needed
+ 711 02ca 90BD     		pop	{r4, r7, pc}
+ 712              	.L35:
+ 713              		.align	2
+ 714              	.L34:
+ 715 02cc 00100240 		.word	1073876992
+ 716 02d0 00005555 		.word	1431633920
+ 717              		.cfi_endproc
+ 718              	.LFE12:
+ 720              		.align	1
+ 721              		.global	ascii_command
+ 722              		.syntax unified
+ 723              		.code	16
+ 724              		.thumb_func
+ 725              		.fpu softvfp
+ 727              	ascii_command:
+ 728              	.LFB13:
+ 142:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 
+ 143:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** void ascii_command(char command, unsigned int delayMicroSec){
+ 729              		.loc 1 143 0
+ 730              		.cfi_startproc
+ 731              		@ args = 0, pretend = 0, frame = 8
+ 732              		@ frame_needed = 1, uses_anonymous_args = 0
+ 733 02d4 80B5     		push	{r7, lr}
+ 734              		.cfi_def_cfa_offset 8
+ 735              		.cfi_offset 7, -8
+ 736              		.cfi_offset 14, -4
+ 737 02d6 82B0     		sub	sp, sp, #8
+ 738              		.cfi_def_cfa_offset 16
+ 739 02d8 00AF     		add	r7, sp, #0
+ 740              		.cfi_def_cfa_register 7
+ 741 02da 0200     		movs	r2, r0
+ 742 02dc 3960     		str	r1, [r7]
+ 743 02de FB1D     		adds	r3, r7, #7
+ 744 02e0 1A70     		strb	r2, [r3]
+ 144:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     while(ascii_read_status() & 0x80 == 0x80){
+ 745              		.loc 1 144 0
+ 746 02e2 C046     		nop
+ 747              	.L37:
+ 748              		.loc 1 144 0 is_stmt 0 discriminator 1
+ 749 02e4 FFF7FEFF 		bl	ascii_read_status
+ 750 02e8 0300     		movs	r3, r0
+ 751 02ea 1A00     		movs	r2, r3
+ 752 02ec 0123     		movs	r3, #1
+ 753 02ee 1340     		ands	r3, r2
+ 754 02f0 F8D1     		bne	.L37
+ 145:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****             //TODO implement pip subroutine
+ 146:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****         }
+ 147:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     delay_micro(8);
+ 755              		.loc 1 147 0 is_stmt 1
+ 756 02f2 0820     		movs	r0, #8
+ 757 02f4 FFF7FEFF 		bl	delay_micro
+ 148:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     ascii_write_cmd(command);
+ 758              		.loc 1 148 0
+ 759 02f8 FB1D     		adds	r3, r7, #7
+ 760 02fa 1B78     		ldrb	r3, [r3]
+ 761 02fc 1800     		movs	r0, r3
+ 762 02fe FFF7FEFF 		bl	ascii_write_cmd
+ 149:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     delay_micro(delayMicroSec);
+ 763              		.loc 1 149 0
+ 764 0302 3B68     		ldr	r3, [r7]
+ 765 0304 1800     		movs	r0, r3
+ 766 0306 FFF7FEFF 		bl	delay_micro
+ 150:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     }
+ 767              		.loc 1 150 0
+ 768 030a C046     		nop
+ 769 030c BD46     		mov	sp, r7
+ 770 030e 02B0     		add	sp, sp, #8
+ 771              		@ sp needed
+ 772 0310 80BD     		pop	{r7, pc}
+ 773              		.cfi_endproc
+ 774              	.LFE13:
+ 776              		.align	1
+ 777              		.global	ascii_init
+ 778              		.syntax unified
+ 779              		.code	16
+ 780              		.thumb_func
+ 781              		.fpu softvfp
+ 783              	ascii_init:
+ 784              	.LFB14:
+ 151:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 
+ 152:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** void ascii_init(void){
+ 785              		.loc 1 152 0
+ 786              		.cfi_startproc
+ 787              		@ args = 0, pretend = 0, frame = 0
+ 788              		@ frame_needed = 1, uses_anonymous_args = 0
+ 789 0312 80B5     		push	{r7, lr}
+ 790              		.cfi_def_cfa_offset 8
+ 791              		.cfi_offset 7, -8
+ 792              		.cfi_offset 14, -4
+ 793 0314 00AF     		add	r7, sp, #0
+ 794              		.cfi_def_cfa_register 7
+ 153:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****         ascii_ctrl_bit_set(B_SELECT);
+ 795              		.loc 1 153 0
+ 796 0316 0220     		movs	r0, #2
+ 797 0318 FFF7FEFF 		bl	ascii_ctrl_bit_set
+ 154:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****         ascii_command(0x38, 40); //Set disp size, delay 40 ms
+ 798              		.loc 1 154 0
+ 799 031c 2821     		movs	r1, #40
+ 800 031e 3820     		movs	r0, #56
+ 801 0320 FFF7FEFF 		bl	ascii_command
+ 155:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****         ascii_command(0xE, 40); //delay set to 40 bcs DR.eHugo
+ 802              		.loc 1 155 0
+ 803 0324 2821     		movs	r1, #40
+ 804 0326 0E20     		movs	r0, #14
+ 805 0328 FFF7FEFF 		bl	ascii_command
+ 156:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****         ascii_command(0x01, 1530); // Cls
+ 806              		.loc 1 156 0
+ 807 032c 054B     		ldr	r3, .L39
+ 808 032e 1900     		movs	r1, r3
+ 809 0330 0120     		movs	r0, #1
+ 810 0332 FFF7FEFF 		bl	ascii_command
+ 157:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****         ascii_command(0x6, 40); // Inc
+ 811              		.loc 1 157 0
+ 812 0336 2821     		movs	r1, #40
+ 813 0338 0620     		movs	r0, #6
+ 814 033a FFF7FEFF 		bl	ascii_command
+ 158:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** }
+ 815              		.loc 1 158 0
+ 816 033e C046     		nop
+ 817 0340 BD46     		mov	sp, r7
+ 818              		@ sp needed
+ 819 0342 80BD     		pop	{r7, pc}
+ 820              	.L40:
+ 821              		.align	2
+ 822              	.L39:
+ 823 0344 FA050000 		.word	1530
+ 824              		.cfi_endproc
+ 825              	.LFE14:
+ 827              		.align	1
+ 828              		.global	ascii_write_char
+ 829              		.syntax unified
+ 830              		.code	16
+ 831              		.thumb_func
+ 832              		.fpu softvfp
+ 834              	ascii_write_char:
+ 835              	.LFB15:
+ 159:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 
+ 160:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** ascii_write_char(char c){
+ 836              		.loc 1 160 0
+ 837              		.cfi_startproc
+ 838              		@ args = 0, pretend = 0, frame = 8
+ 839              		@ frame_needed = 1, uses_anonymous_args = 0
+ 840 0348 80B5     		push	{r7, lr}
+ 841              		.cfi_def_cfa_offset 8
+ 842              		.cfi_offset 7, -8
+ 843              		.cfi_offset 14, -4
+ 844 034a 82B0     		sub	sp, sp, #8
+ 845              		.cfi_def_cfa_offset 16
+ 846 034c 00AF     		add	r7, sp, #0
+ 847              		.cfi_def_cfa_register 7
+ 848 034e 0200     		movs	r2, r0
+ 849 0350 FB1D     		adds	r3, r7, #7
+ 850 0352 1A70     		strb	r2, [r3]
+ 161:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     while(ascii_read_status() & 0x80 == 0x80){
+ 851              		.loc 1 161 0
+ 852 0354 C046     		nop
+ 853              	.L42:
+ 854              		.loc 1 161 0 is_stmt 0 discriminator 1
+ 855 0356 FFF7FEFF 		bl	ascii_read_status
+ 856 035a 0300     		movs	r3, r0
+ 857 035c 1A00     		movs	r2, r3
+ 858 035e 0123     		movs	r3, #1
+ 859 0360 1340     		ands	r3, r2
+ 860 0362 F8D1     		bne	.L42
+ 162:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****             //TODO implement pip subroutine
+ 163:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****         }
+ 164:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     delay_micro(8);
+ 861              		.loc 1 164 0 is_stmt 1
+ 862 0364 0820     		movs	r0, #8
+ 863 0366 FFF7FEFF 		bl	delay_micro
+ 165:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     ascii_write_data(c);
+ 864              		.loc 1 165 0
+ 865 036a FB1D     		adds	r3, r7, #7
+ 866 036c 1B78     		ldrb	r3, [r3]
+ 867 036e 1800     		movs	r0, r3
+ 868 0370 FFF7FEFF 		bl	ascii_write_data
+ 166:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     delay_micro(45);
+ 869              		.loc 1 166 0
+ 870 0374 2D20     		movs	r0, #45
+ 871 0376 FFF7FEFF 		bl	delay_micro
+ 167:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     }
+ 872              		.loc 1 167 0
+ 873 037a C046     		nop
+ 874 037c 1800     		movs	r0, r3
+ 875 037e BD46     		mov	sp, r7
+ 876 0380 02B0     		add	sp, sp, #8
+ 877              		@ sp needed
+ 878 0382 80BD     		pop	{r7, pc}
+ 879              		.cfi_endproc
+ 880              	.LFE15:
+ 882              		.align	1
+ 883              		.global	goToXY
+ 884              		.syntax unified
+ 885              		.code	16
+ 886              		.thumb_func
+ 887              		.fpu softvfp
+ 889              	goToXY:
+ 890              	.LFB16:
+ 168:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 
+ 169:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** void goToXY(unsigned char row, unsigned char column) {
+ 891              		.loc 1 169 0
+ 892              		.cfi_startproc
+ 893              		@ args = 0, pretend = 0, frame = 16
+ 894              		@ frame_needed = 1, uses_anonymous_args = 0
+ 895 0384 80B5     		push	{r7, lr}
+ 896              		.cfi_def_cfa_offset 8
+ 897              		.cfi_offset 7, -8
+ 898              		.cfi_offset 14, -4
+ 899 0386 84B0     		sub	sp, sp, #16
+ 900              		.cfi_def_cfa_offset 24
+ 901 0388 00AF     		add	r7, sp, #0
+ 902              		.cfi_def_cfa_register 7
+ 903 038a 0200     		movs	r2, r0
+ 904 038c FB1D     		adds	r3, r7, #7
+ 905 038e 1A70     		strb	r2, [r3]
+ 906 0390 BB1D     		adds	r3, r7, #6
+ 907 0392 0A1C     		adds	r2, r1, #0
+ 908 0394 1A70     		strb	r2, [r3]
+ 170:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	unsigned char address = row - 1;
+ 909              		.loc 1 170 0
+ 910 0396 0F23     		movs	r3, #15
+ 911 0398 FB18     		adds	r3, r7, r3
+ 912 039a FA1D     		adds	r2, r7, #7
+ 913 039c 1278     		ldrb	r2, [r2]
+ 914 039e 013A     		subs	r2, r2, #1
+ 915 03a0 1A70     		strb	r2, [r3]
+ 171:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	if(column == 2) {
+ 916              		.loc 1 171 0
+ 917 03a2 BB1D     		adds	r3, r7, #6
+ 918 03a4 1B78     		ldrb	r3, [r3]
+ 919 03a6 022B     		cmp	r3, #2
+ 920 03a8 06D1     		bne	.L44
+ 172:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 		address = address + 0x40;
+ 921              		.loc 1 172 0
+ 922 03aa 0F23     		movs	r3, #15
+ 923 03ac FB18     		adds	r3, r7, r3
+ 924 03ae 0F22     		movs	r2, #15
+ 925 03b0 BA18     		adds	r2, r7, r2
+ 926 03b2 1278     		ldrb	r2, [r2]
+ 927 03b4 4032     		adds	r2, r2, #64
+ 928 03b6 1A70     		strb	r2, [r3]
+ 929              	.L44:
+ 173:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	}
+ 174:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	ascii_write_cmd(0x80 | address);
+ 930              		.loc 1 174 0
+ 931 03b8 0F23     		movs	r3, #15
+ 932 03ba FB18     		adds	r3, r7, r3
+ 933 03bc 1B78     		ldrb	r3, [r3]
+ 934 03be 8022     		movs	r2, #128
+ 935 03c0 5242     		rsbs	r2, r2, #0
+ 936 03c2 1343     		orrs	r3, r2
+ 937 03c4 DBB2     		uxtb	r3, r3
+ 938 03c6 1800     		movs	r0, r3
+ 939 03c8 FFF7FEFF 		bl	ascii_write_cmd
+ 175:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** }
+ 940              		.loc 1 175 0
+ 941 03cc C046     		nop
+ 942 03ce BD46     		mov	sp, r7
+ 943 03d0 04B0     		add	sp, sp, #16
+ 944              		@ sp needed
+ 945 03d2 80BD     		pop	{r7, pc}
+ 946              		.cfi_endproc
+ 947              	.LFE16:
+ 949              		.section	.rodata
+ 950              		.align	2
+ 951              	.LC0:
+ 952 0000 416C6661 		.ascii	"Alfanumerisk \000"
+ 952      6E756D65 
+ 952      7269736B 
+ 952      2000
+ 953 000e 0000     		.align	2
+ 954              	.LC2:
+ 955 0010 44697370 		.ascii	"Display - test\000"
+ 955      6C617920 
+ 955      2D207465 
+ 955      737400
+ 956              		.text
+ 957              		.align	1
+ 958              		.global	main
+ 959              		.syntax unified
+ 960              		.code	16
+ 961              		.thumb_func
+ 962              		.fpu softvfp
+ 964              	main:
+ 965              	.LFB17:
+ 176:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 
+ 177:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 
+ 178:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 
+ 179:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** void main(int argc, char **argv) {
+ 966              		.loc 1 179 0
+ 967              		.cfi_startproc
+ 968              		@ args = 0, pretend = 0, frame = 48
+ 969              		@ frame_needed = 1, uses_anonymous_args = 0
+ 970 03d4 90B5     		push	{r4, r7, lr}
+ 971              		.cfi_def_cfa_offset 12
+ 972              		.cfi_offset 4, -12
+ 973              		.cfi_offset 7, -8
+ 974              		.cfi_offset 14, -4
+ 975 03d6 8DB0     		sub	sp, sp, #52
+ 976              		.cfi_def_cfa_offset 64
+ 977 03d8 00AF     		add	r7, sp, #0
+ 978              		.cfi_def_cfa_register 7
+ 979 03da 7860     		str	r0, [r7, #4]
+ 980 03dc 3960     		str	r1, [r7]
+ 180:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     
+ 181:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     char *s;
+ 182:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	char test1[] = "Alfanumerisk ";
+ 981              		.loc 1 182 0
+ 982 03de 1C23     		movs	r3, #28
+ 983 03e0 FB18     		adds	r3, r7, r3
+ 984 03e2 1E4A     		ldr	r2, .L51
+ 985 03e4 13CA     		ldmia	r2!, {r0, r1, r4}
+ 986 03e6 13C3     		stmia	r3!, {r0, r1, r4}
+ 987 03e8 1288     		ldrh	r2, [r2]
+ 988 03ea 1A80     		strh	r2, [r3]
+ 183:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	char test2[] = "Display - test";
+ 989              		.loc 1 183 0
+ 990 03ec 0C23     		movs	r3, #12
+ 991 03ee FB18     		adds	r3, r7, r3
+ 992 03f0 1B4A     		ldr	r2, .L51+4
+ 993 03f2 13CA     		ldmia	r2!, {r0, r1, r4}
+ 994 03f4 13C3     		stmia	r3!, {r0, r1, r4}
+ 995 03f6 1188     		ldrh	r1, [r2]
+ 996 03f8 1980     		strh	r1, [r3]
+ 997 03fa 9278     		ldrb	r2, [r2, #2]
+ 998 03fc 9A70     		strb	r2, [r3, #2]
+ 184:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     
+ 185:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     init_app();
+ 999              		.loc 1 185 0
+ 1000 03fe FFF7FEFF 		bl	init_app
+ 186:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c ****     ascii_init();
+ 1001              		.loc 1 186 0
+ 1002 0402 FFF7FEFF 		bl	ascii_init
+ 187:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	goToXY(1,1);
+ 1003              		.loc 1 187 0
+ 1004 0406 0121     		movs	r1, #1
+ 1005 0408 0120     		movs	r0, #1
+ 1006 040a FFF7FEFF 		bl	goToXY
+ 188:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	
+ 189:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	s = test1;
+ 1007              		.loc 1 189 0
+ 1008 040e 1C23     		movs	r3, #28
+ 1009 0410 FB18     		adds	r3, r7, r3
+ 1010 0412 FB62     		str	r3, [r7, #44]
+ 190:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	while(*s) {
+ 1011              		.loc 1 190 0
+ 1012 0414 06E0     		b	.L46
+ 1013              	.L47:
+ 191:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 		ascii_write_char(*s++);
+ 1014              		.loc 1 191 0
+ 1015 0416 FB6A     		ldr	r3, [r7, #44]
+ 1016 0418 5A1C     		adds	r2, r3, #1
+ 1017 041a FA62     		str	r2, [r7, #44]
+ 1018 041c 1B78     		ldrb	r3, [r3]
+ 1019 041e 1800     		movs	r0, r3
+ 1020 0420 FFF7FEFF 		bl	ascii_write_char
+ 1021              	.L46:
+ 190:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	while(*s) {
+ 1022              		.loc 1 190 0
+ 1023 0424 FB6A     		ldr	r3, [r7, #44]
+ 1024 0426 1B78     		ldrb	r3, [r3]
+ 1025 0428 002B     		cmp	r3, #0
+ 1026 042a F4D1     		bne	.L47
+ 192:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	}
+ 193:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	goToXY(1,2);
+ 1027              		.loc 1 193 0
+ 1028 042c 0221     		movs	r1, #2
+ 1029 042e 0120     		movs	r0, #1
+ 1030 0430 FFF7FEFF 		bl	goToXY
+ 194:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	s = test2;
+ 1031              		.loc 1 194 0
+ 1032 0434 0C23     		movs	r3, #12
+ 1033 0436 FB18     		adds	r3, r7, r3
+ 1034 0438 FB62     		str	r3, [r7, #44]
+ 195:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	while(*s) {
+ 1035              		.loc 1 195 0
+ 1036 043a 06E0     		b	.L48
+ 1037              	.L49:
+ 196:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 		ascii_write_char(*s++);
+ 1038              		.loc 1 196 0
+ 1039 043c FB6A     		ldr	r3, [r7, #44]
+ 1040 043e 5A1C     		adds	r2, r3, #1
+ 1041 0440 FA62     		str	r2, [r7, #44]
+ 1042 0442 1B78     		ldrb	r3, [r3]
+ 1043 0444 1800     		movs	r0, r3
+ 1044 0446 FFF7FEFF 		bl	ascii_write_char
+ 1045              	.L48:
+ 195:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	while(*s) {
+ 1046              		.loc 1 195 0
+ 1047 044a FB6A     		ldr	r3, [r7, #44]
+ 1048 044c 1B78     		ldrb	r3, [r3]
+ 1049 044e 002B     		cmp	r3, #0
+ 1050 0450 F4D1     		bne	.L49
+ 197:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	}
+ 198:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** 	return 0;
+ 1051              		.loc 1 198 0
+ 1052 0452 C046     		nop
+ 199:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c **** }...
+ 1053              		.loc 1 199 0
+ 1054 0454 BD46     		mov	sp, r7
+ 1055 0456 0DB0     		add	sp, sp, #52
+ 1056              		@ sp needed
+ 1057 0458 90BD     		pop	{r4, r7, pc}
+ 1058              	.L52:
+ 1059 045a C046     		.align	2
+ 1060              	.L51:
+ 1061 045c 00000000 		.word	.LC0
+ 1062 0460 10000000 		.word	.LC2
+ 1063              		.cfi_endproc
+ 1064              	.LFE17:
+ 1066              	.Letext0:

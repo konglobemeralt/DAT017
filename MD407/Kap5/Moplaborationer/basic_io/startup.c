@@ -35,7 +35,7 @@ __asm volatile(
 
 
 void init_app(void) {
-	// Setup output pins for asciidisplay
+	// set pins for asciidisplay
 	*GPIO_MODER = 0x55555555;
 	
 	*GPIO_OTYPER = 0x7777;
@@ -165,16 +165,35 @@ ascii_write_char(char c){
     ascii_write_data(c);
     delay_micro(45);
     }
-    
+
+void goToXY(unsigned char row, unsigned char column) {
+	unsigned char address = row - 1;
+	if(column == 2) {
+		address = address + 0x40;
+	}
+	ascii_write_cmd(0x80 | address);
+}
+
 
 
 void main(int argc, char **argv) {
+    
+    char *s;
+	char test1[] = "Alfanumerisk ";
+	char test2[] = "Display - test";
+    
     init_app();
-    while(1)
-    {
-        *GPIO_ODR_LOW = 0;
-        delay_milli(500);
-        *GPIO_ODR_LOW = 0xFF;
-        delay_milli(500);
-}
+    ascii_init();
+	goToXY(1,1);
+	
+	s = test1;
+	while(*s) {
+		ascii_write_char(*s++);
+	}
+	goToXY(1,2);
+	s = test2;
+	while(*s) {
+		ascii_write_char(*s++);
+	}
+	return 0;
 }
