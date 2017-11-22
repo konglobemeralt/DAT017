@@ -76,36 +76,48 @@ void delay_milli(unsigned int ms) {
 	#endif
 }
 
-ascii_ctrl_bit_set( unsigned char in )
-{ /* Funktion för att 1-ställa bitar lmao */
-    unsigned char c;
-    c = *GPIO_ODR_LOW;
-    c |= ( B_SELECT | in );
-    *GPIO_ODR_LOW = c;
-}
-void ascii_ctrl_bit_clear( unsigned char x ) {
-    unsigned char c;
-    c = *GPIO_ODR_LOW;
-    c = B_SELECT | ( c & ~x );
-    *GPIO_ODR_LOW = c;
+void ascii_ctrl_bit_set(unsigned int x) {
+	switch(x) {
+		case 0: *GPIO_ODR_LOW |= 1; break;
+		case 1: *GPIO_ODR_LOW |= 2; break;
+		case 2: *GPIO_ODR_LOW |= 4; break;
+		case 3: *GPIO_ODR_LOW |= 8; break;
+		case 4: *GPIO_ODR_LOW |= 16; break;
+		case 5: *GPIO_ODR_LOW |= 32; break;
+		case 6: *GPIO_ODR_LOW |= 64; break;
+		case 7: *GPIO_ODR_LOW |= 128; break;
+	}
 }
 
+void ascii_ctrl_bit_clear(unsigned int x) {
+	switch(x) {
+		case(0): *GPIO_ODR_LOW &= 0xFE; break;
+		case(1): *GPIO_ODR_LOW &= 0xFD; break;
+		case(2): *GPIO_ODR_LOW &= 0xFB; break;
+		case(3): *GPIO_ODR_LOW &= 0xF7; break;
+		case(4): *GPIO_ODR_LOW &= 0xEF; break;
+		case(5): *GPIO_ODR_LOW &= 0xDF; break;
+		case(6): *GPIO_ODR_LOW &= 0xBF; break;
+		case(7): *GPIO_ODR_LOW &= 0x7F; break;
+	}
+}
+
+
 void ascii_write_controller( unsigned char c ) {
-    ascii_ctrl_bit_set( B_E );
-    *GPIO_ODR_HIGH = c;
-    delay_250ns();
-    ascii_ctrl_bit_clear( B_E );
+    ascii_ctrl_bit_set(B_E);
+	*GPIO_ODR_HIGH = c;
+	delay_250ns();
+	ascii_ctrl_bit_clear(B_E);
 }
 
 unsigned char ascii_read_controller( void )
 {
-    unsigned char rv;
-    ascii_ctrl_bit_set( B_E );
-    delay_250ns();
-    delay_250ns();
-    rv = *GPIO_IDR_HIGH;
-    ascii_ctrl_bit_clear( B_E );
-    return rv;
+    ascii_ctrl_bit_set(B_E);
+	delay_250ns();
+	delay_250ns();
+	unsigned char rv = *GPIO_IDR_HIGH;
+	ascii_ctrl_bit_clear(B_E);
+	return rv;
 }
 
 void ascii_write_cmd(unsigned char command){
@@ -141,7 +153,7 @@ unsigned char ascii_read_data(void){
     }
 
 void ascii_command(char command, unsigned int delayMicroSec){
-    while(ascii_read_status() & 0x80 == 0x80){
+    while((ascii_read_status() & 0x80) == 0x80) {
             //TODO implement pip subroutine
         }
     delay_micro(8);
@@ -157,10 +169,10 @@ void ascii_init(void){
         ascii_command(0x6, 40); // Inc
 }
 
-ascii_write_char(char c){
-    while(ascii_read_status() & 0x80 == 0x80){
-            //TODO implement pip subroutine
-        }
+void ascii_write_char(char c){
+    while((ascii_read_status() & 0x80) == 0x80) {
+	// TODO: implement pip subroutines
+    }
     delay_micro(8);
     ascii_write_data(c);
     delay_micro(45);
@@ -176,7 +188,7 @@ void goToXY(unsigned char row, unsigned char column) {
 
 
 
-void main(int argc, char **argv) {
+int main(int argc, char **argv) {
     
     char *s;
 	char test1[] = "Alfanumerisk ";
