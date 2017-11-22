@@ -51,13 +51,26 @@ void delay_250ns(void){
         } 
     *STK_CTRL=0;
     }
+    
+void delay_milli(unsigned int ms) {
+	#ifdef SIMULATOR
+		delay_mikro(ms);
+	#else
+		delay_mikro(1000 * ms)
+	#endif
+}
+
+
 
 void main(void)
 {
     app_init(void);
     
     while(1){
-        
+        *GPIO_ODR_LOW = 0;
+        delay_milli(500);
+        *GPIO_ODR_LOW = 0xFF;
+        delay_milli(500);
     }
 }
 
