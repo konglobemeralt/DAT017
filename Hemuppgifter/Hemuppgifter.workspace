@@ -5,7 +5,7 @@
   <Project Name="Lecture2" Path="Lecture2/Lecture2.project" Active="No"/>
   <Project Name="LectureSomething" Path="LectureSomething/LectureSomething.project" Active="No"/>
   <Project Name="keypad" Path="keypad/keypad.project" Active="Yes"/>
-  <Project Name="LectureGPIO" Path="LectureGPIO/LectureGPIO.project"/>
+  <Project Name="LectureGPIO" Path="LectureGPIO/LectureGPIO.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
