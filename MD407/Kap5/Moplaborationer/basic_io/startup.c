@@ -70,12 +70,73 @@ void delay_mikro(unsigned int us) {
 
 void delay_milli(unsigned int ms) {
 	#ifdef SIMULATOR
-		delay_mikro(ms);
+		delay_micro(ms);
 	#else
-		delay_mikro(1000 * ms)
+		delay_micro(1000 * ms)
 	#endif
 }
 
+ascii_ctrl_bit_set( unsigned char in )
+{ /* Funktion för att 1-ställa bitar lmao */
+    unsigned char c;
+    c = *GPIO_ODR_LOW;
+    c |= ( B_SELECT | in );
+    *GPIO_ODR_LOW = c;
+}
+void ascii_ctrl_bit_clear( unsigned char x ) {
+    unsigned char c;
+    c = *GPIO_ODR_LOW;
+    c = B_SELECT | ( c & ~x );
+    *GPIO_ODR_LOW = c;
+}
+
+void ascii_write_controller( unsigned char c ) {
+    ascii_ctrl_bit_set( B_E );
+    *GPIO_ODR_HIGH = c;
+    delay_250ns();
+    ascii_ctrl_bit_clear( B_E );
+}
+
+unsigned char ascii_read_controller( void )
+{
+    unsigned char c;
+    ascii_ctrl_bit_set( B_E );
+    delay_250ns();
+    delay_250ns();
+    rv = *GPIO_IDR_HIGH;
+    ascii_ctrl_bit_clear( B_E );
+    return rv;
+}
+
+void ascii_write_cmd(unsigned char command){
+    ascii_ctrl_bit_clear(B_RS);
+	ascii_ctrl_bit_clear(B_RW);
+	ascii_write_controller(command);
+    }
+    
+void ascii_write_data(unsigned char data){
+    ascii_ctrl_bit_set(B_RS);
+	ascii_ctrl_bit_clear(B_RW);
+	ascii_write_controller(data);
+}
+
+unsigned char ascii_read_status(void){
+    *GPIO_MODER &= 0x0000FFFF;	
+	ascii_ctrl_bit_clear(B_RS);
+	ascii_ctrl_bit_set(B_RW);
+	unsigned char rv = ascii_read_controller();
+	*GPIO_MODER &= 0x0000FFFF;
+	*GPIO_MODER |= 0x55550000;	
+	return rv;}
+
+unsigned char ascii_read_data(void){
+    *GPIO_MODER &= 0x0000FFFF;	
+	ascii_ctrl_bit_set(B_RS);
+	ascii_ctrl_bit_set(B_RW);
+	unsigned char rv = ascii_read_controller();
+	*GPIO_MODER &= 0x0000FFFF;
+	*GPIO_MODER |= 0x55550000;	
+	return rv;}
 
 
 void main(int argc, char **argv) {
