@@ -79,6 +79,7 @@ void outSeg7(unsigned char in)
         if(in == 0xD) *GPIO_ODR_LOW = 0xBF;
         if(in == 0xE) *GPIO_ODR_LOW = 0x79;
         if(in == 0xF) *GPIO_ODR_LOW = 0x71;
+	else *GPIO_ODR_LOW = 0x00;
         
     }
 

@@ -38,13 +38,13 @@ void init_app(void) {
 	// set pins for asciidisplay
 	*GPIO_MODER = 0x55555555;
 	
-	*GPIO_OTYPER = 0x7777;
+	//*GPIO_OTYPER = 0x7777;
 	
-	*GPIO_PUPDR = 0xAAAAAAAA;
+	//*GPIO_PUPDR = 0xAAAAAAAA;
 	
-	*GPIO_ODR_HIGH = 0;
-	*GPIO_ODR_LOW = 0;
-	*GPIO_IDR_HIGH = 0;
+	//*GPIO_ODR_HIGH = 0;
+	//*GPIO_ODR_LOW = 0;
+	//*GPIO_IDR_HIGH = 0;
 	
 }
 
