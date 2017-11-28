@@ -42,10 +42,6 @@ asm volatile(
 	) ;
 }
 
-void main(void)
-{
-}
-
 void delay_250ns(void) {
 	*STK_CTRL = 0;
 	*STK_LOAD = 49; //  48 + 1. Have to add one as said in manual
@@ -103,10 +99,10 @@ void graphic_wait_ready(){
                 delay500ns();
             }
         graphics_crtl_bit_set(B_E);
-        *GPIO_MODER = 0x55550000;
+        *GPIO_MODER = 0x55555555;
         
     }
-void graphic_read_controller(uint8_t controller){
+char graphic_read_controller(uint8_t controller){
         graphics_ctrl_bit_clear(B_E);
         *GPIO_MODER = 0x00005555;
         graphics_ctrl_bit_set(B_RS);
@@ -117,7 +113,7 @@ void graphic_read_controller(uint8_t controller){
         delay500ns();
         char RV = *GPIO_IDR_HIGH;
         graphics_ctrl_bit_clear(B_E);
-        *GPIO_MODER = 0x55550000;
+        *GPIO_MODER = 0x55555555;
         if(controller == B_CS1){
             select_controller(B_CS1);
             graphic_wait_ready();
@@ -128,12 +124,14 @@ void graphic_read_controller(uint8_t controller){
             graphic_wait_ready();
             }
         
-        *GPIO_IDR_HIGH = RV;
-    
+        return RV;
+        
     }
+void main(void)
+{
+}    
     
-    
-    
+
 //void ascii_ctrl_bit_set(unsigned char x){
 //    unsigned char c;
 //    c = *GPIO_ODR_LOW;
