@@ -38,6 +38,8 @@
 #define PAGE 8
 #define ADD 63
 
+#define SIMULATOR
+
 typedef unsigned char uint8_t;
 
 void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
@@ -80,22 +82,19 @@ void graphics_ctrl_bit_clear(uint8_t x){
     }
     
 void select_controller(uint8_t controller){
-        if(controller == 0){
+    if(controller == 0) {
             graphics_ctrl_bit_clear(B_CS1);
             graphics_ctrl_bit_clear(B_CS2);
-            }
-        else if(B_CS1 | B_CS2){
+        } else if(controller == (B_CS1 | B_CS2)) {
             graphics_ctrl_bit_set(B_CS1);
             graphics_ctrl_bit_set(B_CS2);
-            }
-        if(controller == B_CS1){
+        } else if(controller == B_CS1) {
             graphics_ctrl_bit_set(B_CS1);
             graphics_ctrl_bit_clear(B_CS2);
-            }
-        if(controller == B_CS2){
+        } else if(controller == B_CS2) {
             graphics_ctrl_bit_clear(B_CS1);
             graphics_ctrl_bit_set(B_CS2);
-            }
+        }
     }
     
 void graphic_wait_ready(){
@@ -104,17 +103,22 @@ void graphic_wait_ready(){
         graphics_ctrl_bit_clear(B_RS);
         graphics_ctrl_bit_set(B_RW);
         delay500ns();
-        while(*GPIO_IDR_HIGH & 0x80){ //Check if LCD busy
-                graphics_ctrl_bit_set(B_E);
-                delay500ns();
-                graphics_ctrl_bit_clear(B_E);
-                delay500ns();
-            }
         
-        *GPIO_MODER = 0x55555555;
+        while(1) { // Wait for display not to be busy
+            graphics_ctrl_bit_set(B_E);
+            delay500ns();
+            graphics_ctrl_bit_clear(B_E);
+            delay500ns();		
+            unsigned char i = *GPIO_IDR_HIGH;
+                if((*GPIO_IDR_HIGH & LCD_BUSY) == 0) {
+                    break;
+                }
+        }
         graphics_ctrl_bit_set(B_E);
+        *GPIO_MODER = 0x55555555;
         
     }
+    
 uint8_t graphic_read(uint8_t controller){
         graphics_ctrl_bit_clear(B_E);
         *GPIO_MODER = 0x00005555;
@@ -124,7 +128,7 @@ uint8_t graphic_read(uint8_t controller){
         delay500ns();
         graphics_ctrl_bit_set(B_E);
         delay500ns();
-        char RV = *GPIO_IDR_HIGH;
+        uint8_t RV = *GPIO_IDR_HIGH;
         graphics_ctrl_bit_clear(B_E);
         *GPIO_MODER = 0x55555555;
         if(controller == B_CS1){
@@ -142,24 +146,24 @@ uint8_t graphic_read(uint8_t controller){
     }
     
 void graphic_write(uint8_t value, uint8_t controller){
-        *GPIO_IDR_HIGH = value;
+        *GPIO_ODR_HIGH = value;
         select_controller(controller);
         delay500ns();
         graphics_ctrl_bit_set(B_E);
         delay500ns();
         graphics_ctrl_bit_clear(B_E);
         
-        if((controller & B_CS1)==B_CS1){
+        if(controller & B_CS1){
             select_controller(B_CS1);
             graphic_wait_ready();
         }
         
-        if((controller & B_CS2)==B_CS2){
+        if(controller & B_CS2){
             select_controller(B_CS2);
             graphic_wait_ready();     
         }
         
-        *GPIO_IDR_HIGH = 0;
+        *GPIO_ODR_HIGH = 0;
         graphics_ctrl_bit_set(B_E);
         select_controller(0);
     }
@@ -214,7 +218,8 @@ void graphic_initialize(void){
      graphics_ctrl_bit_clear(B_CS2);
      graphics_ctrl_bit_clear(B_RST);
      graphics_ctrl_bit_clear(B_E);
-     delay_micro(30);
+     delay_milli(30);
+     graphics_ctrl_bit_set(B_RST);
      graphic_write_command(LCD_OFF, B_CS1|B_CS2);
      graphic_write_command(LCD_ON, B_CS1|B_CS2);
      graphic_write_command(LCD_DISP_START, B_CS1|B_CS2);
@@ -238,7 +243,7 @@ void main(void)
 {
     init_app();
     graphic_initialize();
-    #ifdef SIMULATOR
+    #ifndef SIMULATOR
         graphics_clear_screen();
     #endif
 
