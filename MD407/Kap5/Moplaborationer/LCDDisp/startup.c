@@ -115,7 +115,7 @@ void graphic_wait_ready(){
         graphics_ctrl_bit_set(B_E);
         
     }
-char graphic_read(uint8_t controller){
+uint8_t graphic_read(uint8_t controller){
         graphics_ctrl_bit_clear(B_E);
         *GPIO_MODER = 0x00005555;
         graphics_ctrl_bit_set(B_RS);
@@ -149,12 +149,12 @@ void graphic_write(uint8_t value, uint8_t controller){
         delay500ns();
         graphics_ctrl_bit_clear(B_E);
         
-        if(controller & B_CS1){
+        if((controller & B_CS1)==B_CS1){
             select_controller(B_CS1);
             graphic_wait_ready();
         }
         
-        if(controller & B_CS2){
+        if((controller & B_CS2)==B_CS2){
             select_controller(B_CS2);
             graphic_wait_ready();     
         }
@@ -180,7 +180,7 @@ void graphic_write_data(uint8_t data, uint8_t controller){
         graphic_write(data, controller);
     }
 
-void graphics_read_data(uint8_t controller){
+uint8_t graphics_read_data(uint8_t controller){
         (void) graphic_read(controller);
         return graphic_read(controller);
     }
@@ -204,6 +204,7 @@ void delay_milli(unsigned int ms) {
 
 void init_app(void){
         *GPIO_MODER = 0x55555555;
+        
     }
     
 void graphic_initialize(void){
@@ -237,9 +238,10 @@ void main(void)
 {
     init_app();
     graphic_initialize();
-    #ifndef SIMULATOR
+    #ifdef SIMULATOR
         graphics_clear_screen();
     #endif
+
     graphic_write_command(LCD_SET_ADD | 10, B_CS1 | B_CS2);
     graphic_write_command(LCD_SET_PAGE | 1, B_CS1 | B_CS2);
     graphic_write_data(0xFF, B_CS1 | B_CS2);
