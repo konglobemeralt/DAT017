@@ -77,6 +77,7 @@ void graphics_ctrl_bit_set(uint8_t x){
 
 void graphics_ctrl_bit_clear(uint8_t x){
         *GPIO_ODR_LOW &= ~x;
+    }
     
 void select_controller(uint8_t controller){
         if(controller == 0){
@@ -109,7 +110,7 @@ void graphic_wait_ready(){
                 graphics_ctrl_bit_clear(B_E);
                 delay500ns();
             }
-        graphics_crtl_bit_set(B_E);
+        graphics_ctrl_bit_set(B_E);
         *GPIO_MODER = 0x55555555;
         
     }
@@ -144,7 +145,7 @@ void graphic_write(uint8_t value, uint8_t controller){
         select_controller(controller);
         delay500ns();
         graphics_ctrl_bit_set(B_E);
-        dalay500ns();
+        delay500ns();
         graphics_ctrl_bit_clear(B_E);
         
         if(controller | B_CS1){
@@ -233,6 +234,14 @@ void graphics_clear_screen(void){
 
 void main(void)
 {
+    init_app();
+    graphic_initialize();
+    #ifndef SIMULATOR
+        graphics_clear_screen();
+    #endif
+    graphic_write_command(LCD_SET_ADD | 10, B_CS1 | B_CS2);
+    graphic_write_command(LCD_SET_PAGE | 1, B_CS1 | B_CS2);
+    graphic_write_data(0xFF, B_CS1 | B_CS2);
 }    
     
 
