@@ -42,6 +42,7 @@ asm volatile(
 	) ;
 }
 
+
 void delay_250ns(void) {
 	*STK_CTRL = 0;
 	*STK_LOAD = 49; //  48 + 1. Have to add one as said in manual
@@ -102,7 +103,7 @@ void graphic_wait_ready(){
         *GPIO_MODER = 0x55555555;
         
     }
-char graphic_read_controller(uint8_t controller){
+char graphic_read(uint8_t controller){
         graphics_ctrl_bit_clear(B_E);
         *GPIO_MODER = 0x00005555;
         graphics_ctrl_bit_set(B_RS);
@@ -127,6 +128,70 @@ char graphic_read_controller(uint8_t controller){
         return RV;
         
     }
+    
+void graphic_write(uint8_t value, uint8_t controller){
+        *GPIO_IDR_HIGH = value;
+        select_controller(controller);
+        delay500ns();
+        graphics_ctrl_bit_set(B_E);
+        dalay500ns();
+        graphics_ctrl_bit_clear(B_E);
+        
+        if(controller | B_CS1){
+            select_controller(B_CS1);
+            graphic_wait_ready();
+        }
+        
+        if(controller | B_CS2){
+            select_controller(B_CS2);
+            graphic_wait_ready();     
+        }
+        
+        *GPIO_IDR_HIGH = 0;
+        graphics_ctrl_bit_set(B_E);
+        select_controller(0);
+    }
+    
+void graphic_write_command(uint8_t command, uint8_t controller){
+        graphics_ctrl_bit_clear(B_E);
+        select_controller(controller);
+        graphics_ctrl_bit_clear(B_RS);
+        graphics_ctrl_bit_clear(B_RW);
+        graphic_write(command, controller);
+    }
+    
+void graphic_write_data(uint8_t data, uint8_t controller){
+        graphics_ctrl_bit_clear(B_E);
+        select_controller(controller);
+        graphics_ctrl_bit_set(B_RS);
+        graphics_ctrl_bit_clear(B_RW);
+        graphic_write(command, controller);
+    }
+
+void graphics_read_data(uint8_t controller){
+        (void) graphic_read(controller);
+        return graphic_read(controller);
+    }
+
+void delay_micro(unsigned int us) {
+	while(us--) {
+		delay_250ns();
+		delay_250ns();
+		delay_250ns();
+		delay_250ns();
+	}
+}
+
+void init_app(void){
+    
+    }
+    
+void graphic_initialize(void){
+     graphics_ctrl_bit_set(B_E);
+     delay_micro(10);
+     graphic_initialize
+    }
+
 void main(void)
 {
 }    
