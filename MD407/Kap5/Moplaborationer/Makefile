@@ -1,8 +1,8 @@
 .PHONY: clean All
 
 All:
-	@echo "----------Building project:[ Delay - Debug ]----------"
-	@cd "basic_io" && "$(MAKE)" -f  "Delay.mk" && "$(MAKE)" -f  "Delay.mk" PostBuild
+	@echo "----------Building project:[ LCDDisp - Debug ]----------"
+	@cd "LCDDisp" && "$(MAKE)" -f  "LCDDisp.mk" && "$(MAKE)" -f  "LCDDisp.mk" PostBuild
 clean:
-	@echo "----------Cleaning project:[ Delay - Debug ]----------"
-	@cd "basic_io" && "$(MAKE)" -f  "Delay.mk" clean
+	@echo "----------Cleaning project:[ LCDDisp - Debug ]----------"
+	@cd "LCDDisp" && "$(MAKE)" -f  "LCDDisp.mk" clean

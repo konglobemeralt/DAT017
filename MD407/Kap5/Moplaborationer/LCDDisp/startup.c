@@ -28,6 +28,16 @@
 #define B_CS2   16
 #define B_CS1   8
 
+#define LCD_ON  0x3F
+#define LCD_OFF 0x3E
+#define LCD_SET_ADD 0x40
+#define LCD_SET_PAGE 0xB8
+#define LCD_DISP_START 0xC0
+#define LCD_BUSY 0x80
+
+#define PAGE 8
+#define ADD 63
+
 typedef unsigned char uint8_t;
 
 void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
@@ -93,7 +103,7 @@ void graphic_wait_ready(){
         graphics_ctrl_bit_clear(B_RS);
         graphics_ctrl_bit_set(B_RW);
         delay500ns();
-        while(GPIO_IDR_HIGH & 0x80){ //Check if LCD busy
+        while(*GPIO_IDR_HIGH & 0x80){ //Check if LCD busy
                 graphics_ctrl_bit_set(B_E);
                 delay500ns();
                 graphics_ctrl_bit_clear(B_E);
@@ -165,7 +175,7 @@ void graphic_write_data(uint8_t data, uint8_t controller){
         select_controller(controller);
         graphics_ctrl_bit_set(B_RS);
         graphics_ctrl_bit_clear(B_RW);
-        graphic_write(command, controller);
+        graphic_write(data, controller);
     }
 
 void graphics_read_data(uint8_t controller){
@@ -182,6 +192,14 @@ void delay_micro(unsigned int us) {
 	}
 }
 
+void delay_milli(unsigned int ms) {
+	#ifdef SIMULATOR
+		delay_micro(ms);
+	#else
+		delay_micro(1000 * ms);
+	#endif
+}
+
 void init_app(void){
     
     }
@@ -189,7 +207,28 @@ void init_app(void){
 void graphic_initialize(void){
      graphics_ctrl_bit_set(B_E);
      delay_micro(10);
-     graphic_initialize
+     graphics_ctrl_bit_clear(B_CS1);
+     graphics_ctrl_bit_clear(B_CS2);
+     graphics_ctrl_bit_clear(B_RST);
+     graphics_ctrl_bit_clear(B_E);
+     delay_micro(30);
+     graphic_write_command(LCD_OFF, B_CS1|B_CS2);
+     graphic_write_command(LCD_ON, B_CS1|B_CS2);
+     graphic_write_command(LCD_DISP_START, B_CS1|B_CS2);
+     graphic_write_command(LCD_SET_ADD, B_CS1|B_CS2);
+     graphic_write_command(LCD_SET_PAGE, B_CS1|B_CS2);
+     select_controller(0);
+    }
+    
+void graphics_clear_screen(void){
+    for(int page = 0; page < PAGE; page++){
+        graphic_write_command(LCD_SET_PAGE | page, B_CS1|B_CS2);
+        graphic_write_command(LCD_SET_ADD | 0, B_CS1|B_CS2);
+        for(int add = 0; add < ADD; add++){
+            graphic_write_data(0, B_CS1|B_CS2);
+            }
+        }
+    
     }
 
 void main(void)
