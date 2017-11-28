@@ -110,8 +110,9 @@ void graphic_wait_ready(){
                 graphics_ctrl_bit_clear(B_E);
                 delay500ns();
             }
-        graphics_ctrl_bit_set(B_E);
+        
         *GPIO_MODER = 0x55555555;
+        graphics_ctrl_bit_set(B_E);
         
     }
 char graphic_read(uint8_t controller){
@@ -148,12 +149,12 @@ void graphic_write(uint8_t value, uint8_t controller){
         delay500ns();
         graphics_ctrl_bit_clear(B_E);
         
-        if(controller | B_CS1){
+        if(controller & B_CS1){
             select_controller(B_CS1);
             graphic_wait_ready();
         }
         
-        if(controller | B_CS2){
+        if(controller & B_CS2){
             select_controller(B_CS2);
             graphic_wait_ready();     
         }
@@ -202,7 +203,7 @@ void delay_milli(unsigned int ms) {
 }
 
 void init_app(void){
-    
+        *GPIO_MODER = 0x55555555;
     }
     
 void graphic_initialize(void){
