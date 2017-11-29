@@ -1,7 +1,7 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
-#define MAX_POINTS 20;
+#define MAX_POINTS 20
 
 typedef struct tPoint{
     unsigned char x;
@@ -27,9 +27,9 @@ typedef struct tObj{
     } OBJECT, *POBJECT;
     
     
-void set_object_object(POBJECT pObj, int speedX, int speedY){
-        pObj->dirX = x;
-        pObj->dirY = y;
+void set_object_speed(POBJECT pObj, int speedX, int speedY){
+        pObj->dirX = speedX;
+        pObj->dirY = speedY;
     }
     
 void draw_object(POBJECT pObj){
@@ -49,11 +49,11 @@ void move_object(POBJECT pObj){
     pObj->posX += pObj->dirX;
     pObj->posY += pObj->dirY;
     
-    if((pObj->posX < 0) || pObj->posX > 128 ) {
+    if((pObj->posX < 0) || pObj->posX > 127 ) {
 		pObj->dirX = -pObj->dirX;
 	}
     
-	if((pObj->posY < 0) || pObj->posY > 64 ) {
+	if((pObj->posY < 0) || pObj->posY > 63 ) {
 		pObj->dirY = -pObj->dirY;
 	}
     
