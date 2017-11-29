@@ -1229,125 +1229,124 @@
  1022 0484 1A70     		strb	r2, [r3]
  180:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     unsigned char mask;
  181:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     
- 182:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     
- 183:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     if((y-1) % 8 == 0){mask = 1;}
- 1023              		.loc 2 183 0
+ 182:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     if((y-1) % 8 == 0){mask = 1;}
+ 1023              		.loc 2 182 0
  1024 0486 BB68     		ldr	r3, [r7, #8]
  1025 0488 013B     		subs	r3, r3, #1
  1026 048a 0722     		movs	r2, #7
  1027 048c 1340     		ands	r3, r2
  1028 048e 03D1     		bne	.L55
- 1029              		.loc 2 183 0 is_stmt 0 discriminator 1
+ 1029              		.loc 2 182 0 is_stmt 0 discriminator 1
  1030 0490 1723     		movs	r3, #23
  1031 0492 FB18     		adds	r3, r7, r3
  1032 0494 0122     		movs	r2, #1
  1033 0496 1A70     		strb	r2, [r3]
  1034              	.L55:
- 184:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     if((y-1) % 8 == 1){mask = 2;}
- 1035              		.loc 2 184 0 is_stmt 1
+ 183:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     if((y-1) % 8 == 1){mask = 2;}
+ 1035              		.loc 2 183 0 is_stmt 1
  1036 0498 BB68     		ldr	r3, [r7, #8]
  1037 049a 013B     		subs	r3, r3, #1
  1038 049c 0722     		movs	r2, #7
  1039 049e 1340     		ands	r3, r2
  1040 04a0 012B     		cmp	r3, #1
  1041 04a2 03D1     		bne	.L56
- 1042              		.loc 2 184 0 is_stmt 0 discriminator 1
+ 1042              		.loc 2 183 0 is_stmt 0 discriminator 1
  1043 04a4 1723     		movs	r3, #23
  1044 04a6 FB18     		adds	r3, r7, r3
  1045 04a8 0222     		movs	r2, #2
  1046 04aa 1A70     		strb	r2, [r3]
  1047              	.L56:
- 185:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     if((y-1) % 8 == 2){mask = 4;}
- 1048              		.loc 2 185 0 is_stmt 1
+ 184:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     if((y-1) % 8 == 2){mask = 4;}
+ 1048              		.loc 2 184 0 is_stmt 1
  1049 04ac BB68     		ldr	r3, [r7, #8]
  1050 04ae 013B     		subs	r3, r3, #1
  1051 04b0 0722     		movs	r2, #7
  1052 04b2 1340     		ands	r3, r2
  1053 04b4 022B     		cmp	r3, #2
  1054 04b6 03D1     		bne	.L57
- 1055              		.loc 2 185 0 is_stmt 0 discriminator 1
+ 1055              		.loc 2 184 0 is_stmt 0 discriminator 1
  1056 04b8 1723     		movs	r3, #23
  1057 04ba FB18     		adds	r3, r7, r3
  1058 04bc 0422     		movs	r2, #4
  1059 04be 1A70     		strb	r2, [r3]
  1060              	.L57:
- 186:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     if((y-1) % 8 == 3){mask = 8;}
- 1061              		.loc 2 186 0 is_stmt 1
+ 185:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     if((y-1) % 8 == 3){mask = 8;}
+ 1061              		.loc 2 185 0 is_stmt 1
  1062 04c0 BB68     		ldr	r3, [r7, #8]
  1063 04c2 013B     		subs	r3, r3, #1
  1064 04c4 0722     		movs	r2, #7
  1065 04c6 1340     		ands	r3, r2
  1066 04c8 032B     		cmp	r3, #3
  1067 04ca 03D1     		bne	.L58
- 1068              		.loc 2 186 0 is_stmt 0 discriminator 1
+ 1068              		.loc 2 185 0 is_stmt 0 discriminator 1
  1069 04cc 1723     		movs	r3, #23
  1070 04ce FB18     		adds	r3, r7, r3
  1071 04d0 0822     		movs	r2, #8
  1072 04d2 1A70     		strb	r2, [r3]
  1073              	.L58:
- 187:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     if((y-1) % 8 == 4){mask = 0x10;}
- 1074              		.loc 2 187 0 is_stmt 1
+ 186:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     if((y-1) % 8 == 4){mask = 0x10;}
+ 1074              		.loc 2 186 0 is_stmt 1
  1075 04d4 BB68     		ldr	r3, [r7, #8]
  1076 04d6 013B     		subs	r3, r3, #1
  1077 04d8 0722     		movs	r2, #7
  1078 04da 1340     		ands	r3, r2
  1079 04dc 042B     		cmp	r3, #4
  1080 04de 03D1     		bne	.L59
- 1081              		.loc 2 187 0 is_stmt 0 discriminator 1
+ 1081              		.loc 2 186 0 is_stmt 0 discriminator 1
  1082 04e0 1723     		movs	r3, #23
  1083 04e2 FB18     		adds	r3, r7, r3
  1084 04e4 1022     		movs	r2, #16
  1085 04e6 1A70     		strb	r2, [r3]
  1086              	.L59:
- 188:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     if((y-1) % 8 == 5){mask = 0x20;}
- 1087              		.loc 2 188 0 is_stmt 1
+ 187:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     if((y-1) % 8 == 5){mask = 0x20;}
+ 1087              		.loc 2 187 0 is_stmt 1
  1088 04e8 BB68     		ldr	r3, [r7, #8]
  1089 04ea 013B     		subs	r3, r3, #1
  1090 04ec 0722     		movs	r2, #7
  1091 04ee 1340     		ands	r3, r2
  1092 04f0 052B     		cmp	r3, #5
  1093 04f2 03D1     		bne	.L60
- 1094              		.loc 2 188 0 is_stmt 0 discriminator 1
+ 1094              		.loc 2 187 0 is_stmt 0 discriminator 1
  1095 04f4 1723     		movs	r3, #23
  1096 04f6 FB18     		adds	r3, r7, r3
  1097 04f8 2022     		movs	r2, #32
  1098 04fa 1A70     		strb	r2, [r3]
  1099              	.L60:
- 189:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     if((y-1) % 8 == 6){mask = 0x40;}
- 1100              		.loc 2 189 0 is_stmt 1
+ 188:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     if((y-1) % 8 == 6){mask = 0x40;}
+ 1100              		.loc 2 188 0 is_stmt 1
  1101 04fc BB68     		ldr	r3, [r7, #8]
  1102 04fe 013B     		subs	r3, r3, #1
  1103 0500 0722     		movs	r2, #7
  1104 0502 1340     		ands	r3, r2
  1105 0504 062B     		cmp	r3, #6
  1106 0506 03D1     		bne	.L61
- 1107              		.loc 2 189 0 is_stmt 0 discriminator 1
+ 1107              		.loc 2 188 0 is_stmt 0 discriminator 1
  1108 0508 1723     		movs	r3, #23
  1109 050a FB18     		adds	r3, r7, r3
  1110 050c 4022     		movs	r2, #64
  1111 050e 1A70     		strb	r2, [r3]
  1112              	.L61:
- 190:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     if((y-1) % 8 == 7){mask = 0x80;}
- 1113              		.loc 2 190 0 is_stmt 1
+ 189:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     if((y-1) % 8 == 7){mask = 0x80;}
+ 1113              		.loc 2 189 0 is_stmt 1
  1114 0510 BB68     		ldr	r3, [r7, #8]
  1115 0512 013B     		subs	r3, r3, #1
  1116 0514 0722     		movs	r2, #7
  1117 0516 1340     		ands	r3, r2
  1118 0518 072B     		cmp	r3, #7
  1119 051a 03D1     		bne	.L62
- 1120              		.loc 2 190 0 is_stmt 0 discriminator 1
+ 1120              		.loc 2 189 0 is_stmt 0 discriminator 1
  1121 051c 1723     		movs	r3, #23
  1122 051e FB18     		adds	r3, r7, r3
  1123 0520 8022     		movs	r2, #128
  1124 0522 1A70     		strb	r2, [r3]
  1125              	.L62:
- 191:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     
- 192:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     if(set == 9){mask = ~mask;}
- 1126              		.loc 2 192 0 is_stmt 1
+ 190:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     
+ 191:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     if(set == 0){mask = ~mask;}
+ 1126              		.loc 2 191 0 is_stmt 1
  1127 0524 7B68     		ldr	r3, [r7, #4]
- 1128 0526 092B     		cmp	r3, #9
+ 1128 0526 002B     		cmp	r3, #0
  1129 0528 06D1     		bne	.L63
- 1130              		.loc 2 192 0 is_stmt 0 discriminator 1
+ 1130              		.loc 2 191 0 is_stmt 0 discriminator 1
  1131 052a 1723     		movs	r3, #23
  1132 052c FB18     		adds	r3, r7, r3
  1133 052e 1722     		movs	r2, #23
@@ -1356,44 +1355,44 @@
  1136 0534 D243     		mvns	r2, r2
  1137 0536 1A70     		strb	r2, [r3]
  1138              	.L63:
- 193:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     
- 194:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     unsigned char controller;
- 195:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     if(x > 64){
- 1139              		.loc 2 195 0 is_stmt 1
+ 192:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     
+ 193:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     unsigned char controller;
+ 194:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     if(x > 64){
+ 1139              		.loc 2 194 0 is_stmt 1
  1140 0538 FB68     		ldr	r3, [r7, #12]
  1141 053a 402B     		cmp	r3, #64
  1142 053c 07D9     		bls	.L64
- 196:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****         controller = B_CS2;
- 1143              		.loc 2 196 0
+ 195:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****         controller = B_CS2;
+ 1143              		.loc 2 195 0
  1144 053e 1623     		movs	r3, #22
  1145 0540 FB18     		adds	r3, r7, r3
  1146 0542 1022     		movs	r2, #16
  1147 0544 1A70     		strb	r2, [r3]
- 197:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****         x = x - 65;
- 1148              		.loc 2 197 0
+ 196:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****         x = x - 65;
+ 1148              		.loc 2 196 0
  1149 0546 FB68     		ldr	r3, [r7, #12]
  1150 0548 413B     		subs	r3, r3, #65
  1151 054a FB60     		str	r3, [r7, #12]
  1152 054c 06E0     		b	.L65
  1153              	.L64:
- 198:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****         }
- 199:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     else{
- 200:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****         controller = B_CS1;
- 1154              		.loc 2 200 0
+ 197:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****         }
+ 198:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     else{
+ 199:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****         controller = B_CS1;
+ 1154              		.loc 2 199 0
  1155 054e 1623     		movs	r3, #22
  1156 0550 FB18     		adds	r3, r7, r3
  1157 0552 0822     		movs	r2, #8
  1158 0554 1A70     		strb	r2, [r3]
- 201:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****         x = x - 1;
- 1159              		.loc 2 201 0
+ 200:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****         x = x - 1;
+ 1159              		.loc 2 200 0
  1160 0556 FB68     		ldr	r3, [r7, #12]
  1161 0558 013B     		subs	r3, r3, #1
  1162 055a FB60     		str	r3, [r7, #12]
  1163              	.L65:
- 202:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****         }
- 203:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     
- 204:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     graphic_write_command(LCD_SET_ADD | x, controller);
- 1164              		.loc 2 204 0
+ 201:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****         }
+ 202:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     
+ 203:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     graphic_write_command(LCD_SET_ADD | x, controller);
+ 1164              		.loc 2 203 0
  1165 055c FB68     		ldr	r3, [r7, #12]
  1166 055e DBB2     		uxtb	r3, r3
  1167 0560 4022     		movs	r2, #64
@@ -1405,8 +1404,8 @@
  1173 056c 1900     		movs	r1, r3
  1174 056e 1000     		movs	r0, r2
  1175 0570 FFF7FEFF 		bl	graphic_write_command
- 205:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     graphic_write_command(LCD_SET_PAGE | index, controller);
- 1176              		.loc 2 205 0
+ 204:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     graphic_write_command(LCD_SET_PAGE | index, controller);
+ 1176              		.loc 2 204 0
  1177 0574 1523     		movs	r3, #21
  1178 0576 FB18     		adds	r3, r7, r3
  1179 0578 1B78     		ldrb	r3, [r3]
@@ -1420,9 +1419,9 @@
  1187 0588 1900     		movs	r1, r3
  1188 058a 1000     		movs	r0, r2
  1189 058c FFF7FEFF 		bl	graphic_write_command
- 206:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     
- 207:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     unsigned char temp = graphic_read(controller);
- 1190              		.loc 2 207 0
+ 205:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     
+ 206:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     unsigned char temp = graphic_read(controller);
+ 1190              		.loc 2 206 0
  1191 0590 1423     		movs	r3, #20
  1192 0592 FC18     		adds	r4, r7, r3
  1193 0594 1623     		movs	r3, #22
@@ -1432,8 +1431,8 @@
  1197 059c FFF7FEFF 		bl	graphic_read
  1198 05a0 0300     		movs	r3, r0
  1199 05a2 2370     		strb	r3, [r4]
- 208:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     graphic_write_command(LCD_SET_ADD | x, controller);
- 1200              		.loc 2 208 0
+ 207:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     graphic_write_command(LCD_SET_ADD | x, controller);
+ 1200              		.loc 2 207 0
  1201 05a4 FB68     		ldr	r3, [r7, #12]
  1202 05a6 DBB2     		uxtb	r3, r3
  1203 05a8 4022     		movs	r2, #64
@@ -1445,14 +1444,14 @@
  1209 05b4 1900     		movs	r1, r3
  1210 05b6 1000     		movs	r0, r2
  1211 05b8 FFF7FEFF 		bl	graphic_write_command
- 209:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     
- 210:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     if(set == 1)
- 1212              		.loc 2 210 0
+ 208:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     
+ 209:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     if(set == 1)
+ 1212              		.loc 2 209 0
  1213 05bc 7B68     		ldr	r3, [r7, #4]
  1214 05be 012B     		cmp	r3, #1
  1215 05c0 0AD1     		bne	.L66
- 211:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****         {mask = mask | temp;}
- 1216              		.loc 2 211 0
+ 210:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****         {mask = mask | temp;}
+ 1216              		.loc 2 210 0
  1217 05c2 1723     		movs	r3, #23
  1218 05c4 FB18     		adds	r3, r7, r3
  1219 05c6 1722     		movs	r2, #23
@@ -1465,9 +1464,9 @@
  1226 05d4 1A70     		strb	r2, [r3]
  1227 05d6 09E0     		b	.L67
  1228              	.L66:
- 212:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     else
- 213:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****         {mask = mask & temp;}
- 1229              		.loc 2 213 0
+ 211:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     else
+ 212:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****         {mask = mask & temp;}
+ 1229              		.loc 2 212 0
  1230 05d8 1723     		movs	r3, #23
  1231 05da FB18     		adds	r3, r7, r3
  1232 05dc 1722     		movs	r2, #23
@@ -1479,9 +1478,9 @@
  1238 05e8 0A40     		ands	r2, r1
  1239 05ea 1A70     		strb	r2, [r3]
  1240              	.L67:
- 214:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     
- 215:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     graphic_write_data(mask, controller);
- 1241              		.loc 2 215 0
+ 213:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     
+ 214:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     graphic_write_data(mask, controller);
+ 1241              		.loc 2 214 0
  1242 05ec 1623     		movs	r3, #22
  1243 05ee FB18     		adds	r3, r7, r3
  1244 05f0 1A78     		ldrb	r2, [r3]
@@ -1497,10 +1496,10 @@
  1253              		.loc 2 177 0
  1254 0602 C046     		nop
  1255              	.L51:
+ 215:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     
  216:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     
- 217:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     
- 218:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     }
- 1256              		.loc 2 218 0
+ 217:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/graphics.h ****     }
+ 1256              		.loc 2 217 0
  1257 0604 BD46     		mov	sp, r7
  1258 0606 07B0     		add	sp, sp, #28
  1259              		@ sp needed

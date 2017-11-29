@@ -179,7 +179,6 @@ void pixel(unsigned x, unsigned y, unsigned set){
     unsigned char index = (y-1) / PAGE;
     unsigned char mask;
     
-    
     if((y-1) % 8 == 0){mask = 1;}
     if((y-1) % 8 == 1){mask = 2;}
     if((y-1) % 8 == 2){mask = 4;}
@@ -189,7 +188,7 @@ void pixel(unsigned x, unsigned y, unsigned set){
     if((y-1) % 8 == 6){mask = 0x40;}
     if((y-1) % 8 == 7){mask = 0x80;}
     
-    if(set == 9){mask = ~mask;}
+    if(set == 0){mask = ~mask;}
     
     unsigned char controller;
     if(x > 64){
