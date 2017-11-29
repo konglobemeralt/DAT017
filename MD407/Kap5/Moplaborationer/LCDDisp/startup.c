@@ -18,7 +18,6 @@
 #include "delay.h"
 #include "graphics.h"
 
-typedef unsigned char uint8_t;
 
 void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
 

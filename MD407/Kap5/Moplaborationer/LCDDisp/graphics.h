@@ -23,6 +23,8 @@
 #define PAGE 8
 #define ADD 63
 
+typedef unsigned char uint8_t;
+
 void graphics_ctrl_bit_set(uint8_t x){
     *GPIO_ODR_LOW |= (x & ~B_SELECT);
 }
