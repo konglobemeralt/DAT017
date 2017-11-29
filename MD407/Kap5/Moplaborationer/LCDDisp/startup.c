@@ -40,6 +40,8 @@
 
 #define SIMULATOR
 
+#include "delay.h"
+
 typedef unsigned char uint8_t;
 
 void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
@@ -53,25 +55,6 @@ asm volatile(
 	".L1: B .L1\n"				/* never return */
 	) ;
 }
-
-
-void delay_250ns(void) {
-	*STK_CTRL = 0;
-	*STK_LOAD = 49; //  48 + 1. Have to add one as said in manual
-	*STK_VAL = 0;
-	*STK_CTRL = 5;
-	while((*STK_CTRL & 0x10000) == 0) {
-		// ??????
-	}
-	*STK_CTRL = 0;
-}
-
-void delay500ns(){
-    //Delay 500ns in the most efficient way:
-        delay_250ns();
-        delay_250ns();
-        //Continue executing code efficently/.
-        }
 
 void graphics_ctrl_bit_set(uint8_t x){
     *GPIO_ODR_LOW |= (x & ~B_SELECT);
@@ -189,22 +172,6 @@ uint8_t graphics_read_data(uint8_t controller){
         return graphic_read(controller);
     }
 
-void delay_micro(unsigned int us) {
-	while(us--) {
-		delay_250ns();
-		delay_250ns();
-		delay_250ns();
-		delay_250ns();
-	}
-}
-
-void delay_milli(unsigned int ms) {
-	#ifdef SIMULATOR
-		delay_micro(ms);
-	#else
-		delay_micro(1000 * ms);
-	#endif
-}
 
 void init_app(void){
         *GPIO_MODER = 0x55555555;
@@ -252,19 +219,3 @@ void main(void)
     graphic_write_data(0xFF, B_CS1 | B_CS2);
 }    
     
-
-//void ascii_ctrl_bit_set(unsigned char x){
-//    unsigned char c;
-//    c = *GPIO_ODR_LOW;
-//    c |= (B_SELECT | x);
-//    *portOdrLow = c;
-//}
- 
-/*addressera ASCII-display och nollställ de bitar som är 1 i x */
-//void ascii_ctrl_bit_clear(unsigned char x){
-//    unsigned char c;
-//    c = *portOdrLow;
-//    c = B_SELECT | (c&~x);
-//    *portOdrLow = c;
-//}
-
