@@ -179,14 +179,15 @@ void pixel(unsigned x, unsigned y, unsigned set){
     unsigned char index = (y-1) / PAGE;
     unsigned char mask;
     
-    if(index == 0){mask = 1;}
-    if(index == 1){mask = 2;}
-    if(index == 2){mask = 4;}
-    if(index == 3){mask = 8;}
-    if(index == 4){mask = 0x10;}
-    if(index == 5){mask = 0x20;}
-    if(index == 6){mask = 0x40;}
-    if(index == 7){mask = 0x80;}
+    
+    if((y-1) % 8 == 0){mask = 1;}
+    if((y-1) % 8 == 1){mask = 2;}
+    if((y-1) % 8 == 2){mask = 4;}
+    if((y-1) % 8 == 3){mask = 8;}
+    if((y-1) % 8 == 4){mask = 0x10;}
+    if((y-1) % 8 == 5){mask = 0x20;}
+    if((y-1) % 8 == 6){mask = 0x40;}
+    if((y-1) % 8 == 7){mask = 0x80;}
     
     if(set == 9){mask = ~mask;}
     

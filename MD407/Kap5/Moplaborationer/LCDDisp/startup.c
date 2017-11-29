@@ -47,5 +47,26 @@ void main(void)
     graphic_write_command(LCD_SET_ADD | 10, B_CS1 | B_CS2);
     graphic_write_command(LCD_SET_PAGE | 1, B_CS1 | B_CS2);
     graphic_write_data(0xFF, B_CS1 | B_CS2);
+    
+    //Rita horisontell linje
+    for(int i=0; i < 128; i++){
+        pixel(i, 10, 1);
+    }
+    //Rita vertikal linje
+    for(int i=0; i < 64; i++){
+        pixel(10, i, 1);
+    }
+    
+    delay500ns();
+    
+      //Sudda horisontell linje
+    for(int i=0; i < 128; i++){
+        pixel(i, 10, 0);
+    }
+    //sudda vertikal linje
+    for(int i=0; i < 64; i++){
+        pixel(10, i, 0);
+    }
+    
 }    
 
