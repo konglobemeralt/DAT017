@@ -2,6 +2,11 @@
  * 	delay.h
  *
  */
+// Timer setup
+#define STK 0xE000E010
+#define STK_CTRL ((volatile unsigned int *) (STK))
+#define STK_LOAD ((volatile unsigned int *) (STK + 0x4))
+#define STK_VAL ((volatile unsigned int *) (STK + 0x8))
 
 void delay_250ns(void) {
 	*STK_CTRL = 0;
