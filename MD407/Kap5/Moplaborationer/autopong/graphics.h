@@ -79,15 +79,16 @@ void graphic_wait_ready(){
 uint8_t graphic_read(uint8_t controller){
     graphics_ctrl_bit_clear(B_E);
     *GPIO_MODER = 0x00005555;
-    graphics_ctrl_bit_set(B_RS);
-    graphics_ctrl_bit_set(B_RW);
+    graphics_ctrl_bit_set(B_RS | B_RW);
     select_controller(controller);
     delay500ns();
     graphics_ctrl_bit_set(B_E);
     delay500ns();
+    
     uint8_t RV = *GPIO_IDR_HIGH;
     graphics_ctrl_bit_clear(B_E);
     *GPIO_MODER = 0x55555555;
+    
     if(controller == B_CS1){
         select_controller(B_CS1);
         graphic_wait_ready();
@@ -128,8 +129,7 @@ void graphic_write(uint8_t value, uint8_t controller){
 void graphic_write_command(uint8_t command, uint8_t controller){
     graphics_ctrl_bit_clear(B_E);
     select_controller(controller);
-    graphics_ctrl_bit_clear(B_RS);
-    graphics_ctrl_bit_clear(B_RW);
+    graphics_ctrl_bit_clear(B_RS | B_RW);
     graphic_write(command, controller);
 }
 
@@ -149,10 +149,7 @@ uint8_t graphics_read_data(uint8_t controller){
 void graphic_initialize(void){
     graphics_ctrl_bit_set(B_E);
     delay_micro(10);
-    graphics_ctrl_bit_clear(B_CS1);
-    graphics_ctrl_bit_clear(B_CS2);
-    graphics_ctrl_bit_clear(B_RST);
-    graphics_ctrl_bit_clear(B_E);
+    graphics_ctrl_bit_clear(B_CS1 | B_CS2 | B_RST | B_E);
     delay_milli(30);
     graphics_ctrl_bit_set(B_RST);
     graphic_write_command(LCD_OFF, B_CS1|B_CS2);
@@ -203,10 +200,9 @@ void pixel(unsigned x, unsigned y, unsigned set){
         }
     
     graphic_write_command(LCD_SET_ADD | x, controller);
-    graphic_write_command(LCD_SET_PAGE | index, controller);
-    
-    unsigned char temp = graphic_read(controller);
-    graphic_write_command(LCD_SET_ADD | x, controller);
+	graphic_write_command(LCD_SET_PAGE | index, controller);
+	unsigned char temp = graphics_read_data(controller);
+	graphic_write_command(LCD_SET_ADD | x, controller);
     
     if(set == 1)
         {mask = mask | temp;}

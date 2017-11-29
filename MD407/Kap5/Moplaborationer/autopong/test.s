@@ -613,913 +613,894 @@
  492 01e2 FFF7FEFF 		bl	graphics_ctrl_bit_clear
   81:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     *GPIO_MODER = 0x00005555;
  493              		.loc 2 81 0
- 494 01e6 1C4B     		ldr	r3, .L34
- 495 01e8 1C4A     		ldr	r2, .L34+4
+ 494 01e6 1B4B     		ldr	r3, .L34
+ 495 01e8 1B4A     		ldr	r2, .L34+4
  496 01ea 1A60     		str	r2, [r3]
-  82:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_set(B_RS);
+  82:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_set(B_RS | B_RW);
  497              		.loc 2 82 0
- 498 01ec 0120     		movs	r0, #1
+ 498 01ec 0320     		movs	r0, #3
  499 01ee FFF7FEFF 		bl	graphics_ctrl_bit_set
-  83:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_set(B_RW);
+  83:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     select_controller(controller);
  500              		.loc 2 83 0
- 501 01f2 0220     		movs	r0, #2
- 502 01f4 FFF7FEFF 		bl	graphics_ctrl_bit_set
-  84:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     select_controller(controller);
- 503              		.loc 2 84 0
- 504 01f8 FB1D     		adds	r3, r7, #7
- 505 01fa 1B78     		ldrb	r3, [r3]
- 506 01fc 1800     		movs	r0, r3
- 507 01fe FFF7FEFF 		bl	select_controller
-  85:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     delay500ns();
- 508              		.loc 2 85 0
- 509 0202 FFF7FEFF 		bl	delay500ns
-  86:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_set(B_E);
+ 501 01f2 FB1D     		adds	r3, r7, #7
+ 502 01f4 1B78     		ldrb	r3, [r3]
+ 503 01f6 1800     		movs	r0, r3
+ 504 01f8 FFF7FEFF 		bl	select_controller
+  84:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     delay500ns();
+ 505              		.loc 2 84 0
+ 506 01fc FFF7FEFF 		bl	delay500ns
+  85:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_set(B_E);
+ 507              		.loc 2 85 0
+ 508 0200 4020     		movs	r0, #64
+ 509 0202 FFF7FEFF 		bl	graphics_ctrl_bit_set
+  86:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     delay500ns();
  510              		.loc 2 86 0
- 511 0206 4020     		movs	r0, #64
- 512 0208 FFF7FEFF 		bl	graphics_ctrl_bit_set
-  87:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     delay500ns();
- 513              		.loc 2 87 0
- 514 020c FFF7FEFF 		bl	delay500ns
+ 511 0206 FFF7FEFF 		bl	delay500ns
+  87:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
   88:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     uint8_t RV = *GPIO_IDR_HIGH;
- 515              		.loc 2 88 0
- 516 0210 134A     		ldr	r2, .L34+8
- 517 0212 0F23     		movs	r3, #15
- 518 0214 FB18     		adds	r3, r7, r3
- 519 0216 1278     		ldrb	r2, [r2]
- 520 0218 1A70     		strb	r2, [r3]
+ 512              		.loc 2 88 0
+ 513 020a 144A     		ldr	r2, .L34+8
+ 514 020c 0F23     		movs	r3, #15
+ 515 020e FB18     		adds	r3, r7, r3
+ 516 0210 1278     		ldrb	r2, [r2]
+ 517 0212 1A70     		strb	r2, [r3]
   89:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_clear(B_E);
- 521              		.loc 2 89 0
- 522 021a 4020     		movs	r0, #64
- 523 021c FFF7FEFF 		bl	graphics_ctrl_bit_clear
+ 518              		.loc 2 89 0
+ 519 0214 4020     		movs	r0, #64
+ 520 0216 FFF7FEFF 		bl	graphics_ctrl_bit_clear
   90:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     *GPIO_MODER = 0x55555555;
- 524              		.loc 2 90 0
- 525 0220 0D4B     		ldr	r3, .L34
- 526 0222 104A     		ldr	r2, .L34+12
- 527 0224 1A60     		str	r2, [r3]
-  91:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if(controller == B_CS1){
- 528              		.loc 2 91 0
- 529 0226 FB1D     		adds	r3, r7, #7
- 530 0228 1B78     		ldrb	r3, [r3]
- 531 022a 082B     		cmp	r3, #8
- 532 022c 04D1     		bne	.L31
-  92:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         select_controller(B_CS1);
- 533              		.loc 2 92 0
- 534 022e 0820     		movs	r0, #8
- 535 0230 FFF7FEFF 		bl	select_controller
-  93:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         graphic_wait_ready();
- 536              		.loc 2 93 0
- 537 0234 FFF7FEFF 		bl	graphic_wait_ready
- 538              	.L31:
-  94:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     }
-  95:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
-  96:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if(controller == B_CS2){
- 539              		.loc 2 96 0
- 540 0238 FB1D     		adds	r3, r7, #7
- 541 023a 1B78     		ldrb	r3, [r3]
- 542 023c 102B     		cmp	r3, #16
- 543 023e 04D1     		bne	.L32
-  97:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         select_controller(B_CS2);
- 544              		.loc 2 97 0
- 545 0240 1020     		movs	r0, #16
- 546 0242 FFF7FEFF 		bl	select_controller
-  98:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         graphic_wait_ready();
- 547              		.loc 2 98 0
- 548 0246 FFF7FEFF 		bl	graphic_wait_ready
- 549              	.L32:
-  99:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     }
- 100:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
- 101:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     return RV;
- 550              		.loc 2 101 0
- 551 024a 0F23     		movs	r3, #15
- 552 024c FB18     		adds	r3, r7, r3
- 553 024e 1B78     		ldrb	r3, [r3]
- 102:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
- 103:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** }
- 554              		.loc 2 103 0
- 555 0250 1800     		movs	r0, r3
- 556 0252 BD46     		mov	sp, r7
- 557 0254 04B0     		add	sp, sp, #16
- 558              		@ sp needed
- 559 0256 80BD     		pop	{r7, pc}
- 560              	.L35:
- 561              		.align	2
- 562              	.L34:
- 563 0258 00100240 		.word	1073876992
- 564 025c 55550000 		.word	21845
- 565 0260 11100240 		.word	1073877009
- 566 0264 55555555 		.word	1431655765
- 567              		.cfi_endproc
- 568              	.LFE8:
- 570              		.align	1
- 571              		.global	graphic_write
- 572              		.syntax unified
- 573              		.code	16
- 574              		.thumb_func
- 575              		.fpu softvfp
- 577              	graphic_write:
- 578              	.LFB9:
- 104:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** 
- 105:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** void graphic_write(uint8_t value, uint8_t controller){
- 579              		.loc 2 105 0
- 580              		.cfi_startproc
- 581              		@ args = 0, pretend = 0, frame = 8
- 582              		@ frame_needed = 1, uses_anonymous_args = 0
- 583 0268 80B5     		push	{r7, lr}
- 584              		.cfi_def_cfa_offset 8
- 585              		.cfi_offset 7, -8
- 586              		.cfi_offset 14, -4
- 587 026a 82B0     		sub	sp, sp, #8
- 588              		.cfi_def_cfa_offset 16
- 589 026c 00AF     		add	r7, sp, #0
- 590              		.cfi_def_cfa_register 7
- 591 026e 0200     		movs	r2, r0
- 592 0270 FB1D     		adds	r3, r7, #7
- 593 0272 1A70     		strb	r2, [r3]
- 594 0274 BB1D     		adds	r3, r7, #6
- 595 0276 0A1C     		adds	r2, r1, #0
- 596 0278 1A70     		strb	r2, [r3]
- 106:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     *GPIO_ODR_HIGH = value;
- 597              		.loc 2 106 0
- 598 027a 1A4A     		ldr	r2, .L39
- 599 027c FB1D     		adds	r3, r7, #7
- 600 027e 1B78     		ldrb	r3, [r3]
- 601 0280 1370     		strb	r3, [r2]
- 107:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     select_controller(controller);
- 602              		.loc 2 107 0
- 603 0282 BB1D     		adds	r3, r7, #6
- 604 0284 1B78     		ldrb	r3, [r3]
- 605 0286 1800     		movs	r0, r3
- 606 0288 FFF7FEFF 		bl	select_controller
- 108:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     delay500ns();
- 607              		.loc 2 108 0
- 608 028c FFF7FEFF 		bl	delay500ns
- 109:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_set(B_E);
- 609              		.loc 2 109 0
- 610 0290 4020     		movs	r0, #64
- 611 0292 FFF7FEFF 		bl	graphics_ctrl_bit_set
- 110:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     delay500ns();
- 612              		.loc 2 110 0
- 613 0296 FFF7FEFF 		bl	delay500ns
- 111:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_clear(B_E);
- 614              		.loc 2 111 0
- 615 029a 4020     		movs	r0, #64
- 616 029c FFF7FEFF 		bl	graphics_ctrl_bit_clear
- 112:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
- 113:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if(controller & B_CS1){
- 617              		.loc 2 113 0
- 618 02a0 BB1D     		adds	r3, r7, #6
- 619 02a2 1B78     		ldrb	r3, [r3]
- 620 02a4 0822     		movs	r2, #8
- 621 02a6 1340     		ands	r3, r2
- 622 02a8 04D0     		beq	.L37
- 114:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         select_controller(B_CS1);
- 623              		.loc 2 114 0
- 624 02aa 0820     		movs	r0, #8
- 625 02ac FFF7FEFF 		bl	select_controller
- 115:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         graphic_wait_ready();
- 626              		.loc 2 115 0
- 627 02b0 FFF7FEFF 		bl	graphic_wait_ready
- 628              	.L37:
- 116:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     }
- 117:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
- 118:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if(controller & B_CS2){
- 629              		.loc 2 118 0
- 630 02b4 BB1D     		adds	r3, r7, #6
- 631 02b6 1B78     		ldrb	r3, [r3]
- 632 02b8 1022     		movs	r2, #16
- 633 02ba 1340     		ands	r3, r2
- 634 02bc 04D0     		beq	.L38
- 119:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         select_controller(B_CS2);
- 635              		.loc 2 119 0
- 636 02be 1020     		movs	r0, #16
- 637 02c0 FFF7FEFF 		bl	select_controller
- 120:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         graphic_wait_ready();
- 638              		.loc 2 120 0
- 639 02c4 FFF7FEFF 		bl	graphic_wait_ready
- 640              	.L38:
- 121:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     }
- 122:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
- 123:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     *GPIO_ODR_HIGH = 0;
- 641              		.loc 2 123 0
- 642 02c8 064B     		ldr	r3, .L39
- 643 02ca 0022     		movs	r2, #0
- 644 02cc 1A70     		strb	r2, [r3]
- 124:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_set(B_E);
- 645              		.loc 2 124 0
- 646 02ce 4020     		movs	r0, #64
- 647 02d0 FFF7FEFF 		bl	graphics_ctrl_bit_set
- 125:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     select_controller(0);
- 648              		.loc 2 125 0
- 649 02d4 0020     		movs	r0, #0
- 650 02d6 FFF7FEFF 		bl	select_controller
- 126:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** }
- 651              		.loc 2 126 0
- 652 02da C046     		nop
- 653 02dc BD46     		mov	sp, r7
- 654 02de 02B0     		add	sp, sp, #8
- 655              		@ sp needed
- 656 02e0 80BD     		pop	{r7, pc}
- 657              	.L40:
- 658 02e2 C046     		.align	2
- 659              	.L39:
- 660 02e4 15100240 		.word	1073877013
- 661              		.cfi_endproc
- 662              	.LFE9:
- 664              		.align	1
- 665              		.global	graphic_write_command
- 666              		.syntax unified
- 667              		.code	16
- 668              		.thumb_func
- 669              		.fpu softvfp
- 671              	graphic_write_command:
- 672              	.LFB10:
- 127:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** 
- 128:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** void graphic_write_command(uint8_t command, uint8_t controller){
- 673              		.loc 2 128 0
- 674              		.cfi_startproc
- 675              		@ args = 0, pretend = 0, frame = 8
- 676              		@ frame_needed = 1, uses_anonymous_args = 0
- 677 02e8 80B5     		push	{r7, lr}
- 678              		.cfi_def_cfa_offset 8
- 679              		.cfi_offset 7, -8
- 680              		.cfi_offset 14, -4
- 681 02ea 82B0     		sub	sp, sp, #8
- 682              		.cfi_def_cfa_offset 16
- 683 02ec 00AF     		add	r7, sp, #0
- 684              		.cfi_def_cfa_register 7
- 685 02ee 0200     		movs	r2, r0
- 686 02f0 FB1D     		adds	r3, r7, #7
- 687 02f2 1A70     		strb	r2, [r3]
- 688 02f4 BB1D     		adds	r3, r7, #6
- 689 02f6 0A1C     		adds	r2, r1, #0
- 690 02f8 1A70     		strb	r2, [r3]
- 129:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_clear(B_E);
- 691              		.loc 2 129 0
- 692 02fa 4020     		movs	r0, #64
- 693 02fc FFF7FEFF 		bl	graphics_ctrl_bit_clear
- 130:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     select_controller(controller);
- 694              		.loc 2 130 0
- 695 0300 BB1D     		adds	r3, r7, #6
- 696 0302 1B78     		ldrb	r3, [r3]
- 697 0304 1800     		movs	r0, r3
- 698 0306 FFF7FEFF 		bl	select_controller
- 131:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_clear(B_RS);
- 699              		.loc 2 131 0
- 700 030a 0120     		movs	r0, #1
- 701 030c FFF7FEFF 		bl	graphics_ctrl_bit_clear
- 132:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_clear(B_RW);
- 702              		.loc 2 132 0
- 703 0310 0220     		movs	r0, #2
- 704 0312 FFF7FEFF 		bl	graphics_ctrl_bit_clear
+ 521              		.loc 2 90 0
+ 522 021a 0E4B     		ldr	r3, .L34
+ 523 021c 104A     		ldr	r2, .L34+12
+ 524 021e 1A60     		str	r2, [r3]
+  91:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
+  92:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if(controller == B_CS1){
+ 525              		.loc 2 92 0
+ 526 0220 FB1D     		adds	r3, r7, #7
+ 527 0222 1B78     		ldrb	r3, [r3]
+ 528 0224 082B     		cmp	r3, #8
+ 529 0226 04D1     		bne	.L31
+  93:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         select_controller(B_CS1);
+ 530              		.loc 2 93 0
+ 531 0228 0820     		movs	r0, #8
+ 532 022a FFF7FEFF 		bl	select_controller
+  94:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         graphic_wait_ready();
+ 533              		.loc 2 94 0
+ 534 022e FFF7FEFF 		bl	graphic_wait_ready
+ 535              	.L31:
+  95:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     }
+  96:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
+  97:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if(controller == B_CS2){
+ 536              		.loc 2 97 0
+ 537 0232 FB1D     		adds	r3, r7, #7
+ 538 0234 1B78     		ldrb	r3, [r3]
+ 539 0236 102B     		cmp	r3, #16
+ 540 0238 04D1     		bne	.L32
+  98:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         select_controller(B_CS2);
+ 541              		.loc 2 98 0
+ 542 023a 1020     		movs	r0, #16
+ 543 023c FFF7FEFF 		bl	select_controller
+  99:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         graphic_wait_ready();
+ 544              		.loc 2 99 0
+ 545 0240 FFF7FEFF 		bl	graphic_wait_ready
+ 546              	.L32:
+ 100:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     }
+ 101:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
+ 102:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     return RV;
+ 547              		.loc 2 102 0
+ 548 0244 0F23     		movs	r3, #15
+ 549 0246 FB18     		adds	r3, r7, r3
+ 550 0248 1B78     		ldrb	r3, [r3]
+ 103:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
+ 104:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** }
+ 551              		.loc 2 104 0
+ 552 024a 1800     		movs	r0, r3
+ 553 024c BD46     		mov	sp, r7
+ 554 024e 04B0     		add	sp, sp, #16
+ 555              		@ sp needed
+ 556 0250 80BD     		pop	{r7, pc}
+ 557              	.L35:
+ 558 0252 C046     		.align	2
+ 559              	.L34:
+ 560 0254 00100240 		.word	1073876992
+ 561 0258 55550000 		.word	21845
+ 562 025c 11100240 		.word	1073877009
+ 563 0260 55555555 		.word	1431655765
+ 564              		.cfi_endproc
+ 565              	.LFE8:
+ 567              		.align	1
+ 568              		.global	graphic_write
+ 569              		.syntax unified
+ 570              		.code	16
+ 571              		.thumb_func
+ 572              		.fpu softvfp
+ 574              	graphic_write:
+ 575              	.LFB9:
+ 105:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** 
+ 106:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** void graphic_write(uint8_t value, uint8_t controller){
+ 576              		.loc 2 106 0
+ 577              		.cfi_startproc
+ 578              		@ args = 0, pretend = 0, frame = 8
+ 579              		@ frame_needed = 1, uses_anonymous_args = 0
+ 580 0264 80B5     		push	{r7, lr}
+ 581              		.cfi_def_cfa_offset 8
+ 582              		.cfi_offset 7, -8
+ 583              		.cfi_offset 14, -4
+ 584 0266 82B0     		sub	sp, sp, #8
+ 585              		.cfi_def_cfa_offset 16
+ 586 0268 00AF     		add	r7, sp, #0
+ 587              		.cfi_def_cfa_register 7
+ 588 026a 0200     		movs	r2, r0
+ 589 026c FB1D     		adds	r3, r7, #7
+ 590 026e 1A70     		strb	r2, [r3]
+ 591 0270 BB1D     		adds	r3, r7, #6
+ 592 0272 0A1C     		adds	r2, r1, #0
+ 593 0274 1A70     		strb	r2, [r3]
+ 107:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     *GPIO_ODR_HIGH = value;
+ 594              		.loc 2 107 0
+ 595 0276 1A4A     		ldr	r2, .L39
+ 596 0278 FB1D     		adds	r3, r7, #7
+ 597 027a 1B78     		ldrb	r3, [r3]
+ 598 027c 1370     		strb	r3, [r2]
+ 108:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     select_controller(controller);
+ 599              		.loc 2 108 0
+ 600 027e BB1D     		adds	r3, r7, #6
+ 601 0280 1B78     		ldrb	r3, [r3]
+ 602 0282 1800     		movs	r0, r3
+ 603 0284 FFF7FEFF 		bl	select_controller
+ 109:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     delay500ns();
+ 604              		.loc 2 109 0
+ 605 0288 FFF7FEFF 		bl	delay500ns
+ 110:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_set(B_E);
+ 606              		.loc 2 110 0
+ 607 028c 4020     		movs	r0, #64
+ 608 028e FFF7FEFF 		bl	graphics_ctrl_bit_set
+ 111:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     delay500ns();
+ 609              		.loc 2 111 0
+ 610 0292 FFF7FEFF 		bl	delay500ns
+ 112:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_clear(B_E);
+ 611              		.loc 2 112 0
+ 612 0296 4020     		movs	r0, #64
+ 613 0298 FFF7FEFF 		bl	graphics_ctrl_bit_clear
+ 113:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
+ 114:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if(controller & B_CS1){
+ 614              		.loc 2 114 0
+ 615 029c BB1D     		adds	r3, r7, #6
+ 616 029e 1B78     		ldrb	r3, [r3]
+ 617 02a0 0822     		movs	r2, #8
+ 618 02a2 1340     		ands	r3, r2
+ 619 02a4 04D0     		beq	.L37
+ 115:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         select_controller(B_CS1);
+ 620              		.loc 2 115 0
+ 621 02a6 0820     		movs	r0, #8
+ 622 02a8 FFF7FEFF 		bl	select_controller
+ 116:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         graphic_wait_ready();
+ 623              		.loc 2 116 0
+ 624 02ac FFF7FEFF 		bl	graphic_wait_ready
+ 625              	.L37:
+ 117:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     }
+ 118:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
+ 119:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if(controller & B_CS2){
+ 626              		.loc 2 119 0
+ 627 02b0 BB1D     		adds	r3, r7, #6
+ 628 02b2 1B78     		ldrb	r3, [r3]
+ 629 02b4 1022     		movs	r2, #16
+ 630 02b6 1340     		ands	r3, r2
+ 631 02b8 04D0     		beq	.L38
+ 120:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         select_controller(B_CS2);
+ 632              		.loc 2 120 0
+ 633 02ba 1020     		movs	r0, #16
+ 634 02bc FFF7FEFF 		bl	select_controller
+ 121:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         graphic_wait_ready();
+ 635              		.loc 2 121 0
+ 636 02c0 FFF7FEFF 		bl	graphic_wait_ready
+ 637              	.L38:
+ 122:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     }
+ 123:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
+ 124:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     *GPIO_ODR_HIGH = 0;
+ 638              		.loc 2 124 0
+ 639 02c4 064B     		ldr	r3, .L39
+ 640 02c6 0022     		movs	r2, #0
+ 641 02c8 1A70     		strb	r2, [r3]
+ 125:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_set(B_E);
+ 642              		.loc 2 125 0
+ 643 02ca 4020     		movs	r0, #64
+ 644 02cc FFF7FEFF 		bl	graphics_ctrl_bit_set
+ 126:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     select_controller(0);
+ 645              		.loc 2 126 0
+ 646 02d0 0020     		movs	r0, #0
+ 647 02d2 FFF7FEFF 		bl	select_controller
+ 127:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** }
+ 648              		.loc 2 127 0
+ 649 02d6 C046     		nop
+ 650 02d8 BD46     		mov	sp, r7
+ 651 02da 02B0     		add	sp, sp, #8
+ 652              		@ sp needed
+ 653 02dc 80BD     		pop	{r7, pc}
+ 654              	.L40:
+ 655 02de C046     		.align	2
+ 656              	.L39:
+ 657 02e0 15100240 		.word	1073877013
+ 658              		.cfi_endproc
+ 659              	.LFE9:
+ 661              		.align	1
+ 662              		.global	graphic_write_command
+ 663              		.syntax unified
+ 664              		.code	16
+ 665              		.thumb_func
+ 666              		.fpu softvfp
+ 668              	graphic_write_command:
+ 669              	.LFB10:
+ 128:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** 
+ 129:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** void graphic_write_command(uint8_t command, uint8_t controller){
+ 670              		.loc 2 129 0
+ 671              		.cfi_startproc
+ 672              		@ args = 0, pretend = 0, frame = 8
+ 673              		@ frame_needed = 1, uses_anonymous_args = 0
+ 674 02e4 80B5     		push	{r7, lr}
+ 675              		.cfi_def_cfa_offset 8
+ 676              		.cfi_offset 7, -8
+ 677              		.cfi_offset 14, -4
+ 678 02e6 82B0     		sub	sp, sp, #8
+ 679              		.cfi_def_cfa_offset 16
+ 680 02e8 00AF     		add	r7, sp, #0
+ 681              		.cfi_def_cfa_register 7
+ 682 02ea 0200     		movs	r2, r0
+ 683 02ec FB1D     		adds	r3, r7, #7
+ 684 02ee 1A70     		strb	r2, [r3]
+ 685 02f0 BB1D     		adds	r3, r7, #6
+ 686 02f2 0A1C     		adds	r2, r1, #0
+ 687 02f4 1A70     		strb	r2, [r3]
+ 130:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_clear(B_E);
+ 688              		.loc 2 130 0
+ 689 02f6 4020     		movs	r0, #64
+ 690 02f8 FFF7FEFF 		bl	graphics_ctrl_bit_clear
+ 131:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     select_controller(controller);
+ 691              		.loc 2 131 0
+ 692 02fc BB1D     		adds	r3, r7, #6
+ 693 02fe 1B78     		ldrb	r3, [r3]
+ 694 0300 1800     		movs	r0, r3
+ 695 0302 FFF7FEFF 		bl	select_controller
+ 132:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_clear(B_RS | B_RW);
+ 696              		.loc 2 132 0
+ 697 0306 0320     		movs	r0, #3
+ 698 0308 FFF7FEFF 		bl	graphics_ctrl_bit_clear
  133:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphic_write(command, controller);
- 705              		.loc 2 133 0
- 706 0316 BB1D     		adds	r3, r7, #6
- 707 0318 1A78     		ldrb	r2, [r3]
- 708 031a FB1D     		adds	r3, r7, #7
- 709 031c 1B78     		ldrb	r3, [r3]
- 710 031e 1100     		movs	r1, r2
- 711 0320 1800     		movs	r0, r3
- 712 0322 FFF7FEFF 		bl	graphic_write
+ 699              		.loc 2 133 0
+ 700 030c BB1D     		adds	r3, r7, #6
+ 701 030e 1A78     		ldrb	r2, [r3]
+ 702 0310 FB1D     		adds	r3, r7, #7
+ 703 0312 1B78     		ldrb	r3, [r3]
+ 704 0314 1100     		movs	r1, r2
+ 705 0316 1800     		movs	r0, r3
+ 706 0318 FFF7FEFF 		bl	graphic_write
  134:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** }
- 713              		.loc 2 134 0
- 714 0326 C046     		nop
- 715 0328 BD46     		mov	sp, r7
- 716 032a 02B0     		add	sp, sp, #8
- 717              		@ sp needed
- 718 032c 80BD     		pop	{r7, pc}
- 719              		.cfi_endproc
- 720              	.LFE10:
- 722              		.align	1
- 723              		.global	graphic_write_data
- 724              		.syntax unified
- 725              		.code	16
- 726              		.thumb_func
- 727              		.fpu softvfp
- 729              	graphic_write_data:
- 730              	.LFB11:
+ 707              		.loc 2 134 0
+ 708 031c C046     		nop
+ 709 031e BD46     		mov	sp, r7
+ 710 0320 02B0     		add	sp, sp, #8
+ 711              		@ sp needed
+ 712 0322 80BD     		pop	{r7, pc}
+ 713              		.cfi_endproc
+ 714              	.LFE10:
+ 716              		.align	1
+ 717              		.global	graphic_write_data
+ 718              		.syntax unified
+ 719              		.code	16
+ 720              		.thumb_func
+ 721              		.fpu softvfp
+ 723              	graphic_write_data:
+ 724              	.LFB11:
  135:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** 
  136:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** void graphic_write_data(uint8_t data, uint8_t controller){
- 731              		.loc 2 136 0
- 732              		.cfi_startproc
- 733              		@ args = 0, pretend = 0, frame = 8
- 734              		@ frame_needed = 1, uses_anonymous_args = 0
- 735 032e 80B5     		push	{r7, lr}
- 736              		.cfi_def_cfa_offset 8
- 737              		.cfi_offset 7, -8
- 738              		.cfi_offset 14, -4
- 739 0330 82B0     		sub	sp, sp, #8
- 740              		.cfi_def_cfa_offset 16
- 741 0332 00AF     		add	r7, sp, #0
- 742              		.cfi_def_cfa_register 7
- 743 0334 0200     		movs	r2, r0
- 744 0336 FB1D     		adds	r3, r7, #7
- 745 0338 1A70     		strb	r2, [r3]
- 746 033a BB1D     		adds	r3, r7, #6
- 747 033c 0A1C     		adds	r2, r1, #0
- 748 033e 1A70     		strb	r2, [r3]
+ 725              		.loc 2 136 0
+ 726              		.cfi_startproc
+ 727              		@ args = 0, pretend = 0, frame = 8
+ 728              		@ frame_needed = 1, uses_anonymous_args = 0
+ 729 0324 80B5     		push	{r7, lr}
+ 730              		.cfi_def_cfa_offset 8
+ 731              		.cfi_offset 7, -8
+ 732              		.cfi_offset 14, -4
+ 733 0326 82B0     		sub	sp, sp, #8
+ 734              		.cfi_def_cfa_offset 16
+ 735 0328 00AF     		add	r7, sp, #0
+ 736              		.cfi_def_cfa_register 7
+ 737 032a 0200     		movs	r2, r0
+ 738 032c FB1D     		adds	r3, r7, #7
+ 739 032e 1A70     		strb	r2, [r3]
+ 740 0330 BB1D     		adds	r3, r7, #6
+ 741 0332 0A1C     		adds	r2, r1, #0
+ 742 0334 1A70     		strb	r2, [r3]
  137:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_clear(B_E);
- 749              		.loc 2 137 0
- 750 0340 4020     		movs	r0, #64
- 751 0342 FFF7FEFF 		bl	graphics_ctrl_bit_clear
+ 743              		.loc 2 137 0
+ 744 0336 4020     		movs	r0, #64
+ 745 0338 FFF7FEFF 		bl	graphics_ctrl_bit_clear
  138:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     select_controller(controller);
- 752              		.loc 2 138 0
- 753 0346 BB1D     		adds	r3, r7, #6
- 754 0348 1B78     		ldrb	r3, [r3]
- 755 034a 1800     		movs	r0, r3
- 756 034c FFF7FEFF 		bl	select_controller
+ 746              		.loc 2 138 0
+ 747 033c BB1D     		adds	r3, r7, #6
+ 748 033e 1B78     		ldrb	r3, [r3]
+ 749 0340 1800     		movs	r0, r3
+ 750 0342 FFF7FEFF 		bl	select_controller
  139:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_set(B_RS);
- 757              		.loc 2 139 0
- 758 0350 0120     		movs	r0, #1
- 759 0352 FFF7FEFF 		bl	graphics_ctrl_bit_set
+ 751              		.loc 2 139 0
+ 752 0346 0120     		movs	r0, #1
+ 753 0348 FFF7FEFF 		bl	graphics_ctrl_bit_set
  140:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_clear(B_RW);
- 760              		.loc 2 140 0
- 761 0356 0220     		movs	r0, #2
- 762 0358 FFF7FEFF 		bl	graphics_ctrl_bit_clear
+ 754              		.loc 2 140 0
+ 755 034c 0220     		movs	r0, #2
+ 756 034e FFF7FEFF 		bl	graphics_ctrl_bit_clear
  141:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphic_write(data, controller);
- 763              		.loc 2 141 0
- 764 035c BB1D     		adds	r3, r7, #6
- 765 035e 1A78     		ldrb	r2, [r3]
- 766 0360 FB1D     		adds	r3, r7, #7
- 767 0362 1B78     		ldrb	r3, [r3]
- 768 0364 1100     		movs	r1, r2
- 769 0366 1800     		movs	r0, r3
- 770 0368 FFF7FEFF 		bl	graphic_write
+ 757              		.loc 2 141 0
+ 758 0352 BB1D     		adds	r3, r7, #6
+ 759 0354 1A78     		ldrb	r2, [r3]
+ 760 0356 FB1D     		adds	r3, r7, #7
+ 761 0358 1B78     		ldrb	r3, [r3]
+ 762 035a 1100     		movs	r1, r2
+ 763 035c 1800     		movs	r0, r3
+ 764 035e FFF7FEFF 		bl	graphic_write
  142:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** }
- 771              		.loc 2 142 0
- 772 036c C046     		nop
- 773 036e BD46     		mov	sp, r7
- 774 0370 02B0     		add	sp, sp, #8
- 775              		@ sp needed
- 776 0372 80BD     		pop	{r7, pc}
- 777              		.cfi_endproc
- 778              	.LFE11:
- 780              		.align	1
- 781              		.global	graphics_read_data
- 782              		.syntax unified
- 783              		.code	16
- 784              		.thumb_func
- 785              		.fpu softvfp
- 787              	graphics_read_data:
- 788              	.LFB12:
+ 765              		.loc 2 142 0
+ 766 0362 C046     		nop
+ 767 0364 BD46     		mov	sp, r7
+ 768 0366 02B0     		add	sp, sp, #8
+ 769              		@ sp needed
+ 770 0368 80BD     		pop	{r7, pc}
+ 771              		.cfi_endproc
+ 772              	.LFE11:
+ 774              		.align	1
+ 775              		.global	graphics_read_data
+ 776              		.syntax unified
+ 777              		.code	16
+ 778              		.thumb_func
+ 779              		.fpu softvfp
+ 781              	graphics_read_data:
+ 782              	.LFB12:
  143:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** 
  144:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** uint8_t graphics_read_data(uint8_t controller){
- 789              		.loc 2 144 0
- 790              		.cfi_startproc
- 791              		@ args = 0, pretend = 0, frame = 8
- 792              		@ frame_needed = 1, uses_anonymous_args = 0
- 793 0374 80B5     		push	{r7, lr}
- 794              		.cfi_def_cfa_offset 8
- 795              		.cfi_offset 7, -8
- 796              		.cfi_offset 14, -4
- 797 0376 82B0     		sub	sp, sp, #8
- 798              		.cfi_def_cfa_offset 16
- 799 0378 00AF     		add	r7, sp, #0
- 800              		.cfi_def_cfa_register 7
- 801 037a 0200     		movs	r2, r0
- 802 037c FB1D     		adds	r3, r7, #7
- 803 037e 1A70     		strb	r2, [r3]
+ 783              		.loc 2 144 0
+ 784              		.cfi_startproc
+ 785              		@ args = 0, pretend = 0, frame = 8
+ 786              		@ frame_needed = 1, uses_anonymous_args = 0
+ 787 036a 80B5     		push	{r7, lr}
+ 788              		.cfi_def_cfa_offset 8
+ 789              		.cfi_offset 7, -8
+ 790              		.cfi_offset 14, -4
+ 791 036c 82B0     		sub	sp, sp, #8
+ 792              		.cfi_def_cfa_offset 16
+ 793 036e 00AF     		add	r7, sp, #0
+ 794              		.cfi_def_cfa_register 7
+ 795 0370 0200     		movs	r2, r0
+ 796 0372 FB1D     		adds	r3, r7, #7
+ 797 0374 1A70     		strb	r2, [r3]
  145:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     (void) graphic_read(controller);
- 804              		.loc 2 145 0
- 805 0380 FB1D     		adds	r3, r7, #7
- 806 0382 1B78     		ldrb	r3, [r3]
- 807 0384 1800     		movs	r0, r3
- 808 0386 FFF7FEFF 		bl	graphic_read
+ 798              		.loc 2 145 0
+ 799 0376 FB1D     		adds	r3, r7, #7
+ 800 0378 1B78     		ldrb	r3, [r3]
+ 801 037a 1800     		movs	r0, r3
+ 802 037c FFF7FEFF 		bl	graphic_read
  146:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     return graphic_read(controller);
- 809              		.loc 2 146 0
- 810 038a FB1D     		adds	r3, r7, #7
- 811 038c 1B78     		ldrb	r3, [r3]
- 812 038e 1800     		movs	r0, r3
- 813 0390 FFF7FEFF 		bl	graphic_read
- 814 0394 0300     		movs	r3, r0
+ 803              		.loc 2 146 0
+ 804 0380 FB1D     		adds	r3, r7, #7
+ 805 0382 1B78     		ldrb	r3, [r3]
+ 806 0384 1800     		movs	r0, r3
+ 807 0386 FFF7FEFF 		bl	graphic_read
+ 808 038a 0300     		movs	r3, r0
  147:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** }
- 815              		.loc 2 147 0
- 816 0396 1800     		movs	r0, r3
- 817 0398 BD46     		mov	sp, r7
- 818 039a 02B0     		add	sp, sp, #8
- 819              		@ sp needed
- 820 039c 80BD     		pop	{r7, pc}
- 821              		.cfi_endproc
- 822              	.LFE12:
- 824              		.align	1
- 825              		.global	graphic_initialize
- 826              		.syntax unified
- 827              		.code	16
- 828              		.thumb_func
- 829              		.fpu softvfp
- 831              	graphic_initialize:
- 832              	.LFB13:
+ 809              		.loc 2 147 0
+ 810 038c 1800     		movs	r0, r3
+ 811 038e BD46     		mov	sp, r7
+ 812 0390 02B0     		add	sp, sp, #8
+ 813              		@ sp needed
+ 814 0392 80BD     		pop	{r7, pc}
+ 815              		.cfi_endproc
+ 816              	.LFE12:
+ 818              		.align	1
+ 819              		.global	graphic_initialize
+ 820              		.syntax unified
+ 821              		.code	16
+ 822              		.thumb_func
+ 823              		.fpu softvfp
+ 825              	graphic_initialize:
+ 826              	.LFB13:
  148:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** 
  149:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** void graphic_initialize(void){
- 833              		.loc 2 149 0
- 834              		.cfi_startproc
- 835              		@ args = 0, pretend = 0, frame = 0
- 836              		@ frame_needed = 1, uses_anonymous_args = 0
- 837 039e 80B5     		push	{r7, lr}
- 838              		.cfi_def_cfa_offset 8
- 839              		.cfi_offset 7, -8
- 840              		.cfi_offset 14, -4
- 841 03a0 00AF     		add	r7, sp, #0
- 842              		.cfi_def_cfa_register 7
+ 827              		.loc 2 149 0
+ 828              		.cfi_startproc
+ 829              		@ args = 0, pretend = 0, frame = 0
+ 830              		@ frame_needed = 1, uses_anonymous_args = 0
+ 831 0394 80B5     		push	{r7, lr}
+ 832              		.cfi_def_cfa_offset 8
+ 833              		.cfi_offset 7, -8
+ 834              		.cfi_offset 14, -4
+ 835 0396 00AF     		add	r7, sp, #0
+ 836              		.cfi_def_cfa_register 7
  150:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_set(B_E);
- 843              		.loc 2 150 0
- 844 03a2 4020     		movs	r0, #64
- 845 03a4 FFF7FEFF 		bl	graphics_ctrl_bit_set
+ 837              		.loc 2 150 0
+ 838 0398 4020     		movs	r0, #64
+ 839 039a FFF7FEFF 		bl	graphics_ctrl_bit_set
  151:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     delay_micro(10);
- 846              		.loc 2 151 0
- 847 03a8 0A20     		movs	r0, #10
- 848 03aa FFF7FEFF 		bl	delay_micro
- 152:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_clear(B_CS1);
- 849              		.loc 2 152 0
- 850 03ae 0820     		movs	r0, #8
- 851 03b0 FFF7FEFF 		bl	graphics_ctrl_bit_clear
- 153:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_clear(B_CS2);
- 852              		.loc 2 153 0
- 853 03b4 1020     		movs	r0, #16
- 854 03b6 FFF7FEFF 		bl	graphics_ctrl_bit_clear
- 154:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_clear(B_RST);
- 855              		.loc 2 154 0
- 856 03ba 2020     		movs	r0, #32
- 857 03bc FFF7FEFF 		bl	graphics_ctrl_bit_clear
- 155:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_clear(B_E);
- 858              		.loc 2 155 0
- 859 03c0 4020     		movs	r0, #64
- 860 03c2 FFF7FEFF 		bl	graphics_ctrl_bit_clear
- 156:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     delay_milli(30);
- 861              		.loc 2 156 0
- 862 03c6 1E20     		movs	r0, #30
- 863 03c8 FFF7FEFF 		bl	delay_milli
- 157:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_set(B_RST);
- 864              		.loc 2 157 0
- 865 03cc 2020     		movs	r0, #32
- 866 03ce FFF7FEFF 		bl	graphics_ctrl_bit_set
- 158:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphic_write_command(LCD_OFF, B_CS1|B_CS2);
- 867              		.loc 2 158 0
- 868 03d2 1821     		movs	r1, #24
- 869 03d4 3E20     		movs	r0, #62
- 870 03d6 FFF7FEFF 		bl	graphic_write_command
- 159:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphic_write_command(LCD_ON, B_CS1|B_CS2);
- 871              		.loc 2 159 0
- 872 03da 1821     		movs	r1, #24
- 873 03dc 3F20     		movs	r0, #63
- 874 03de FFF7FEFF 		bl	graphic_write_command
- 160:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphic_write_command(LCD_DISP_START, B_CS1|B_CS2);
- 875              		.loc 2 160 0
- 876 03e2 1821     		movs	r1, #24
- 877 03e4 C020     		movs	r0, #192
- 878 03e6 FFF7FEFF 		bl	graphic_write_command
- 161:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphic_write_command(LCD_SET_ADD, B_CS1|B_CS2);
- 879              		.loc 2 161 0
- 880 03ea 1821     		movs	r1, #24
- 881 03ec 4020     		movs	r0, #64
- 882 03ee FFF7FEFF 		bl	graphic_write_command
- 162:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphic_write_command(LCD_SET_PAGE, B_CS1|B_CS2);
- 883              		.loc 2 162 0
- 884 03f2 1821     		movs	r1, #24
- 885 03f4 B820     		movs	r0, #184
- 886 03f6 FFF7FEFF 		bl	graphic_write_command
- 163:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     select_controller(0);
- 887              		.loc 2 163 0
- 888 03fa 0020     		movs	r0, #0
- 889 03fc FFF7FEFF 		bl	select_controller
- 164:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** }
- 890              		.loc 2 164 0
- 891 0400 C046     		nop
- 892 0402 BD46     		mov	sp, r7
- 893              		@ sp needed
- 894 0404 80BD     		pop	{r7, pc}
- 895              		.cfi_endproc
- 896              	.LFE13:
- 898              		.align	1
- 899              		.global	graphics_clear_screen
- 900              		.syntax unified
- 901              		.code	16
- 902              		.thumb_func
- 903              		.fpu softvfp
- 905              	graphics_clear_screen:
- 906              	.LFB14:
- 165:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** 
- 166:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** void graphics_clear_screen(void){
- 907              		.loc 2 166 0
- 908              		.cfi_startproc
- 909              		@ args = 0, pretend = 0, frame = 8
- 910              		@ frame_needed = 1, uses_anonymous_args = 0
- 911 0406 80B5     		push	{r7, lr}
- 912              		.cfi_def_cfa_offset 8
- 913              		.cfi_offset 7, -8
- 914              		.cfi_offset 14, -4
- 915 0408 82B0     		sub	sp, sp, #8
- 916              		.cfi_def_cfa_offset 16
- 917 040a 00AF     		add	r7, sp, #0
- 918              		.cfi_def_cfa_register 7
- 919              	.LBB2:
- 167:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     for(int page = 0; page < PAGE; page++){
- 920              		.loc 2 167 0
- 921 040c 0023     		movs	r3, #0
- 922 040e 7B60     		str	r3, [r7, #4]
- 923 0410 1EE0     		b	.L47
- 924              	.L50:
- 168:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         graphic_write_command(LCD_SET_PAGE | page, B_CS1|B_CS2);
- 925              		.loc 2 168 0
- 926 0412 7B68     		ldr	r3, [r7, #4]
- 927 0414 5BB2     		sxtb	r3, r3
- 928 0416 4822     		movs	r2, #72
- 929 0418 5242     		rsbs	r2, r2, #0
- 930 041a 1343     		orrs	r3, r2
- 931 041c 5BB2     		sxtb	r3, r3
- 932 041e DBB2     		uxtb	r3, r3
- 933 0420 1821     		movs	r1, #24
- 934 0422 1800     		movs	r0, r3
- 935 0424 FFF7FEFF 		bl	graphic_write_command
- 169:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         graphic_write_command(LCD_SET_ADD | 0, B_CS1|B_CS2);
- 936              		.loc 2 169 0
- 937 0428 1821     		movs	r1, #24
- 938 042a 4020     		movs	r0, #64
- 939 042c FFF7FEFF 		bl	graphic_write_command
- 940              	.LBB3:
- 170:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         for(int add = 0; add < ADD; add++){
- 941              		.loc 2 170 0
- 942 0430 0023     		movs	r3, #0
- 943 0432 3B60     		str	r3, [r7]
- 944 0434 06E0     		b	.L48
- 945              	.L49:
- 171:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****             graphic_write_data(0, B_CS1|B_CS2);
- 946              		.loc 2 171 0 discriminator 3
- 947 0436 1821     		movs	r1, #24
- 948 0438 0020     		movs	r0, #0
- 949 043a FFF7FEFF 		bl	graphic_write_data
- 170:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         for(int add = 0; add < ADD; add++){
- 950              		.loc 2 170 0 discriminator 3
- 951 043e 3B68     		ldr	r3, [r7]
- 952 0440 0133     		adds	r3, r3, #1
- 953 0442 3B60     		str	r3, [r7]
- 954              	.L48:
- 170:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         for(int add = 0; add < ADD; add++){
- 955              		.loc 2 170 0 is_stmt 0 discriminator 1
- 956 0444 3B68     		ldr	r3, [r7]
- 957 0446 3E2B     		cmp	r3, #62
- 958 0448 F5DD     		ble	.L49
- 959              	.LBE3:
- 167:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         graphic_write_command(LCD_SET_PAGE | page, B_CS1|B_CS2);
- 960              		.loc 2 167 0 is_stmt 1 discriminator 2
- 961 044a 7B68     		ldr	r3, [r7, #4]
- 962 044c 0133     		adds	r3, r3, #1
- 963 044e 7B60     		str	r3, [r7, #4]
- 964              	.L47:
- 167:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         graphic_write_command(LCD_SET_PAGE | page, B_CS1|B_CS2);
- 965              		.loc 2 167 0 is_stmt 0 discriminator 1
- 966 0450 7B68     		ldr	r3, [r7, #4]
- 967 0452 072B     		cmp	r3, #7
- 968 0454 DDDD     		ble	.L50
- 969              	.LBE2:
- 172:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         }
- 173:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     }
- 174:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
- 175:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** }
- 970              		.loc 2 175 0 is_stmt 1
- 971 0456 C046     		nop
- 972 0458 BD46     		mov	sp, r7
- 973 045a 02B0     		add	sp, sp, #8
- 974              		@ sp needed
- 975 045c 80BD     		pop	{r7, pc}
- 976              		.cfi_endproc
- 977              	.LFE14:
- 979              		.align	1
- 980              		.global	pixel
- 981              		.syntax unified
- 982              		.code	16
- 983              		.thumb_func
- 984              		.fpu softvfp
- 986              	pixel:
- 987              	.LFB15:
- 176:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** 
- 177:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** 
- 178:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** void pixel(unsigned x, unsigned y, unsigned set){
- 988              		.loc 2 178 0
- 989              		.cfi_startproc
- 990              		@ args = 0, pretend = 0, frame = 24
- 991              		@ frame_needed = 1, uses_anonymous_args = 0
- 992 045e 90B5     		push	{r4, r7, lr}
- 993              		.cfi_def_cfa_offset 12
- 994              		.cfi_offset 4, -12
- 995              		.cfi_offset 7, -8
- 996              		.cfi_offset 14, -4
- 997 0460 87B0     		sub	sp, sp, #28
- 998              		.cfi_def_cfa_offset 40
- 999 0462 00AF     		add	r7, sp, #0
- 1000              		.cfi_def_cfa_register 7
- 1001 0464 F860     		str	r0, [r7, #12]
- 1002 0466 B960     		str	r1, [r7, #8]
- 1003 0468 7A60     		str	r2, [r7, #4]
- 179:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if((x < 0 || y < 0) || (x > SCREEN_WIDTH || y > SCREEN_HEIGHT)) return;
- 1004              		.loc 2 179 0
- 1005 046a FB68     		ldr	r3, [r7, #12]
- 1006 046c 7F2B     		cmp	r3, #127
- 1007 046e 00D9     		bls	.LCB785
- 1008 0470 C7E0     		b	.L68	@long jump
- 1009              	.LCB785:
- 1010              		.loc 2 179 0 is_stmt 0 discriminator 1
- 1011 0472 BB68     		ldr	r3, [r7, #8]
- 1012 0474 3F2B     		cmp	r3, #63
- 1013 0476 00D9     		bls	.LCB788
- 1014 0478 C3E0     		b	.L68	@long jump
- 1015              	.LCB788:
+ 840              		.loc 2 151 0
+ 841 039e 0A20     		movs	r0, #10
+ 842 03a0 FFF7FEFF 		bl	delay_micro
+ 152:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_clear(B_CS1 | B_CS2 | B_RST | B_E);
+ 843              		.loc 2 152 0
+ 844 03a4 7820     		movs	r0, #120
+ 845 03a6 FFF7FEFF 		bl	graphics_ctrl_bit_clear
+ 153:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     delay_milli(30);
+ 846              		.loc 2 153 0
+ 847 03aa 1E20     		movs	r0, #30
+ 848 03ac FFF7FEFF 		bl	delay_milli
+ 154:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphics_ctrl_bit_set(B_RST);
+ 849              		.loc 2 154 0
+ 850 03b0 2020     		movs	r0, #32
+ 851 03b2 FFF7FEFF 		bl	graphics_ctrl_bit_set
+ 155:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphic_write_command(LCD_OFF, B_CS1|B_CS2);
+ 852              		.loc 2 155 0
+ 853 03b6 1821     		movs	r1, #24
+ 854 03b8 3E20     		movs	r0, #62
+ 855 03ba FFF7FEFF 		bl	graphic_write_command
+ 156:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphic_write_command(LCD_ON, B_CS1|B_CS2);
+ 856              		.loc 2 156 0
+ 857 03be 1821     		movs	r1, #24
+ 858 03c0 3F20     		movs	r0, #63
+ 859 03c2 FFF7FEFF 		bl	graphic_write_command
+ 157:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphic_write_command(LCD_DISP_START, B_CS1|B_CS2);
+ 860              		.loc 2 157 0
+ 861 03c6 1821     		movs	r1, #24
+ 862 03c8 C020     		movs	r0, #192
+ 863 03ca FFF7FEFF 		bl	graphic_write_command
+ 158:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphic_write_command(LCD_SET_ADD, B_CS1|B_CS2);
+ 864              		.loc 2 158 0
+ 865 03ce 1821     		movs	r1, #24
+ 866 03d0 4020     		movs	r0, #64
+ 867 03d2 FFF7FEFF 		bl	graphic_write_command
+ 159:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphic_write_command(LCD_SET_PAGE, B_CS1|B_CS2);
+ 868              		.loc 2 159 0
+ 869 03d6 1821     		movs	r1, #24
+ 870 03d8 B820     		movs	r0, #184
+ 871 03da FFF7FEFF 		bl	graphic_write_command
+ 160:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     select_controller(0);
+ 872              		.loc 2 160 0
+ 873 03de 0020     		movs	r0, #0
+ 874 03e0 FFF7FEFF 		bl	select_controller
+ 161:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** }
+ 875              		.loc 2 161 0
+ 876 03e4 C046     		nop
+ 877 03e6 BD46     		mov	sp, r7
+ 878              		@ sp needed
+ 879 03e8 80BD     		pop	{r7, pc}
+ 880              		.cfi_endproc
+ 881              	.LFE13:
+ 883              		.align	1
+ 884              		.global	graphics_clear_screen
+ 885              		.syntax unified
+ 886              		.code	16
+ 887              		.thumb_func
+ 888              		.fpu softvfp
+ 890              	graphics_clear_screen:
+ 891              	.LFB14:
+ 162:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** 
+ 163:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** void graphics_clear_screen(void){
+ 892              		.loc 2 163 0
+ 893              		.cfi_startproc
+ 894              		@ args = 0, pretend = 0, frame = 8
+ 895              		@ frame_needed = 1, uses_anonymous_args = 0
+ 896 03ea 80B5     		push	{r7, lr}
+ 897              		.cfi_def_cfa_offset 8
+ 898              		.cfi_offset 7, -8
+ 899              		.cfi_offset 14, -4
+ 900 03ec 82B0     		sub	sp, sp, #8
+ 901              		.cfi_def_cfa_offset 16
+ 902 03ee 00AF     		add	r7, sp, #0
+ 903              		.cfi_def_cfa_register 7
+ 904              	.LBB2:
+ 164:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     for(int page = 0; page < PAGE; page++){
+ 905              		.loc 2 164 0
+ 906 03f0 0023     		movs	r3, #0
+ 907 03f2 7B60     		str	r3, [r7, #4]
+ 908 03f4 1EE0     		b	.L47
+ 909              	.L50:
+ 165:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         graphic_write_command(LCD_SET_PAGE | page, B_CS1|B_CS2);
+ 910              		.loc 2 165 0
+ 911 03f6 7B68     		ldr	r3, [r7, #4]
+ 912 03f8 5BB2     		sxtb	r3, r3
+ 913 03fa 4822     		movs	r2, #72
+ 914 03fc 5242     		rsbs	r2, r2, #0
+ 915 03fe 1343     		orrs	r3, r2
+ 916 0400 5BB2     		sxtb	r3, r3
+ 917 0402 DBB2     		uxtb	r3, r3
+ 918 0404 1821     		movs	r1, #24
+ 919 0406 1800     		movs	r0, r3
+ 920 0408 FFF7FEFF 		bl	graphic_write_command
+ 166:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         graphic_write_command(LCD_SET_ADD | 0, B_CS1|B_CS2);
+ 921              		.loc 2 166 0
+ 922 040c 1821     		movs	r1, #24
+ 923 040e 4020     		movs	r0, #64
+ 924 0410 FFF7FEFF 		bl	graphic_write_command
+ 925              	.LBB3:
+ 167:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         for(int add = 0; add < ADD; add++){
+ 926              		.loc 2 167 0
+ 927 0414 0023     		movs	r3, #0
+ 928 0416 3B60     		str	r3, [r7]
+ 929 0418 06E0     		b	.L48
+ 930              	.L49:
+ 168:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****             graphic_write_data(0, B_CS1|B_CS2);
+ 931              		.loc 2 168 0 discriminator 3
+ 932 041a 1821     		movs	r1, #24
+ 933 041c 0020     		movs	r0, #0
+ 934 041e FFF7FEFF 		bl	graphic_write_data
+ 167:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         for(int add = 0; add < ADD; add++){
+ 935              		.loc 2 167 0 discriminator 3
+ 936 0422 3B68     		ldr	r3, [r7]
+ 937 0424 0133     		adds	r3, r3, #1
+ 938 0426 3B60     		str	r3, [r7]
+ 939              	.L48:
+ 167:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         for(int add = 0; add < ADD; add++){
+ 940              		.loc 2 167 0 is_stmt 0 discriminator 1
+ 941 0428 3B68     		ldr	r3, [r7]
+ 942 042a 3E2B     		cmp	r3, #62
+ 943 042c F5DD     		ble	.L49
+ 944              	.LBE3:
+ 164:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         graphic_write_command(LCD_SET_PAGE | page, B_CS1|B_CS2);
+ 945              		.loc 2 164 0 is_stmt 1 discriminator 2
+ 946 042e 7B68     		ldr	r3, [r7, #4]
+ 947 0430 0133     		adds	r3, r3, #1
+ 948 0432 7B60     		str	r3, [r7, #4]
+ 949              	.L47:
+ 164:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         graphic_write_command(LCD_SET_PAGE | page, B_CS1|B_CS2);
+ 950              		.loc 2 164 0 is_stmt 0 discriminator 1
+ 951 0434 7B68     		ldr	r3, [r7, #4]
+ 952 0436 072B     		cmp	r3, #7
+ 953 0438 DDDD     		ble	.L50
+ 954              	.LBE2:
+ 169:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         }
+ 170:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     }
+ 171:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
+ 172:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** }
+ 955              		.loc 2 172 0 is_stmt 1
+ 956 043a C046     		nop
+ 957 043c BD46     		mov	sp, r7
+ 958 043e 02B0     		add	sp, sp, #8
+ 959              		@ sp needed
+ 960 0440 80BD     		pop	{r7, pc}
+ 961              		.cfi_endproc
+ 962              	.LFE14:
+ 964              		.align	1
+ 965              		.global	pixel
+ 966              		.syntax unified
+ 967              		.code	16
+ 968              		.thumb_func
+ 969              		.fpu softvfp
+ 971              	pixel:
+ 972              	.LFB15:
+ 173:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** 
+ 174:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** 
+ 175:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** void pixel(unsigned x, unsigned y, unsigned set){
+ 973              		.loc 2 175 0
+ 974              		.cfi_startproc
+ 975              		@ args = 0, pretend = 0, frame = 24
+ 976              		@ frame_needed = 1, uses_anonymous_args = 0
+ 977 0442 90B5     		push	{r4, r7, lr}
+ 978              		.cfi_def_cfa_offset 12
+ 979              		.cfi_offset 4, -12
+ 980              		.cfi_offset 7, -8
+ 981              		.cfi_offset 14, -4
+ 982 0444 87B0     		sub	sp, sp, #28
+ 983              		.cfi_def_cfa_offset 40
+ 984 0446 00AF     		add	r7, sp, #0
+ 985              		.cfi_def_cfa_register 7
+ 986 0448 F860     		str	r0, [r7, #12]
+ 987 044a B960     		str	r1, [r7, #8]
+ 988 044c 7A60     		str	r2, [r7, #4]
+ 176:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if((x < 0 || y < 0) || (x > SCREEN_WIDTH || y > SCREEN_HEIGHT)) return;
+ 989              		.loc 2 176 0
+ 990 044e FB68     		ldr	r3, [r7, #12]
+ 991 0450 7F2B     		cmp	r3, #127
+ 992 0452 00D9     		bls	.LCB775
+ 993 0454 C7E0     		b	.L68	@long jump
+ 994              	.LCB775:
+ 995              		.loc 2 176 0 is_stmt 0 discriminator 1
+ 996 0456 BB68     		ldr	r3, [r7, #8]
+ 997 0458 3F2B     		cmp	r3, #63
+ 998 045a 00D9     		bls	.LCB778
+ 999 045c C3E0     		b	.L68	@long jump
+ 1000              	.LCB778:
+ 177:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
+ 178:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     unsigned char index = (y-1) / PAGE;
+ 1001              		.loc 2 178 0 is_stmt 1
+ 1002 045e BB68     		ldr	r3, [r7, #8]
+ 1003 0460 013B     		subs	r3, r3, #1
+ 1004 0462 DA08     		lsrs	r2, r3, #3
+ 1005 0464 1523     		movs	r3, #21
+ 1006 0466 FB18     		adds	r3, r7, r3
+ 1007 0468 1A70     		strb	r2, [r3]
+ 179:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     unsigned char mask;
  180:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
- 181:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     unsigned char index = (y-1) / PAGE;
- 1016              		.loc 2 181 0 is_stmt 1
- 1017 047a BB68     		ldr	r3, [r7, #8]
- 1018 047c 013B     		subs	r3, r3, #1
- 1019 047e DA08     		lsrs	r2, r3, #3
- 1020 0480 1523     		movs	r3, #21
- 1021 0482 FB18     		adds	r3, r7, r3
- 1022 0484 1A70     		strb	r2, [r3]
- 182:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     unsigned char mask;
- 183:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
- 184:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if((y-1) % 8 == 0){mask = 1;}
- 1023              		.loc 2 184 0
- 1024 0486 BB68     		ldr	r3, [r7, #8]
- 1025 0488 013B     		subs	r3, r3, #1
- 1026 048a 0722     		movs	r2, #7
- 1027 048c 1340     		ands	r3, r2
- 1028 048e 03D1     		bne	.L55
- 1029              		.loc 2 184 0 is_stmt 0 discriminator 1
- 1030 0490 1723     		movs	r3, #23
- 1031 0492 FB18     		adds	r3, r7, r3
- 1032 0494 0122     		movs	r2, #1
- 1033 0496 1A70     		strb	r2, [r3]
- 1034              	.L55:
- 185:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if((y-1) % 8 == 1){mask = 2;}
- 1035              		.loc 2 185 0 is_stmt 1
- 1036 0498 BB68     		ldr	r3, [r7, #8]
- 1037 049a 013B     		subs	r3, r3, #1
- 1038 049c 0722     		movs	r2, #7
- 1039 049e 1340     		ands	r3, r2
- 1040 04a0 012B     		cmp	r3, #1
- 1041 04a2 03D1     		bne	.L56
- 1042              		.loc 2 185 0 is_stmt 0 discriminator 1
- 1043 04a4 1723     		movs	r3, #23
- 1044 04a6 FB18     		adds	r3, r7, r3
- 1045 04a8 0222     		movs	r2, #2
- 1046 04aa 1A70     		strb	r2, [r3]
- 1047              	.L56:
- 186:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if((y-1) % 8 == 2){mask = 4;}
- 1048              		.loc 2 186 0 is_stmt 1
- 1049 04ac BB68     		ldr	r3, [r7, #8]
- 1050 04ae 013B     		subs	r3, r3, #1
- 1051 04b0 0722     		movs	r2, #7
- 1052 04b2 1340     		ands	r3, r2
- 1053 04b4 022B     		cmp	r3, #2
- 1054 04b6 03D1     		bne	.L57
- 1055              		.loc 2 186 0 is_stmt 0 discriminator 1
- 1056 04b8 1723     		movs	r3, #23
- 1057 04ba FB18     		adds	r3, r7, r3
- 1058 04bc 0422     		movs	r2, #4
- 1059 04be 1A70     		strb	r2, [r3]
- 1060              	.L57:
- 187:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if((y-1) % 8 == 3){mask = 8;}
- 1061              		.loc 2 187 0 is_stmt 1
- 1062 04c0 BB68     		ldr	r3, [r7, #8]
- 1063 04c2 013B     		subs	r3, r3, #1
- 1064 04c4 0722     		movs	r2, #7
- 1065 04c6 1340     		ands	r3, r2
- 1066 04c8 032B     		cmp	r3, #3
- 1067 04ca 03D1     		bne	.L58
- 1068              		.loc 2 187 0 is_stmt 0 discriminator 1
- 1069 04cc 1723     		movs	r3, #23
- 1070 04ce FB18     		adds	r3, r7, r3
- 1071 04d0 0822     		movs	r2, #8
- 1072 04d2 1A70     		strb	r2, [r3]
- 1073              	.L58:
- 188:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if((y-1) % 8 == 4){mask = 0x10;}
- 1074              		.loc 2 188 0 is_stmt 1
- 1075 04d4 BB68     		ldr	r3, [r7, #8]
- 1076 04d6 013B     		subs	r3, r3, #1
- 1077 04d8 0722     		movs	r2, #7
- 1078 04da 1340     		ands	r3, r2
- 1079 04dc 042B     		cmp	r3, #4
- 1080 04de 03D1     		bne	.L59
- 1081              		.loc 2 188 0 is_stmt 0 discriminator 1
- 1082 04e0 1723     		movs	r3, #23
- 1083 04e2 FB18     		adds	r3, r7, r3
- 1084 04e4 1022     		movs	r2, #16
- 1085 04e6 1A70     		strb	r2, [r3]
- 1086              	.L59:
- 189:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if((y-1) % 8 == 5){mask = 0x20;}
- 1087              		.loc 2 189 0 is_stmt 1
- 1088 04e8 BB68     		ldr	r3, [r7, #8]
- 1089 04ea 013B     		subs	r3, r3, #1
- 1090 04ec 0722     		movs	r2, #7
- 1091 04ee 1340     		ands	r3, r2
- 1092 04f0 052B     		cmp	r3, #5
- 1093 04f2 03D1     		bne	.L60
- 1094              		.loc 2 189 0 is_stmt 0 discriminator 1
- 1095 04f4 1723     		movs	r3, #23
- 1096 04f6 FB18     		adds	r3, r7, r3
- 1097 04f8 2022     		movs	r2, #32
- 1098 04fa 1A70     		strb	r2, [r3]
- 1099              	.L60:
- 190:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if((y-1) % 8 == 6){mask = 0x40;}
- 1100              		.loc 2 190 0 is_stmt 1
- 1101 04fc BB68     		ldr	r3, [r7, #8]
- 1102 04fe 013B     		subs	r3, r3, #1
- 1103 0500 0722     		movs	r2, #7
- 1104 0502 1340     		ands	r3, r2
- 1105 0504 062B     		cmp	r3, #6
- 1106 0506 03D1     		bne	.L61
- 1107              		.loc 2 190 0 is_stmt 0 discriminator 1
- 1108 0508 1723     		movs	r3, #23
- 1109 050a FB18     		adds	r3, r7, r3
- 1110 050c 4022     		movs	r2, #64
- 1111 050e 1A70     		strb	r2, [r3]
- 1112              	.L61:
- 191:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if((y-1) % 8 == 7){mask = 0x80;}
- 1113              		.loc 2 191 0 is_stmt 1
- 1114 0510 BB68     		ldr	r3, [r7, #8]
- 1115 0512 013B     		subs	r3, r3, #1
- 1116 0514 0722     		movs	r2, #7
- 1117 0516 1340     		ands	r3, r2
- 1118 0518 072B     		cmp	r3, #7
- 1119 051a 03D1     		bne	.L62
- 1120              		.loc 2 191 0 is_stmt 0 discriminator 1
- 1121 051c 1723     		movs	r3, #23
- 1122 051e FB18     		adds	r3, r7, r3
- 1123 0520 8022     		movs	r2, #128
- 1124 0522 1A70     		strb	r2, [r3]
- 1125              	.L62:
- 192:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
- 193:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if(set == 0){mask = ~mask;}
- 1126              		.loc 2 193 0 is_stmt 1
- 1127 0524 7B68     		ldr	r3, [r7, #4]
- 1128 0526 002B     		cmp	r3, #0
- 1129 0528 06D1     		bne	.L63
- 1130              		.loc 2 193 0 is_stmt 0 discriminator 1
- 1131 052a 1723     		movs	r3, #23
- 1132 052c FB18     		adds	r3, r7, r3
- 1133 052e 1722     		movs	r2, #23
- 1134 0530 BA18     		adds	r2, r7, r2
- 1135 0532 1278     		ldrb	r2, [r2]
- 1136 0534 D243     		mvns	r2, r2
- 1137 0536 1A70     		strb	r2, [r3]
- 1138              	.L63:
- 194:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
- 195:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     unsigned char controller;
- 196:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if(x > 64){
- 1139              		.loc 2 196 0 is_stmt 1
- 1140 0538 FB68     		ldr	r3, [r7, #12]
- 1141 053a 402B     		cmp	r3, #64
- 1142 053c 07D9     		bls	.L64
- 197:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         controller = B_CS2;
- 1143              		.loc 2 197 0
- 1144 053e 1623     		movs	r3, #22
- 1145 0540 FB18     		adds	r3, r7, r3
- 1146 0542 1022     		movs	r2, #16
- 1147 0544 1A70     		strb	r2, [r3]
- 198:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         x = x - 65;
- 1148              		.loc 2 198 0
- 1149 0546 FB68     		ldr	r3, [r7, #12]
- 1150 0548 413B     		subs	r3, r3, #65
- 1151 054a FB60     		str	r3, [r7, #12]
- 1152 054c 06E0     		b	.L65
- 1153              	.L64:
- 199:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         }
- 200:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     else{
- 201:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         controller = B_CS1;
- 1154              		.loc 2 201 0
- 1155 054e 1623     		movs	r3, #22
- 1156 0550 FB18     		adds	r3, r7, r3
- 1157 0552 0822     		movs	r2, #8
- 1158 0554 1A70     		strb	r2, [r3]
- 202:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         x = x - 1;
- 1159              		.loc 2 202 0
- 1160 0556 FB68     		ldr	r3, [r7, #12]
- 1161 0558 013B     		subs	r3, r3, #1
- 1162 055a FB60     		str	r3, [r7, #12]
- 1163              	.L65:
- 203:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         }
- 204:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
- 205:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphic_write_command(LCD_SET_ADD | x, controller);
- 1164              		.loc 2 205 0
- 1165 055c FB68     		ldr	r3, [r7, #12]
- 1166 055e DBB2     		uxtb	r3, r3
- 1167 0560 4022     		movs	r2, #64
- 1168 0562 1343     		orrs	r3, r2
- 1169 0564 DAB2     		uxtb	r2, r3
- 1170 0566 1623     		movs	r3, #22
- 1171 0568 FB18     		adds	r3, r7, r3
- 1172 056a 1B78     		ldrb	r3, [r3]
- 1173 056c 1900     		movs	r1, r3
- 1174 056e 1000     		movs	r0, r2
- 1175 0570 FFF7FEFF 		bl	graphic_write_command
- 206:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphic_write_command(LCD_SET_PAGE | index, controller);
- 1176              		.loc 2 206 0
- 1177 0574 1523     		movs	r3, #21
- 1178 0576 FB18     		adds	r3, r7, r3
- 1179 0578 1B78     		ldrb	r3, [r3]
- 1180 057a 4822     		movs	r2, #72
- 1181 057c 5242     		rsbs	r2, r2, #0
- 1182 057e 1343     		orrs	r3, r2
- 1183 0580 DAB2     		uxtb	r2, r3
- 1184 0582 1623     		movs	r3, #22
- 1185 0584 FB18     		adds	r3, r7, r3
- 1186 0586 1B78     		ldrb	r3, [r3]
- 1187 0588 1900     		movs	r1, r3
- 1188 058a 1000     		movs	r0, r2
- 1189 058c FFF7FEFF 		bl	graphic_write_command
- 207:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
- 208:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     unsigned char temp = graphic_read(controller);
- 1190              		.loc 2 208 0
- 1191 0590 1423     		movs	r3, #20
- 1192 0592 FC18     		adds	r4, r7, r3
- 1193 0594 1623     		movs	r3, #22
- 1194 0596 FB18     		adds	r3, r7, r3
- 1195 0598 1B78     		ldrb	r3, [r3]
- 1196 059a 1800     		movs	r0, r3
- 1197 059c FFF7FEFF 		bl	graphic_read
- 1198 05a0 0300     		movs	r3, r0
- 1199 05a2 2370     		strb	r3, [r4]
- 209:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphic_write_command(LCD_SET_ADD | x, controller);
- 1200              		.loc 2 209 0
- 1201 05a4 FB68     		ldr	r3, [r7, #12]
- 1202 05a6 DBB2     		uxtb	r3, r3
- 1203 05a8 4022     		movs	r2, #64
- 1204 05aa 1343     		orrs	r3, r2
- 1205 05ac DAB2     		uxtb	r2, r3
- 1206 05ae 1623     		movs	r3, #22
- 1207 05b0 FB18     		adds	r3, r7, r3
- 1208 05b2 1B78     		ldrb	r3, [r3]
- 1209 05b4 1900     		movs	r1, r3
- 1210 05b6 1000     		movs	r0, r2
- 1211 05b8 FFF7FEFF 		bl	graphic_write_command
- 210:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
- 211:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if(set == 1)
- 1212              		.loc 2 211 0
- 1213 05bc 7B68     		ldr	r3, [r7, #4]
- 1214 05be 012B     		cmp	r3, #1
- 1215 05c0 0AD1     		bne	.L66
- 212:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         {mask = mask | temp;}
- 1216              		.loc 2 212 0
- 1217 05c2 1723     		movs	r3, #23
- 1218 05c4 FB18     		adds	r3, r7, r3
- 1219 05c6 1722     		movs	r2, #23
- 1220 05c8 B918     		adds	r1, r7, r2
- 1221 05ca 1422     		movs	r2, #20
- 1222 05cc BA18     		adds	r2, r7, r2
- 1223 05ce 0978     		ldrb	r1, [r1]
- 1224 05d0 1278     		ldrb	r2, [r2]
- 1225 05d2 0A43     		orrs	r2, r1
- 1226 05d4 1A70     		strb	r2, [r3]
- 1227 05d6 09E0     		b	.L67
- 1228              	.L66:
- 213:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     else
- 214:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         {mask = mask & temp;}
- 1229              		.loc 2 214 0
- 1230 05d8 1723     		movs	r3, #23
- 1231 05da FB18     		adds	r3, r7, r3
- 1232 05dc 1722     		movs	r2, #23
- 1233 05de BA18     		adds	r2, r7, r2
- 1234 05e0 1421     		movs	r1, #20
- 1235 05e2 7918     		adds	r1, r7, r1
- 1236 05e4 1278     		ldrb	r2, [r2]
- 1237 05e6 0978     		ldrb	r1, [r1]
- 1238 05e8 0A40     		ands	r2, r1
- 1239 05ea 1A70     		strb	r2, [r3]
- 1240              	.L67:
- 215:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
- 216:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphic_write_data(mask, controller);
- 1241              		.loc 2 216 0
- 1242 05ec 1623     		movs	r3, #22
- 1243 05ee FB18     		adds	r3, r7, r3
- 1244 05f0 1A78     		ldrb	r2, [r3]
- 1245 05f2 1723     		movs	r3, #23
- 1246 05f4 FB18     		adds	r3, r7, r3
- 1247 05f6 1B78     		ldrb	r3, [r3]
- 1248 05f8 1100     		movs	r1, r2
- 1249 05fa 1800     		movs	r0, r3
- 1250 05fc FFF7FEFF 		bl	graphic_write_data
- 1251 0600 00E0     		b	.L51
- 1252              	.L68:
- 179:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
- 1253              		.loc 2 179 0
- 1254 0602 C046     		nop
- 1255              	.L51:
- 217:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
- 218:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
- 219:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     }
- 1256              		.loc 2 219 0
- 1257 0604 BD46     		mov	sp, r7
- 1258 0606 07B0     		add	sp, sp, #28
- 1259              		@ sp needed
- 1260 0608 90BD     		pop	{r4, r7, pc}
- 1261              		.cfi_endproc
- 1262              	.LFE15:
- 1264              		.align	1
- 1265              		.global	set_object_speed
- 1266              		.syntax unified
- 1267              		.code	16
- 1268              		.thumb_func
- 1269              		.fpu softvfp
- 1271              	set_object_speed:
- 1272              	.LFB16:
- 1273              		.file 3 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h"
+ 181:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if((y-1) % 8 == 0){mask = 1;}
+ 1008              		.loc 2 181 0
+ 1009 046a BB68     		ldr	r3, [r7, #8]
+ 1010 046c 013B     		subs	r3, r3, #1
+ 1011 046e 0722     		movs	r2, #7
+ 1012 0470 1340     		ands	r3, r2
+ 1013 0472 03D1     		bne	.L55
+ 1014              		.loc 2 181 0 is_stmt 0 discriminator 1
+ 1015 0474 1723     		movs	r3, #23
+ 1016 0476 FB18     		adds	r3, r7, r3
+ 1017 0478 0122     		movs	r2, #1
+ 1018 047a 1A70     		strb	r2, [r3]
+ 1019              	.L55:
+ 182:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if((y-1) % 8 == 1){mask = 2;}
+ 1020              		.loc 2 182 0 is_stmt 1
+ 1021 047c BB68     		ldr	r3, [r7, #8]
+ 1022 047e 013B     		subs	r3, r3, #1
+ 1023 0480 0722     		movs	r2, #7
+ 1024 0482 1340     		ands	r3, r2
+ 1025 0484 012B     		cmp	r3, #1
+ 1026 0486 03D1     		bne	.L56
+ 1027              		.loc 2 182 0 is_stmt 0 discriminator 1
+ 1028 0488 1723     		movs	r3, #23
+ 1029 048a FB18     		adds	r3, r7, r3
+ 1030 048c 0222     		movs	r2, #2
+ 1031 048e 1A70     		strb	r2, [r3]
+ 1032              	.L56:
+ 183:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if((y-1) % 8 == 2){mask = 4;}
+ 1033              		.loc 2 183 0 is_stmt 1
+ 1034 0490 BB68     		ldr	r3, [r7, #8]
+ 1035 0492 013B     		subs	r3, r3, #1
+ 1036 0494 0722     		movs	r2, #7
+ 1037 0496 1340     		ands	r3, r2
+ 1038 0498 022B     		cmp	r3, #2
+ 1039 049a 03D1     		bne	.L57
+ 1040              		.loc 2 183 0 is_stmt 0 discriminator 1
+ 1041 049c 1723     		movs	r3, #23
+ 1042 049e FB18     		adds	r3, r7, r3
+ 1043 04a0 0422     		movs	r2, #4
+ 1044 04a2 1A70     		strb	r2, [r3]
+ 1045              	.L57:
+ 184:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if((y-1) % 8 == 3){mask = 8;}
+ 1046              		.loc 2 184 0 is_stmt 1
+ 1047 04a4 BB68     		ldr	r3, [r7, #8]
+ 1048 04a6 013B     		subs	r3, r3, #1
+ 1049 04a8 0722     		movs	r2, #7
+ 1050 04aa 1340     		ands	r3, r2
+ 1051 04ac 032B     		cmp	r3, #3
+ 1052 04ae 03D1     		bne	.L58
+ 1053              		.loc 2 184 0 is_stmt 0 discriminator 1
+ 1054 04b0 1723     		movs	r3, #23
+ 1055 04b2 FB18     		adds	r3, r7, r3
+ 1056 04b4 0822     		movs	r2, #8
+ 1057 04b6 1A70     		strb	r2, [r3]
+ 1058              	.L58:
+ 185:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if((y-1) % 8 == 4){mask = 0x10;}
+ 1059              		.loc 2 185 0 is_stmt 1
+ 1060 04b8 BB68     		ldr	r3, [r7, #8]
+ 1061 04ba 013B     		subs	r3, r3, #1
+ 1062 04bc 0722     		movs	r2, #7
+ 1063 04be 1340     		ands	r3, r2
+ 1064 04c0 042B     		cmp	r3, #4
+ 1065 04c2 03D1     		bne	.L59
+ 1066              		.loc 2 185 0 is_stmt 0 discriminator 1
+ 1067 04c4 1723     		movs	r3, #23
+ 1068 04c6 FB18     		adds	r3, r7, r3
+ 1069 04c8 1022     		movs	r2, #16
+ 1070 04ca 1A70     		strb	r2, [r3]
+ 1071              	.L59:
+ 186:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if((y-1) % 8 == 5){mask = 0x20;}
+ 1072              		.loc 2 186 0 is_stmt 1
+ 1073 04cc BB68     		ldr	r3, [r7, #8]
+ 1074 04ce 013B     		subs	r3, r3, #1
+ 1075 04d0 0722     		movs	r2, #7
+ 1076 04d2 1340     		ands	r3, r2
+ 1077 04d4 052B     		cmp	r3, #5
+ 1078 04d6 03D1     		bne	.L60
+ 1079              		.loc 2 186 0 is_stmt 0 discriminator 1
+ 1080 04d8 1723     		movs	r3, #23
+ 1081 04da FB18     		adds	r3, r7, r3
+ 1082 04dc 2022     		movs	r2, #32
+ 1083 04de 1A70     		strb	r2, [r3]
+ 1084              	.L60:
+ 187:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if((y-1) % 8 == 6){mask = 0x40;}
+ 1085              		.loc 2 187 0 is_stmt 1
+ 1086 04e0 BB68     		ldr	r3, [r7, #8]
+ 1087 04e2 013B     		subs	r3, r3, #1
+ 1088 04e4 0722     		movs	r2, #7
+ 1089 04e6 1340     		ands	r3, r2
+ 1090 04e8 062B     		cmp	r3, #6
+ 1091 04ea 03D1     		bne	.L61
+ 1092              		.loc 2 187 0 is_stmt 0 discriminator 1
+ 1093 04ec 1723     		movs	r3, #23
+ 1094 04ee FB18     		adds	r3, r7, r3
+ 1095 04f0 4022     		movs	r2, #64
+ 1096 04f2 1A70     		strb	r2, [r3]
+ 1097              	.L61:
+ 188:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if((y-1) % 8 == 7){mask = 0x80;}
+ 1098              		.loc 2 188 0 is_stmt 1
+ 1099 04f4 BB68     		ldr	r3, [r7, #8]
+ 1100 04f6 013B     		subs	r3, r3, #1
+ 1101 04f8 0722     		movs	r2, #7
+ 1102 04fa 1340     		ands	r3, r2
+ 1103 04fc 072B     		cmp	r3, #7
+ 1104 04fe 03D1     		bne	.L62
+ 1105              		.loc 2 188 0 is_stmt 0 discriminator 1
+ 1106 0500 1723     		movs	r3, #23
+ 1107 0502 FB18     		adds	r3, r7, r3
+ 1108 0504 8022     		movs	r2, #128
+ 1109 0506 1A70     		strb	r2, [r3]
+ 1110              	.L62:
+ 189:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
+ 190:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if(set == 0){mask = ~mask;}
+ 1111              		.loc 2 190 0 is_stmt 1
+ 1112 0508 7B68     		ldr	r3, [r7, #4]
+ 1113 050a 002B     		cmp	r3, #0
+ 1114 050c 06D1     		bne	.L63
+ 1115              		.loc 2 190 0 is_stmt 0 discriminator 1
+ 1116 050e 1723     		movs	r3, #23
+ 1117 0510 FB18     		adds	r3, r7, r3
+ 1118 0512 1722     		movs	r2, #23
+ 1119 0514 BA18     		adds	r2, r7, r2
+ 1120 0516 1278     		ldrb	r2, [r2]
+ 1121 0518 D243     		mvns	r2, r2
+ 1122 051a 1A70     		strb	r2, [r3]
+ 1123              	.L63:
+ 191:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
+ 192:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     unsigned char controller;
+ 193:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if(x > 64){
+ 1124              		.loc 2 193 0 is_stmt 1
+ 1125 051c FB68     		ldr	r3, [r7, #12]
+ 1126 051e 402B     		cmp	r3, #64
+ 1127 0520 07D9     		bls	.L64
+ 194:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         controller = B_CS2;
+ 1128              		.loc 2 194 0
+ 1129 0522 1623     		movs	r3, #22
+ 1130 0524 FB18     		adds	r3, r7, r3
+ 1131 0526 1022     		movs	r2, #16
+ 1132 0528 1A70     		strb	r2, [r3]
+ 195:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         x = x - 65;
+ 1133              		.loc 2 195 0
+ 1134 052a FB68     		ldr	r3, [r7, #12]
+ 1135 052c 413B     		subs	r3, r3, #65
+ 1136 052e FB60     		str	r3, [r7, #12]
+ 1137 0530 06E0     		b	.L65
+ 1138              	.L64:
+ 196:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         }
+ 197:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     else{
+ 198:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         controller = B_CS1;
+ 1139              		.loc 2 198 0
+ 1140 0532 1623     		movs	r3, #22
+ 1141 0534 FB18     		adds	r3, r7, r3
+ 1142 0536 0822     		movs	r2, #8
+ 1143 0538 1A70     		strb	r2, [r3]
+ 199:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         x = x - 1;
+ 1144              		.loc 2 199 0
+ 1145 053a FB68     		ldr	r3, [r7, #12]
+ 1146 053c 013B     		subs	r3, r3, #1
+ 1147 053e FB60     		str	r3, [r7, #12]
+ 1148              	.L65:
+ 200:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         }
+ 201:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
+ 202:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphic_write_command(LCD_SET_ADD | x, controller);
+ 1149              		.loc 2 202 0
+ 1150 0540 FB68     		ldr	r3, [r7, #12]
+ 1151 0542 DBB2     		uxtb	r3, r3
+ 1152 0544 4022     		movs	r2, #64
+ 1153 0546 1343     		orrs	r3, r2
+ 1154 0548 DAB2     		uxtb	r2, r3
+ 1155 054a 1623     		movs	r3, #22
+ 1156 054c FB18     		adds	r3, r7, r3
+ 1157 054e 1B78     		ldrb	r3, [r3]
+ 1158 0550 1900     		movs	r1, r3
+ 1159 0552 1000     		movs	r0, r2
+ 1160 0554 FFF7FEFF 		bl	graphic_write_command
+ 203:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** 	graphic_write_command(LCD_SET_PAGE | index, controller);
+ 1161              		.loc 2 203 0
+ 1162 0558 1523     		movs	r3, #21
+ 1163 055a FB18     		adds	r3, r7, r3
+ 1164 055c 1B78     		ldrb	r3, [r3]
+ 1165 055e 4822     		movs	r2, #72
+ 1166 0560 5242     		rsbs	r2, r2, #0
+ 1167 0562 1343     		orrs	r3, r2
+ 1168 0564 DAB2     		uxtb	r2, r3
+ 1169 0566 1623     		movs	r3, #22
+ 1170 0568 FB18     		adds	r3, r7, r3
+ 1171 056a 1B78     		ldrb	r3, [r3]
+ 1172 056c 1900     		movs	r1, r3
+ 1173 056e 1000     		movs	r0, r2
+ 1174 0570 FFF7FEFF 		bl	graphic_write_command
+ 204:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** 	unsigned char temp = graphics_read_data(controller);
+ 1175              		.loc 2 204 0
+ 1176 0574 1423     		movs	r3, #20
+ 1177 0576 FC18     		adds	r4, r7, r3
+ 1178 0578 1623     		movs	r3, #22
+ 1179 057a FB18     		adds	r3, r7, r3
+ 1180 057c 1B78     		ldrb	r3, [r3]
+ 1181 057e 1800     		movs	r0, r3
+ 1182 0580 FFF7FEFF 		bl	graphics_read_data
+ 1183 0584 0300     		movs	r3, r0
+ 1184 0586 2370     		strb	r3, [r4]
+ 205:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h **** 	graphic_write_command(LCD_SET_ADD | x, controller);
+ 1185              		.loc 2 205 0
+ 1186 0588 FB68     		ldr	r3, [r7, #12]
+ 1187 058a DBB2     		uxtb	r3, r3
+ 1188 058c 4022     		movs	r2, #64
+ 1189 058e 1343     		orrs	r3, r2
+ 1190 0590 DAB2     		uxtb	r2, r3
+ 1191 0592 1623     		movs	r3, #22
+ 1192 0594 FB18     		adds	r3, r7, r3
+ 1193 0596 1B78     		ldrb	r3, [r3]
+ 1194 0598 1900     		movs	r1, r3
+ 1195 059a 1000     		movs	r0, r2
+ 1196 059c FFF7FEFF 		bl	graphic_write_command
+ 206:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
+ 207:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     if(set == 1)
+ 1197              		.loc 2 207 0
+ 1198 05a0 7B68     		ldr	r3, [r7, #4]
+ 1199 05a2 012B     		cmp	r3, #1
+ 1200 05a4 0AD1     		bne	.L66
+ 208:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         {mask = mask | temp;}
+ 1201              		.loc 2 208 0
+ 1202 05a6 1723     		movs	r3, #23
+ 1203 05a8 FB18     		adds	r3, r7, r3
+ 1204 05aa 1722     		movs	r2, #23
+ 1205 05ac B918     		adds	r1, r7, r2
+ 1206 05ae 1422     		movs	r2, #20
+ 1207 05b0 BA18     		adds	r2, r7, r2
+ 1208 05b2 0978     		ldrb	r1, [r1]
+ 1209 05b4 1278     		ldrb	r2, [r2]
+ 1210 05b6 0A43     		orrs	r2, r1
+ 1211 05b8 1A70     		strb	r2, [r3]
+ 1212 05ba 09E0     		b	.L67
+ 1213              	.L66:
+ 209:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     else
+ 210:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****         {mask = mask & temp;}
+ 1214              		.loc 2 210 0
+ 1215 05bc 1723     		movs	r3, #23
+ 1216 05be FB18     		adds	r3, r7, r3
+ 1217 05c0 1722     		movs	r2, #23
+ 1218 05c2 BA18     		adds	r2, r7, r2
+ 1219 05c4 1421     		movs	r1, #20
+ 1220 05c6 7918     		adds	r1, r7, r1
+ 1221 05c8 1278     		ldrb	r2, [r2]
+ 1222 05ca 0978     		ldrb	r1, [r1]
+ 1223 05cc 0A40     		ands	r2, r1
+ 1224 05ce 1A70     		strb	r2, [r3]
+ 1225              	.L67:
+ 211:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
+ 212:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     graphic_write_data(mask, controller);
+ 1226              		.loc 2 212 0
+ 1227 05d0 1623     		movs	r3, #22
+ 1228 05d2 FB18     		adds	r3, r7, r3
+ 1229 05d4 1A78     		ldrb	r2, [r3]
+ 1230 05d6 1723     		movs	r3, #23
+ 1231 05d8 FB18     		adds	r3, r7, r3
+ 1232 05da 1B78     		ldrb	r3, [r3]
+ 1233 05dc 1100     		movs	r1, r2
+ 1234 05de 1800     		movs	r0, r3
+ 1235 05e0 FFF7FEFF 		bl	graphic_write_data
+ 1236 05e4 00E0     		b	.L51
+ 1237              	.L68:
+ 176:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
+ 1238              		.loc 2 176 0
+ 1239 05e6 C046     		nop
+ 1240              	.L51:
+ 213:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
+ 214:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     
+ 215:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/graphics.h ****     }
+ 1241              		.loc 2 215 0
+ 1242 05e8 BD46     		mov	sp, r7
+ 1243 05ea 07B0     		add	sp, sp, #28
+ 1244              		@ sp needed
+ 1245 05ec 90BD     		pop	{r4, r7, pc}
+ 1246              		.cfi_endproc
+ 1247              	.LFE15:
+ 1249              		.align	1
+ 1250              		.global	set_object_speed
+ 1251              		.syntax unified
+ 1252              		.code	16
+ 1253              		.thumb_func
+ 1254              		.fpu softvfp
+ 1256              	set_object_speed:
+ 1257              	.LFB16:
+ 1258              		.file 3 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h"
    1:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h **** #ifndef OBJECT_H
    2:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h **** #define OBJECT_H
    3:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h **** 
@@ -1550,369 +1531,370 @@
   28:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****     
   29:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****     
   30:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h **** void set_object_speed(POBJECT pObj, int speedX, int speedY){
- 1274              		.loc 3 30 0
- 1275              		.cfi_startproc
- 1276              		@ args = 0, pretend = 0, frame = 16
- 1277              		@ frame_needed = 1, uses_anonymous_args = 0
- 1278 060a 80B5     		push	{r7, lr}
- 1279              		.cfi_def_cfa_offset 8
- 1280              		.cfi_offset 7, -8
- 1281              		.cfi_offset 14, -4
- 1282 060c 84B0     		sub	sp, sp, #16
- 1283              		.cfi_def_cfa_offset 24
- 1284 060e 00AF     		add	r7, sp, #0
- 1285              		.cfi_def_cfa_register 7
- 1286 0610 F860     		str	r0, [r7, #12]
- 1287 0612 B960     		str	r1, [r7, #8]
- 1288 0614 7A60     		str	r2, [r7, #4]
+ 1259              		.loc 3 30 0
+ 1260              		.cfi_startproc
+ 1261              		@ args = 0, pretend = 0, frame = 16
+ 1262              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1263 05ee 80B5     		push	{r7, lr}
+ 1264              		.cfi_def_cfa_offset 8
+ 1265              		.cfi_offset 7, -8
+ 1266              		.cfi_offset 14, -4
+ 1267 05f0 84B0     		sub	sp, sp, #16
+ 1268              		.cfi_def_cfa_offset 24
+ 1269 05f2 00AF     		add	r7, sp, #0
+ 1270              		.cfi_def_cfa_register 7
+ 1271 05f4 F860     		str	r0, [r7, #12]
+ 1272 05f6 B960     		str	r1, [r7, #8]
+ 1273 05f8 7A60     		str	r2, [r7, #4]
   31:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****         pObj->dirX = speedX;
- 1289              		.loc 3 31 0
- 1290 0616 FB68     		ldr	r3, [r7, #12]
- 1291 0618 BA68     		ldr	r2, [r7, #8]
- 1292 061a 5A60     		str	r2, [r3, #4]
+ 1274              		.loc 3 31 0
+ 1275 05fa FB68     		ldr	r3, [r7, #12]
+ 1276 05fc BA68     		ldr	r2, [r7, #8]
+ 1277 05fe 5A60     		str	r2, [r3, #4]
   32:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****         pObj->dirY = speedY;
- 1293              		.loc 3 32 0
- 1294 061c FB68     		ldr	r3, [r7, #12]
- 1295 061e 7A68     		ldr	r2, [r7, #4]
- 1296 0620 9A60     		str	r2, [r3, #8]
+ 1278              		.loc 3 32 0
+ 1279 0600 FB68     		ldr	r3, [r7, #12]
+ 1280 0602 7A68     		ldr	r2, [r7, #4]
+ 1281 0604 9A60     		str	r2, [r3, #8]
   33:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****     }
- 1297              		.loc 3 33 0
- 1298 0622 C046     		nop
- 1299 0624 BD46     		mov	sp, r7
- 1300 0626 04B0     		add	sp, sp, #16
- 1301              		@ sp needed
- 1302 0628 80BD     		pop	{r7, pc}
- 1303              		.cfi_endproc
- 1304              	.LFE16:
- 1306              		.align	1
- 1307              		.global	draw_object
- 1308              		.syntax unified
- 1309              		.code	16
- 1310              		.thumb_func
- 1311              		.fpu softvfp
- 1313              	draw_object:
- 1314              	.LFB17:
+ 1282              		.loc 3 33 0
+ 1283 0606 C046     		nop
+ 1284 0608 BD46     		mov	sp, r7
+ 1285 060a 04B0     		add	sp, sp, #16
+ 1286              		@ sp needed
+ 1287 060c 80BD     		pop	{r7, pc}
+ 1288              		.cfi_endproc
+ 1289              	.LFE16:
+ 1291              		.align	1
+ 1292              		.global	draw_object
+ 1293              		.syntax unified
+ 1294              		.code	16
+ 1295              		.thumb_func
+ 1296              		.fpu softvfp
+ 1298              	draw_object:
+ 1299              	.LFB17:
   34:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****     
   35:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h **** void draw_object(POBJECT pObj){
- 1315              		.loc 3 35 0
- 1316              		.cfi_startproc
- 1317              		@ args = 0, pretend = 0, frame = 16
- 1318              		@ frame_needed = 1, uses_anonymous_args = 0
- 1319 062a 80B5     		push	{r7, lr}
- 1320              		.cfi_def_cfa_offset 8
- 1321              		.cfi_offset 7, -8
- 1322              		.cfi_offset 14, -4
- 1323 062c 84B0     		sub	sp, sp, #16
- 1324              		.cfi_def_cfa_offset 24
- 1325 062e 00AF     		add	r7, sp, #0
- 1326              		.cfi_def_cfa_register 7
- 1327 0630 7860     		str	r0, [r7, #4]
- 1328              	.LBB4:
+ 1300              		.loc 3 35 0
+ 1301              		.cfi_startproc
+ 1302              		@ args = 0, pretend = 0, frame = 16
+ 1303              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1304 060e 80B5     		push	{r7, lr}
+ 1305              		.cfi_def_cfa_offset 8
+ 1306              		.cfi_offset 7, -8
+ 1307              		.cfi_offset 14, -4
+ 1308 0610 84B0     		sub	sp, sp, #16
+ 1309              		.cfi_def_cfa_offset 24
+ 1310 0612 00AF     		add	r7, sp, #0
+ 1311              		.cfi_def_cfa_register 7
+ 1312 0614 7860     		str	r0, [r7, #4]
+ 1313              	.LBB4:
   36:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****     for(int i=0; i < MAX_POINTS; i++){
- 1329              		.loc 3 36 0
- 1330 0632 0023     		movs	r3, #0
- 1331 0634 FB60     		str	r3, [r7, #12]
- 1332 0636 1FE0     		b	.L71
- 1333              	.L72:
+ 1314              		.loc 3 36 0
+ 1315 0616 0023     		movs	r3, #0
+ 1316 0618 FB60     		str	r3, [r7, #12]
+ 1317 061a 1FE0     		b	.L71
+ 1318              	.L72:
   37:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****             pixel(pObj->geo->px[i].x + pObj->posX, pObj->geo->px[i].y + pObj->posY, 1);
- 1334              		.loc 3 37 0 discriminator 3
- 1335 0638 7B68     		ldr	r3, [r7, #4]
- 1336 063a 1A68     		ldr	r2, [r3]
- 1337 063c FB68     		ldr	r3, [r7, #12]
- 1338 063e 0433     		adds	r3, r3, #4
- 1339 0640 5B00     		lsls	r3, r3, #1
- 1340 0642 D318     		adds	r3, r2, r3
- 1341 0644 0433     		adds	r3, r3, #4
- 1342 0646 1B78     		ldrb	r3, [r3]
- 1343 0648 1A00     		movs	r2, r3
- 1344 064a 7B68     		ldr	r3, [r7, #4]
- 1345 064c DB68     		ldr	r3, [r3, #12]
- 1346 064e D318     		adds	r3, r2, r3
- 1347 0650 1800     		movs	r0, r3
- 1348 0652 7B68     		ldr	r3, [r7, #4]
- 1349 0654 1A68     		ldr	r2, [r3]
- 1350 0656 FB68     		ldr	r3, [r7, #12]
- 1351 0658 0433     		adds	r3, r3, #4
- 1352 065a 5B00     		lsls	r3, r3, #1
- 1353 065c D318     		adds	r3, r2, r3
- 1354 065e 0533     		adds	r3, r3, #5
- 1355 0660 1B78     		ldrb	r3, [r3]
- 1356 0662 1A00     		movs	r2, r3
- 1357 0664 7B68     		ldr	r3, [r7, #4]
- 1358 0666 1B69     		ldr	r3, [r3, #16]
- 1359 0668 D318     		adds	r3, r2, r3
- 1360 066a 0122     		movs	r2, #1
- 1361 066c 1900     		movs	r1, r3
- 1362 066e FFF7FEFF 		bl	pixel
+ 1319              		.loc 3 37 0 discriminator 3
+ 1320 061c 7B68     		ldr	r3, [r7, #4]
+ 1321 061e 1A68     		ldr	r2, [r3]
+ 1322 0620 FB68     		ldr	r3, [r7, #12]
+ 1323 0622 0433     		adds	r3, r3, #4
+ 1324 0624 5B00     		lsls	r3, r3, #1
+ 1325 0626 D318     		adds	r3, r2, r3
+ 1326 0628 0433     		adds	r3, r3, #4
+ 1327 062a 1B78     		ldrb	r3, [r3]
+ 1328 062c 1A00     		movs	r2, r3
+ 1329 062e 7B68     		ldr	r3, [r7, #4]
+ 1330 0630 DB68     		ldr	r3, [r3, #12]
+ 1331 0632 D318     		adds	r3, r2, r3
+ 1332 0634 1800     		movs	r0, r3
+ 1333 0636 7B68     		ldr	r3, [r7, #4]
+ 1334 0638 1A68     		ldr	r2, [r3]
+ 1335 063a FB68     		ldr	r3, [r7, #12]
+ 1336 063c 0433     		adds	r3, r3, #4
+ 1337 063e 5B00     		lsls	r3, r3, #1
+ 1338 0640 D318     		adds	r3, r2, r3
+ 1339 0642 0533     		adds	r3, r3, #5
+ 1340 0644 1B78     		ldrb	r3, [r3]
+ 1341 0646 1A00     		movs	r2, r3
+ 1342 0648 7B68     		ldr	r3, [r7, #4]
+ 1343 064a 1B69     		ldr	r3, [r3, #16]
+ 1344 064c D318     		adds	r3, r2, r3
+ 1345 064e 0122     		movs	r2, #1
+ 1346 0650 1900     		movs	r1, r3
+ 1347 0652 FFF7FEFF 		bl	pixel
   36:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****     for(int i=0; i < MAX_POINTS; i++){
- 1363              		.loc 3 36 0 discriminator 3
- 1364 0672 FB68     		ldr	r3, [r7, #12]
- 1365 0674 0133     		adds	r3, r3, #1
- 1366 0676 FB60     		str	r3, [r7, #12]
- 1367              	.L71:
+ 1348              		.loc 3 36 0 discriminator 3
+ 1349 0656 FB68     		ldr	r3, [r7, #12]
+ 1350 0658 0133     		adds	r3, r3, #1
+ 1351 065a FB60     		str	r3, [r7, #12]
+ 1352              	.L71:
   36:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****     for(int i=0; i < MAX_POINTS; i++){
- 1368              		.loc 3 36 0 is_stmt 0 discriminator 1
- 1369 0678 FB68     		ldr	r3, [r7, #12]
- 1370 067a 132B     		cmp	r3, #19
- 1371 067c DCDD     		ble	.L72
- 1372              	.LBE4:
+ 1353              		.loc 3 36 0 is_stmt 0 discriminator 1
+ 1354 065c FB68     		ldr	r3, [r7, #12]
+ 1355 065e 132B     		cmp	r3, #19
+ 1356 0660 DCDD     		ble	.L72
+ 1357              	.LBE4:
   38:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****         }
   39:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****     }
- 1373              		.loc 3 39 0 is_stmt 1
- 1374 067e C046     		nop
- 1375 0680 BD46     		mov	sp, r7
- 1376 0682 04B0     		add	sp, sp, #16
- 1377              		@ sp needed
- 1378 0684 80BD     		pop	{r7, pc}
- 1379              		.cfi_endproc
- 1380              	.LFE17:
- 1382              		.align	1
- 1383              		.global	clear_object
- 1384              		.syntax unified
- 1385              		.code	16
- 1386              		.thumb_func
- 1387              		.fpu softvfp
- 1389              	clear_object:
- 1390              	.LFB18:
+ 1358              		.loc 3 39 0 is_stmt 1
+ 1359 0662 C046     		nop
+ 1360 0664 BD46     		mov	sp, r7
+ 1361 0666 04B0     		add	sp, sp, #16
+ 1362              		@ sp needed
+ 1363 0668 80BD     		pop	{r7, pc}
+ 1364              		.cfi_endproc
+ 1365              	.LFE17:
+ 1367              		.align	1
+ 1368              		.global	clear_object
+ 1369              		.syntax unified
+ 1370              		.code	16
+ 1371              		.thumb_func
+ 1372              		.fpu softvfp
+ 1374              	clear_object:
+ 1375              	.LFB18:
   40:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h **** 
   41:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h **** void clear_object(POBJECT pObj){
- 1391              		.loc 3 41 0
- 1392              		.cfi_startproc
- 1393              		@ args = 0, pretend = 0, frame = 16
- 1394              		@ frame_needed = 1, uses_anonymous_args = 0
- 1395 0686 80B5     		push	{r7, lr}
- 1396              		.cfi_def_cfa_offset 8
- 1397              		.cfi_offset 7, -8
- 1398              		.cfi_offset 14, -4
- 1399 0688 84B0     		sub	sp, sp, #16
- 1400              		.cfi_def_cfa_offset 24
- 1401 068a 00AF     		add	r7, sp, #0
- 1402              		.cfi_def_cfa_register 7
- 1403 068c 7860     		str	r0, [r7, #4]
- 1404              	.LBB5:
+ 1376              		.loc 3 41 0
+ 1377              		.cfi_startproc
+ 1378              		@ args = 0, pretend = 0, frame = 16
+ 1379              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1380 066a 80B5     		push	{r7, lr}
+ 1381              		.cfi_def_cfa_offset 8
+ 1382              		.cfi_offset 7, -8
+ 1383              		.cfi_offset 14, -4
+ 1384 066c 84B0     		sub	sp, sp, #16
+ 1385              		.cfi_def_cfa_offset 24
+ 1386 066e 00AF     		add	r7, sp, #0
+ 1387              		.cfi_def_cfa_register 7
+ 1388 0670 7860     		str	r0, [r7, #4]
+ 1389              	.LBB5:
   42:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****     for(int i=0; i < MAX_POINTS; i++){
- 1405              		.loc 3 42 0
- 1406 068e 0023     		movs	r3, #0
- 1407 0690 FB60     		str	r3, [r7, #12]
- 1408 0692 1FE0     		b	.L74
- 1409              	.L75:
+ 1390              		.loc 3 42 0
+ 1391 0672 0023     		movs	r3, #0
+ 1392 0674 FB60     		str	r3, [r7, #12]
+ 1393 0676 1FE0     		b	.L74
+ 1394              	.L75:
   43:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****             pixel(pObj->geo->px[i].x + pObj->posX, pObj->geo->px[i].y + pObj->posY, 0);
- 1410              		.loc 3 43 0 discriminator 3
- 1411 0694 7B68     		ldr	r3, [r7, #4]
- 1412 0696 1A68     		ldr	r2, [r3]
- 1413 0698 FB68     		ldr	r3, [r7, #12]
- 1414 069a 0433     		adds	r3, r3, #4
- 1415 069c 5B00     		lsls	r3, r3, #1
- 1416 069e D318     		adds	r3, r2, r3
- 1417 06a0 0433     		adds	r3, r3, #4
- 1418 06a2 1B78     		ldrb	r3, [r3]
- 1419 06a4 1A00     		movs	r2, r3
- 1420 06a6 7B68     		ldr	r3, [r7, #4]
- 1421 06a8 DB68     		ldr	r3, [r3, #12]
- 1422 06aa D318     		adds	r3, r2, r3
- 1423 06ac 1800     		movs	r0, r3
- 1424 06ae 7B68     		ldr	r3, [r7, #4]
- 1425 06b0 1A68     		ldr	r2, [r3]
- 1426 06b2 FB68     		ldr	r3, [r7, #12]
- 1427 06b4 0433     		adds	r3, r3, #4
- 1428 06b6 5B00     		lsls	r3, r3, #1
- 1429 06b8 D318     		adds	r3, r2, r3
- 1430 06ba 0533     		adds	r3, r3, #5
- 1431 06bc 1B78     		ldrb	r3, [r3]
- 1432 06be 1A00     		movs	r2, r3
- 1433 06c0 7B68     		ldr	r3, [r7, #4]
- 1434 06c2 1B69     		ldr	r3, [r3, #16]
- 1435 06c4 D318     		adds	r3, r2, r3
- 1436 06c6 0022     		movs	r2, #0
- 1437 06c8 1900     		movs	r1, r3
- 1438 06ca FFF7FEFF 		bl	pixel
+ 1395              		.loc 3 43 0 discriminator 3
+ 1396 0678 7B68     		ldr	r3, [r7, #4]
+ 1397 067a 1A68     		ldr	r2, [r3]
+ 1398 067c FB68     		ldr	r3, [r7, #12]
+ 1399 067e 0433     		adds	r3, r3, #4
+ 1400 0680 5B00     		lsls	r3, r3, #1
+ 1401 0682 D318     		adds	r3, r2, r3
+ 1402 0684 0433     		adds	r3, r3, #4
+ 1403 0686 1B78     		ldrb	r3, [r3]
+ 1404 0688 1A00     		movs	r2, r3
+ 1405 068a 7B68     		ldr	r3, [r7, #4]
+ 1406 068c DB68     		ldr	r3, [r3, #12]
+ 1407 068e D318     		adds	r3, r2, r3
+ 1408 0690 1800     		movs	r0, r3
+ 1409 0692 7B68     		ldr	r3, [r7, #4]
+ 1410 0694 1A68     		ldr	r2, [r3]
+ 1411 0696 FB68     		ldr	r3, [r7, #12]
+ 1412 0698 0433     		adds	r3, r3, #4
+ 1413 069a 5B00     		lsls	r3, r3, #1
+ 1414 069c D318     		adds	r3, r2, r3
+ 1415 069e 0533     		adds	r3, r3, #5
+ 1416 06a0 1B78     		ldrb	r3, [r3]
+ 1417 06a2 1A00     		movs	r2, r3
+ 1418 06a4 7B68     		ldr	r3, [r7, #4]
+ 1419 06a6 1B69     		ldr	r3, [r3, #16]
+ 1420 06a8 D318     		adds	r3, r2, r3
+ 1421 06aa 0022     		movs	r2, #0
+ 1422 06ac 1900     		movs	r1, r3
+ 1423 06ae FFF7FEFF 		bl	pixel
   42:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****     for(int i=0; i < MAX_POINTS; i++){
- 1439              		.loc 3 42 0 discriminator 3
- 1440 06ce FB68     		ldr	r3, [r7, #12]
- 1441 06d0 0133     		adds	r3, r3, #1
- 1442 06d2 FB60     		str	r3, [r7, #12]
- 1443              	.L74:
+ 1424              		.loc 3 42 0 discriminator 3
+ 1425 06b2 FB68     		ldr	r3, [r7, #12]
+ 1426 06b4 0133     		adds	r3, r3, #1
+ 1427 06b6 FB60     		str	r3, [r7, #12]
+ 1428              	.L74:
   42:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****     for(int i=0; i < MAX_POINTS; i++){
- 1444              		.loc 3 42 0 is_stmt 0 discriminator 1
- 1445 06d4 FB68     		ldr	r3, [r7, #12]
- 1446 06d6 132B     		cmp	r3, #19
- 1447 06d8 DCDD     		ble	.L75
- 1448              	.LBE5:
+ 1429              		.loc 3 42 0 is_stmt 0 discriminator 1
+ 1430 06b8 FB68     		ldr	r3, [r7, #12]
+ 1431 06ba 132B     		cmp	r3, #19
+ 1432 06bc DCDD     		ble	.L75
+ 1433              	.LBE5:
   44:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****         }
   45:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****     }
- 1449              		.loc 3 45 0 is_stmt 1
- 1450 06da C046     		nop
- 1451 06dc BD46     		mov	sp, r7
- 1452 06de 04B0     		add	sp, sp, #16
- 1453              		@ sp needed
- 1454 06e0 80BD     		pop	{r7, pc}
- 1455              		.cfi_endproc
- 1456              	.LFE18:
- 1458              		.align	1
- 1459              		.global	move_object
- 1460              		.syntax unified
- 1461              		.code	16
- 1462              		.thumb_func
- 1463              		.fpu softvfp
- 1465              	move_object:
- 1466              	.LFB19:
+ 1434              		.loc 3 45 0 is_stmt 1
+ 1435 06be C046     		nop
+ 1436 06c0 BD46     		mov	sp, r7
+ 1437 06c2 04B0     		add	sp, sp, #16
+ 1438              		@ sp needed
+ 1439 06c4 80BD     		pop	{r7, pc}
+ 1440              		.cfi_endproc
+ 1441              	.LFE18:
+ 1443              		.align	1
+ 1444              		.global	move_object
+ 1445              		.syntax unified
+ 1446              		.code	16
+ 1447              		.thumb_func
+ 1448              		.fpu softvfp
+ 1450              	move_object:
+ 1451              	.LFB19:
   46:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****     
   47:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h **** void move_object(POBJECT pObj){
- 1467              		.loc 3 47 0
- 1468              		.cfi_startproc
- 1469              		@ args = 0, pretend = 0, frame = 8
- 1470              		@ frame_needed = 1, uses_anonymous_args = 0
- 1471 06e2 80B5     		push	{r7, lr}
- 1472              		.cfi_def_cfa_offset 8
- 1473              		.cfi_offset 7, -8
- 1474              		.cfi_offset 14, -4
- 1475 06e4 82B0     		sub	sp, sp, #8
- 1476              		.cfi_def_cfa_offset 16
- 1477 06e6 00AF     		add	r7, sp, #0
- 1478              		.cfi_def_cfa_register 7
- 1479 06e8 7860     		str	r0, [r7, #4]
+ 1452              		.loc 3 47 0
+ 1453              		.cfi_startproc
+ 1454              		@ args = 0, pretend = 0, frame = 8
+ 1455              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1456 06c6 80B5     		push	{r7, lr}
+ 1457              		.cfi_def_cfa_offset 8
+ 1458              		.cfi_offset 7, -8
+ 1459              		.cfi_offset 14, -4
+ 1460 06c8 82B0     		sub	sp, sp, #8
+ 1461              		.cfi_def_cfa_offset 16
+ 1462 06ca 00AF     		add	r7, sp, #0
+ 1463              		.cfi_def_cfa_register 7
+ 1464 06cc 7860     		str	r0, [r7, #4]
   48:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****     clear_object(pObj);
- 1480              		.loc 3 48 0
- 1481 06ea 7B68     		ldr	r3, [r7, #4]
- 1482 06ec 1800     		movs	r0, r3
- 1483 06ee FFF7FEFF 		bl	clear_object
+ 1465              		.loc 3 48 0
+ 1466 06ce 7B68     		ldr	r3, [r7, #4]
+ 1467 06d0 1800     		movs	r0, r3
+ 1468 06d2 FFF7FEFF 		bl	clear_object
   49:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****     pObj->posX += pObj->dirX;
- 1484              		.loc 3 49 0
- 1485 06f2 7B68     		ldr	r3, [r7, #4]
- 1486 06f4 DA68     		ldr	r2, [r3, #12]
- 1487 06f6 7B68     		ldr	r3, [r7, #4]
- 1488 06f8 5B68     		ldr	r3, [r3, #4]
- 1489 06fa D218     		adds	r2, r2, r3
- 1490 06fc 7B68     		ldr	r3, [r7, #4]
- 1491 06fe DA60     		str	r2, [r3, #12]
+ 1469              		.loc 3 49 0
+ 1470 06d6 7B68     		ldr	r3, [r7, #4]
+ 1471 06d8 DA68     		ldr	r2, [r3, #12]
+ 1472 06da 7B68     		ldr	r3, [r7, #4]
+ 1473 06dc 5B68     		ldr	r3, [r3, #4]
+ 1474 06de D218     		adds	r2, r2, r3
+ 1475 06e0 7B68     		ldr	r3, [r7, #4]
+ 1476 06e2 DA60     		str	r2, [r3, #12]
   50:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****     pObj->posY += pObj->dirY;
- 1492              		.loc 3 50 0
- 1493 0700 7B68     		ldr	r3, [r7, #4]
- 1494 0702 1A69     		ldr	r2, [r3, #16]
- 1495 0704 7B68     		ldr	r3, [r7, #4]
- 1496 0706 9B68     		ldr	r3, [r3, #8]
- 1497 0708 D218     		adds	r2, r2, r3
- 1498 070a 7B68     		ldr	r3, [r7, #4]
- 1499 070c 1A61     		str	r2, [r3, #16]
+ 1477              		.loc 3 50 0
+ 1478 06e4 7B68     		ldr	r3, [r7, #4]
+ 1479 06e6 1A69     		ldr	r2, [r3, #16]
+ 1480 06e8 7B68     		ldr	r3, [r7, #4]
+ 1481 06ea 9B68     		ldr	r3, [r3, #8]
+ 1482 06ec D218     		adds	r2, r2, r3
+ 1483 06ee 7B68     		ldr	r3, [r7, #4]
+ 1484 06f0 1A61     		str	r2, [r3, #16]
   51:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****     
-  52:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****     if((pObj->posX < 0) || pObj->posX > 128 ) {
- 1500              		.loc 3 52 0
- 1501 070e 7B68     		ldr	r3, [r7, #4]
- 1502 0710 DB68     		ldr	r3, [r3, #12]
- 1503 0712 002B     		cmp	r3, #0
- 1504 0714 03DB     		blt	.L77
- 1505              		.loc 3 52 0 is_stmt 0 discriminator 1
- 1506 0716 7B68     		ldr	r3, [r7, #4]
- 1507 0718 DB68     		ldr	r3, [r3, #12]
- 1508 071a 802B     		cmp	r3, #128
- 1509 071c 04DD     		ble	.L78
- 1510              	.L77:
+  52:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****     if((pObj->posX < 0) || pObj->posX > 127 ) {
+ 1485              		.loc 3 52 0
+ 1486 06f2 7B68     		ldr	r3, [r7, #4]
+ 1487 06f4 DB68     		ldr	r3, [r3, #12]
+ 1488 06f6 002B     		cmp	r3, #0
+ 1489 06f8 03DB     		blt	.L77
+ 1490              		.loc 3 52 0 is_stmt 0 discriminator 1
+ 1491 06fa 7B68     		ldr	r3, [r7, #4]
+ 1492 06fc DB68     		ldr	r3, [r3, #12]
+ 1493 06fe 7F2B     		cmp	r3, #127
+ 1494 0700 04DD     		ble	.L78
+ 1495              	.L77:
   53:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h **** 		pObj->dirX = -pObj->dirX;
- 1511              		.loc 3 53 0 is_stmt 1
- 1512 071e 7B68     		ldr	r3, [r7, #4]
- 1513 0720 5B68     		ldr	r3, [r3, #4]
- 1514 0722 5A42     		rsbs	r2, r3, #0
- 1515 0724 7B68     		ldr	r3, [r7, #4]
- 1516 0726 5A60     		str	r2, [r3, #4]
- 1517              	.L78:
+ 1496              		.loc 3 53 0 is_stmt 1
+ 1497 0702 7B68     		ldr	r3, [r7, #4]
+ 1498 0704 5B68     		ldr	r3, [r3, #4]
+ 1499 0706 5A42     		rsbs	r2, r3, #0
+ 1500 0708 7B68     		ldr	r3, [r7, #4]
+ 1501 070a 5A60     		str	r2, [r3, #4]
+ 1502              	.L78:
   54:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h **** 	}
   55:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****     
-  56:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h **** 	if((pObj->posY < 0) || pObj->posY > 64 ) {
- 1518              		.loc 3 56 0
- 1519 0728 7B68     		ldr	r3, [r7, #4]
- 1520 072a 1B69     		ldr	r3, [r3, #16]
- 1521 072c 002B     		cmp	r3, #0
- 1522 072e 03DB     		blt	.L79
- 1523              		.loc 3 56 0 is_stmt 0 discriminator 1
- 1524 0730 7B68     		ldr	r3, [r7, #4]
- 1525 0732 1B69     		ldr	r3, [r3, #16]
- 1526 0734 402B     		cmp	r3, #64
- 1527 0736 04DD     		ble	.L80
- 1528              	.L79:
+  56:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h **** 	if((pObj->posY < 0) || pObj->posY > 63 ) {
+ 1503              		.loc 3 56 0
+ 1504 070c 7B68     		ldr	r3, [r7, #4]
+ 1505 070e 1B69     		ldr	r3, [r3, #16]
+ 1506 0710 002B     		cmp	r3, #0
+ 1507 0712 03DB     		blt	.L79
+ 1508              		.loc 3 56 0 is_stmt 0 discriminator 1
+ 1509 0714 7B68     		ldr	r3, [r7, #4]
+ 1510 0716 1B69     		ldr	r3, [r3, #16]
+ 1511 0718 3F2B     		cmp	r3, #63
+ 1512 071a 04DD     		ble	.L80
+ 1513              	.L79:
   57:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h **** 		pObj->dirY = -pObj->dirY;
- 1529              		.loc 3 57 0 is_stmt 1
- 1530 0738 7B68     		ldr	r3, [r7, #4]
- 1531 073a 9B68     		ldr	r3, [r3, #8]
- 1532 073c 5A42     		rsbs	r2, r3, #0
- 1533 073e 7B68     		ldr	r3, [r7, #4]
- 1534 0740 9A60     		str	r2, [r3, #8]
- 1535              	.L80:
+ 1514              		.loc 3 57 0 is_stmt 1
+ 1515 071c 7B68     		ldr	r3, [r7, #4]
+ 1516 071e 9B68     		ldr	r3, [r3, #8]
+ 1517 0720 5A42     		rsbs	r2, r3, #0
+ 1518 0722 7B68     		ldr	r3, [r7, #4]
+ 1519 0724 9A60     		str	r2, [r3, #8]
+ 1520              	.L80:
   58:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h **** 	}
   59:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****     
   60:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h **** 	pObj->draw(pObj);
- 1536              		.loc 3 60 0
- 1537 0742 7B68     		ldr	r3, [r7, #4]
- 1538 0744 5B69     		ldr	r3, [r3, #20]
- 1539 0746 7A68     		ldr	r2, [r7, #4]
- 1540 0748 1000     		movs	r0, r2
- 1541 074a 9847     		blx	r3
- 1542              	.LVL0:
+ 1521              		.loc 3 60 0
+ 1522 0726 7B68     		ldr	r3, [r7, #4]
+ 1523 0728 5B69     		ldr	r3, [r3, #20]
+ 1524 072a 7A68     		ldr	r2, [r7, #4]
+ 1525 072c 1000     		movs	r0, r2
+ 1526 072e 9847     		blx	r3
+ 1527              	.LVL0:
   61:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****     
   62:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/object.h ****     }    
- 1543              		.loc 3 62 0
- 1544 074c C046     		nop
- 1545 074e BD46     		mov	sp, r7
- 1546 0750 02B0     		add	sp, sp, #8
- 1547              		@ sp needed
- 1548 0752 80BD     		pop	{r7, pc}
- 1549              		.cfi_endproc
- 1550              	.LFE19:
- 1552              		.global	ball_geometry
- 1553              		.data
- 1554              		.align	2
- 1557              	ball_geometry:
- 1558 0000 0C000000 		.word	12
- 1559 0004 04000000 		.word	4
- 1560 0008 04000000 		.word	4
- 1561 000c 00       		.byte	0
- 1562 000d 01       		.byte	1
- 1563 000e 00       		.byte	0
- 1564 000f 02       		.byte	2
- 1565 0010 01       		.byte	1
- 1566 0011 00       		.byte	0
- 1567 0012 01       		.byte	1
- 1568 0013 01       		.byte	1
- 1569 0014 01       		.byte	1
- 1570 0015 02       		.byte	2
- 1571 0016 01       		.byte	1
- 1572 0017 03       		.byte	3
- 1573 0018 02       		.byte	2
- 1574 0019 00       		.byte	0
- 1575 001a 02       		.byte	2
- 1576 001b 01       		.byte	1
- 1577 001c 02       		.byte	2
- 1578 001d 02       		.byte	2
- 1579 001e 02       		.byte	2
- 1580 001f 03       		.byte	3
- 1581 0020 03       		.byte	3
- 1582 0021 01       		.byte	1
- 1583 0022 03       		.byte	3
- 1584 0023 02       		.byte	2
- 1585 0024 00000000 		.space	16
- 1585      00000000 
- 1585      00000000 
- 1585      00000000 
- 1586              		.align	2
- 1589              	ball:
- 1590 0034 00000000 		.word	ball_geometry
- 1591 0038 00000000 		.word	0
- 1592 003c 00000000 		.word	0
- 1593 0040 01000000 		.word	1
- 1594 0044 01000000 		.word	1
- 1595 0048 00000000 		.word	draw_object
- 1596 004c 00000000 		.word	clear_object
- 1597 0050 00000000 		.word	move_object
- 1598 0054 00000000 		.word	set_object_speed
- 1599              		.section	.start_section,"ax",%progbits
- 1600              		.align	1
- 1601              		.global	startup
- 1602              		.syntax unified
- 1603              		.code	16
- 1604              		.thumb_func
- 1605              		.fpu softvfp
- 1607              	startup:
- 1608              	.LFB20:
- 1609              		.file 4 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c
+ 1528              		.loc 3 62 0
+ 1529 0730 C046     		nop
+ 1530 0732 BD46     		mov	sp, r7
+ 1531 0734 02B0     		add	sp, sp, #8
+ 1532              		@ sp needed
+ 1533 0736 80BD     		pop	{r7, pc}
+ 1534              		.cfi_endproc
+ 1535              	.LFE19:
+ 1537              		.global	ball_geometry
+ 1538              		.data
+ 1539              		.align	2
+ 1542              	ball_geometry:
+ 1543 0000 0C000000 		.word	12
+ 1544 0004 04000000 		.word	4
+ 1545 0008 04000000 		.word	4
+ 1546 000c 00       		.byte	0
+ 1547 000d 01       		.byte	1
+ 1548 000e 00       		.byte	0
+ 1549 000f 02       		.byte	2
+ 1550 0010 01       		.byte	1
+ 1551 0011 00       		.byte	0
+ 1552 0012 01       		.byte	1
+ 1553 0013 01       		.byte	1
+ 1554 0014 01       		.byte	1
+ 1555 0015 02       		.byte	2
+ 1556 0016 01       		.byte	1
+ 1557 0017 03       		.byte	3
+ 1558 0018 02       		.byte	2
+ 1559 0019 00       		.byte	0
+ 1560 001a 02       		.byte	2
+ 1561 001b 01       		.byte	1
+ 1562 001c 02       		.byte	2
+ 1563 001d 02       		.byte	2
+ 1564 001e 02       		.byte	2
+ 1565 001f 03       		.byte	3
+ 1566 0020 03       		.byte	3
+ 1567 0021 01       		.byte	1
+ 1568 0022 03       		.byte	3
+ 1569 0023 02       		.byte	2
+ 1570 0024 00000000 		.space	16
+ 1570      00000000 
+ 1570      00000000 
+ 1570      00000000 
+ 1571              		.global	ball
+ 1572              		.align	2
+ 1575              	ball:
+ 1576 0034 00000000 		.word	ball_geometry
+ 1577 0038 00000000 		.word	0
+ 1578 003c 00000000 		.word	0
+ 1579 0040 01000000 		.word	1
+ 1580 0044 01000000 		.word	1
+ 1581 0048 00000000 		.word	draw_object
+ 1582 004c 00000000 		.word	clear_object
+ 1583 0050 00000000 		.word	move_object
+ 1584 0054 00000000 		.word	set_object_speed
+ 1585              		.section	.start_section,"ax",%progbits
+ 1586              		.align	1
+ 1587              		.global	startup
+ 1588              		.syntax unified
+ 1589              		.code	16
+ 1590              		.thumb_func
+ 1591              		.fpu softvfp
+ 1593              	startup:
+ 1594              	.LFB20:
+ 1595              		.file 4 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c
    1:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** /*
    2:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c ****  * 	startup.c
    3:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c ****  *
@@ -1934,146 +1916,146 @@
   19:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** #include "object.h"
   20:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** #include "ball.h"
   21:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** 
-  22:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** 
-  23:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
-  24:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** 
-  25:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** void startup ( void )
-  26:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** {
- 1610              		.loc 4 26 0
- 1611              		.cfi_startproc
- 1612              		@ Naked Function: prologue and epilogue provided by programmer.
- 1613              		@ args = 0, pretend = 0, frame = 0
- 1614              		@ frame_needed = 1, uses_anonymous_args = 0
-  27:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** asm volatile(
- 1615              		.loc 4 27 0
- 1616              		.syntax divided
- 1617              	@ 27 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c" 1
- 1618 0000 0248     		 LDR R0,=0x2001C000
- 1619 0002 8546     	 MOV SP,R0
- 1620 0004 FFF7FEFF 	 BL main
- 1621 0008 FEE7     	.L1: B .L1
- 1622              	
- 1623              	@ 0 "" 2
-  28:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** 	" LDR R0,=0x2001C000\n"		/* set stack */
-  29:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** 	" MOV SP,R0\n"
-  30:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** 	" BL main\n"				/* call main */
-  31:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** 	".L1: B .L1\n"				/* never return */
-  32:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** 	) ;
-  33:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** }
- 1624              		.loc 4 33 0
- 1625              		.thumb
- 1626              		.syntax unified
- 1627 000a C046     		nop
- 1628              		.cfi_endproc
- 1629              	.LFE20:
- 1631              		.text
- 1632              		.align	1
- 1633              		.global	init_app
- 1634              		.syntax unified
- 1635              		.code	16
- 1636              		.thumb_func
- 1637              		.fpu softvfp
- 1639              	init_app:
- 1640              	.LFB21:
-  34:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** 
-  35:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** void init_app(void){
- 1641              		.loc 4 35 0
- 1642              		.cfi_startproc
- 1643              		@ args = 0, pretend = 0, frame = 0
- 1644              		@ frame_needed = 1, uses_anonymous_args = 0
- 1645 0754 80B5     		push	{r7, lr}
- 1646              		.cfi_def_cfa_offset 8
- 1647              		.cfi_offset 7, -8
- 1648              		.cfi_offset 14, -4
- 1649 0756 00AF     		add	r7, sp, #0
- 1650              		.cfi_def_cfa_register 7
-  36:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c ****         *GPIO_MODER = 0x55555555;
- 1651              		.loc 4 36 0
- 1652 0758 024B     		ldr	r3, .L83
- 1653 075a 034A     		ldr	r2, .L83+4
- 1654 075c 1A60     		str	r2, [r3]
-  37:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c ****         
+  22:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** extern OBJECT ball;
+  23:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** 
+  24:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
+  25:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** 
+  26:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** void startup ( void )
+  27:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** {
+ 1596              		.loc 4 27 0
+ 1597              		.cfi_startproc
+ 1598              		@ Naked Function: prologue and epilogue provided by programmer.
+ 1599              		@ args = 0, pretend = 0, frame = 0
+ 1600              		@ frame_needed = 1, uses_anonymous_args = 0
+  28:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** asm volatile(
+ 1601              		.loc 4 28 0
+ 1602              		.syntax divided
+ 1603              	@ 28 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c" 1
+ 1604 0000 0248     		 LDR R0,=0x2001C000
+ 1605 0002 8546     	 MOV SP,R0
+ 1606 0004 FFF7FEFF 	 BL main
+ 1607 0008 FEE7     	.L1: B .L1
+ 1608              	
+ 1609              	@ 0 "" 2
+  29:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** 	" LDR R0,=0x2001C000\n"		/* set stack */
+  30:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** 	" MOV SP,R0\n"
+  31:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** 	" BL main\n"				/* call main */
+  32:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** 	".L1: B .L1\n"				/* never return */
+  33:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** 	) ;
+  34:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** }
+ 1610              		.loc 4 34 0
+ 1611              		.thumb
+ 1612              		.syntax unified
+ 1613 000a C046     		nop
+ 1614              		.cfi_endproc
+ 1615              	.LFE20:
+ 1617              		.text
+ 1618              		.align	1
+ 1619              		.global	init_app
+ 1620              		.syntax unified
+ 1621              		.code	16
+ 1622              		.thumb_func
+ 1623              		.fpu softvfp
+ 1625              	init_app:
+ 1626              	.LFB21:
+  35:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** 
+  36:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** void init_app(void){
+ 1627              		.loc 4 36 0
+ 1628              		.cfi_startproc
+ 1629              		@ args = 0, pretend = 0, frame = 0
+ 1630              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1631 0738 80B5     		push	{r7, lr}
+ 1632              		.cfi_def_cfa_offset 8
+ 1633              		.cfi_offset 7, -8
+ 1634              		.cfi_offset 14, -4
+ 1635 073a 00AF     		add	r7, sp, #0
+ 1636              		.cfi_def_cfa_register 7
+  37:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c ****         *GPIO_MODER = 0x55555555;
+ 1637              		.loc 4 37 0
+ 1638 073c 024B     		ldr	r3, .L83
+ 1639 073e 034A     		ldr	r2, .L83+4
+ 1640 0740 1A60     		str	r2, [r3]
   38:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c ****     }
- 1655              		.loc 4 38 0
- 1656 075e C046     		nop
- 1657 0760 BD46     		mov	sp, r7
- 1658              		@ sp needed
- 1659 0762 80BD     		pop	{r7, pc}
- 1660              	.L84:
- 1661              		.align	2
- 1662              	.L83:
- 1663 0764 00100240 		.word	1073876992
- 1664 0768 55555555 		.word	1431655765
- 1665              		.cfi_endproc
- 1666              	.LFE21:
- 1668              		.align	1
- 1669              		.global	main
- 1670              		.syntax unified
- 1671              		.code	16
- 1672              		.thumb_func
- 1673              		.fpu softvfp
- 1675              	main:
- 1676              	.LFB22:
+ 1641              		.loc 4 38 0
+ 1642 0742 C046     		nop
+ 1643 0744 BD46     		mov	sp, r7
+ 1644              		@ sp needed
+ 1645 0746 80BD     		pop	{r7, pc}
+ 1646              	.L84:
+ 1647              		.align	2
+ 1648              	.L83:
+ 1649 0748 00100240 		.word	1073876992
+ 1650 074c 55555555 		.word	1431655765
+ 1651              		.cfi_endproc
+ 1652              	.LFE21:
+ 1654              		.align	1
+ 1655              		.global	main
+ 1656              		.syntax unified
+ 1657              		.code	16
+ 1658              		.thumb_func
+ 1659              		.fpu softvfp
+ 1661              	main:
+ 1662              	.LFB22:
   39:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** 
   40:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** void main(void)
   41:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** {
- 1677              		.loc 4 41 0
- 1678              		.cfi_startproc
- 1679              		@ args = 0, pretend = 0, frame = 8
- 1680              		@ frame_needed = 1, uses_anonymous_args = 0
- 1681 076c 80B5     		push	{r7, lr}
- 1682              		.cfi_def_cfa_offset 8
- 1683              		.cfi_offset 7, -8
- 1684              		.cfi_offset 14, -4
- 1685 076e 82B0     		sub	sp, sp, #8
- 1686              		.cfi_def_cfa_offset 16
- 1687 0770 00AF     		add	r7, sp, #0
- 1688              		.cfi_def_cfa_register 7
+ 1663              		.loc 4 41 0
+ 1664              		.cfi_startproc
+ 1665              		@ args = 0, pretend = 0, frame = 8
+ 1666              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1667 0750 80B5     		push	{r7, lr}
+ 1668              		.cfi_def_cfa_offset 8
+ 1669              		.cfi_offset 7, -8
+ 1670              		.cfi_offset 14, -4
+ 1671 0752 82B0     		sub	sp, sp, #8
+ 1672              		.cfi_def_cfa_offset 16
+ 1673 0754 00AF     		add	r7, sp, #0
+ 1674              		.cfi_def_cfa_register 7
   42:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c ****      init_app();
- 1689              		.loc 4 42 0
- 1690 0772 FFF7FEFF 		bl	init_app
+ 1675              		.loc 4 42 0
+ 1676 0756 FFF7FEFF 		bl	init_app
   43:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c ****     graphic_initialize();
- 1691              		.loc 4 43 0
- 1692 0776 FFF7FEFF 		bl	graphic_initialize
+ 1677              		.loc 4 43 0
+ 1678 075a FFF7FEFF 		bl	graphic_initialize
   44:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c ****     #ifndef SIMULATOR
   45:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c ****         graphics_clear_screen();
   46:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c ****     #endif
   47:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c **** 
   48:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c ****     POBJECT p = &ball;
- 1693              		.loc 4 48 0
- 1694 077a 084B     		ldr	r3, .L87
- 1695 077c 7B60     		str	r3, [r7, #4]
-  49:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c ****     p->set_speed(p, 4, 1);
- 1696              		.loc 4 49 0
- 1697 077e 7B68     		ldr	r3, [r7, #4]
- 1698 0780 1B6A     		ldr	r3, [r3, #32]
- 1699 0782 7868     		ldr	r0, [r7, #4]
- 1700 0784 0122     		movs	r2, #1
- 1701 0786 0421     		movs	r1, #4
- 1702 0788 9847     		blx	r3
- 1703              	.LVL1:
- 1704              	.L86:
+ 1679              		.loc 4 48 0
+ 1680 075e 084B     		ldr	r3, .L87
+ 1681 0760 7B60     		str	r3, [r7, #4]
+  49:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c ****     p->set_speed(p, 4, 4);
+ 1682              		.loc 4 49 0
+ 1683 0762 7B68     		ldr	r3, [r7, #4]
+ 1684 0764 1B6A     		ldr	r3, [r3, #32]
+ 1685 0766 7868     		ldr	r0, [r7, #4]
+ 1686 0768 0422     		movs	r2, #4
+ 1687 076a 0421     		movs	r1, #4
+ 1688 076c 9847     		blx	r3
+ 1689              	.LVL1:
+ 1690              	.L86:
   50:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c ****     while(1){
   51:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c ****         p->move(p);
- 1705              		.loc 4 51 0 discriminator 1
- 1706 078a 7B68     		ldr	r3, [r7, #4]
- 1707 078c DB69     		ldr	r3, [r3, #28]
- 1708 078e 7A68     		ldr	r2, [r7, #4]
- 1709 0790 1000     		movs	r0, r2
- 1710 0792 9847     		blx	r3
- 1711              	.LVL2:
+ 1691              		.loc 4 51 0 discriminator 1
+ 1692 076e 7B68     		ldr	r3, [r7, #4]
+ 1693 0770 DB69     		ldr	r3, [r3, #28]
+ 1694 0772 7A68     		ldr	r2, [r7, #4]
+ 1695 0774 1000     		movs	r0, r2
+ 1696 0776 9847     		blx	r3
+ 1697              	.LVL2:
   52:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c ****         delay_milli(40);
- 1712              		.loc 4 52 0 discriminator 1
- 1713 0794 2820     		movs	r0, #40
- 1714 0796 FFF7FEFF 		bl	delay_milli
+ 1698              		.loc 4 52 0 discriminator 1
+ 1699 0778 2820     		movs	r0, #40
+ 1700 077a FFF7FEFF 		bl	delay_milli
   51:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c ****         delay_milli(40);
- 1715              		.loc 4 51 0 discriminator 1
- 1716 079a F6E7     		b	.L86
- 1717              	.L88:
- 1718              		.align	2
- 1719              	.L87:
- 1720 079c 34000000 		.word	ball
- 1721              		.cfi_endproc
- 1722              	.LFE22:
- 1724              	.Letext0:
- 1725              		.file 5 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/ball.h"
+ 1701              		.loc 4 51 0 discriminator 1
+ 1702 077e F6E7     		b	.L86
+ 1703              	.L88:
+ 1704              		.align	2
+ 1705              	.L87:
+ 1706 0780 00000000 		.word	ball
+ 1707              		.cfi_endproc
+ 1708              	.LFE22:
+ 1710              	.Letext0:
+ 1711              		.file 5 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/ball.h"

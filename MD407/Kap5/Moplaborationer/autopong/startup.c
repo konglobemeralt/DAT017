@@ -19,6 +19,7 @@
 #include "object.h"
 #include "ball.h"
 
+extern OBJECT ball;
 
 void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
 
@@ -45,7 +46,7 @@ void main(void)
     #endif
 
     POBJECT p = &ball;
-    p->set_speed(p, 4, 1);
+    p->set_speed(p, 4, 4);
     while(1){
         p->move(p);
         delay_milli(40);
