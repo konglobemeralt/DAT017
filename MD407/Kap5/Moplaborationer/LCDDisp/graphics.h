@@ -23,6 +23,9 @@
 #define PAGE 8
 #define ADD 63
 
+#define SCREEN_WIDTH  127
+#define SCREEN_HEIGHT 63
+
 typedef unsigned char uint8_t;
 
 void graphics_ctrl_bit_set(uint8_t x){
@@ -61,7 +64,7 @@ void graphic_wait_ready(){
         delay500ns();
         graphics_ctrl_bit_clear(B_E);
         delay500ns();
-        unsigned char i = *GPIO_IDR_HIGH;
+        //unsigned char i = *GPIO_IDR_HIGH;
         if((*GPIO_IDR_HIGH & LCD_BUSY) == 0) {
             break;
         }
@@ -168,5 +171,49 @@ void graphics_clear_screen(void){
     }
     
 }
+
+
+void pixel(unsigned x, unsigned y, unsigned set){
+    if((x < 0 || y < 0) || (x > SCREEN_WIDTH || y > SCREEN_HEIGHT)) return;
+    
+    unsigned char index = (y-1) / PAGE;
+    unsigned char mask;
+    
+    if(index == 0){mask = 1;}
+    if(index == 1){mask = 2;}
+    if(index == 2){mask = 4;}
+    if(index == 3){mask = 8;}
+    if(index == 4){mask = 0x10;}
+    if(index == 5){mask = 0x20;}
+    if(index == 6){mask = 0x40;}
+    if(index == 7){mask = 0x80;}
+    
+    if(set == 9){mask = ~mask;}
+    
+    unsigned char controller;
+    if(x > 64){
+        controller = B_CS2;
+        x = x - 65;
+        }
+    else{
+        controller = B_CS1;
+        x = x - 1;
+        }
+    
+    graphic_write_command(LCD_SET_ADD | x, controller);
+    graphic_write_command(LCD_SET_PAGE | index, controller);
+    
+    unsigned char temp = graphic_read(controller);
+    graphic_write_command(LCD_SET_ADD | x, controller);
+    
+    if(set == 1)
+        {mask = mask | temp;}
+    else
+        {mask = mask & temp;}
+    
+    graphic_write_data(mask, controller);
+    
+    
+    }
 
 
