@@ -3,6 +3,9 @@
  *
  */
 // Timer setup
+#ifndef TIMER_H
+#define TIMER_H
+
 #define STK 0xE000E010
 #define STK_CTRL ((volatile unsigned int *) (STK))
 #define STK_LOAD ((volatile unsigned int *) (STK + 0x4))
@@ -42,3 +45,5 @@ void delay_milli(unsigned int ms) {
 		delay_micro(1000 * ms);
 	#endif
 }
+
+#endif

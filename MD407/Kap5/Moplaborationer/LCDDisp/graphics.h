@@ -2,6 +2,8 @@
  * 	graphics.h
  *
  */
+#ifndef GRAPHICS_H
+#define GRAPHICS_H
 
 // Control for display
 #define B_E 0x40
@@ -216,4 +218,4 @@ void pixel(unsigned x, unsigned y, unsigned set){
     
     }
 
-
+#endif

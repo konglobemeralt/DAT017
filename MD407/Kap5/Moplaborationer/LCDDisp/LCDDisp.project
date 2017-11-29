@@ -23,6 +23,8 @@
     <File Name="startup.c"/>
     <File Name="delay.h"/>
     <File Name="graphics.h"/>
+    <File Name="object.h"/>
+    <File Name="ball.h"/>
   </VirtualDirectory>
   <VirtualDirectory Name="resources">
     <File Name="md407-ram.x"/>
