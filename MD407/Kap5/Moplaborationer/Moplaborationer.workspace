@@ -2,8 +2,8 @@
 <CodeLite_Workspace Name="Moplaborationer" Database="" Version="10.0.0">
   <Project Name="Delay" Path="basic_io/basic_io.project" Active="No"/>
   <Project Name="LCDDisp" Path="LCDDisp/LCDDisp.project" Active="No"/>
-  <Project Name="autopong" Path="autopong/autopong.project" Active="Yes"/>
-  <Project Name="UsageFault" Path="UsageFault/UsageFault.project"/>
+  <Project Name="autopong" Path="autopong/autopong.project" Active="No"/>
+  <Project Name="UsageFault" Path="UsageFault/UsageFault.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>

@@ -20,7 +20,7 @@ void usage_fault_handler( int num ){
 
 void main(void)
 {
-    int *ip, *i;
+    int *ip, i;
     *((void(**)(void)) 0x2001C018) = usage_fault_handler;
     while(1){
         ip = (int *) 0x20001001;
