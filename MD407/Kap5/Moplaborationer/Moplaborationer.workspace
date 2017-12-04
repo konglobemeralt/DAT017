@@ -3,7 +3,8 @@
   <Project Name="Delay" Path="basic_io/basic_io.project" Active="No"/>
   <Project Name="LCDDisp" Path="LCDDisp/LCDDisp.project" Active="No"/>
   <Project Name="autopong" Path="autopong/autopong.project" Active="No"/>
-  <Project Name="UsageFault" Path="UsageFault/UsageFault.project" Active="Yes"/>
+  <Project Name="UsageFault" Path="UsageFault/UsageFault.project" Active="No"/>
+  <Project Name="SysTick" Path="SysTick/SysTick.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
@@ -11,6 +12,7 @@
       <Project Name="LCDDisp" ConfigName="Debug"/>
       <Project Name="autopong" ConfigName="Debug"/>
       <Project Name="UsageFault" ConfigName="Debug"/>
+      <Project Name="SysTick" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
@@ -18,6 +20,7 @@
       <Project Name="LCDDisp" ConfigName="Release"/>
       <Project Name="autopong" ConfigName="Release"/>
       <Project Name="UsageFault" ConfigName="Release"/>
+      <Project Name="SysTick" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>
