@@ -32,6 +32,7 @@ asm volatile(
 	".L1: B .L1\n"				/* never return */
 	) ;
 }
+ 
 
 void init_app(void){
         *GPIO_MODER = 0x55555555;
