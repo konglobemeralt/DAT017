@@ -47,10 +47,30 @@ void init_app(){
     *((void (**) (void)) 0x2001C03C ) = systick_irq_handler;
     }
 
+void systick_irq_handler(){
+    //deaktivera flaggan
+    systick_flag = 1;
+    }
+    
+void delay_1mikro(){
+    //initera avbrottsektor
+    systick
+     systick_flag = 0;
+    }
+    
 void main(void)
 {
     init_app();
-    *GPIOD_ODR_LOW = 0x00000000; 
+    *GPIOD_ODR_LOW = 0;
+    delay( DELAY_COUNT );
+    *GPIOD_ODR_LOW = 0xFF;
     
+    while(1){
+        if ( systick_flag ) 
+            break;
+            //kod som utfors under vantetiden
+        }
+    //Kod som vantar p[ timeout
+    *GPIOD_ODR_LOW = 0
 }
 
