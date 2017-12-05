@@ -1,8 +1,8 @@
 .PHONY: clean All
 
 All:
-	@echo "----------Building project:[ UsageFault - Debug ]----------"
-	@cd "UsageFault" && "$(MAKE)" -f  "UsageFault.mk" && "$(MAKE)" -f  "UsageFault.mk" PostBuild
+	@echo "----------Building project:[ SysTick - Debug ]----------"
+	@cd "SysTick" && "$(MAKE)" -f  "SysTick.mk" && "$(MAKE)" -f  "SysTick.mk" PostBuild
 clean:
-	@echo "----------Cleaning project:[ UsageFault - Debug ]----------"
-	@cd "UsageFault" && "$(MAKE)" -f  "UsageFault.mk" clean
+	@echo "----------Cleaning project:[ SysTick - Debug ]----------"
+	@cd "SysTick" && "$(MAKE)" -f  "SysTick.mk" clean

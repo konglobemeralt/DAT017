@@ -29,7 +29,12 @@
 #define GPIOD_ODR_HIGH ((volatile unsigned char *) (GPIOD_D+0x15))
 
 #include "delay.h"
- 
+
+  
+
+
+extern unsigned char systick_flag; 
+
 void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
 
 void startup ( void )
@@ -42,22 +47,17 @@ asm volatile(
 	) ;
 }
 
-void init_app(){
-    *GPIOD_MODER = 0x55555555;
-    *((void (**) (void)) 0x2001C03C ) = systick_irq_handler;
-    }
-
 void systick_irq_handler(){
     //deaktivera flaggan
     systick_flag = 1;
     }
     
-void delay_1mikro(){
-    //initera avbrottsektor
-    systick
-     systick_flag = 0;
+
+void init_app(){
+    *GPIOD_MODER = 0x55555555;
+    *((void (**) (void)) 0x2001C03C ) = systick_irq_handler;
     }
-    
+
 void main(void)
 {
     init_app();
@@ -71,6 +71,6 @@ void main(void)
             //kod som utfors under vantetiden
         }
     //Kod som vantar p[ timeout
-    *GPIOD_ODR_LOW = 0
+    *GPIOD_ODR_LOW = 0;
 }
 
