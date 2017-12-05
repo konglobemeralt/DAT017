@@ -1,0 +1,21 @@
+[{
+  "file": "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c",
+  "directory": "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io",
+  "command": "/Applications/gcc-arm-none-eabi-6-2017-q1-update/bin/arm-none-eabi-gcc -c /Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c -o /Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/basic_io/startup.c.o  -g  -O0  -mthumb  -Wall  -march=armv6-m  -msoft-float  -Wa,-adhln=test.s -DSIMULATOR -I. -I."
+ }, {
+  "file": "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/startup.c",
+  "directory": "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp",
+  "command": "/Applications/gcc-arm-none-eabi-6-2017-q1-update/bin/arm-none-eabi-gcc -c /Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/startup.c -o /Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/LCDDisp/startup.c.o  -g  -O0  -mthumb  -Wall  -march=armv6-m  -msoft-float  -Wa,-adhln=test.s -I. -I."
+ }, {
+  "file": "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c",
+  "directory": "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick",
+  "command": "/Applications/gcc-arm-none-eabi-6-2017-q1-update/bin/arm-none-eabi-gcc -c /Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c -o /Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c.o  -g  -O0  -mthumb  -Wall  -march=armv6-m  -msoft-float  -Wa,-adhln=test.s -I. -I."
+ }, {
+  "file": "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/UsageFault/startup.c",
+  "directory": "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/UsageFault",
+  "command": "/Applications/gcc-arm-none-eabi-6-2017-q1-update/bin/arm-none-eabi-gcc -c /Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/UsageFault/startup.c -o /Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/UsageFault/startup.c.o  -g  -O0  -mthumb  -Wall  -march=armv6-m  -msoft-float  -Wa,-adhln=test.s -I. -I."
+ }, {
+  "file": "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c",
+  "directory": "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong",
+  "command": "/Applications/gcc-arm-none-eabi-6-2017-q1-update/bin/arm-none-eabi-gcc -c /Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c -o /Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/autopong/startup.c.o  -g  -O0  -mthumb  -Wall  -march=armv6-m  -msoft-float  -Wa,-adhln=test.s -I. -I."
+ }]

@@ -412,37 +412,34 @@
   30:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** 
   31:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** #include "delay.h"
   32:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** 
-  33:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****   
+  33:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** extern unsigned char systick_flag; 
   34:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** 
-  35:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** 
-  36:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** extern unsigned char systick_flag; 
-  37:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** 
-  38:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
-  39:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** 
-  40:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** void startup ( void )
-  41:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** {
- 314              		.loc 2 41 0
+  35:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
+  36:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** 
+  37:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** void startup ( void )
+  38:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** {
+ 314              		.loc 2 38 0
  315              		.cfi_startproc
  316              		@ Naked Function: prologue and epilogue provided by programmer.
  317              		@ args = 0, pretend = 0, frame = 0
  318              		@ frame_needed = 1, uses_anonymous_args = 0
-  42:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** asm volatile(
- 319              		.loc 2 42 0
+  39:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** asm volatile(
+ 319              		.loc 2 39 0
  320              		.syntax divided
- 321              	@ 42 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c" 1
+ 321              	@ 39 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c" 1
  322 0000 0248     		 LDR R0,=0x2001C000
  323 0002 8546     	 MOV SP,R0
  324 0004 FFF7FEFF 	 BL main
  325 0008 FEE7     	.L1: B .L1
  326              	
  327              	@ 0 "" 2
-  43:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** 	" LDR R0,=0x2001C000\n"		/* set stack */
-  44:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** 	" MOV SP,R0\n"
-  45:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** 	" BL main\n"				/* call main */
-  46:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** 	".L1: B .L1\n"				/* never return */
-  47:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** 	) ;
-  48:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** }
- 328              		.loc 2 48 0
+  40:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** 	" LDR R0,=0x2001C000\n"		/* set stack */
+  41:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** 	" MOV SP,R0\n"
+  42:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** 	" BL main\n"				/* call main */
+  43:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** 	".L1: B .L1\n"				/* never return */
+  44:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** 	) ;
+  45:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** }
+ 328              		.loc 2 45 0
  329              		.thumb
  330              		.syntax unified
  331 000a C046     		nop
@@ -457,9 +454,9 @@
  341              		.fpu softvfp
  343              	systick_irq_handler:
  344              	.LFB7:
-  49:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** 
-  50:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** void systick_irq_handler(){
- 345              		.loc 2 50 0
+  46:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** 
+  47:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** void systick_irq_handler(){
+ 345              		.loc 2 47 0
  346              		.cfi_startproc
  347              		@ args = 0, pretend = 0, frame = 0
  348              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -469,14 +466,14 @@
  352              		.cfi_offset 14, -4
  353 00f6 00AF     		add	r7, sp, #0
  354              		.cfi_def_cfa_register 7
-  51:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     //deaktivera flaggan
-  52:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     systick_flag = 1;
- 355              		.loc 2 52 0
+  48:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     //deaktivera flaggan
+  49:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     systick_flag = 0;
+ 355              		.loc 2 49 0
  356 00f8 024B     		ldr	r3, .L18
- 357 00fa 0122     		movs	r2, #1
+ 357 00fa 0022     		movs	r2, #0
  358 00fc 1A70     		strb	r2, [r3]
-  53:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     }
- 359              		.loc 2 53 0
+  50:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     }
+ 359              		.loc 2 50 0
  360 00fe C046     		nop
  361 0100 BD46     		mov	sp, r7
  362              		@ sp needed
@@ -495,10 +492,10 @@
  376              		.fpu softvfp
  378              	init_app:
  379              	.LFB8:
-  54:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     
-  55:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** 
-  56:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** void init_app(){
- 380              		.loc 2 56 0
+  51:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     
+  52:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** 
+  53:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** void init_app(){
+ 380              		.loc 2 53 0
  381              		.cfi_startproc
  382              		@ args = 0, pretend = 0, frame = 0
  383              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -508,18 +505,18 @@
  387              		.cfi_offset 14, -4
  388 010a 00AF     		add	r7, sp, #0
  389              		.cfi_def_cfa_register 7
-  57:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     *GPIOD_MODER = 0x55555555;
- 390              		.loc 2 57 0
+  54:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     *GPIOD_MODER = 0x55555555;
+ 390              		.loc 2 54 0
  391 010c 044B     		ldr	r3, .L21
  392 010e 054A     		ldr	r2, .L21+4
  393 0110 1A60     		str	r2, [r3]
-  58:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     *((void (**) (void)) 0x2001C03C ) = systick_irq_handler;
- 394              		.loc 2 58 0
+  55:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     *((void (**) (void)) 0x2001C03C) = systick_irq_handler;
+ 394              		.loc 2 55 0
  395 0112 054B     		ldr	r3, .L21+8
  396 0114 054A     		ldr	r2, .L21+12
  397 0116 1A60     		str	r2, [r3]
-  59:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     }
- 398              		.loc 2 59 0
+  56:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     }
+ 398              		.loc 2 56 0
  399 0118 C046     		nop
  400 011a BD46     		mov	sp, r7
  401              		@ sp needed
@@ -541,71 +538,112 @@
  418              		.fpu softvfp
  420              	main:
  421              	.LFB9:
-  60:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** 
-  61:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** void main(void)
-  62:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** {
- 422              		.loc 2 62 0
+  57:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** 
+  58:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** void main(void)
+  59:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** {
+ 422              		.loc 2 59 0
  423              		.cfi_startproc
- 424              		@ args = 0, pretend = 0, frame = 0
+ 424              		@ args = 0, pretend = 0, frame = 8
  425              		@ frame_needed = 1, uses_anonymous_args = 0
  426 0130 80B5     		push	{r7, lr}
  427              		.cfi_def_cfa_offset 8
  428              		.cfi_offset 7, -8
  429              		.cfi_offset 14, -4
- 430 0132 00AF     		add	r7, sp, #0
- 431              		.cfi_def_cfa_register 7
-  63:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     init_app();
- 432              		.loc 2 63 0
- 433 0134 FFF7FEFF 		bl	init_app
-  64:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     *GPIOD_ODR_LOW = 0;
- 434              		.loc 2 64 0
- 435 0138 0A4B     		ldr	r3, .L29
- 436 013a 0022     		movs	r2, #0
- 437 013c 1A70     		strb	r2, [r3]
-  65:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     delay( DELAY_COUNT );
- 438              		.loc 2 65 0
- 439 013e 0A4B     		ldr	r3, .L29+4
- 440 0140 1800     		movs	r0, r3
- 441 0142 FFF7FEFF 		bl	delay
-  66:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     *GPIOD_ODR_LOW = 0xFF;
- 442              		.loc 2 66 0
- 443 0146 074B     		ldr	r3, .L29
- 444 0148 FF22     		movs	r2, #255
- 445 014a 1A70     		strb	r2, [r3]
- 446              	.L26:
-  67:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     
-  68:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     while(1){
-  69:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****         if ( systick_flag ) 
- 447              		.loc 2 69 0
- 448 014c 074B     		ldr	r3, .L29+8
- 449 014e 1B78     		ldrb	r3, [r3]
- 450 0150 002B     		cmp	r3, #0
- 451 0152 00D1     		bne	.L28
- 452 0154 FAE7     		b	.L26
- 453              	.L28:
-  70:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****             break;
- 454              		.loc 2 70 0
- 455 0156 C046     		nop
-  71:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****             //kod som utfors under vantetiden
-  72:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****         }
-  73:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     //Kod som vantar p[ timeout
-  74:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     *GPIOD_ODR_LOW = 0;
- 456              		.loc 2 74 0
- 457 0158 024B     		ldr	r3, .L29
- 458 015a 0022     		movs	r2, #0
- 459 015c 1A70     		strb	r2, [r3]
-  75:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** }
- 460              		.loc 2 75 0
- 461 015e C046     		nop
- 462 0160 BD46     		mov	sp, r7
- 463              		@ sp needed
- 464 0162 80BD     		pop	{r7, pc}
- 465              	.L30:
- 466              		.align	2
- 467              	.L29:
- 468 0164 140C0240 		.word	1073875988
- 469 0168 40420F00 		.word	1000000
- 470 016c 00000000 		.word	systick_flag
- 471              		.cfi_endproc
- 472              	.LFE9:
- 474              	.Letext0:
+ 430 0132 82B0     		sub	sp, sp, #8
+ 431              		.cfi_def_cfa_offset 16
+ 432 0134 00AF     		add	r7, sp, #0
+ 433              		.cfi_def_cfa_register 7
+  60:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     unsigned int delaySync = 0;
+ 434              		.loc 2 60 0
+ 435 0136 0023     		movs	r3, #0
+ 436 0138 7B60     		str	r3, [r7, #4]
+  61:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     
+  62:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     init_app();
+ 437              		.loc 2 62 0
+ 438 013a FFF7FEFF 		bl	init_app
+  63:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     *GPIOD_ODR_LOW = 0;
+ 439              		.loc 2 63 0
+ 440 013e 134B     		ldr	r3, .L30
+ 441 0140 0022     		movs	r2, #0
+ 442 0142 1A70     		strb	r2, [r3]
+  64:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     delay( DELAY_COUNT );
+ 443              		.loc 2 64 0
+ 444 0144 124B     		ldr	r3, .L30+4
+ 445 0146 1800     		movs	r0, r3
+ 446 0148 FFF7FEFF 		bl	delay
+  65:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     *GPIOD_ODR_LOW = 0xFF;
+ 447              		.loc 2 65 0
+ 448 014c 0F4B     		ldr	r3, .L30
+ 449 014e FF22     		movs	r2, #255
+ 450 0150 1A70     		strb	r2, [r3]
+ 451              	.L27:
+  66:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     
+  67:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     while(1){
+  68:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****         if ( systick_flag == 1 ) 
+ 452              		.loc 2 68 0
+ 453 0152 104B     		ldr	r3, .L30+8
+ 454 0154 1B78     		ldrb	r3, [r3]
+ 455 0156 012B     		cmp	r3, #1
+ 456 0158 0FD0     		beq	.L29
+  69:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****             break;
+  70:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****             //kod som utfors under vantetiden
+  71:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****         *GPIOD_ODR_LOW = 0xFF;
+ 457              		.loc 2 71 0
+ 458 015a 0C4B     		ldr	r3, .L30
+ 459 015c FF22     		movs	r2, #255
+ 460 015e 1A70     		strb	r2, [r3]
+  72:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****         
+  73:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****         //Kod som vantar p[ timeout
+  74:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****         if(delaySync == 15000){
+ 461              		.loc 2 74 0
+ 462 0160 7B68     		ldr	r3, [r7, #4]
+ 463 0162 0D4A     		ldr	r2, .L30+12
+ 464 0164 9342     		cmp	r3, r2
+ 465 0166 04D1     		bne	.L26
+  75:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****                 *GPIOD_ODR_LOW = 0x00;
+ 466              		.loc 2 75 0
+ 467 0168 084B     		ldr	r3, .L30
+ 468 016a 0022     		movs	r2, #0
+ 469 016c 1A70     		strb	r2, [r3]
+  76:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****                 delaySync = 0;
+ 470              		.loc 2 76 0
+ 471 016e 0023     		movs	r3, #0
+ 472 0170 7B60     		str	r3, [r7, #4]
+ 473              	.L26:
+  77:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****                 
+  78:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****             }
+  79:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     delaySync++;
+ 474              		.loc 2 79 0
+ 475 0172 7B68     		ldr	r3, [r7, #4]
+ 476 0174 0133     		adds	r3, r3, #1
+ 477 0176 7B60     		str	r3, [r7, #4]
+  68:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****             break;
+ 478              		.loc 2 68 0
+ 479 0178 EBE7     		b	.L27
+ 480              	.L29:
+  69:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****             //kod som utfors under vantetiden
+ 481              		.loc 2 69 0
+ 482 017a C046     		nop
+  80:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     }
+  81:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c ****     *GPIOD_ODR_LOW = 0;
+ 483              		.loc 2 81 0
+ 484 017c 034B     		ldr	r3, .L30
+ 485 017e 0022     		movs	r2, #0
+ 486 0180 1A70     		strb	r2, [r3]
+  82:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/SysTick/startup.c **** }
+ 487              		.loc 2 82 0
+ 488 0182 C046     		nop
+ 489 0184 BD46     		mov	sp, r7
+ 490 0186 02B0     		add	sp, sp, #8
+ 491              		@ sp needed
+ 492 0188 80BD     		pop	{r7, pc}
+ 493              	.L31:
+ 494 018a C046     		.align	2
+ 495              	.L30:
+ 496 018c 140C0240 		.word	1073875988
+ 497 0190 40420F00 		.word	1000000
+ 498 0194 00000000 		.word	systick_flag
+ 499 0198 983A0000 		.word	15000
+ 500              		.cfi_endproc
+ 501              	.LFE9:
+ 503              	.Letext0:

@@ -30,9 +30,6 @@
 
 #include "delay.h"
 
-  
-
-
 extern unsigned char systick_flag; 
 
 void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
@@ -49,28 +46,38 @@ asm volatile(
 
 void systick_irq_handler(){
     //deaktivera flaggan
-    systick_flag = 1;
+    systick_flag = 0;
     }
     
 
 void init_app(){
     *GPIOD_MODER = 0x55555555;
-    *((void (**) (void)) 0x2001C03C ) = systick_irq_handler;
+    *((void (**) (void)) 0x2001C03C) = systick_irq_handler;
     }
 
 void main(void)
 {
+    unsigned int delaySync = 0;
+    
     init_app();
     *GPIOD_ODR_LOW = 0;
     delay( DELAY_COUNT );
     *GPIOD_ODR_LOW = 0xFF;
     
     while(1){
-        if ( systick_flag ) 
+        if ( systick_flag == 1 ) 
             break;
             //kod som utfors under vantetiden
-        }
-    //Kod som vantar p[ timeout
+        *GPIOD_ODR_LOW = 0xFF;
+        
+        //Kod som vantar p[ timeout
+        if(delaySync == 15000){
+                *GPIOD_ODR_LOW = 0x00;
+                delaySync = 0;
+                
+            }
+    delaySync++;
+    }
     *GPIOD_ODR_LOW = 0;
 }
 
