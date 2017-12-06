@@ -1,8 +1,8 @@
 .PHONY: clean All
 
 All:
-	@echo "----------Building project:[ SysTick - Debug ]----------"
-	@cd "SysTick" && "$(MAKE)" -f  "SysTick.mk" && "$(MAKE)" -f  "SysTick.mk" PostBuild
+	@echo "----------Building project:[ 6_4 - Debug ]----------"
+	@cd "6_4" && "$(MAKE)" -f  "6_4.mk" && "$(MAKE)" -f  "6_4.mk" PostBuild
 clean:
-	@echo "----------Cleaning project:[ SysTick - Debug ]----------"
-	@cd "SysTick" && "$(MAKE)" -f  "SysTick.mk" clean
+	@echo "----------Cleaning project:[ 6_4 - Debug ]----------"
+	@cd "6_4" && "$(MAKE)" -f  "6_4.mk" clean

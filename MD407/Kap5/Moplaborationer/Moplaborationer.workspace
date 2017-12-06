@@ -4,8 +4,8 @@
   <Project Name="LCDDisp" Path="LCDDisp/LCDDisp.project" Active="No"/>
   <Project Name="autopong" Path="autopong/autopong.project" Active="No"/>
   <Project Name="UsageFault" Path="UsageFault/UsageFault.project" Active="No"/>
-  <Project Name="SysTick" Path="SysTick/SysTick.project" Active="Yes"/>
-  <Project Name="6_4" Path="6_4/6_4.project"/>
+  <Project Name="SysTick" Path="SysTick/SysTick.project" Active="No"/>
+  <Project Name="6_4" Path="6_4/6_4.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
