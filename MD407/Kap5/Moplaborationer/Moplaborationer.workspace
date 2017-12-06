@@ -6,7 +6,8 @@
   <Project Name="UsageFault" Path="UsageFault/UsageFault.project" Active="No"/>
   <Project Name="SysTick" Path="SysTick/SysTick.project" Active="No"/>
   <Project Name="6_4" Path="6_4/6_4.project" Active="No"/>
-  <Project Name="6_5_irq" Path="6_5_irq/6_5_irq.project" Active="Yes"/>
+  <Project Name="6_5_irq" Path="6_5_irq/6_5_irq.project" Active="No"/>
+  <Project Name="6_6_irq_vec" Path="6_6/6_6.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
@@ -17,6 +18,7 @@
       <Project Name="SysTick" ConfigName="Debug"/>
       <Project Name="6_4" ConfigName="Debug"/>
       <Project Name="6_5_irq" ConfigName="Debug"/>
+      <Project Name="6_6_irq_vec" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
@@ -27,6 +29,7 @@
       <Project Name="SysTick" ConfigName="Release"/>
       <Project Name="6_4" ConfigName="Release"/>
       <Project Name="6_5_irq" ConfigName="Release"/>
+      <Project Name="6_6_irq_vec" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>
