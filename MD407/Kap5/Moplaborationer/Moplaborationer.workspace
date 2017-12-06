@@ -5,6 +5,7 @@
   <Project Name="autopong" Path="autopong/autopong.project" Active="No"/>
   <Project Name="UsageFault" Path="UsageFault/UsageFault.project" Active="No"/>
   <Project Name="SysTick" Path="SysTick/SysTick.project" Active="Yes"/>
+  <Project Name="6_4" Path="6_4/6_4.project"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
@@ -13,6 +14,7 @@
       <Project Name="autopong" ConfigName="Debug"/>
       <Project Name="UsageFault" ConfigName="Debug"/>
       <Project Name="SysTick" ConfigName="Debug"/>
+      <Project Name="6_4" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
@@ -21,6 +23,7 @@
       <Project Name="autopong" ConfigName="Release"/>
       <Project Name="UsageFault" ConfigName="Release"/>
       <Project Name="SysTick" ConfigName="Release"/>
+      <Project Name="6_4" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>
