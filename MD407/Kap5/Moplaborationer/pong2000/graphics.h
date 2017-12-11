@@ -6,6 +6,7 @@
 #ifndef GRAPHICS_H
 #define GRAPHICS_H
 
+#include "delay.h"
 // Control for display
 #define B_E 0x40
 #define B_SELECT 0x04
@@ -32,11 +33,11 @@
 typedef unsigned char uint8_t;
 
 void graphics_ctrl_bit_set(uint8_t x){
-    *GPIO_ODR_LOW |= (x & ~B_SELECT);
+    *GPIO_E_ODR_LOW |= (x & ~B_SELECT);
 }
 
 void graphics_ctrl_bit_clear(uint8_t x){
-    *GPIO_ODR_LOW &= ~x;
+    *GPIO_E_ODR_LOW &= ~x;
 }
 
 void select_controller(uint8_t controller){
@@ -57,7 +58,7 @@ void select_controller(uint8_t controller){
 
 void graphic_wait_ready(){
     graphics_ctrl_bit_clear(B_E);
-    *GPIO_MODER = 0x00005555;
+    *GPIO_E_MODER = 0x00005555;
     graphics_ctrl_bit_clear(B_RS);
     graphics_ctrl_bit_set(B_RW);
     delay500ns();
@@ -68,27 +69,27 @@ void graphic_wait_ready(){
         graphics_ctrl_bit_clear(B_E);
         delay500ns();
         //unsigned char i = *GPIO_IDR_HIGH;
-        if((*GPIO_IDR_HIGH & LCD_BUSY) == 0) {
+        if((*GPIO_E_IDR_HIGH & LCD_BUSY) == 0) {
             break;
         }
     }
     graphics_ctrl_bit_set(B_E);
-    *GPIO_MODER = 0x55555555;
+    *GPIO_E_MODER = 0x55555555;
     
 }
 
 uint8_t graphic_read(uint8_t controller){
     graphics_ctrl_bit_clear(B_E);
-    *GPIO_MODER = 0x00005555;
+    *GPIO_E_MODER = 0x00005555;
     graphics_ctrl_bit_set(B_RS | B_RW);
     select_controller(controller);
     delay500ns();
     graphics_ctrl_bit_set(B_E);
     delay500ns();
     
-    uint8_t RV = *GPIO_IDR_HIGH;
+    uint8_t RV = *GPIO_E_IDR_HIGH;
     graphics_ctrl_bit_clear(B_E);
-    *GPIO_MODER = 0x55555555;
+    *GPIO_E_MODER = 0x55555555;
     
     if(controller == B_CS1){
         select_controller(B_CS1);
@@ -105,7 +106,7 @@ uint8_t graphic_read(uint8_t controller){
 }
 
 void graphic_write(uint8_t value, uint8_t controller){
-    *GPIO_ODR_HIGH = value;
+    *GPIO_E_ODR_HIGH = value;
     select_controller(controller);
     delay500ns();
     graphics_ctrl_bit_set(B_E);
@@ -122,7 +123,7 @@ void graphic_write(uint8_t value, uint8_t controller){
         graphic_wait_ready();
     }
     
-    *GPIO_ODR_HIGH = 0;
+    *GPIO_E_ODR_HIGH = 0;
     graphics_ctrl_bit_set(B_E);
     select_controller(0);
 }

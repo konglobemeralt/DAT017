@@ -1,8 +1,8 @@
 .PHONY: clean All
 
 All:
-	@echo "----------Building project:[ 6_6_irq_vec - Debug ]----------"
-	@cd "6_6" && "$(MAKE)" -f  "6_6_irq_vec.mk" && "$(MAKE)" -f  "6_6_irq_vec.mk" PostBuild
+	@echo "----------Building project:[ pong2000 - Debug ]----------"
+	@cd "pong2000" && "$(MAKE)" -f  "pong2000.mk" && "$(MAKE)" -f  "pong2000.mk" PostBuild
 clean:
-	@echo "----------Cleaning project:[ 6_6_irq_vec - Debug ]----------"
-	@cd "6_6" && "$(MAKE)" -f  "6_6_irq_vec.mk" clean
+	@echo "----------Cleaning project:[ pong2000 - Debug ]----------"
+	@cd "pong2000" && "$(MAKE)" -f  "pong2000.mk" clean

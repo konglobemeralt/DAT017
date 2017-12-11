@@ -2,6 +2,16 @@
  * 	startup.c
  *
  */
+#define SIMULATOR
+
+#include "registers.h"
+#include "delay.h"
+#include "graphics.h"
+#include "object.h"
+#include "ball.h"
+ 
+extern OBJECT ball;
+ 
 void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
 
 void startup ( void )
@@ -14,7 +24,26 @@ asm volatile(
 	) ;
 }
 
+void init_app(void){
+        *GPIO_E_MODER = 0x55555555;
+    }
+
 void main(void)
 {
-}
+     init_app();
+    graphic_initialize();
+    #ifndef SIMULATOR
+        graphics_clear_screen();
+    #endif
+
+    POBJECT p = &ball;
+    p->set_speed(p, 4, 4);
+    while(1){
+        p->move(p);
+        delay_milli(40);
+        
+        }
+    
+}    
+
 
