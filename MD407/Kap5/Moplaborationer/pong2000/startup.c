@@ -12,7 +12,6 @@
 #include "paddle.h"
  
 extern OBJECT ball;
-extern OBJECT paddle;
  
 void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
 
@@ -40,13 +39,16 @@ void main(void)
 
     
     POBJECT p = &ball;
-    POBJECT pad = &paddle;
+    POBJECT Lpad = &Lpaddle;
+    POBJECT Rpad = &Rpaddle;
     
     p->set_speed(p, 4, 4);
+    
     while(1){
         p->move(p);
         delay_milli(40);
-        pad->move(pad);
+        Lpad->move(Lpad);
+        Rpad->move(Rpad);
         }
     
 }    

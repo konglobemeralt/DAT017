@@ -1,8 +1,9 @@
-extern OBJECT paddle;
+extern OBJECT Rpaddle;
+extern OBJECT Lpaddle;
 
 GEOMETRY paddle_geometry = {
 	75,
-	3, 25,
+	2, 25,
 	{
         {0, 1}, {0, 2}, {0, 3}, {0, 4}, {0, 5},
         {0, 6}, {0, 7}, {0, 8}, {0, 9}, {0, 10},
@@ -25,7 +26,18 @@ GEOMETRY paddle_geometry = {
 	}
 };
     
-OBJECT paddle =
+OBJECT Rpaddle =
+{
+        &paddle_geometry, //geometri
+        0, 0,           //init direction
+        120, 1,           //start init
+        draw_object,
+        clear_object,
+        move_object,
+        set_object_speed
+};
+
+OBJECT Lpaddle =
 {
         &paddle_geometry, //geometri
         0, 0,           //init direction

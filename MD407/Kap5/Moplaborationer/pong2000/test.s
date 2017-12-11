@@ -1893,7 +1893,7 @@
  1587              		.align	2
  1590              	paddle_geometry:
  1591 00c8 4B000000 		.word	75
- 1592 00cc 03000000 		.word	3
+ 1592 00cc 02000000 		.word	2
  1593 00d0 19000000 		.word	25
  1594 00d4 00       		.byte	0
  1595 00d5 01       		.byte	1
@@ -2046,28 +2046,40 @@
  1742 0168 02       		.byte	2
  1743 0169 19       		.byte	25
  1744 016a 0000     		.space	2
- 1745              		.global	paddle
+ 1745              		.global	Rpaddle
  1746              		.align	2
- 1749              	paddle:
+ 1749              	Rpaddle:
  1750 016c 00000000 		.word	paddle_geometry
  1751 0170 00000000 		.word	0
  1752 0174 00000000 		.word	0
- 1753 0178 01000000 		.word	1
+ 1753 0178 78000000 		.word	120
  1754 017c 01000000 		.word	1
  1755 0180 00000000 		.word	draw_object
  1756 0184 00000000 		.word	clear_object
  1757 0188 00000000 		.word	move_object
  1758 018c 00000000 		.word	set_object_speed
- 1759              		.section	.start_section,"ax",%progbits
- 1760              		.align	1
- 1761              		.global	startup
- 1762              		.syntax unified
- 1763              		.code	16
- 1764              		.thumb_func
- 1765              		.fpu softvfp
- 1767              	startup:
- 1768              	.LFB20:
- 1769              		.file 4 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c
+ 1759              		.global	Lpaddle
+ 1760              		.align	2
+ 1763              	Lpaddle:
+ 1764 0190 00000000 		.word	paddle_geometry
+ 1765 0194 00000000 		.word	0
+ 1766 0198 00000000 		.word	0
+ 1767 019c 01000000 		.word	1
+ 1768 01a0 01000000 		.word	1
+ 1769 01a4 00000000 		.word	draw_object
+ 1770 01a8 00000000 		.word	clear_object
+ 1771 01ac 00000000 		.word	move_object
+ 1772 01b0 00000000 		.word	set_object_speed
+ 1773              		.section	.start_section,"ax",%progbits
+ 1774              		.align	1
+ 1775              		.global	startup
+ 1776              		.syntax unified
+ 1777              		.code	16
+ 1778              		.thumb_func
+ 1779              		.fpu softvfp
+ 1781              	startup:
+ 1782              	.LFB20:
+ 1783              		.file 4 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c
    1:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** /*
    2:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****  * 	startup.c
    3:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****  *
@@ -2082,162 +2094,175 @@
   12:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** #include "paddle.h"
   13:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****  
   14:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** extern OBJECT ball;
-  15:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** extern OBJECT paddle;
-  16:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****  
-  17:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
-  18:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 
-  19:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** void startup ( void )
-  20:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** {
- 1770              		.loc 4 20 0
- 1771              		.cfi_startproc
- 1772              		@ Naked Function: prologue and epilogue provided by programmer.
- 1773              		@ args = 0, pretend = 0, frame = 0
- 1774              		@ frame_needed = 1, uses_anonymous_args = 0
-  21:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** asm volatile(
- 1775              		.loc 4 21 0
- 1776              		.syntax divided
- 1777              	@ 21 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c" 1
- 1778 0000 0248     		 LDR R0,=0x2001C000
- 1779 0002 8546     	 MOV SP,R0
- 1780 0004 FFF7FEFF 	 BL main
- 1781 0008 FEE7     	.L1: B .L1
- 1782              	
- 1783              	@ 0 "" 2
-  22:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 	" LDR R0,=0x2001C000\n"		/* set stack */
-  23:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 	" MOV SP,R0\n"
-  24:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 	" BL main\n"				/* call main */
-  25:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 	".L1: B .L1\n"				/* never return */
-  26:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 	) ;
-  27:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** }
- 1784              		.loc 4 27 0
- 1785              		.thumb
- 1786              		.syntax unified
- 1787 000a C046     		nop
- 1788              		.cfi_endproc
- 1789              	.LFE20:
- 1791              		.text
- 1792              		.align	1
- 1793              		.global	init_app
- 1794              		.syntax unified
- 1795              		.code	16
- 1796              		.thumb_func
- 1797              		.fpu softvfp
- 1799              	init_app:
- 1800              	.LFB21:
-  28:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 
-  29:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** void init_app(void){
- 1801              		.loc 4 29 0
- 1802              		.cfi_startproc
- 1803              		@ args = 0, pretend = 0, frame = 0
- 1804              		@ frame_needed = 1, uses_anonymous_args = 0
- 1805 0738 80B5     		push	{r7, lr}
- 1806              		.cfi_def_cfa_offset 8
- 1807              		.cfi_offset 7, -8
- 1808              		.cfi_offset 14, -4
- 1809 073a 00AF     		add	r7, sp, #0
- 1810              		.cfi_def_cfa_register 7
-  30:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         *GPIO_E_MODER = 0x55555555;
- 1811              		.loc 4 30 0
- 1812 073c 024B     		ldr	r3, .L83
- 1813 073e 034A     		ldr	r2, .L83+4
- 1814 0740 1A60     		str	r2, [r3]
-  31:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     }
- 1815              		.loc 4 31 0
- 1816 0742 C046     		nop
- 1817 0744 BD46     		mov	sp, r7
- 1818              		@ sp needed
- 1819 0746 80BD     		pop	{r7, pc}
- 1820              	.L84:
- 1821              		.align	2
- 1822              	.L83:
- 1823 0748 00100240 		.word	1073876992
- 1824 074c 55555555 		.word	1431655765
- 1825              		.cfi_endproc
- 1826              	.LFE21:
- 1828              		.align	1
- 1829              		.global	main
- 1830              		.syntax unified
- 1831              		.code	16
- 1832              		.thumb_func
- 1833              		.fpu softvfp
- 1835              	main:
- 1836              	.LFB22:
-  32:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 
-  33:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** void main(void)
-  34:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** {
- 1837              		.loc 4 34 0
- 1838              		.cfi_startproc
- 1839              		@ args = 0, pretend = 0, frame = 8
- 1840              		@ frame_needed = 1, uses_anonymous_args = 0
- 1841 0750 80B5     		push	{r7, lr}
- 1842              		.cfi_def_cfa_offset 8
- 1843              		.cfi_offset 7, -8
- 1844              		.cfi_offset 14, -4
- 1845 0752 82B0     		sub	sp, sp, #8
- 1846              		.cfi_def_cfa_offset 16
- 1847 0754 00AF     		add	r7, sp, #0
- 1848              		.cfi_def_cfa_register 7
-  35:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     init_app();
- 1849              		.loc 4 35 0
- 1850 0756 FFF7FEFF 		bl	init_app
-  36:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     graphic_initialize();
- 1851              		.loc 4 36 0
- 1852 075a FFF7FEFF 		bl	graphic_initialize
-  37:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     #ifndef SIMULATOR
-  38:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         graphics_clear_screen();
-  39:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     #endif
-  40:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 
-  41:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     
-  42:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     POBJECT p = &ball;
- 1853              		.loc 4 42 0
- 1854 075e 0C4B     		ldr	r3, .L87
- 1855 0760 7B60     		str	r3, [r7, #4]
-  43:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     POBJECT pad = &paddle;
- 1856              		.loc 4 43 0
- 1857 0762 0C4B     		ldr	r3, .L87+4
- 1858 0764 3B60     		str	r3, [r7]
+  15:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****  
+  16:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
+  17:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 
+  18:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** void startup ( void )
+  19:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** {
+ 1784              		.loc 4 19 0
+ 1785              		.cfi_startproc
+ 1786              		@ Naked Function: prologue and epilogue provided by programmer.
+ 1787              		@ args = 0, pretend = 0, frame = 0
+ 1788              		@ frame_needed = 1, uses_anonymous_args = 0
+  20:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** asm volatile(
+ 1789              		.loc 4 20 0
+ 1790              		.syntax divided
+ 1791              	@ 20 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c" 1
+ 1792 0000 0248     		 LDR R0,=0x2001C000
+ 1793 0002 8546     	 MOV SP,R0
+ 1794 0004 FFF7FEFF 	 BL main
+ 1795 0008 FEE7     	.L1: B .L1
+ 1796              	
+ 1797              	@ 0 "" 2
+  21:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 	" LDR R0,=0x2001C000\n"		/* set stack */
+  22:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 	" MOV SP,R0\n"
+  23:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 	" BL main\n"				/* call main */
+  24:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 	".L1: B .L1\n"				/* never return */
+  25:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 	) ;
+  26:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** }
+ 1798              		.loc 4 26 0
+ 1799              		.thumb
+ 1800              		.syntax unified
+ 1801 000a C046     		nop
+ 1802              		.cfi_endproc
+ 1803              	.LFE20:
+ 1805              		.text
+ 1806              		.align	1
+ 1807              		.global	init_app
+ 1808              		.syntax unified
+ 1809              		.code	16
+ 1810              		.thumb_func
+ 1811              		.fpu softvfp
+ 1813              	init_app:
+ 1814              	.LFB21:
+  27:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 
+  28:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** void init_app(void){
+ 1815              		.loc 4 28 0
+ 1816              		.cfi_startproc
+ 1817              		@ args = 0, pretend = 0, frame = 0
+ 1818              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1819 0738 80B5     		push	{r7, lr}
+ 1820              		.cfi_def_cfa_offset 8
+ 1821              		.cfi_offset 7, -8
+ 1822              		.cfi_offset 14, -4
+ 1823 073a 00AF     		add	r7, sp, #0
+ 1824              		.cfi_def_cfa_register 7
+  29:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         *GPIO_E_MODER = 0x55555555;
+ 1825              		.loc 4 29 0
+ 1826 073c 024B     		ldr	r3, .L83
+ 1827 073e 034A     		ldr	r2, .L83+4
+ 1828 0740 1A60     		str	r2, [r3]
+  30:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     }
+ 1829              		.loc 4 30 0
+ 1830 0742 C046     		nop
+ 1831 0744 BD46     		mov	sp, r7
+ 1832              		@ sp needed
+ 1833 0746 80BD     		pop	{r7, pc}
+ 1834              	.L84:
+ 1835              		.align	2
+ 1836              	.L83:
+ 1837 0748 00100240 		.word	1073876992
+ 1838 074c 55555555 		.word	1431655765
+ 1839              		.cfi_endproc
+ 1840              	.LFE21:
+ 1842              		.align	1
+ 1843              		.global	main
+ 1844              		.syntax unified
+ 1845              		.code	16
+ 1846              		.thumb_func
+ 1847              		.fpu softvfp
+ 1849              	main:
+ 1850              	.LFB22:
+  31:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 
+  32:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** void main(void)
+  33:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** {
+ 1851              		.loc 4 33 0
+ 1852              		.cfi_startproc
+ 1853              		@ args = 0, pretend = 0, frame = 16
+ 1854              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1855 0750 80B5     		push	{r7, lr}
+ 1856              		.cfi_def_cfa_offset 8
+ 1857              		.cfi_offset 7, -8
+ 1858              		.cfi_offset 14, -4
+ 1859 0752 84B0     		sub	sp, sp, #16
+ 1860              		.cfi_def_cfa_offset 24
+ 1861 0754 00AF     		add	r7, sp, #0
+ 1862              		.cfi_def_cfa_register 7
+  34:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     init_app();
+ 1863              		.loc 4 34 0
+ 1864 0756 FFF7FEFF 		bl	init_app
+  35:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     graphic_initialize();
+ 1865              		.loc 4 35 0
+ 1866 075a FFF7FEFF 		bl	graphic_initialize
+  36:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     #ifndef SIMULATOR
+  37:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         graphics_clear_screen();
+  38:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     #endif
+  39:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 
+  40:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     
+  41:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     POBJECT p = &ball;
+ 1867              		.loc 4 41 0
+ 1868 075e 0F4B     		ldr	r3, .L87
+ 1869 0760 FB60     		str	r3, [r7, #12]
+  42:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     POBJECT Lpad = &Lpaddle;
+ 1870              		.loc 4 42 0
+ 1871 0762 0F4B     		ldr	r3, .L87+4
+ 1872 0764 BB60     		str	r3, [r7, #8]
+  43:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     POBJECT Rpad = &Rpaddle;
+ 1873              		.loc 4 43 0
+ 1874 0766 0F4B     		ldr	r3, .L87+8
+ 1875 0768 7B60     		str	r3, [r7, #4]
   44:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     
   45:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     p->set_speed(p, 4, 4);
- 1859              		.loc 4 45 0
- 1860 0766 7B68     		ldr	r3, [r7, #4]
- 1861 0768 1B6A     		ldr	r3, [r3, #32]
- 1862 076a 7868     		ldr	r0, [r7, #4]
- 1863 076c 0422     		movs	r2, #4
- 1864 076e 0421     		movs	r1, #4
- 1865 0770 9847     		blx	r3
- 1866              	.LVL1:
- 1867              	.L86:
-  46:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     while(1){
-  47:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         p->move(p);
- 1868              		.loc 4 47 0 discriminator 1
- 1869 0772 7B68     		ldr	r3, [r7, #4]
- 1870 0774 DB69     		ldr	r3, [r3, #28]
- 1871 0776 7A68     		ldr	r2, [r7, #4]
- 1872 0778 1000     		movs	r0, r2
- 1873 077a 9847     		blx	r3
- 1874              	.LVL2:
+ 1876              		.loc 4 45 0
+ 1877 076a FB68     		ldr	r3, [r7, #12]
+ 1878 076c 1B6A     		ldr	r3, [r3, #32]
+ 1879 076e F868     		ldr	r0, [r7, #12]
+ 1880 0770 0422     		movs	r2, #4
+ 1881 0772 0421     		movs	r1, #4
+ 1882 0774 9847     		blx	r3
+ 1883              	.LVL1:
+ 1884              	.L86:
+  46:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     
+  47:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     while(1){
+  48:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         p->move(p);
+ 1885              		.loc 4 48 0 discriminator 1
+ 1886 0776 FB68     		ldr	r3, [r7, #12]
+ 1887 0778 DB69     		ldr	r3, [r3, #28]
+ 1888 077a FA68     		ldr	r2, [r7, #12]
+ 1889 077c 1000     		movs	r0, r2
+ 1890 077e 9847     		blx	r3
+ 1891              	.LVL2:
+  49:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         delay_milli(40);
+ 1892              		.loc 4 49 0 discriminator 1
+ 1893 0780 2820     		movs	r0, #40
+ 1894 0782 FFF7FEFF 		bl	delay_milli
+  50:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         Lpad->move(Lpad);
+ 1895              		.loc 4 50 0 discriminator 1
+ 1896 0786 BB68     		ldr	r3, [r7, #8]
+ 1897 0788 DB69     		ldr	r3, [r3, #28]
+ 1898 078a BA68     		ldr	r2, [r7, #8]
+ 1899 078c 1000     		movs	r0, r2
+ 1900 078e 9847     		blx	r3
+ 1901              	.LVL3:
+  51:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         Rpad->move(Rpad);
+ 1902              		.loc 4 51 0 discriminator 1
+ 1903 0790 7B68     		ldr	r3, [r7, #4]
+ 1904 0792 DB69     		ldr	r3, [r3, #28]
+ 1905 0794 7A68     		ldr	r2, [r7, #4]
+ 1906 0796 1000     		movs	r0, r2
+ 1907 0798 9847     		blx	r3
+ 1908              	.LVL4:
   48:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         delay_milli(40);
- 1875              		.loc 4 48 0 discriminator 1
- 1876 077c 2820     		movs	r0, #40
- 1877 077e FFF7FEFF 		bl	delay_milli
-  49:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         pad->move(pad);
- 1878              		.loc 4 49 0 discriminator 1
- 1879 0782 3B68     		ldr	r3, [r7]
- 1880 0784 DB69     		ldr	r3, [r3, #28]
- 1881 0786 3A68     		ldr	r2, [r7]
- 1882 0788 1000     		movs	r0, r2
- 1883 078a 9847     		blx	r3
- 1884              	.LVL3:
-  47:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         delay_milli(40);
- 1885              		.loc 4 47 0 discriminator 1
- 1886 078c F1E7     		b	.L86
- 1887              	.L88:
- 1888 078e C046     		.align	2
- 1889              	.L87:
- 1890 0790 00000000 		.word	ball
- 1891 0794 00000000 		.word	paddle
- 1892              		.cfi_endproc
- 1893              	.LFE22:
- 1895              	.Letext0:
- 1896              		.file 5 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h"
- 1897              		.file 6 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/paddle.h"
+ 1909              		.loc 4 48 0 discriminator 1
+ 1910 079a ECE7     		b	.L86
+ 1911              	.L88:
+ 1912              		.align	2
+ 1913              	.L87:
+ 1914 079c 00000000 		.word	ball
+ 1915 07a0 00000000 		.word	Lpaddle
+ 1916 07a4 00000000 		.word	Rpaddle
+ 1917              		.cfi_endproc
+ 1918              	.LFE22:
+ 1920              	.Letext0:
+ 1921              		.file 5 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h"
+ 1922              		.file 6 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/paddle.h"
