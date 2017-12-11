@@ -1,7 +1,7 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
-#define MAX_POINTS 20
+#define MAX_POINTS 75
 
 typedef struct tPoint{
     unsigned char x;

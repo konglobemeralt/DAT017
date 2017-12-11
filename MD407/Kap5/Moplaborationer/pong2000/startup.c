@@ -9,8 +9,10 @@
 #include "graphics.h"
 #include "object.h"
 #include "ball.h"
+#include "paddle.h"
  
 extern OBJECT ball;
+extern OBJECT paddle;
  
 void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
 
@@ -30,18 +32,21 @@ void init_app(void){
 
 void main(void)
 {
-     init_app();
+    init_app();
     graphic_initialize();
     #ifndef SIMULATOR
         graphics_clear_screen();
     #endif
 
+    
     POBJECT p = &ball;
+    POBJECT pad = &paddle;
+    
     p->set_speed(p, 4, 4);
     while(1){
         p->move(p);
         delay_milli(40);
-        
+        pad->move(pad);
         }
     
 }    

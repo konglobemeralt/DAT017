@@ -132,6 +132,7 @@ monitor restart</PostConnectCommands>
     <File Name="graphics.h"/>
     <File Name="keypad.h"/>
     <File Name="object.h"/>
+    <File Name="paddle.h"/>
   </VirtualDirectory>
   <VirtualDirectory Name="resources">
     <File Name="md407-ram.x"/>
