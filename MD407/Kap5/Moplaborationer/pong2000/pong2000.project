@@ -127,6 +127,11 @@ monitor restart</PostConnectCommands>
   <VirtualDirectory Name="src">
     <File Name="startup.c"/>
     <File Name="registers.h"/>
+    <File Name="ball.h"/>
+    <File Name="delay.h"/>
+    <File Name="graphics.h"/>
+    <File Name="keypad.h"/>
+    <File Name="object.h"/>
   </VirtualDirectory>
   <VirtualDirectory Name="resources">
     <File Name="md407-ram.x"/>
