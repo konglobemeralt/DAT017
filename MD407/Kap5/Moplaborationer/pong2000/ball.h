@@ -1,6 +1,6 @@
 #include "object.h"
+#include "paddle.h"
 
-extern OBJECT ball;
 
 GEOMETRY ball_geometry = {
 	12,
@@ -23,3 +23,8 @@ OBJECT ball =
         move_object,
         set_object_speed
 };
+
+void move(POBJECT this) {
+	clear_object(this);
+	this->draw(this);
+}

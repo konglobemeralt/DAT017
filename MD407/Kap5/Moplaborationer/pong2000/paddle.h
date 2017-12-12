@@ -47,3 +47,8 @@ OBJECT Lpaddle =
         move_object,
         set_object_speed
 };
+
+void move(POBJECT this) {
+	clear_object(this);
+	this->draw(this);
+}

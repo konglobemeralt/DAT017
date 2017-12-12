@@ -44,22 +44,22 @@ void clear_object(POBJECT pObj){
         }
     }
     
-void move_object(POBJECT pObj){
-    clear_object(pObj);
-    pObj->posX += pObj->dirX;
-    pObj->posY += pObj->dirY;
-    
-    if((pObj->posX < 0) || pObj->posX > 127 ) {
-		pObj->dirX = -pObj->dirX;
-	}
-    
-	if((pObj->posY < 0) || pObj->posY > 63 ) {
-		pObj->dirY = -pObj->dirY;
-	}
-    
-	pObj->draw(pObj);
-    
-    }    
+//void move_object(POBJECT pObj){
+//    clear_object(pObj);
+//    pObj->posX += pObj->dirX;
+//    pObj->posY += pObj->dirY;
+//    
+//    if((pObj->posX < 0) || pObj->posX > 127 ) {
+//		pObj->dirX = -pObj->dirX;
+//	}
+//   
+//	if((pObj->posY < 0) || pObj->posY > 63 ) {
+//		pObj->dirY = -pObj->dirY;
+//	}
+//
+//	pObj->draw(pObj);
+//
+//   }    
 
 
 #endif
