@@ -138,6 +138,7 @@ void outSeg7(unsigned char in)
 	else *GPIO_D_ODR_LOW = 0x00;
         
     }
+
     
 unsigned char keyb(void){
         unsigned char key[] = {1, 2, 3, 0xA, 4, 5, 6, 0xB, 7, 8, 9, 0xC, 0xE, 0, 0xF, 0xD};
