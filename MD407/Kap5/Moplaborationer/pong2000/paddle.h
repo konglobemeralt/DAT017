@@ -15,6 +15,7 @@ void move_paddle(POBJECT this) {
 	this->draw(this);
 }
 
+
 GEOMETRY paddle_geometry = {
 	75,
 	2, 25,
