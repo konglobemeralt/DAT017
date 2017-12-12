@@ -170,7 +170,6 @@ void graphics_clear_screen(void){
             graphic_write_data(0, B_CS1|B_CS2);
         }
     }
-    
 }
 
 
