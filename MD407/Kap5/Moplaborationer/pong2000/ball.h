@@ -2,7 +2,36 @@
 #include "paddle.h"
 
 void move_ball(POBJECT this) {
-	clear_object(this);
+	
+    this->posX += this->dirX;
+	this->posY += this->dirY;
+	
+	//if((this->posY < 0) ||  this->posY > 63 ) {
+	//	this->dirY = -this->dirY;
+	//}
+	
+	// Define left and right paddle
+	POBJECT lp = &Lpaddle;
+	POBJECT rp = &Rpaddle;
+	
+	//Rpaddle collision
+	if(this->posX <= lp->posX + lp->geo->sizeX) {
+		if((this->posY >= lp->posY) && (this->posY <= lp->posY + lp->geo->sizeY)) {
+			this->dirX = -this->dirX;
+		} else {
+			//Print ascii string to show score
+		}
+	}
+	
+	//Lpaddle collision
+	if(this->posX >= rp->posX) {
+		if((this->posY >= rp->posY) && (this->posY <= rp->posY + rp->geo->sizeY)) {
+			this->dirX = -this->dirX;
+		} else {
+			//Print ascii string to show score
+		}
+	}
+	
 	this->draw(this);
 }
 

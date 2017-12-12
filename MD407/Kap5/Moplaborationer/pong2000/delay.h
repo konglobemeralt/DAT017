@@ -26,7 +26,7 @@ void delay500ns(){
     //Delay 500ns in the most efficient way:
         delay_250ns();
         delay_250ns();
-        //Continue executing code efficently/.
+        //Continue executing code efficently.
         }
 
 void delay_micro(unsigned int us) {

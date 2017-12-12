@@ -124,7 +124,7 @@
   28:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/delay.h ****         delay_250ns();
  100              		.loc 1 28 0
  101 004c FFF7FEFF 		bl	delay_250ns
-  29:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/delay.h ****         //Continue executing code efficently/.
+  29:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/delay.h ****         //Continue executing code efficently.
   30:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/delay.h ****         }
  102              		.loc 1 30 0
  103 0050 C046     		nop
@@ -1495,14 +1495,1366 @@
  1246              		.cfi_endproc
  1247              	.LFE15:
  1249              		.align	1
- 1250              		.global	set_object_speed
+ 1250              		.global	ascii_ctrl_bit_set
  1251              		.syntax unified
  1252              		.code	16
  1253              		.thumb_func
  1254              		.fpu softvfp
- 1256              	set_object_speed:
+ 1256              	ascii_ctrl_bit_set:
  1257              	.LFB16:
- 1258              		.file 3 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/object.h"
+ 1258              		.file 3 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h"
+   1:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** #include "delay.h"
+   2:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 
+   3:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** void ascii_ctrl_bit_set(unsigned int x) {
+ 1259              		.loc 3 3 0
+ 1260              		.cfi_startproc
+ 1261              		@ args = 0, pretend = 0, frame = 8
+ 1262              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1263 05ee 80B5     		push	{r7, lr}
+ 1264              		.cfi_def_cfa_offset 8
+ 1265              		.cfi_offset 7, -8
+ 1266              		.cfi_offset 14, -4
+ 1267 05f0 82B0     		sub	sp, sp, #8
+ 1268              		.cfi_def_cfa_offset 16
+ 1269 05f2 00AF     		add	r7, sp, #0
+ 1270              		.cfi_def_cfa_register 7
+ 1271 05f4 7860     		str	r0, [r7, #4]
+   4:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	switch(x) {
+ 1272              		.loc 3 4 0
+ 1273 05f6 7B68     		ldr	r3, [r7, #4]
+ 1274 05f8 072B     		cmp	r3, #7
+ 1275 05fa 4ED8     		bhi	.L80
+ 1276 05fc 7B68     		ldr	r3, [r7, #4]
+ 1277 05fe 9A00     		lsls	r2, r3, #2
+ 1278 0600 284B     		ldr	r3, .L81
+ 1279 0602 D318     		adds	r3, r2, r3
+ 1280 0604 1B68     		ldr	r3, [r3]
+ 1281 0606 9F46     		mov	pc, r3
+ 1282              		.section	.rodata
+ 1283              		.align	2
+ 1284              	.L72:
+ 1285 0000 08060000 		.word	.L71
+ 1286 0004 1A060000 		.word	.L73
+ 1287 0008 2C060000 		.word	.L74
+ 1288 000c 3E060000 		.word	.L75
+ 1289 0010 50060000 		.word	.L76
+ 1290 0014 62060000 		.word	.L77
+ 1291 0018 74060000 		.word	.L78
+ 1292 001c 86060000 		.word	.L79
+ 1293              		.text
+ 1294              	.L71:
+   5:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 		case 0: *GPIO_D_ODR_LOW |= 1; break;
+ 1295              		.loc 3 5 0
+ 1296 0608 274A     		ldr	r2, .L81+4
+ 1297 060a 274B     		ldr	r3, .L81+4
+ 1298 060c 1B78     		ldrb	r3, [r3]
+ 1299 060e DBB2     		uxtb	r3, r3
+ 1300 0610 0121     		movs	r1, #1
+ 1301 0612 0B43     		orrs	r3, r1
+ 1302 0614 DBB2     		uxtb	r3, r3
+ 1303 0616 1370     		strb	r3, [r2]
+ 1304 0618 3FE0     		b	.L70
+ 1305              	.L73:
+   6:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 		case 1: *GPIO_D_ODR_LOW |= 2; break;
+ 1306              		.loc 3 6 0
+ 1307 061a 234A     		ldr	r2, .L81+4
+ 1308 061c 224B     		ldr	r3, .L81+4
+ 1309 061e 1B78     		ldrb	r3, [r3]
+ 1310 0620 DBB2     		uxtb	r3, r3
+ 1311 0622 0221     		movs	r1, #2
+ 1312 0624 0B43     		orrs	r3, r1
+ 1313 0626 DBB2     		uxtb	r3, r3
+ 1314 0628 1370     		strb	r3, [r2]
+ 1315 062a 36E0     		b	.L70
+ 1316              	.L74:
+   7:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 		case 2: *GPIO_D_ODR_LOW |= 4; break;
+ 1317              		.loc 3 7 0
+ 1318 062c 1E4A     		ldr	r2, .L81+4
+ 1319 062e 1E4B     		ldr	r3, .L81+4
+ 1320 0630 1B78     		ldrb	r3, [r3]
+ 1321 0632 DBB2     		uxtb	r3, r3
+ 1322 0634 0421     		movs	r1, #4
+ 1323 0636 0B43     		orrs	r3, r1
+ 1324 0638 DBB2     		uxtb	r3, r3
+ 1325 063a 1370     		strb	r3, [r2]
+ 1326 063c 2DE0     		b	.L70
+ 1327              	.L75:
+   8:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 		case 3: *GPIO_D_ODR_LOW |= 8; break;
+ 1328              		.loc 3 8 0
+ 1329 063e 1A4A     		ldr	r2, .L81+4
+ 1330 0640 194B     		ldr	r3, .L81+4
+ 1331 0642 1B78     		ldrb	r3, [r3]
+ 1332 0644 DBB2     		uxtb	r3, r3
+ 1333 0646 0821     		movs	r1, #8
+ 1334 0648 0B43     		orrs	r3, r1
+ 1335 064a DBB2     		uxtb	r3, r3
+ 1336 064c 1370     		strb	r3, [r2]
+ 1337 064e 24E0     		b	.L70
+ 1338              	.L76:
+   9:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 		case 4: *GPIO_D_ODR_LOW |= 16; break;
+ 1339              		.loc 3 9 0
+ 1340 0650 154A     		ldr	r2, .L81+4
+ 1341 0652 154B     		ldr	r3, .L81+4
+ 1342 0654 1B78     		ldrb	r3, [r3]
+ 1343 0656 DBB2     		uxtb	r3, r3
+ 1344 0658 1021     		movs	r1, #16
+ 1345 065a 0B43     		orrs	r3, r1
+ 1346 065c DBB2     		uxtb	r3, r3
+ 1347 065e 1370     		strb	r3, [r2]
+ 1348 0660 1BE0     		b	.L70
+ 1349              	.L77:
+  10:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 		case 5: *GPIO_D_ODR_LOW |= 32; break;
+ 1350              		.loc 3 10 0
+ 1351 0662 114A     		ldr	r2, .L81+4
+ 1352 0664 104B     		ldr	r3, .L81+4
+ 1353 0666 1B78     		ldrb	r3, [r3]
+ 1354 0668 DBB2     		uxtb	r3, r3
+ 1355 066a 2021     		movs	r1, #32
+ 1356 066c 0B43     		orrs	r3, r1
+ 1357 066e DBB2     		uxtb	r3, r3
+ 1358 0670 1370     		strb	r3, [r2]
+ 1359 0672 12E0     		b	.L70
+ 1360              	.L78:
+  11:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 		case 6: *GPIO_D_ODR_LOW |= 64; break;
+ 1361              		.loc 3 11 0
+ 1362 0674 0C4A     		ldr	r2, .L81+4
+ 1363 0676 0C4B     		ldr	r3, .L81+4
+ 1364 0678 1B78     		ldrb	r3, [r3]
+ 1365 067a DBB2     		uxtb	r3, r3
+ 1366 067c 4021     		movs	r1, #64
+ 1367 067e 0B43     		orrs	r3, r1
+ 1368 0680 DBB2     		uxtb	r3, r3
+ 1369 0682 1370     		strb	r3, [r2]
+ 1370 0684 09E0     		b	.L70
+ 1371              	.L79:
+  12:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 		case 7: *GPIO_D_ODR_LOW |= 128; break;
+ 1372              		.loc 3 12 0
+ 1373 0686 0849     		ldr	r1, .L81+4
+ 1374 0688 074B     		ldr	r3, .L81+4
+ 1375 068a 1B78     		ldrb	r3, [r3]
+ 1376 068c DBB2     		uxtb	r3, r3
+ 1377 068e 8022     		movs	r2, #128
+ 1378 0690 5242     		rsbs	r2, r2, #0
+ 1379 0692 1343     		orrs	r3, r2
+ 1380 0694 DBB2     		uxtb	r3, r3
+ 1381 0696 0B70     		strb	r3, [r1]
+ 1382 0698 C046     		nop
+ 1383              	.L70:
+ 1384              	.L80:
+  13:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****     }
+  14:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** }
+ 1385              		.loc 3 14 0
+ 1386 069a C046     		nop
+ 1387 069c BD46     		mov	sp, r7
+ 1388 069e 02B0     		add	sp, sp, #8
+ 1389              		@ sp needed
+ 1390 06a0 80BD     		pop	{r7, pc}
+ 1391              	.L82:
+ 1392 06a2 C046     		.align	2
+ 1393              	.L81:
+ 1394 06a4 00000000 		.word	.L72
+ 1395 06a8 140C0240 		.word	1073875988
+ 1396              		.cfi_endproc
+ 1397              	.LFE16:
+ 1399              		.align	1
+ 1400              		.global	ascii_ctrl_bit_clear
+ 1401              		.syntax unified
+ 1402              		.code	16
+ 1403              		.thumb_func
+ 1404              		.fpu softvfp
+ 1406              	ascii_ctrl_bit_clear:
+ 1407              	.LFB17:
+  15:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 
+  16:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** void ascii_ctrl_bit_clear(unsigned int x) {
+ 1408              		.loc 3 16 0
+ 1409              		.cfi_startproc
+ 1410              		@ args = 0, pretend = 0, frame = 8
+ 1411              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1412 06ac 80B5     		push	{r7, lr}
+ 1413              		.cfi_def_cfa_offset 8
+ 1414              		.cfi_offset 7, -8
+ 1415              		.cfi_offset 14, -4
+ 1416 06ae 82B0     		sub	sp, sp, #8
+ 1417              		.cfi_def_cfa_offset 16
+ 1418 06b0 00AF     		add	r7, sp, #0
+ 1419              		.cfi_def_cfa_register 7
+ 1420 06b2 7860     		str	r0, [r7, #4]
+  17:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	switch(x) {
+ 1421              		.loc 3 17 0
+ 1422 06b4 7B68     		ldr	r3, [r7, #4]
+ 1423 06b6 072B     		cmp	r3, #7
+ 1424 06b8 4DD8     		bhi	.L94
+ 1425 06ba 7B68     		ldr	r3, [r7, #4]
+ 1426 06bc 9A00     		lsls	r2, r3, #2
+ 1427 06be 284B     		ldr	r3, .L95
+ 1428 06c0 D318     		adds	r3, r2, r3
+ 1429 06c2 1B68     		ldr	r3, [r3]
+ 1430 06c4 9F46     		mov	pc, r3
+ 1431              		.section	.rodata
+ 1432              		.align	2
+ 1433              	.L86:
+ 1434 0020 C6060000 		.word	.L85
+ 1435 0024 D8060000 		.word	.L87
+ 1436 0028 EA060000 		.word	.L88
+ 1437 002c FC060000 		.word	.L89
+ 1438 0030 0E070000 		.word	.L90
+ 1439 0034 20070000 		.word	.L91
+ 1440 0038 32070000 		.word	.L92
+ 1441 003c 44070000 		.word	.L93
+ 1442              		.text
+ 1443              	.L85:
+  18:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 		case(0): *GPIO_D_ODR_LOW &= 0xFE; break;
+ 1444              		.loc 3 18 0
+ 1445 06c6 274A     		ldr	r2, .L95+4
+ 1446 06c8 264B     		ldr	r3, .L95+4
+ 1447 06ca 1B78     		ldrb	r3, [r3]
+ 1448 06cc DBB2     		uxtb	r3, r3
+ 1449 06ce 0121     		movs	r1, #1
+ 1450 06d0 8B43     		bics	r3, r1
+ 1451 06d2 DBB2     		uxtb	r3, r3
+ 1452 06d4 1370     		strb	r3, [r2]
+ 1453 06d6 3EE0     		b	.L84
+ 1454              	.L87:
+  19:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 		case(1): *GPIO_D_ODR_LOW &= 0xFD; break;
+ 1455              		.loc 3 19 0
+ 1456 06d8 224A     		ldr	r2, .L95+4
+ 1457 06da 224B     		ldr	r3, .L95+4
+ 1458 06dc 1B78     		ldrb	r3, [r3]
+ 1459 06de DBB2     		uxtb	r3, r3
+ 1460 06e0 0221     		movs	r1, #2
+ 1461 06e2 8B43     		bics	r3, r1
+ 1462 06e4 DBB2     		uxtb	r3, r3
+ 1463 06e6 1370     		strb	r3, [r2]
+ 1464 06e8 35E0     		b	.L84
+ 1465              	.L88:
+  20:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 		case(2): *GPIO_D_ODR_LOW &= 0xFB; break;
+ 1466              		.loc 3 20 0
+ 1467 06ea 1E4A     		ldr	r2, .L95+4
+ 1468 06ec 1D4B     		ldr	r3, .L95+4
+ 1469 06ee 1B78     		ldrb	r3, [r3]
+ 1470 06f0 DBB2     		uxtb	r3, r3
+ 1471 06f2 0421     		movs	r1, #4
+ 1472 06f4 8B43     		bics	r3, r1
+ 1473 06f6 DBB2     		uxtb	r3, r3
+ 1474 06f8 1370     		strb	r3, [r2]
+ 1475 06fa 2CE0     		b	.L84
+ 1476              	.L89:
+  21:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 		case(3): *GPIO_D_ODR_LOW &= 0xF7; break;
+ 1477              		.loc 3 21 0
+ 1478 06fc 194A     		ldr	r2, .L95+4
+ 1479 06fe 194B     		ldr	r3, .L95+4
+ 1480 0700 1B78     		ldrb	r3, [r3]
+ 1481 0702 DBB2     		uxtb	r3, r3
+ 1482 0704 0821     		movs	r1, #8
+ 1483 0706 8B43     		bics	r3, r1
+ 1484 0708 DBB2     		uxtb	r3, r3
+ 1485 070a 1370     		strb	r3, [r2]
+ 1486 070c 23E0     		b	.L84
+ 1487              	.L90:
+  22:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 		case(4): *GPIO_D_ODR_LOW &= 0xEF; break;
+ 1488              		.loc 3 22 0
+ 1489 070e 154A     		ldr	r2, .L95+4
+ 1490 0710 144B     		ldr	r3, .L95+4
+ 1491 0712 1B78     		ldrb	r3, [r3]
+ 1492 0714 DBB2     		uxtb	r3, r3
+ 1493 0716 1021     		movs	r1, #16
+ 1494 0718 8B43     		bics	r3, r1
+ 1495 071a DBB2     		uxtb	r3, r3
+ 1496 071c 1370     		strb	r3, [r2]
+ 1497 071e 1AE0     		b	.L84
+ 1498              	.L91:
+  23:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 		case(5): *GPIO_D_ODR_LOW &= 0xDF; break;
+ 1499              		.loc 3 23 0
+ 1500 0720 104A     		ldr	r2, .L95+4
+ 1501 0722 104B     		ldr	r3, .L95+4
+ 1502 0724 1B78     		ldrb	r3, [r3]
+ 1503 0726 DBB2     		uxtb	r3, r3
+ 1504 0728 2021     		movs	r1, #32
+ 1505 072a 8B43     		bics	r3, r1
+ 1506 072c DBB2     		uxtb	r3, r3
+ 1507 072e 1370     		strb	r3, [r2]
+ 1508 0730 11E0     		b	.L84
+ 1509              	.L92:
+  24:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 		case(6): *GPIO_D_ODR_LOW &= 0xBF; break;
+ 1510              		.loc 3 24 0
+ 1511 0732 0C4A     		ldr	r2, .L95+4
+ 1512 0734 0B4B     		ldr	r3, .L95+4
+ 1513 0736 1B78     		ldrb	r3, [r3]
+ 1514 0738 DBB2     		uxtb	r3, r3
+ 1515 073a 4021     		movs	r1, #64
+ 1516 073c 8B43     		bics	r3, r1
+ 1517 073e DBB2     		uxtb	r3, r3
+ 1518 0740 1370     		strb	r3, [r2]
+ 1519 0742 08E0     		b	.L84
+ 1520              	.L93:
+  25:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 		case(7): *GPIO_D_ODR_LOW &= 0x7F; break;
+ 1521              		.loc 3 25 0
+ 1522 0744 074A     		ldr	r2, .L95+4
+ 1523 0746 074B     		ldr	r3, .L95+4
+ 1524 0748 1B78     		ldrb	r3, [r3]
+ 1525 074a DBB2     		uxtb	r3, r3
+ 1526 074c 7F21     		movs	r1, #127
+ 1527 074e 0B40     		ands	r3, r1
+ 1528 0750 DBB2     		uxtb	r3, r3
+ 1529 0752 1370     		strb	r3, [r2]
+ 1530 0754 C046     		nop
+ 1531              	.L84:
+ 1532              	.L94:
+  26:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	}
+  27:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** }
+ 1533              		.loc 3 27 0
+ 1534 0756 C046     		nop
+ 1535 0758 BD46     		mov	sp, r7
+ 1536 075a 02B0     		add	sp, sp, #8
+ 1537              		@ sp needed
+ 1538 075c 80BD     		pop	{r7, pc}
+ 1539              	.L96:
+ 1540 075e C046     		.align	2
+ 1541              	.L95:
+ 1542 0760 20000000 		.word	.L86
+ 1543 0764 140C0240 		.word	1073875988
+ 1544              		.cfi_endproc
+ 1545              	.LFE17:
+ 1547              		.align	1
+ 1548              		.global	ascii_write_controller
+ 1549              		.syntax unified
+ 1550              		.code	16
+ 1551              		.thumb_func
+ 1552              		.fpu softvfp
+ 1554              	ascii_write_controller:
+ 1555              	.LFB18:
+  28:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** void ascii_write_controller( unsigned char c ) {
+ 1556              		.loc 3 28 0
+ 1557              		.cfi_startproc
+ 1558              		@ args = 0, pretend = 0, frame = 8
+ 1559              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1560 0768 80B5     		push	{r7, lr}
+ 1561              		.cfi_def_cfa_offset 8
+ 1562              		.cfi_offset 7, -8
+ 1563              		.cfi_offset 14, -4
+ 1564 076a 82B0     		sub	sp, sp, #8
+ 1565              		.cfi_def_cfa_offset 16
+ 1566 076c 00AF     		add	r7, sp, #0
+ 1567              		.cfi_def_cfa_register 7
+ 1568 076e 0200     		movs	r2, r0
+ 1569 0770 FB1D     		adds	r3, r7, #7
+ 1570 0772 1A70     		strb	r2, [r3]
+  29:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****     ascii_ctrl_bit_set(B_E);
+ 1571              		.loc 3 29 0
+ 1572 0774 4020     		movs	r0, #64
+ 1573 0776 FFF7FEFF 		bl	ascii_ctrl_bit_set
+  30:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	*GPIO_D_ODR_HIGH = c;
+ 1574              		.loc 3 30 0
+ 1575 077a 064A     		ldr	r2, .L98
+ 1576 077c FB1D     		adds	r3, r7, #7
+ 1577 077e 1B78     		ldrb	r3, [r3]
+ 1578 0780 1370     		strb	r3, [r2]
+  31:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	delay_250ns();
+ 1579              		.loc 3 31 0
+ 1580 0782 FFF7FEFF 		bl	delay_250ns
+  32:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	ascii_ctrl_bit_clear(B_E);
+ 1581              		.loc 3 32 0
+ 1582 0786 4020     		movs	r0, #64
+ 1583 0788 FFF7FEFF 		bl	ascii_ctrl_bit_clear
+  33:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** }
+ 1584              		.loc 3 33 0
+ 1585 078c C046     		nop
+ 1586 078e BD46     		mov	sp, r7
+ 1587 0790 02B0     		add	sp, sp, #8
+ 1588              		@ sp needed
+ 1589 0792 80BD     		pop	{r7, pc}
+ 1590              	.L99:
+ 1591              		.align	2
+ 1592              	.L98:
+ 1593 0794 150C0240 		.word	1073875989
+ 1594              		.cfi_endproc
+ 1595              	.LFE18:
+ 1597              		.align	1
+ 1598              		.global	ascii_read_controller
+ 1599              		.syntax unified
+ 1600              		.code	16
+ 1601              		.thumb_func
+ 1602              		.fpu softvfp
+ 1604              	ascii_read_controller:
+ 1605              	.LFB19:
+  34:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 
+  35:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** unsigned char ascii_read_controller( void )
+  36:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** {
+ 1606              		.loc 3 36 0
+ 1607              		.cfi_startproc
+ 1608              		@ args = 0, pretend = 0, frame = 8
+ 1609              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1610 0798 80B5     		push	{r7, lr}
+ 1611              		.cfi_def_cfa_offset 8
+ 1612              		.cfi_offset 7, -8
+ 1613              		.cfi_offset 14, -4
+ 1614 079a 82B0     		sub	sp, sp, #8
+ 1615              		.cfi_def_cfa_offset 16
+ 1616 079c 00AF     		add	r7, sp, #0
+ 1617              		.cfi_def_cfa_register 7
+  37:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****     ascii_ctrl_bit_set(B_E);
+ 1618              		.loc 3 37 0
+ 1619 079e 4020     		movs	r0, #64
+ 1620 07a0 FFF7FEFF 		bl	ascii_ctrl_bit_set
+  38:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	delay_250ns();
+ 1621              		.loc 3 38 0
+ 1622 07a4 FFF7FEFF 		bl	delay_250ns
+  39:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	delay_250ns();
+ 1623              		.loc 3 39 0
+ 1624 07a8 FFF7FEFF 		bl	delay_250ns
+  40:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	unsigned char rv = *GPIO_D_IDR_HIGH;
+ 1625              		.loc 3 40 0
+ 1626 07ac 064A     		ldr	r2, .L102
+ 1627 07ae FB1D     		adds	r3, r7, #7
+ 1628 07b0 1278     		ldrb	r2, [r2]
+ 1629 07b2 1A70     		strb	r2, [r3]
+  41:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	ascii_ctrl_bit_clear(B_E);
+ 1630              		.loc 3 41 0
+ 1631 07b4 4020     		movs	r0, #64
+ 1632 07b6 FFF7FEFF 		bl	ascii_ctrl_bit_clear
+  42:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	return rv;
+ 1633              		.loc 3 42 0
+ 1634 07ba FB1D     		adds	r3, r7, #7
+ 1635 07bc 1B78     		ldrb	r3, [r3]
+  43:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** }
+ 1636              		.loc 3 43 0
+ 1637 07be 1800     		movs	r0, r3
+ 1638 07c0 BD46     		mov	sp, r7
+ 1639 07c2 02B0     		add	sp, sp, #8
+ 1640              		@ sp needed
+ 1641 07c4 80BD     		pop	{r7, pc}
+ 1642              	.L103:
+ 1643 07c6 C046     		.align	2
+ 1644              	.L102:
+ 1645 07c8 110C0240 		.word	1073875985
+ 1646              		.cfi_endproc
+ 1647              	.LFE19:
+ 1649              		.align	1
+ 1650              		.global	ascii_write_cmd
+ 1651              		.syntax unified
+ 1652              		.code	16
+ 1653              		.thumb_func
+ 1654              		.fpu softvfp
+ 1656              	ascii_write_cmd:
+ 1657              	.LFB20:
+  44:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 
+  45:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** void ascii_write_cmd(unsigned char command){
+ 1658              		.loc 3 45 0
+ 1659              		.cfi_startproc
+ 1660              		@ args = 0, pretend = 0, frame = 8
+ 1661              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1662 07cc 80B5     		push	{r7, lr}
+ 1663              		.cfi_def_cfa_offset 8
+ 1664              		.cfi_offset 7, -8
+ 1665              		.cfi_offset 14, -4
+ 1666 07ce 82B0     		sub	sp, sp, #8
+ 1667              		.cfi_def_cfa_offset 16
+ 1668 07d0 00AF     		add	r7, sp, #0
+ 1669              		.cfi_def_cfa_register 7
+ 1670 07d2 0200     		movs	r2, r0
+ 1671 07d4 FB1D     		adds	r3, r7, #7
+ 1672 07d6 1A70     		strb	r2, [r3]
+  46:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****     ascii_ctrl_bit_clear(B_RS);
+ 1673              		.loc 3 46 0
+ 1674 07d8 0120     		movs	r0, #1
+ 1675 07da FFF7FEFF 		bl	ascii_ctrl_bit_clear
+  47:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	ascii_ctrl_bit_clear(B_RW);
+ 1676              		.loc 3 47 0
+ 1677 07de 0220     		movs	r0, #2
+ 1678 07e0 FFF7FEFF 		bl	ascii_ctrl_bit_clear
+  48:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	ascii_write_controller(command);
+ 1679              		.loc 3 48 0
+ 1680 07e4 FB1D     		adds	r3, r7, #7
+ 1681 07e6 1B78     		ldrb	r3, [r3]
+ 1682 07e8 1800     		movs	r0, r3
+ 1683 07ea FFF7FEFF 		bl	ascii_write_controller
+  49:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****     }
+ 1684              		.loc 3 49 0
+ 1685 07ee C046     		nop
+ 1686 07f0 BD46     		mov	sp, r7
+ 1687 07f2 02B0     		add	sp, sp, #8
+ 1688              		@ sp needed
+ 1689 07f4 80BD     		pop	{r7, pc}
+ 1690              		.cfi_endproc
+ 1691              	.LFE20:
+ 1693              		.align	1
+ 1694              		.global	ascii_write_data
+ 1695              		.syntax unified
+ 1696              		.code	16
+ 1697              		.thumb_func
+ 1698              		.fpu softvfp
+ 1700              	ascii_write_data:
+ 1701              	.LFB21:
+  50:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****     
+  51:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** void ascii_write_data(unsigned char data){
+ 1702              		.loc 3 51 0
+ 1703              		.cfi_startproc
+ 1704              		@ args = 0, pretend = 0, frame = 8
+ 1705              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1706 07f6 80B5     		push	{r7, lr}
+ 1707              		.cfi_def_cfa_offset 8
+ 1708              		.cfi_offset 7, -8
+ 1709              		.cfi_offset 14, -4
+ 1710 07f8 82B0     		sub	sp, sp, #8
+ 1711              		.cfi_def_cfa_offset 16
+ 1712 07fa 00AF     		add	r7, sp, #0
+ 1713              		.cfi_def_cfa_register 7
+ 1714 07fc 0200     		movs	r2, r0
+ 1715 07fe FB1D     		adds	r3, r7, #7
+ 1716 0800 1A70     		strb	r2, [r3]
+  52:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****     ascii_ctrl_bit_set(B_RS);
+ 1717              		.loc 3 52 0
+ 1718 0802 0120     		movs	r0, #1
+ 1719 0804 FFF7FEFF 		bl	ascii_ctrl_bit_set
+  53:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	ascii_ctrl_bit_clear(B_RW);
+ 1720              		.loc 3 53 0
+ 1721 0808 0220     		movs	r0, #2
+ 1722 080a FFF7FEFF 		bl	ascii_ctrl_bit_clear
+  54:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	ascii_write_controller(data);
+ 1723              		.loc 3 54 0
+ 1724 080e FB1D     		adds	r3, r7, #7
+ 1725 0810 1B78     		ldrb	r3, [r3]
+ 1726 0812 1800     		movs	r0, r3
+ 1727 0814 FFF7FEFF 		bl	ascii_write_controller
+  55:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** }
+ 1728              		.loc 3 55 0
+ 1729 0818 C046     		nop
+ 1730 081a BD46     		mov	sp, r7
+ 1731 081c 02B0     		add	sp, sp, #8
+ 1732              		@ sp needed
+ 1733 081e 80BD     		pop	{r7, pc}
+ 1734              		.cfi_endproc
+ 1735              	.LFE21:
+ 1737              		.align	1
+ 1738              		.global	ascii_read_status
+ 1739              		.syntax unified
+ 1740              		.code	16
+ 1741              		.thumb_func
+ 1742              		.fpu softvfp
+ 1744              	ascii_read_status:
+ 1745              	.LFB22:
+  56:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 
+  57:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** unsigned char ascii_read_status(void){
+ 1746              		.loc 3 57 0
+ 1747              		.cfi_startproc
+ 1748              		@ args = 0, pretend = 0, frame = 8
+ 1749              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1750 0820 90B5     		push	{r4, r7, lr}
+ 1751              		.cfi_def_cfa_offset 12
+ 1752              		.cfi_offset 4, -12
+ 1753              		.cfi_offset 7, -8
+ 1754              		.cfi_offset 14, -4
+ 1755 0822 83B0     		sub	sp, sp, #12
+ 1756              		.cfi_def_cfa_offset 24
+ 1757 0824 00AF     		add	r7, sp, #0
+ 1758              		.cfi_def_cfa_register 7
+  58:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****     *GPIO_D_MODER &= 0x0000FFFF;	
+ 1759              		.loc 3 58 0
+ 1760 0826 114B     		ldr	r3, .L108
+ 1761 0828 104A     		ldr	r2, .L108
+ 1762 082a 1268     		ldr	r2, [r2]
+ 1763 082c 1204     		lsls	r2, r2, #16
+ 1764 082e 120C     		lsrs	r2, r2, #16
+ 1765 0830 1A60     		str	r2, [r3]
+  59:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	ascii_ctrl_bit_clear(B_RS);
+ 1766              		.loc 3 59 0
+ 1767 0832 0120     		movs	r0, #1
+ 1768 0834 FFF7FEFF 		bl	ascii_ctrl_bit_clear
+  60:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	ascii_ctrl_bit_set(B_RW);
+ 1769              		.loc 3 60 0
+ 1770 0838 0220     		movs	r0, #2
+ 1771 083a FFF7FEFF 		bl	ascii_ctrl_bit_set
+  61:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	unsigned char rv = ascii_read_controller();
+ 1772              		.loc 3 61 0
+ 1773 083e FC1D     		adds	r4, r7, #7
+ 1774 0840 FFF7FEFF 		bl	ascii_read_controller
+ 1775 0844 0300     		movs	r3, r0
+ 1776 0846 2370     		strb	r3, [r4]
+  62:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	*GPIO_D_MODER &= 0x0000FFFF;
+ 1777              		.loc 3 62 0
+ 1778 0848 084B     		ldr	r3, .L108
+ 1779 084a 084A     		ldr	r2, .L108
+ 1780 084c 1268     		ldr	r2, [r2]
+ 1781 084e 1204     		lsls	r2, r2, #16
+ 1782 0850 120C     		lsrs	r2, r2, #16
+ 1783 0852 1A60     		str	r2, [r3]
+  63:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	*GPIO_D_MODER |= 0x55550000;	
+ 1784              		.loc 3 63 0
+ 1785 0854 054B     		ldr	r3, .L108
+ 1786 0856 054A     		ldr	r2, .L108
+ 1787 0858 1268     		ldr	r2, [r2]
+ 1788 085a 0549     		ldr	r1, .L108+4
+ 1789 085c 0A43     		orrs	r2, r1
+ 1790 085e 1A60     		str	r2, [r3]
+  64:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	return rv;
+ 1791              		.loc 3 64 0
+ 1792 0860 FB1D     		adds	r3, r7, #7
+ 1793 0862 1B78     		ldrb	r3, [r3]
+  65:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****     }
+ 1794              		.loc 3 65 0
+ 1795 0864 1800     		movs	r0, r3
+ 1796 0866 BD46     		mov	sp, r7
+ 1797 0868 03B0     		add	sp, sp, #12
+ 1798              		@ sp needed
+ 1799 086a 90BD     		pop	{r4, r7, pc}
+ 1800              	.L109:
+ 1801              		.align	2
+ 1802              	.L108:
+ 1803 086c 000C0240 		.word	1073875968
+ 1804 0870 00005555 		.word	1431633920
+ 1805              		.cfi_endproc
+ 1806              	.LFE22:
+ 1808              		.align	1
+ 1809              		.global	ascii_read_data
+ 1810              		.syntax unified
+ 1811              		.code	16
+ 1812              		.thumb_func
+ 1813              		.fpu softvfp
+ 1815              	ascii_read_data:
+ 1816              	.LFB23:
+  66:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****     
+  67:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** unsigned char ascii_read_data(void){
+ 1817              		.loc 3 67 0
+ 1818              		.cfi_startproc
+ 1819              		@ args = 0, pretend = 0, frame = 8
+ 1820              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1821 0874 90B5     		push	{r4, r7, lr}
+ 1822              		.cfi_def_cfa_offset 12
+ 1823              		.cfi_offset 4, -12
+ 1824              		.cfi_offset 7, -8
+ 1825              		.cfi_offset 14, -4
+ 1826 0876 83B0     		sub	sp, sp, #12
+ 1827              		.cfi_def_cfa_offset 24
+ 1828 0878 00AF     		add	r7, sp, #0
+ 1829              		.cfi_def_cfa_register 7
+  68:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****     *GPIO_D_MODER &= 0x0000FFFF;	
+ 1830              		.loc 3 68 0
+ 1831 087a 114B     		ldr	r3, .L112
+ 1832 087c 104A     		ldr	r2, .L112
+ 1833 087e 1268     		ldr	r2, [r2]
+ 1834 0880 1204     		lsls	r2, r2, #16
+ 1835 0882 120C     		lsrs	r2, r2, #16
+ 1836 0884 1A60     		str	r2, [r3]
+  69:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	ascii_ctrl_bit_set(B_RS);
+ 1837              		.loc 3 69 0
+ 1838 0886 0120     		movs	r0, #1
+ 1839 0888 FFF7FEFF 		bl	ascii_ctrl_bit_set
+  70:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	ascii_ctrl_bit_set(B_RW);
+ 1840              		.loc 3 70 0
+ 1841 088c 0220     		movs	r0, #2
+ 1842 088e FFF7FEFF 		bl	ascii_ctrl_bit_set
+  71:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	unsigned char rv = ascii_read_controller();
+ 1843              		.loc 3 71 0
+ 1844 0892 FC1D     		adds	r4, r7, #7
+ 1845 0894 FFF7FEFF 		bl	ascii_read_controller
+ 1846 0898 0300     		movs	r3, r0
+ 1847 089a 2370     		strb	r3, [r4]
+  72:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	*GPIO_D_MODER &= 0x0000FFFF;
+ 1848              		.loc 3 72 0
+ 1849 089c 084B     		ldr	r3, .L112
+ 1850 089e 084A     		ldr	r2, .L112
+ 1851 08a0 1268     		ldr	r2, [r2]
+ 1852 08a2 1204     		lsls	r2, r2, #16
+ 1853 08a4 120C     		lsrs	r2, r2, #16
+ 1854 08a6 1A60     		str	r2, [r3]
+  73:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	*GPIO_D_MODER |= 0x55550000;	
+ 1855              		.loc 3 73 0
+ 1856 08a8 054B     		ldr	r3, .L112
+ 1857 08aa 054A     		ldr	r2, .L112
+ 1858 08ac 1268     		ldr	r2, [r2]
+ 1859 08ae 0549     		ldr	r1, .L112+4
+ 1860 08b0 0A43     		orrs	r2, r1
+ 1861 08b2 1A60     		str	r2, [r3]
+  74:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	return rv;
+ 1862              		.loc 3 74 0
+ 1863 08b4 FB1D     		adds	r3, r7, #7
+ 1864 08b6 1B78     		ldrb	r3, [r3]
+  75:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****     }
+ 1865              		.loc 3 75 0
+ 1866 08b8 1800     		movs	r0, r3
+ 1867 08ba BD46     		mov	sp, r7
+ 1868 08bc 03B0     		add	sp, sp, #12
+ 1869              		@ sp needed
+ 1870 08be 90BD     		pop	{r4, r7, pc}
+ 1871              	.L113:
+ 1872              		.align	2
+ 1873              	.L112:
+ 1874 08c0 000C0240 		.word	1073875968
+ 1875 08c4 00005555 		.word	1431633920
+ 1876              		.cfi_endproc
+ 1877              	.LFE23:
+ 1879              		.align	1
+ 1880              		.global	ascii_command
+ 1881              		.syntax unified
+ 1882              		.code	16
+ 1883              		.thumb_func
+ 1884              		.fpu softvfp
+ 1886              	ascii_command:
+ 1887              	.LFB24:
+  76:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****     
+  77:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** void ascii_command(char command, unsigned int delayMicroSec){
+ 1888              		.loc 3 77 0
+ 1889              		.cfi_startproc
+ 1890              		@ args = 0, pretend = 0, frame = 8
+ 1891              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1892 08c8 80B5     		push	{r7, lr}
+ 1893              		.cfi_def_cfa_offset 8
+ 1894              		.cfi_offset 7, -8
+ 1895              		.cfi_offset 14, -4
+ 1896 08ca 82B0     		sub	sp, sp, #8
+ 1897              		.cfi_def_cfa_offset 16
+ 1898 08cc 00AF     		add	r7, sp, #0
+ 1899              		.cfi_def_cfa_register 7
+ 1900 08ce 0200     		movs	r2, r0
+ 1901 08d0 3960     		str	r1, [r7]
+ 1902 08d2 FB1D     		adds	r3, r7, #7
+ 1903 08d4 1A70     		strb	r2, [r3]
+  78:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****     while((ascii_read_status() & 0x80) == 0x80) {
+ 1904              		.loc 3 78 0
+ 1905 08d6 C046     		nop
+ 1906              	.L115:
+ 1907              		.loc 3 78 0 is_stmt 0 discriminator 1
+ 1908 08d8 FFF7FEFF 		bl	ascii_read_status
+ 1909 08dc 0300     		movs	r3, r0
+ 1910 08de 1A00     		movs	r2, r3
+ 1911 08e0 8023     		movs	r3, #128
+ 1912 08e2 1340     		ands	r3, r2
+ 1913 08e4 802B     		cmp	r3, #128
+ 1914 08e6 F7D0     		beq	.L115
+  79:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****             //TODO implement pip subroutine
+  80:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         }
+  81:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****     delay_micro(8);
+ 1915              		.loc 3 81 0 is_stmt 1
+ 1916 08e8 0820     		movs	r0, #8
+ 1917 08ea FFF7FEFF 		bl	delay_micro
+  82:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****     ascii_write_cmd(command);
+ 1918              		.loc 3 82 0
+ 1919 08ee FB1D     		adds	r3, r7, #7
+ 1920 08f0 1B78     		ldrb	r3, [r3]
+ 1921 08f2 1800     		movs	r0, r3
+ 1922 08f4 FFF7FEFF 		bl	ascii_write_cmd
+  83:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****     delay_micro(delayMicroSec);
+ 1923              		.loc 3 83 0
+ 1924 08f8 3B68     		ldr	r3, [r7]
+ 1925 08fa 1800     		movs	r0, r3
+ 1926 08fc FFF7FEFF 		bl	delay_micro
+  84:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****     }
+ 1927              		.loc 3 84 0
+ 1928 0900 C046     		nop
+ 1929 0902 BD46     		mov	sp, r7
+ 1930 0904 02B0     		add	sp, sp, #8
+ 1931              		@ sp needed
+ 1932 0906 80BD     		pop	{r7, pc}
+ 1933              		.cfi_endproc
+ 1934              	.LFE24:
+ 1936              		.align	1
+ 1937              		.global	ascii_init
+ 1938              		.syntax unified
+ 1939              		.code	16
+ 1940              		.thumb_func
+ 1941              		.fpu softvfp
+ 1943              	ascii_init:
+ 1944              	.LFB25:
+  85:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	
+  86:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** void ascii_init(void){
+ 1945              		.loc 3 86 0
+ 1946              		.cfi_startproc
+ 1947              		@ args = 0, pretend = 0, frame = 0
+ 1948              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1949 0908 80B5     		push	{r7, lr}
+ 1950              		.cfi_def_cfa_offset 8
+ 1951              		.cfi_offset 7, -8
+ 1952              		.cfi_offset 14, -4
+ 1953 090a 00AF     		add	r7, sp, #0
+ 1954              		.cfi_def_cfa_register 7
+  87:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         ascii_ctrl_bit_set(B_SELECT);
+ 1955              		.loc 3 87 0
+ 1956 090c 0420     		movs	r0, #4
+ 1957 090e FFF7FEFF 		bl	ascii_ctrl_bit_set
+  88:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         ascii_command(0x38, 40); //Set disp size, delay 40 ms
+ 1958              		.loc 3 88 0
+ 1959 0912 2821     		movs	r1, #40
+ 1960 0914 3820     		movs	r0, #56
+ 1961 0916 FFF7FEFF 		bl	ascii_command
+  89:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         ascii_command(0xE, 40); //delay set to 40 bcs DR.eHugo
+ 1962              		.loc 3 89 0
+ 1963 091a 2821     		movs	r1, #40
+ 1964 091c 0E20     		movs	r0, #14
+ 1965 091e FFF7FEFF 		bl	ascii_command
+  90:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         ascii_command(0x01, 1530); // Cls
+ 1966              		.loc 3 90 0
+ 1967 0922 064B     		ldr	r3, .L117
+ 1968 0924 1900     		movs	r1, r3
+ 1969 0926 0120     		movs	r0, #1
+ 1970 0928 FFF7FEFF 		bl	ascii_command
+  91:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         ascii_command(0x6, 40); // Inc
+ 1971              		.loc 3 91 0
+ 1972 092c 2821     		movs	r1, #40
+ 1973 092e 0620     		movs	r0, #6
+ 1974 0930 FFF7FEFF 		bl	ascii_command
+  92:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** }
+ 1975              		.loc 3 92 0
+ 1976 0934 C046     		nop
+ 1977 0936 BD46     		mov	sp, r7
+ 1978              		@ sp needed
+ 1979 0938 80BD     		pop	{r7, pc}
+ 1980              	.L118:
+ 1981 093a C046     		.align	2
+ 1982              	.L117:
+ 1983 093c FA050000 		.word	1530
+ 1984              		.cfi_endproc
+ 1985              	.LFE25:
+ 1987              		.align	1
+ 1988              		.global	kbdActivate
+ 1989              		.syntax unified
+ 1990              		.code	16
+ 1991              		.thumb_func
+ 1992              		.fpu softvfp
+ 1994              	kbdActivate:
+ 1995              	.LFB26:
+  93:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 
+  94:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 
+  95:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** void kbdActivate(unsigned int row){
+ 1996              		.loc 3 95 0
+ 1997              		.cfi_startproc
+ 1998              		@ args = 0, pretend = 0, frame = 8
+ 1999              		@ frame_needed = 1, uses_anonymous_args = 0
+ 2000 0940 80B5     		push	{r7, lr}
+ 2001              		.cfi_def_cfa_offset 8
+ 2002              		.cfi_offset 7, -8
+ 2003              		.cfi_offset 14, -4
+ 2004 0942 82B0     		sub	sp, sp, #8
+ 2005              		.cfi_def_cfa_offset 16
+ 2006 0944 00AF     		add	r7, sp, #0
+ 2007              		.cfi_def_cfa_register 7
+ 2008 0946 7860     		str	r0, [r7, #4]
+  96:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****     switch(row)
+ 2009              		.loc 3 96 0
+ 2010 0948 7B68     		ldr	r3, [r7, #4]
+ 2011 094a 042B     		cmp	r3, #4
+ 2012 094c 19D8     		bhi	.L127
+ 2013 094e 7B68     		ldr	r3, [r7, #4]
+ 2014 0950 9A00     		lsls	r2, r3, #2
+ 2015 0952 0E4B     		ldr	r3, .L128
+ 2016 0954 D318     		adds	r3, r2, r3
+ 2017 0956 1B68     		ldr	r3, [r3]
+ 2018 0958 9F46     		mov	pc, r3
+ 2019              		.section	.rodata
+ 2020              		.align	2
+ 2021              	.L122:
+ 2022 0040 7A090000 		.word	.L121
+ 2023 0044 5A090000 		.word	.L123
+ 2024 0048 62090000 		.word	.L124
+ 2025 004c 6A090000 		.word	.L125
+ 2026 0050 72090000 		.word	.L126
+ 2027              		.text
+ 2028              	.L123:
+  97:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         {
+  98:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****             //activate row N or deactivate with 0 
+  99:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****             case 1: *GPIO_D_ODR_HIGH = 0x10; break;
+ 2029              		.loc 3 99 0
+ 2030 095a 0D4B     		ldr	r3, .L128+4
+ 2031 095c 1022     		movs	r2, #16
+ 2032 095e 1A70     		strb	r2, [r3]
+ 2033 0960 0FE0     		b	.L120
+ 2034              	.L124:
+ 100:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****             case 2: *GPIO_D_ODR_HIGH = 0x20; break;
+ 2035              		.loc 3 100 0
+ 2036 0962 0B4B     		ldr	r3, .L128+4
+ 2037 0964 2022     		movs	r2, #32
+ 2038 0966 1A70     		strb	r2, [r3]
+ 2039 0968 0BE0     		b	.L120
+ 2040              	.L125:
+ 101:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****             case 3: *GPIO_D_ODR_HIGH = 0x40; break;
+ 2041              		.loc 3 101 0
+ 2042 096a 094B     		ldr	r3, .L128+4
+ 2043 096c 4022     		movs	r2, #64
+ 2044 096e 1A70     		strb	r2, [r3]
+ 2045 0970 07E0     		b	.L120
+ 2046              	.L126:
+ 102:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****             case 4: *GPIO_D_ODR_HIGH = 0x80; break;
+ 2047              		.loc 3 102 0
+ 2048 0972 074B     		ldr	r3, .L128+4
+ 2049 0974 8022     		movs	r2, #128
+ 2050 0976 1A70     		strb	r2, [r3]
+ 2051 0978 03E0     		b	.L120
+ 2052              	.L121:
+ 103:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****             case 0: *GPIO_D_ODR_HIGH = 0x00; break;
+ 2053              		.loc 3 103 0
+ 2054 097a 054B     		ldr	r3, .L128+4
+ 2055 097c 0022     		movs	r2, #0
+ 2056 097e 1A70     		strb	r2, [r3]
+ 2057 0980 C046     		nop
+ 2058              	.L120:
+ 2059              	.L127:
+ 104:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         }
+ 105:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****     
+ 106:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****     }
+ 2060              		.loc 3 106 0
+ 2061 0982 C046     		nop
+ 2062 0984 BD46     		mov	sp, r7
+ 2063 0986 02B0     		add	sp, sp, #8
+ 2064              		@ sp needed
+ 2065 0988 80BD     		pop	{r7, pc}
+ 2066              	.L129:
+ 2067 098a C046     		.align	2
+ 2068              	.L128:
+ 2069 098c 40000000 		.word	.L122
+ 2070 0990 150C0240 		.word	1073875989
+ 2071              		.cfi_endproc
+ 2072              	.LFE26:
+ 2074              		.align	1
+ 2075              		.global	kdbGetCol
+ 2076              		.syntax unified
+ 2077              		.code	16
+ 2078              		.thumb_func
+ 2079              		.fpu softvfp
+ 2081              	kdbGetCol:
+ 2082              	.LFB27:
+ 107:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****     
+ 108:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** int kdbGetCol(void){
+ 2083              		.loc 3 108 0
+ 2084              		.cfi_startproc
+ 2085              		@ args = 0, pretend = 0, frame = 8
+ 2086              		@ frame_needed = 1, uses_anonymous_args = 0
+ 2087 0994 80B5     		push	{r7, lr}
+ 2088              		.cfi_def_cfa_offset 8
+ 2089              		.cfi_offset 7, -8
+ 2090              		.cfi_offset 14, -4
+ 2091 0996 82B0     		sub	sp, sp, #8
+ 2092              		.cfi_def_cfa_offset 16
+ 2093 0998 00AF     		add	r7, sp, #0
+ 2094              		.cfi_def_cfa_register 7
+ 109:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         unsigned char idr;
+ 110:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         idr = *GPIO_D_IDR_HIGH;
+ 2095              		.loc 3 110 0
+ 2096 099a 124A     		ldr	r2, .L136
+ 2097 099c FB1D     		adds	r3, r7, #7
+ 2098 099e 1278     		ldrb	r2, [r2]
+ 2099 09a0 1A70     		strb	r2, [r3]
+ 111:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         
+ 112:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         if(idr & 0x8) return 4;
+ 2100              		.loc 3 112 0
+ 2101 09a2 FB1D     		adds	r3, r7, #7
+ 2102 09a4 1B78     		ldrb	r3, [r3]
+ 2103 09a6 0822     		movs	r2, #8
+ 2104 09a8 1340     		ands	r3, r2
+ 2105 09aa 01D0     		beq	.L131
+ 2106              		.loc 3 112 0 is_stmt 0 discriminator 1
+ 2107 09ac 0423     		movs	r3, #4
+ 2108 09ae 15E0     		b	.L132
+ 2109              	.L131:
+ 113:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         if(idr & 0x4) return 3;
+ 2110              		.loc 3 113 0 is_stmt 1
+ 2111 09b0 FB1D     		adds	r3, r7, #7
+ 2112 09b2 1B78     		ldrb	r3, [r3]
+ 2113 09b4 0422     		movs	r2, #4
+ 2114 09b6 1340     		ands	r3, r2
+ 2115 09b8 01D0     		beq	.L133
+ 2116              		.loc 3 113 0 is_stmt 0 discriminator 1
+ 2117 09ba 0323     		movs	r3, #3
+ 2118 09bc 0EE0     		b	.L132
+ 2119              	.L133:
+ 114:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         if(idr & 0x2) return 2;
+ 2120              		.loc 3 114 0 is_stmt 1
+ 2121 09be FB1D     		adds	r3, r7, #7
+ 2122 09c0 1B78     		ldrb	r3, [r3]
+ 2123 09c2 0222     		movs	r2, #2
+ 2124 09c4 1340     		ands	r3, r2
+ 2125 09c6 01D0     		beq	.L134
+ 2126              		.loc 3 114 0 is_stmt 0 discriminator 1
+ 2127 09c8 0223     		movs	r3, #2
+ 2128 09ca 07E0     		b	.L132
+ 2129              	.L134:
+ 115:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         if(idr & 0x1) return 1;
+ 2130              		.loc 3 115 0 is_stmt 1
+ 2131 09cc FB1D     		adds	r3, r7, #7
+ 2132 09ce 1B78     		ldrb	r3, [r3]
+ 2133 09d0 0122     		movs	r2, #1
+ 2134 09d2 1340     		ands	r3, r2
+ 2135 09d4 01D0     		beq	.L135
+ 2136              		.loc 3 115 0 is_stmt 0 discriminator 1
+ 2137 09d6 0123     		movs	r3, #1
+ 2138 09d8 00E0     		b	.L132
+ 2139              	.L135:
+ 116:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         return 0;
+ 2140              		.loc 3 116 0 is_stmt 1
+ 2141 09da 0023     		movs	r3, #0
+ 2142              	.L132:
+ 117:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****     }
+ 2143              		.loc 3 117 0
+ 2144 09dc 1800     		movs	r0, r3
+ 2145 09de BD46     		mov	sp, r7
+ 2146 09e0 02B0     		add	sp, sp, #8
+ 2147              		@ sp needed
+ 2148 09e2 80BD     		pop	{r7, pc}
+ 2149              	.L137:
+ 2150              		.align	2
+ 2151              	.L136:
+ 2152 09e4 110C0240 		.word	1073875985
+ 2153              		.cfi_endproc
+ 2154              	.LFE27:
+ 2156              		.align	1
+ 2157              		.global	outSeg7
+ 2158              		.syntax unified
+ 2159              		.code	16
+ 2160              		.thumb_func
+ 2161              		.fpu softvfp
+ 2163              	outSeg7:
+ 2164              	.LFB28:
+ 118:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****     
+ 119:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** void outSeg7(unsigned char in)
+ 120:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****     {
+ 2165              		.loc 3 120 0
+ 2166              		.cfi_startproc
+ 2167              		@ args = 0, pretend = 0, frame = 8
+ 2168              		@ frame_needed = 1, uses_anonymous_args = 0
+ 2169 09e8 80B5     		push	{r7, lr}
+ 2170              		.cfi_def_cfa_offset 8
+ 2171              		.cfi_offset 7, -8
+ 2172              		.cfi_offset 14, -4
+ 2173 09ea 82B0     		sub	sp, sp, #8
+ 2174              		.cfi_def_cfa_offset 16
+ 2175 09ec 00AF     		add	r7, sp, #0
+ 2176              		.cfi_def_cfa_register 7
+ 2177 09ee 0200     		movs	r2, r0
+ 2178 09f0 FB1D     		adds	r3, r7, #7
+ 2179 09f2 1A70     		strb	r2, [r3]
+ 121:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         
+ 122:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         if(in == 0x0) *GPIO_D_ODR_LOW = 0x3F;
+ 2180              		.loc 3 122 0
+ 2181 09f4 FB1D     		adds	r3, r7, #7
+ 2182 09f6 1B78     		ldrb	r3, [r3]
+ 2183 09f8 002B     		cmp	r3, #0
+ 2184 09fa 02D1     		bne	.L139
+ 2185              		.loc 3 122 0 is_stmt 0 discriminator 1
+ 2186 09fc 394B     		ldr	r3, .L157
+ 2187 09fe 3F22     		movs	r2, #63
+ 2188 0a00 1A70     		strb	r2, [r3]
+ 2189              	.L139:
+ 123:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         if(in == 0x1) *GPIO_D_ODR_LOW = 0x06;
+ 2190              		.loc 3 123 0 is_stmt 1
+ 2191 0a02 FB1D     		adds	r3, r7, #7
+ 2192 0a04 1B78     		ldrb	r3, [r3]
+ 2193 0a06 012B     		cmp	r3, #1
+ 2194 0a08 02D1     		bne	.L140
+ 2195              		.loc 3 123 0 is_stmt 0 discriminator 1
+ 2196 0a0a 364B     		ldr	r3, .L157
+ 2197 0a0c 0622     		movs	r2, #6
+ 2198 0a0e 1A70     		strb	r2, [r3]
+ 2199              	.L140:
+ 124:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         if(in == 0x2) *GPIO_D_ODR_LOW = 0x5B;
+ 2200              		.loc 3 124 0 is_stmt 1
+ 2201 0a10 FB1D     		adds	r3, r7, #7
+ 2202 0a12 1B78     		ldrb	r3, [r3]
+ 2203 0a14 022B     		cmp	r3, #2
+ 2204 0a16 02D1     		bne	.L141
+ 2205              		.loc 3 124 0 is_stmt 0 discriminator 1
+ 2206 0a18 324B     		ldr	r3, .L157
+ 2207 0a1a 5B22     		movs	r2, #91
+ 2208 0a1c 1A70     		strb	r2, [r3]
+ 2209              	.L141:
+ 125:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         if(in == 0x3) *GPIO_D_ODR_LOW = 0x4F;
+ 2210              		.loc 3 125 0 is_stmt 1
+ 2211 0a1e FB1D     		adds	r3, r7, #7
+ 2212 0a20 1B78     		ldrb	r3, [r3]
+ 2213 0a22 032B     		cmp	r3, #3
+ 2214 0a24 02D1     		bne	.L142
+ 2215              		.loc 3 125 0 is_stmt 0 discriminator 1
+ 2216 0a26 2F4B     		ldr	r3, .L157
+ 2217 0a28 4F22     		movs	r2, #79
+ 2218 0a2a 1A70     		strb	r2, [r3]
+ 2219              	.L142:
+ 126:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         if(in == 0x4) *GPIO_D_ODR_LOW = 0x66;
+ 2220              		.loc 3 126 0 is_stmt 1
+ 2221 0a2c FB1D     		adds	r3, r7, #7
+ 2222 0a2e 1B78     		ldrb	r3, [r3]
+ 2223 0a30 042B     		cmp	r3, #4
+ 2224 0a32 02D1     		bne	.L143
+ 2225              		.loc 3 126 0 is_stmt 0 discriminator 1
+ 2226 0a34 2B4B     		ldr	r3, .L157
+ 2227 0a36 6622     		movs	r2, #102
+ 2228 0a38 1A70     		strb	r2, [r3]
+ 2229              	.L143:
+ 127:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         if(in == 0x5) *GPIO_D_ODR_LOW = 0x6D;
+ 2230              		.loc 3 127 0 is_stmt 1
+ 2231 0a3a FB1D     		adds	r3, r7, #7
+ 2232 0a3c 1B78     		ldrb	r3, [r3]
+ 2233 0a3e 052B     		cmp	r3, #5
+ 2234 0a40 02D1     		bne	.L144
+ 2235              		.loc 3 127 0 is_stmt 0 discriminator 1
+ 2236 0a42 284B     		ldr	r3, .L157
+ 2237 0a44 6D22     		movs	r2, #109
+ 2238 0a46 1A70     		strb	r2, [r3]
+ 2239              	.L144:
+ 128:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         if(in == 0x6) *GPIO_D_ODR_LOW = 0x7D;
+ 2240              		.loc 3 128 0 is_stmt 1
+ 2241 0a48 FB1D     		adds	r3, r7, #7
+ 2242 0a4a 1B78     		ldrb	r3, [r3]
+ 2243 0a4c 062B     		cmp	r3, #6
+ 2244 0a4e 02D1     		bne	.L145
+ 2245              		.loc 3 128 0 is_stmt 0 discriminator 1
+ 2246 0a50 244B     		ldr	r3, .L157
+ 2247 0a52 7D22     		movs	r2, #125
+ 2248 0a54 1A70     		strb	r2, [r3]
+ 2249              	.L145:
+ 129:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         if(in == 0x7) *GPIO_D_ODR_LOW = 0x07;
+ 2250              		.loc 3 129 0 is_stmt 1
+ 2251 0a56 FB1D     		adds	r3, r7, #7
+ 2252 0a58 1B78     		ldrb	r3, [r3]
+ 2253 0a5a 072B     		cmp	r3, #7
+ 2254 0a5c 02D1     		bne	.L146
+ 2255              		.loc 3 129 0 is_stmt 0 discriminator 1
+ 2256 0a5e 214B     		ldr	r3, .L157
+ 2257 0a60 0722     		movs	r2, #7
+ 2258 0a62 1A70     		strb	r2, [r3]
+ 2259              	.L146:
+ 130:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         if(in == 0x8) *GPIO_D_ODR_LOW = 0x7F;
+ 2260              		.loc 3 130 0 is_stmt 1
+ 2261 0a64 FB1D     		adds	r3, r7, #7
+ 2262 0a66 1B78     		ldrb	r3, [r3]
+ 2263 0a68 082B     		cmp	r3, #8
+ 2264 0a6a 02D1     		bne	.L147
+ 2265              		.loc 3 130 0 is_stmt 0 discriminator 1
+ 2266 0a6c 1D4B     		ldr	r3, .L157
+ 2267 0a6e 7F22     		movs	r2, #127
+ 2268 0a70 1A70     		strb	r2, [r3]
+ 2269              	.L147:
+ 131:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         if(in == 0x9) *GPIO_D_ODR_LOW = 0x67;
+ 2270              		.loc 3 131 0 is_stmt 1
+ 2271 0a72 FB1D     		adds	r3, r7, #7
+ 2272 0a74 1B78     		ldrb	r3, [r3]
+ 2273 0a76 092B     		cmp	r3, #9
+ 2274 0a78 02D1     		bne	.L148
+ 2275              		.loc 3 131 0 is_stmt 0 discriminator 1
+ 2276 0a7a 1A4B     		ldr	r3, .L157
+ 2277 0a7c 6722     		movs	r2, #103
+ 2278 0a7e 1A70     		strb	r2, [r3]
+ 2279              	.L148:
+ 132:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         if(in == 0xA) *GPIO_D_ODR_LOW = 0x77;
+ 2280              		.loc 3 132 0 is_stmt 1
+ 2281 0a80 FB1D     		adds	r3, r7, #7
+ 2282 0a82 1B78     		ldrb	r3, [r3]
+ 2283 0a84 0A2B     		cmp	r3, #10
+ 2284 0a86 02D1     		bne	.L149
+ 2285              		.loc 3 132 0 is_stmt 0 discriminator 1
+ 2286 0a88 164B     		ldr	r3, .L157
+ 2287 0a8a 7722     		movs	r2, #119
+ 2288 0a8c 1A70     		strb	r2, [r3]
+ 2289              	.L149:
+ 133:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         if(in == 0xB) *GPIO_D_ODR_LOW = 0x7F;
+ 2290              		.loc 3 133 0 is_stmt 1
+ 2291 0a8e FB1D     		adds	r3, r7, #7
+ 2292 0a90 1B78     		ldrb	r3, [r3]
+ 2293 0a92 0B2B     		cmp	r3, #11
+ 2294 0a94 02D1     		bne	.L150
+ 2295              		.loc 3 133 0 is_stmt 0 discriminator 1
+ 2296 0a96 134B     		ldr	r3, .L157
+ 2297 0a98 7F22     		movs	r2, #127
+ 2298 0a9a 1A70     		strb	r2, [r3]
+ 2299              	.L150:
+ 134:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         if(in == 0xC) *GPIO_D_ODR_LOW = 0xFF;
+ 2300              		.loc 3 134 0 is_stmt 1
+ 2301 0a9c FB1D     		adds	r3, r7, #7
+ 2302 0a9e 1B78     		ldrb	r3, [r3]
+ 2303 0aa0 0C2B     		cmp	r3, #12
+ 2304 0aa2 02D1     		bne	.L151
+ 2305              		.loc 3 134 0 is_stmt 0 discriminator 1
+ 2306 0aa4 0F4B     		ldr	r3, .L157
+ 2307 0aa6 FF22     		movs	r2, #255
+ 2308 0aa8 1A70     		strb	r2, [r3]
+ 2309              	.L151:
+ 135:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         if(in == 0xD) *GPIO_D_ODR_LOW = 0xBF;
+ 2310              		.loc 3 135 0 is_stmt 1
+ 2311 0aaa FB1D     		adds	r3, r7, #7
+ 2312 0aac 1B78     		ldrb	r3, [r3]
+ 2313 0aae 0D2B     		cmp	r3, #13
+ 2314 0ab0 02D1     		bne	.L152
+ 2315              		.loc 3 135 0 is_stmt 0 discriminator 1
+ 2316 0ab2 0C4B     		ldr	r3, .L157
+ 2317 0ab4 BF22     		movs	r2, #191
+ 2318 0ab6 1A70     		strb	r2, [r3]
+ 2319              	.L152:
+ 136:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         if(in == 0xE) *GPIO_D_ODR_LOW = 0x79;
+ 2320              		.loc 3 136 0 is_stmt 1
+ 2321 0ab8 FB1D     		adds	r3, r7, #7
+ 2322 0aba 1B78     		ldrb	r3, [r3]
+ 2323 0abc 0E2B     		cmp	r3, #14
+ 2324 0abe 02D1     		bne	.L153
+ 2325              		.loc 3 136 0 is_stmt 0 discriminator 1
+ 2326 0ac0 084B     		ldr	r3, .L157
+ 2327 0ac2 7922     		movs	r2, #121
+ 2328 0ac4 1A70     		strb	r2, [r3]
+ 2329              	.L153:
+ 137:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         if(in == 0xF) *GPIO_D_ODR_LOW = 0x71;
+ 2330              		.loc 3 137 0 is_stmt 1
+ 2331 0ac6 FB1D     		adds	r3, r7, #7
+ 2332 0ac8 1B78     		ldrb	r3, [r3]
+ 2333 0aca 0F2B     		cmp	r3, #15
+ 2334 0acc 03D1     		bne	.L154
+ 2335              		.loc 3 137 0 is_stmt 0 discriminator 1
+ 2336 0ace 054B     		ldr	r3, .L157
+ 2337 0ad0 7122     		movs	r2, #113
+ 2338 0ad2 1A70     		strb	r2, [r3]
+ 138:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	else *GPIO_D_ODR_LOW = 0x00;
+ 139:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         
+ 140:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****     }
+ 2339              		.loc 3 140 0 is_stmt 1 discriminator 1
+ 2340 0ad4 02E0     		b	.L156
+ 2341              	.L154:
+ 138:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 	else *GPIO_D_ODR_LOW = 0x00;
+ 2342              		.loc 3 138 0
+ 2343 0ad6 034B     		ldr	r3, .L157
+ 2344 0ad8 0022     		movs	r2, #0
+ 2345 0ada 1A70     		strb	r2, [r3]
+ 2346              	.L156:
+ 2347              		.loc 3 140 0
+ 2348 0adc C046     		nop
+ 2349 0ade BD46     		mov	sp, r7
+ 2350 0ae0 02B0     		add	sp, sp, #8
+ 2351              		@ sp needed
+ 2352 0ae2 80BD     		pop	{r7, pc}
+ 2353              	.L158:
+ 2354              		.align	2
+ 2355              	.L157:
+ 2356 0ae4 140C0240 		.word	1073875988
+ 2357              		.cfi_endproc
+ 2358              	.LFE28:
+ 2360              		.section	.rodata
+ 2361              		.align	2
+ 2362              	.LC0:
+ 2363 0054 01       		.byte	1
+ 2364 0055 02       		.byte	2
+ 2365 0056 03       		.byte	3
+ 2366 0057 0A       		.byte	10
+ 2367 0058 04       		.byte	4
+ 2368 0059 05       		.byte	5
+ 2369 005a 06       		.byte	6
+ 2370 005b 0B       		.byte	11
+ 2371 005c 07       		.byte	7
+ 2372 005d 08       		.byte	8
+ 2373 005e 09       		.byte	9
+ 2374 005f 0C       		.byte	12
+ 2375 0060 0E       		.byte	14
+ 2376 0061 00       		.byte	0
+ 2377 0062 0F       		.byte	15
+ 2378 0063 0D       		.byte	13
+ 2379              		.text
+ 2380              		.align	1
+ 2381              		.global	keyb
+ 2382              		.syntax unified
+ 2383              		.code	16
+ 2384              		.thumb_func
+ 2385              		.fpu softvfp
+ 2387              	keyb:
+ 2388              	.LFB29:
+ 141:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****     
+ 142:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** unsigned char keyb(void){
+ 2389              		.loc 3 142 0
+ 2390              		.cfi_startproc
+ 2391              		@ args = 0, pretend = 0, frame = 24
+ 2392              		@ frame_needed = 1, uses_anonymous_args = 0
+ 2393 0ae8 90B5     		push	{r4, r7, lr}
+ 2394              		.cfi_def_cfa_offset 12
+ 2395              		.cfi_offset 4, -12
+ 2396              		.cfi_offset 7, -8
+ 2397              		.cfi_offset 14, -4
+ 2398 0aea 87B0     		sub	sp, sp, #28
+ 2399              		.cfi_def_cfa_offset 40
+ 2400 0aec 00AF     		add	r7, sp, #0
+ 2401              		.cfi_def_cfa_register 7
+ 143:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         unsigned char key[] = {1, 2, 3, 0xA, 4, 5, 6, 0xB, 7, 8, 9, 0xC, 0xE, 0, 0xF, 0xD};
+ 2402              		.loc 3 143 0
+ 2403 0aee 3B00     		movs	r3, r7
+ 2404 0af0 174A     		ldr	r2, .L165
+ 2405 0af2 13CA     		ldmia	r2!, {r0, r1, r4}
+ 2406 0af4 13C3     		stmia	r3!, {r0, r1, r4}
+ 2407 0af6 1268     		ldr	r2, [r2]
+ 2408 0af8 1A60     		str	r2, [r3]
+ 144:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         int row, col;
+ 145:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         for(row = 1; row <= 4; row++)
+ 2409              		.loc 3 145 0
+ 2410 0afa 0123     		movs	r3, #1
+ 2411 0afc 7B61     		str	r3, [r7, #20]
+ 2412 0afe 1BE0     		b	.L160
+ 2413              	.L163:
+ 146:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****             {
+ 147:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****             kbdActivate(row);
+ 2414              		.loc 3 147 0
+ 2415 0b00 7B69     		ldr	r3, [r7, #20]
+ 2416 0b02 1800     		movs	r0, r3
+ 2417 0b04 FFF7FEFF 		bl	kbdActivate
+ 148:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** 			delay_250ns();
+ 2418              		.loc 3 148 0
+ 2419 0b08 FFF7FEFF 		bl	delay_250ns
+ 149:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****             if(col = kdbGetCol())
+ 2420              		.loc 3 149 0
+ 2421 0b0c FFF7FEFF 		bl	kdbGetCol
+ 2422 0b10 0300     		movs	r3, r0
+ 2423 0b12 3B61     		str	r3, [r7, #16]
+ 2424 0b14 3B69     		ldr	r3, [r7, #16]
+ 2425 0b16 002B     		cmp	r3, #0
+ 2426 0b18 0BD0     		beq	.L161
+ 150:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****                 {
+ 151:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****                 kbdActivate(0);
+ 2427              		.loc 3 151 0
+ 2428 0b1a 0020     		movs	r0, #0
+ 2429 0b1c FFF7FEFF 		bl	kbdActivate
+ 152:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****                 return key[4*(row-1) + (col-1)];
+ 2430              		.loc 3 152 0
+ 2431 0b20 7B69     		ldr	r3, [r7, #20]
+ 2432 0b22 013B     		subs	r3, r3, #1
+ 2433 0b24 9A00     		lsls	r2, r3, #2
+ 2434 0b26 3B69     		ldr	r3, [r7, #16]
+ 2435 0b28 013B     		subs	r3, r3, #1
+ 2436 0b2a D318     		adds	r3, r2, r3
+ 2437 0b2c 3A00     		movs	r2, r7
+ 2438 0b2e D35C     		ldrb	r3, [r2, r3]
+ 2439 0b30 09E0     		b	.L164
+ 2440              	.L161:
+ 145:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****             {
+ 2441              		.loc 3 145 0 discriminator 2
+ 2442 0b32 7B69     		ldr	r3, [r7, #20]
+ 2443 0b34 0133     		adds	r3, r3, #1
+ 2444 0b36 7B61     		str	r3, [r7, #20]
+ 2445              	.L160:
+ 145:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****             {
+ 2446              		.loc 3 145 0 is_stmt 0 discriminator 1
+ 2447 0b38 7B69     		ldr	r3, [r7, #20]
+ 2448 0b3a 042B     		cmp	r3, #4
+ 2449 0b3c E0DD     		ble	.L163
+ 153:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****                 }
+ 154:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****             }
+ 155:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         kbdActivate(0);
+ 2450              		.loc 3 155 0 is_stmt 1
+ 2451 0b3e 0020     		movs	r0, #0
+ 2452 0b40 FFF7FEFF 		bl	kbdActivate
+ 156:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h ****         return 0xFF;
+ 2453              		.loc 3 156 0
+ 2454 0b44 FF23     		movs	r3, #255
+ 2455              	.L164:
+ 157:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/keypad.h **** }...
+ 2456              		.loc 3 157 0 discriminator 1
+ 2457 0b46 1800     		movs	r0, r3
+ 2458 0b48 BD46     		mov	sp, r7
+ 2459 0b4a 07B0     		add	sp, sp, #28
+ 2460              		@ sp needed
+ 2461 0b4c 90BD     		pop	{r4, r7, pc}
+ 2462              	.L166:
+ 2463 0b4e C046     		.align	2
+ 2464              	.L165:
+ 2465 0b50 54000000 		.word	.LC0
+ 2466              		.cfi_endproc
+ 2467              	.LFE29:
+ 2469              		.align	1
+ 2470              		.global	set_object_speed
+ 2471              		.syntax unified
+ 2472              		.code	16
+ 2473              		.thumb_func
+ 2474              		.fpu softvfp
+ 2476              	set_object_speed:
+ 2477              	.LFB30:
+ 2478              		.file 4 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/object.h"
    1:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/object.h **** #ifndef OBJECT_H
    2:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/object.h **** #define OBJECT_H
    3:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/object.h **** 
@@ -1533,542 +2885,708 @@
   28:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/object.h ****     
   29:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/object.h ****     
   30:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/object.h **** void set_object_speed(POBJECT pObj, int speedX, int speedY){
- 1259              		.loc 3 30 0
- 1260              		.cfi_startproc
- 1261              		@ args = 0, pretend = 0, frame = 16
- 1262              		@ frame_needed = 1, uses_anonymous_args = 0
- 1263 05ee 80B5     		push	{r7, lr}
- 1264              		.cfi_def_cfa_offset 8
- 1265              		.cfi_offset 7, -8
- 1266              		.cfi_offset 14, -4
- 1267 05f0 84B0     		sub	sp, sp, #16
- 1268              		.cfi_def_cfa_offset 24
- 1269 05f2 00AF     		add	r7, sp, #0
- 1270              		.cfi_def_cfa_register 7
- 1271 05f4 F860     		str	r0, [r7, #12]
- 1272 05f6 B960     		str	r1, [r7, #8]
- 1273 05f8 7A60     		str	r2, [r7, #4]
+ 2479              		.loc 4 30 0
+ 2480              		.cfi_startproc
+ 2481              		@ args = 0, pretend = 0, frame = 16
+ 2482              		@ frame_needed = 1, uses_anonymous_args = 0
+ 2483 0b54 80B5     		push	{r7, lr}
+ 2484              		.cfi_def_cfa_offset 8
+ 2485              		.cfi_offset 7, -8
+ 2486              		.cfi_offset 14, -4
+ 2487 0b56 84B0     		sub	sp, sp, #16
+ 2488              		.cfi_def_cfa_offset 24
+ 2489 0b58 00AF     		add	r7, sp, #0
+ 2490              		.cfi_def_cfa_register 7
+ 2491 0b5a F860     		str	r0, [r7, #12]
+ 2492 0b5c B960     		str	r1, [r7, #8]
+ 2493 0b5e 7A60     		str	r2, [r7, #4]
   31:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/object.h ****         pObj->dirX = speedX;
- 1274              		.loc 3 31 0
- 1275 05fa FB68     		ldr	r3, [r7, #12]
- 1276 05fc BA68     		ldr	r2, [r7, #8]
- 1277 05fe 5A60     		str	r2, [r3, #4]
+ 2494              		.loc 4 31 0
+ 2495 0b60 FB68     		ldr	r3, [r7, #12]
+ 2496 0b62 BA68     		ldr	r2, [r7, #8]
+ 2497 0b64 5A60     		str	r2, [r3, #4]
   32:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/object.h ****         pObj->dirY = speedY;
- 1278              		.loc 3 32 0
- 1279 0600 FB68     		ldr	r3, [r7, #12]
- 1280 0602 7A68     		ldr	r2, [r7, #4]
- 1281 0604 9A60     		str	r2, [r3, #8]
+ 2498              		.loc 4 32 0
+ 2499 0b66 FB68     		ldr	r3, [r7, #12]
+ 2500 0b68 7A68     		ldr	r2, [r7, #4]
+ 2501 0b6a 9A60     		str	r2, [r3, #8]
   33:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/object.h ****     }
- 1282              		.loc 3 33 0
- 1283 0606 C046     		nop
- 1284 0608 BD46     		mov	sp, r7
- 1285 060a 04B0     		add	sp, sp, #16
- 1286              		@ sp needed
- 1287 060c 80BD     		pop	{r7, pc}
- 1288              		.cfi_endproc
- 1289              	.LFE16:
- 1291              		.align	1
- 1292              		.global	draw_object
- 1293              		.syntax unified
- 1294              		.code	16
- 1295              		.thumb_func
- 1296              		.fpu softvfp
- 1298              	draw_object:
- 1299              	.LFB17:
+ 2502              		.loc 4 33 0
+ 2503 0b6c C046     		nop
+ 2504 0b6e BD46     		mov	sp, r7
+ 2505 0b70 04B0     		add	sp, sp, #16
+ 2506              		@ sp needed
+ 2507 0b72 80BD     		pop	{r7, pc}
+ 2508              		.cfi_endproc
+ 2509              	.LFE30:
+ 2511              		.align	1
+ 2512              		.global	draw_object
+ 2513              		.syntax unified
+ 2514              		.code	16
+ 2515              		.thumb_func
+ 2516              		.fpu softvfp
+ 2518              	draw_object:
+ 2519              	.LFB31:
   34:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/object.h ****     
   35:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/object.h **** void draw_object(POBJECT pObj){
- 1300              		.loc 3 35 0
- 1301              		.cfi_startproc
- 1302              		@ args = 0, pretend = 0, frame = 16
- 1303              		@ frame_needed = 1, uses_anonymous_args = 0
- 1304 060e 80B5     		push	{r7, lr}
- 1305              		.cfi_def_cfa_offset 8
- 1306              		.cfi_offset 7, -8
- 1307              		.cfi_offset 14, -4
- 1308 0610 84B0     		sub	sp, sp, #16
- 1309              		.cfi_def_cfa_offset 24
- 1310 0612 00AF     		add	r7, sp, #0
- 1311              		.cfi_def_cfa_register 7
- 1312 0614 7860     		str	r0, [r7, #4]
- 1313              	.LBB4:
+ 2520              		.loc 4 35 0
+ 2521              		.cfi_startproc
+ 2522              		@ args = 0, pretend = 0, frame = 16
+ 2523              		@ frame_needed = 1, uses_anonymous_args = 0
+ 2524 0b74 80B5     		push	{r7, lr}
+ 2525              		.cfi_def_cfa_offset 8
+ 2526              		.cfi_offset 7, -8
+ 2527              		.cfi_offset 14, -4
+ 2528 0b76 84B0     		sub	sp, sp, #16
+ 2529              		.cfi_def_cfa_offset 24
+ 2530 0b78 00AF     		add	r7, sp, #0
+ 2531              		.cfi_def_cfa_register 7
+ 2532 0b7a 7860     		str	r0, [r7, #4]
+ 2533              	.LBB4:
   36:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/object.h ****     for(int i=0; i < MAX_POINTS; i++){
- 1314              		.loc 3 36 0
- 1315 0616 0023     		movs	r3, #0
- 1316 0618 FB60     		str	r3, [r7, #12]
- 1317 061a 1FE0     		b	.L71
- 1318              	.L72:
+ 2534              		.loc 4 36 0
+ 2535 0b7c 0023     		movs	r3, #0
+ 2536 0b7e FB60     		str	r3, [r7, #12]
+ 2537 0b80 1FE0     		b	.L169
+ 2538              	.L170:
   37:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/object.h ****             pixel(pObj->geo->px[i].x + pObj->posX, pObj->geo->px[i].y + pObj->posY, 1);
- 1319              		.loc 3 37 0 discriminator 3
- 1320 061c 7B68     		ldr	r3, [r7, #4]
- 1321 061e 1A68     		ldr	r2, [r3]
- 1322 0620 FB68     		ldr	r3, [r7, #12]
- 1323 0622 0433     		adds	r3, r3, #4
- 1324 0624 5B00     		lsls	r3, r3, #1
- 1325 0626 D318     		adds	r3, r2, r3
- 1326 0628 0433     		adds	r3, r3, #4
- 1327 062a 1B78     		ldrb	r3, [r3]
- 1328 062c 1A00     		movs	r2, r3
- 1329 062e 7B68     		ldr	r3, [r7, #4]
- 1330 0630 DB68     		ldr	r3, [r3, #12]
- 1331 0632 D318     		adds	r3, r2, r3
- 1332 0634 1800     		movs	r0, r3
- 1333 0636 7B68     		ldr	r3, [r7, #4]
- 1334 0638 1A68     		ldr	r2, [r3]
- 1335 063a FB68     		ldr	r3, [r7, #12]
- 1336 063c 0433     		adds	r3, r3, #4
- 1337 063e 5B00     		lsls	r3, r3, #1
- 1338 0640 D318     		adds	r3, r2, r3
- 1339 0642 0533     		adds	r3, r3, #5
- 1340 0644 1B78     		ldrb	r3, [r3]
- 1341 0646 1A00     		movs	r2, r3
- 1342 0648 7B68     		ldr	r3, [r7, #4]
- 1343 064a 1B69     		ldr	r3, [r3, #16]
- 1344 064c D318     		adds	r3, r2, r3
- 1345 064e 0122     		movs	r2, #1
- 1346 0650 1900     		movs	r1, r3
- 1347 0652 FFF7FEFF 		bl	pixel
+ 2539              		.loc 4 37 0 discriminator 3
+ 2540 0b82 7B68     		ldr	r3, [r7, #4]
+ 2541 0b84 1A68     		ldr	r2, [r3]
+ 2542 0b86 FB68     		ldr	r3, [r7, #12]
+ 2543 0b88 0433     		adds	r3, r3, #4
+ 2544 0b8a 5B00     		lsls	r3, r3, #1
+ 2545 0b8c D318     		adds	r3, r2, r3
+ 2546 0b8e 0433     		adds	r3, r3, #4
+ 2547 0b90 1B78     		ldrb	r3, [r3]
+ 2548 0b92 1A00     		movs	r2, r3
+ 2549 0b94 7B68     		ldr	r3, [r7, #4]
+ 2550 0b96 DB68     		ldr	r3, [r3, #12]
+ 2551 0b98 D318     		adds	r3, r2, r3
+ 2552 0b9a 1800     		movs	r0, r3
+ 2553 0b9c 7B68     		ldr	r3, [r7, #4]
+ 2554 0b9e 1A68     		ldr	r2, [r3]
+ 2555 0ba0 FB68     		ldr	r3, [r7, #12]
+ 2556 0ba2 0433     		adds	r3, r3, #4
+ 2557 0ba4 5B00     		lsls	r3, r3, #1
+ 2558 0ba6 D318     		adds	r3, r2, r3
+ 2559 0ba8 0533     		adds	r3, r3, #5
+ 2560 0baa 1B78     		ldrb	r3, [r3]
+ 2561 0bac 1A00     		movs	r2, r3
+ 2562 0bae 7B68     		ldr	r3, [r7, #4]
+ 2563 0bb0 1B69     		ldr	r3, [r3, #16]
+ 2564 0bb2 D318     		adds	r3, r2, r3
+ 2565 0bb4 0122     		movs	r2, #1
+ 2566 0bb6 1900     		movs	r1, r3
+ 2567 0bb8 FFF7FEFF 		bl	pixel
   36:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/object.h ****     for(int i=0; i < MAX_POINTS; i++){
- 1348              		.loc 3 36 0 discriminator 3
- 1349 0656 FB68     		ldr	r3, [r7, #12]
- 1350 0658 0133     		adds	r3, r3, #1
- 1351 065a FB60     		str	r3, [r7, #12]
- 1352              	.L71:
+ 2568              		.loc 4 36 0 discriminator 3
+ 2569 0bbc FB68     		ldr	r3, [r7, #12]
+ 2570 0bbe 0133     		adds	r3, r3, #1
+ 2571 0bc0 FB60     		str	r3, [r7, #12]
+ 2572              	.L169:
   36:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/object.h ****     for(int i=0; i < MAX_POINTS; i++){
- 1353              		.loc 3 36 0 is_stmt 0 discriminator 1
- 1354 065c FB68     		ldr	r3, [r7, #12]
- 1355 065e 4A2B     		cmp	r3, #74
- 1356 0660 DCDD     		ble	.L72
- 1357              	.LBE4:
+ 2573              		.loc 4 36 0 is_stmt 0 discriminator 1
+ 2574 0bc2 FB68     		ldr	r3, [r7, #12]
+ 2575 0bc4 4A2B     		cmp	r3, #74
+ 2576 0bc6 DCDD     		ble	.L170
+ 2577              	.LBE4:
   38:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/object.h ****         }
   39:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/object.h ****     }
- 1358              		.loc 3 39 0 is_stmt 1
- 1359 0662 C046     		nop
- 1360 0664 BD46     		mov	sp, r7
- 1361 0666 04B0     		add	sp, sp, #16
- 1362              		@ sp needed
- 1363 0668 80BD     		pop	{r7, pc}
- 1364              		.cfi_endproc
- 1365              	.LFE17:
- 1367              		.align	1
- 1368              		.global	clear_object
- 1369              		.syntax unified
- 1370              		.code	16
- 1371              		.thumb_func
- 1372              		.fpu softvfp
- 1374              	clear_object:
- 1375              	.LFB18:
+ 2578              		.loc 4 39 0 is_stmt 1
+ 2579 0bc8 C046     		nop
+ 2580 0bca BD46     		mov	sp, r7
+ 2581 0bcc 04B0     		add	sp, sp, #16
+ 2582              		@ sp needed
+ 2583 0bce 80BD     		pop	{r7, pc}
+ 2584              		.cfi_endproc
+ 2585              	.LFE31:
+ 2587              		.align	1
+ 2588              		.global	clear_object
+ 2589              		.syntax unified
+ 2590              		.code	16
+ 2591              		.thumb_func
+ 2592              		.fpu softvfp
+ 2594              	clear_object:
+ 2595              	.LFB32:
   40:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/object.h **** 
   41:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/object.h **** void clear_object(POBJECT pObj){
- 1376              		.loc 3 41 0
- 1377              		.cfi_startproc
- 1378              		@ args = 0, pretend = 0, frame = 16
- 1379              		@ frame_needed = 1, uses_anonymous_args = 0
- 1380 066a 80B5     		push	{r7, lr}
- 1381              		.cfi_def_cfa_offset 8
- 1382              		.cfi_offset 7, -8
- 1383              		.cfi_offset 14, -4
- 1384 066c 84B0     		sub	sp, sp, #16
- 1385              		.cfi_def_cfa_offset 24
- 1386 066e 00AF     		add	r7, sp, #0
- 1387              		.cfi_def_cfa_register 7
- 1388 0670 7860     		str	r0, [r7, #4]
- 1389              	.LBB5:
+ 2596              		.loc 4 41 0
+ 2597              		.cfi_startproc
+ 2598              		@ args = 0, pretend = 0, frame = 16
+ 2599              		@ frame_needed = 1, uses_anonymous_args = 0
+ 2600 0bd0 80B5     		push	{r7, lr}
+ 2601              		.cfi_def_cfa_offset 8
+ 2602              		.cfi_offset 7, -8
+ 2603              		.cfi_offset 14, -4
+ 2604 0bd2 84B0     		sub	sp, sp, #16
+ 2605              		.cfi_def_cfa_offset 24
+ 2606 0bd4 00AF     		add	r7, sp, #0
+ 2607              		.cfi_def_cfa_register 7
+ 2608 0bd6 7860     		str	r0, [r7, #4]
+ 2609              	.LBB5:
   42:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/object.h ****     for(int i=0; i < MAX_POINTS; i++){
- 1390              		.loc 3 42 0
- 1391 0672 0023     		movs	r3, #0
- 1392 0674 FB60     		str	r3, [r7, #12]
- 1393 0676 1FE0     		b	.L74
- 1394              	.L75:
+ 2610              		.loc 4 42 0
+ 2611 0bd8 0023     		movs	r3, #0
+ 2612 0bda FB60     		str	r3, [r7, #12]
+ 2613 0bdc 1FE0     		b	.L172
+ 2614              	.L173:
   43:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/object.h ****             pixel(pObj->geo->px[i].x + pObj->posX, pObj->geo->px[i].y + pObj->posY, 0);
- 1395              		.loc 3 43 0 discriminator 3
- 1396 0678 7B68     		ldr	r3, [r7, #4]
- 1397 067a 1A68     		ldr	r2, [r3]
- 1398 067c FB68     		ldr	r3, [r7, #12]
- 1399 067e 0433     		adds	r3, r3, #4
- 1400 0680 5B00     		lsls	r3, r3, #1
- 1401 0682 D318     		adds	r3, r2, r3
- 1402 0684 0433     		adds	r3, r3, #4
- 1403 0686 1B78     		ldrb	r3, [r3]
- 1404 0688 1A00     		movs	r2, r3
- 1405 068a 7B68     		ldr	r3, [r7, #4]
- 1406 068c DB68     		ldr	r3, [r3, #12]
- 1407 068e D318     		adds	r3, r2, r3
- 1408 0690 1800     		movs	r0, r3
- 1409 0692 7B68     		ldr	r3, [r7, #4]
- 1410 0694 1A68     		ldr	r2, [r3]
- 1411 0696 FB68     		ldr	r3, [r7, #12]
- 1412 0698 0433     		adds	r3, r3, #4
- 1413 069a 5B00     		lsls	r3, r3, #1
- 1414 069c D318     		adds	r3, r2, r3
- 1415 069e 0533     		adds	r3, r3, #5
- 1416 06a0 1B78     		ldrb	r3, [r3]
- 1417 06a2 1A00     		movs	r2, r3
- 1418 06a4 7B68     		ldr	r3, [r7, #4]
- 1419 06a6 1B69     		ldr	r3, [r3, #16]
- 1420 06a8 D318     		adds	r3, r2, r3
- 1421 06aa 0022     		movs	r2, #0
- 1422 06ac 1900     		movs	r1, r3
- 1423 06ae FFF7FEFF 		bl	pixel
+ 2615              		.loc 4 43 0 discriminator 3
+ 2616 0bde 7B68     		ldr	r3, [r7, #4]
+ 2617 0be0 1A68     		ldr	r2, [r3]
+ 2618 0be2 FB68     		ldr	r3, [r7, #12]
+ 2619 0be4 0433     		adds	r3, r3, #4
+ 2620 0be6 5B00     		lsls	r3, r3, #1
+ 2621 0be8 D318     		adds	r3, r2, r3
+ 2622 0bea 0433     		adds	r3, r3, #4
+ 2623 0bec 1B78     		ldrb	r3, [r3]
+ 2624 0bee 1A00     		movs	r2, r3
+ 2625 0bf0 7B68     		ldr	r3, [r7, #4]
+ 2626 0bf2 DB68     		ldr	r3, [r3, #12]
+ 2627 0bf4 D318     		adds	r3, r2, r3
+ 2628 0bf6 1800     		movs	r0, r3
+ 2629 0bf8 7B68     		ldr	r3, [r7, #4]
+ 2630 0bfa 1A68     		ldr	r2, [r3]
+ 2631 0bfc FB68     		ldr	r3, [r7, #12]
+ 2632 0bfe 0433     		adds	r3, r3, #4
+ 2633 0c00 5B00     		lsls	r3, r3, #1
+ 2634 0c02 D318     		adds	r3, r2, r3
+ 2635 0c04 0533     		adds	r3, r3, #5
+ 2636 0c06 1B78     		ldrb	r3, [r3]
+ 2637 0c08 1A00     		movs	r2, r3
+ 2638 0c0a 7B68     		ldr	r3, [r7, #4]
+ 2639 0c0c 1B69     		ldr	r3, [r3, #16]
+ 2640 0c0e D318     		adds	r3, r2, r3
+ 2641 0c10 0022     		movs	r2, #0
+ 2642 0c12 1900     		movs	r1, r3
+ 2643 0c14 FFF7FEFF 		bl	pixel
   42:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/object.h ****     for(int i=0; i < MAX_POINTS; i++){
- 1424              		.loc 3 42 0 discriminator 3
- 1425 06b2 FB68     		ldr	r3, [r7, #12]
- 1426 06b4 0133     		adds	r3, r3, #1
- 1427 06b6 FB60     		str	r3, [r7, #12]
- 1428              	.L74:
+ 2644              		.loc 4 42 0 discriminator 3
+ 2645 0c18 FB68     		ldr	r3, [r7, #12]
+ 2646 0c1a 0133     		adds	r3, r3, #1
+ 2647 0c1c FB60     		str	r3, [r7, #12]
+ 2648              	.L172:
   42:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/object.h ****     for(int i=0; i < MAX_POINTS; i++){
- 1429              		.loc 3 42 0 is_stmt 0 discriminator 1
- 1430 06b8 FB68     		ldr	r3, [r7, #12]
- 1431 06ba 4A2B     		cmp	r3, #74
- 1432 06bc DCDD     		ble	.L75
- 1433              	.LBE5:
+ 2649              		.loc 4 42 0 is_stmt 0 discriminator 1
+ 2650 0c1e FB68     		ldr	r3, [r7, #12]
+ 2651 0c20 4A2B     		cmp	r3, #74
+ 2652 0c22 DCDD     		ble	.L173
+ 2653              	.LBE5:
   44:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/object.h ****         }
   45:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/object.h ****     }
- 1434              		.loc 3 45 0 is_stmt 1
- 1435 06be C046     		nop
- 1436 06c0 BD46     		mov	sp, r7
- 1437 06c2 04B0     		add	sp, sp, #16
- 1438              		@ sp needed
- 1439 06c4 80BD     		pop	{r7, pc}
- 1440              		.cfi_endproc
- 1441              	.LFE18:
- 1443              		.align	1
- 1444              		.global	move_paddle
- 1445              		.syntax unified
- 1446              		.code	16
- 1447              		.thumb_func
- 1448              		.fpu softvfp
- 1450              	move_paddle:
- 1451              	.LFB19:
- 1452              		.file 4 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/paddle.h"
+ 2654              		.loc 4 45 0 is_stmt 1
+ 2655 0c24 C046     		nop
+ 2656 0c26 BD46     		mov	sp, r7
+ 2657 0c28 04B0     		add	sp, sp, #16
+ 2658              		@ sp needed
+ 2659 0c2a 80BD     		pop	{r7, pc}
+ 2660              		.cfi_endproc
+ 2661              	.LFE32:
+ 2663              		.align	1
+ 2664              		.global	move_paddle
+ 2665              		.syntax unified
+ 2666              		.code	16
+ 2667              		.thumb_func
+ 2668              		.fpu softvfp
+ 2670              	move_paddle:
+ 2671              	.LFB33:
+ 2672              		.file 5 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/paddle.h"
    1:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/paddle.h **** extern OBJECT Rpaddle;
    2:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/paddle.h **** extern OBJECT Lpaddle;
    3:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/paddle.h **** 
    4:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/paddle.h **** void move_paddle(POBJECT this) {
- 1453              		.loc 4 4 0
- 1454              		.cfi_startproc
- 1455              		@ args = 0, pretend = 0, frame = 8
- 1456              		@ frame_needed = 1, uses_anonymous_args = 0
- 1457 06c6 80B5     		push	{r7, lr}
- 1458              		.cfi_def_cfa_offset 8
- 1459              		.cfi_offset 7, -8
- 1460              		.cfi_offset 14, -4
- 1461 06c8 82B0     		sub	sp, sp, #8
- 1462              		.cfi_def_cfa_offset 16
- 1463 06ca 00AF     		add	r7, sp, #0
- 1464              		.cfi_def_cfa_register 7
- 1465 06cc 7860     		str	r0, [r7, #4]
+ 2673              		.loc 5 4 0
+ 2674              		.cfi_startproc
+ 2675              		@ args = 0, pretend = 0, frame = 8
+ 2676              		@ frame_needed = 1, uses_anonymous_args = 0
+ 2677 0c2c 80B5     		push	{r7, lr}
+ 2678              		.cfi_def_cfa_offset 8
+ 2679              		.cfi_offset 7, -8
+ 2680              		.cfi_offset 14, -4
+ 2681 0c2e 82B0     		sub	sp, sp, #8
+ 2682              		.cfi_def_cfa_offset 16
+ 2683 0c30 00AF     		add	r7, sp, #0
+ 2684              		.cfi_def_cfa_register 7
+ 2685 0c32 7860     		str	r0, [r7, #4]
    5:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/paddle.h **** 	clear_object(this);
- 1466              		.loc 4 5 0
- 1467 06ce 7B68     		ldr	r3, [r7, #4]
- 1468 06d0 1800     		movs	r0, r3
- 1469 06d2 FFF7FEFF 		bl	clear_object
-   6:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/paddle.h **** 	this->draw(this);
- 1470              		.loc 4 6 0
- 1471 06d6 7B68     		ldr	r3, [r7, #4]
- 1472 06d8 5B69     		ldr	r3, [r3, #20]
- 1473 06da 7A68     		ldr	r2, [r7, #4]
- 1474 06dc 1000     		movs	r0, r2
- 1475 06de 9847     		blx	r3
- 1476              	.LVL0:
-   7:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/paddle.h **** }
- 1477              		.loc 4 7 0
- 1478 06e0 C046     		nop
- 1479 06e2 BD46     		mov	sp, r7
- 1480 06e4 02B0     		add	sp, sp, #8
- 1481              		@ sp needed
- 1482 06e6 80BD     		pop	{r7, pc}
- 1483              		.cfi_endproc
- 1484              	.LFE19:
- 1486              		.global	paddle_geometry
- 1487              		.data
- 1488              		.align	2
- 1491              	paddle_geometry:
- 1492 0000 4B000000 		.word	75
- 1493 0004 02000000 		.word	2
- 1494 0008 19000000 		.word	25
- 1495 000c 00       		.byte	0
- 1496 000d 01       		.byte	1
- 1497 000e 00       		.byte	0
- 1498 000f 02       		.byte	2
- 1499 0010 00       		.byte	0
- 1500 0011 03       		.byte	3
- 1501 0012 00       		.byte	0
- 1502 0013 04       		.byte	4
- 1503 0014 00       		.byte	0
- 1504 0015 05       		.byte	5
- 1505 0016 00       		.byte	0
- 1506 0017 06       		.byte	6
- 1507 0018 00       		.byte	0
- 1508 0019 07       		.byte	7
- 1509 001a 00       		.byte	0
- 1510 001b 08       		.byte	8
- 1511 001c 00       		.byte	0
- 1512 001d 09       		.byte	9
- 1513 001e 00       		.byte	0
- 1514 001f 0A       		.byte	10
- 1515 0020 00       		.byte	0
- 1516 0021 0B       		.byte	11
- 1517 0022 00       		.byte	0
- 1518 0023 0C       		.byte	12
- 1519 0024 00       		.byte	0
- 1520 0025 0D       		.byte	13
- 1521 0026 00       		.byte	0
- 1522 0027 0E       		.byte	14
- 1523 0028 00       		.byte	0
- 1524 0029 0F       		.byte	15
- 1525 002a 00       		.byte	0
- 1526 002b 10       		.byte	16
- 1527 002c 00       		.byte	0
- 1528 002d 11       		.byte	17
- 1529 002e 00       		.byte	0
- 1530 002f 12       		.byte	18
- 1531 0030 00       		.byte	0
- 1532 0031 13       		.byte	19
- 1533 0032 00       		.byte	0
- 1534 0033 14       		.byte	20
- 1535 0034 00       		.byte	0
- 1536 0035 15       		.byte	21
- 1537 0036 00       		.byte	0
- 1538 0037 16       		.byte	22
- 1539 0038 00       		.byte	0
- 1540 0039 17       		.byte	23
- 1541 003a 00       		.byte	0
- 1542 003b 18       		.byte	24
- 1543 003c 00       		.byte	0
- 1544 003d 19       		.byte	25
- 1545 003e 01       		.byte	1
- 1546 003f 01       		.byte	1
- 1547 0040 01       		.byte	1
- 1548 0041 02       		.byte	2
- 1549 0042 01       		.byte	1
- 1550 0043 03       		.byte	3
- 1551 0044 01       		.byte	1
- 1552 0045 04       		.byte	4
- 1553 0046 01       		.byte	1
- 1554 0047 05       		.byte	5
- 1555 0048 01       		.byte	1
- 1556 0049 06       		.byte	6
- 1557 004a 01       		.byte	1
- 1558 004b 07       		.byte	7
- 1559 004c 01       		.byte	1
- 1560 004d 08       		.byte	8
- 1561 004e 01       		.byte	1
- 1562 004f 09       		.byte	9
- 1563 0050 01       		.byte	1
- 1564 0051 0A       		.byte	10
- 1565 0052 01       		.byte	1
- 1566 0053 0B       		.byte	11
- 1567 0054 01       		.byte	1
- 1568 0055 0C       		.byte	12
- 1569 0056 01       		.byte	1
- 1570 0057 0D       		.byte	13
- 1571 0058 01       		.byte	1
- 1572 0059 0E       		.byte	14
- 1573 005a 01       		.byte	1
- 1574 005b 0F       		.byte	15
- 1575 005c 01       		.byte	1
- 1576 005d 10       		.byte	16
- 1577 005e 01       		.byte	1
- 1578 005f 11       		.byte	17
- 1579 0060 01       		.byte	1
- 1580 0061 12       		.byte	18
- 1581 0062 01       		.byte	1
- 1582 0063 13       		.byte	19
- 1583 0064 01       		.byte	1
- 1584 0065 14       		.byte	20
- 1585 0066 01       		.byte	1
- 1586 0067 15       		.byte	21
- 1587 0068 01       		.byte	1
- 1588 0069 16       		.byte	22
- 1589 006a 01       		.byte	1
- 1590 006b 17       		.byte	23
- 1591 006c 01       		.byte	1
- 1592 006d 18       		.byte	24
- 1593 006e 01       		.byte	1
- 1594 006f 19       		.byte	25
- 1595 0070 02       		.byte	2
- 1596 0071 01       		.byte	1
- 1597 0072 02       		.byte	2
- 1598 0073 02       		.byte	2
- 1599 0074 02       		.byte	2
- 1600 0075 03       		.byte	3
- 1601 0076 02       		.byte	2
- 1602 0077 04       		.byte	4
- 1603 0078 02       		.byte	2
- 1604 0079 05       		.byte	5
- 1605 007a 02       		.byte	2
- 1606 007b 06       		.byte	6
- 1607 007c 02       		.byte	2
- 1608 007d 07       		.byte	7
- 1609 007e 02       		.byte	2
- 1610 007f 08       		.byte	8
- 1611 0080 02       		.byte	2
- 1612 0081 09       		.byte	9
- 1613 0082 02       		.byte	2
- 1614 0083 0A       		.byte	10
- 1615 0084 02       		.byte	2
- 1616 0085 0B       		.byte	11
- 1617 0086 02       		.byte	2
- 1618 0087 0C       		.byte	12
- 1619 0088 02       		.byte	2
- 1620 0089 0D       		.byte	13
- 1621 008a 02       		.byte	2
- 1622 008b 0E       		.byte	14
- 1623 008c 02       		.byte	2
- 1624 008d 0F       		.byte	15
- 1625 008e 02       		.byte	2
- 1626 008f 10       		.byte	16
- 1627 0090 02       		.byte	2
- 1628 0091 11       		.byte	17
- 1629 0092 02       		.byte	2
- 1630 0093 12       		.byte	18
- 1631 0094 02       		.byte	2
- 1632 0095 13       		.byte	19
- 1633 0096 02       		.byte	2
- 1634 0097 14       		.byte	20
- 1635 0098 02       		.byte	2
- 1636 0099 15       		.byte	21
- 1637 009a 02       		.byte	2
- 1638 009b 16       		.byte	22
- 1639 009c 02       		.byte	2
- 1640 009d 17       		.byte	23
- 1641 009e 02       		.byte	2
- 1642 009f 18       		.byte	24
- 1643 00a0 02       		.byte	2
- 1644 00a1 19       		.byte	25
- 1645 00a2 0000     		.space	2
- 1646              		.global	Rpaddle
- 1647              		.align	2
- 1650              	Rpaddle:
- 1651 00a4 00000000 		.word	paddle_geometry
- 1652 00a8 00000000 		.word	0
- 1653 00ac 00000000 		.word	0
- 1654 00b0 78000000 		.word	120
- 1655 00b4 01000000 		.word	1
- 1656 00b8 00000000 		.word	draw_object
- 1657 00bc 00000000 		.word	clear_object
- 1658 00c0 00000000 		.word	move_paddle
- 1659 00c4 00000000 		.word	set_object_speed
- 1660              		.global	Lpaddle
- 1661              		.align	2
- 1664              	Lpaddle:
- 1665 00c8 00000000 		.word	paddle_geometry
- 1666 00cc 00000000 		.word	0
- 1667 00d0 00000000 		.word	0
- 1668 00d4 01000000 		.word	1
- 1669 00d8 01000000 		.word	1
- 1670 00dc 00000000 		.word	draw_object
- 1671 00e0 00000000 		.word	clear_object
- 1672 00e4 00000000 		.word	move_paddle
- 1673 00e8 00000000 		.word	set_object_speed
- 1674              		.text
- 1675              		.align	1
- 1676              		.global	move_ball
- 1677              		.syntax unified
- 1678              		.code	16
- 1679              		.thumb_func
- 1680              		.fpu softvfp
- 1682              	move_ball:
- 1683              	.LFB20:
- 1684              		.file 5 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h"
+ 2686              		.loc 5 5 0
+ 2687 0c34 7B68     		ldr	r3, [r7, #4]
+ 2688 0c36 1800     		movs	r0, r3
+ 2689 0c38 FFF7FEFF 		bl	clear_object
+   6:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/paddle.h **** 	
+   7:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/paddle.h **** 	this->posY += this->dirY;
+ 2690              		.loc 5 7 0
+ 2691 0c3c 7B68     		ldr	r3, [r7, #4]
+ 2692 0c3e 1A69     		ldr	r2, [r3, #16]
+ 2693 0c40 7B68     		ldr	r3, [r7, #4]
+ 2694 0c42 9B68     		ldr	r3, [r3, #8]
+ 2695 0c44 D218     		adds	r2, r2, r3
+ 2696 0c46 7B68     		ldr	r3, [r7, #4]
+ 2697 0c48 1A61     		str	r2, [r3, #16]
+   8:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/paddle.h **** 	
+   9:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/paddle.h **** 	if(this->posY < 0) {
+ 2698              		.loc 5 9 0
+ 2699 0c4a 7B68     		ldr	r3, [r7, #4]
+ 2700 0c4c 1B69     		ldr	r3, [r3, #16]
+ 2701 0c4e 002B     		cmp	r3, #0
+ 2702 0c50 03DA     		bge	.L175
+  10:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/paddle.h **** 		this->posY = 0;
+ 2703              		.loc 5 10 0
+ 2704 0c52 7B68     		ldr	r3, [r7, #4]
+ 2705 0c54 0022     		movs	r2, #0
+ 2706 0c56 1A61     		str	r2, [r3, #16]
+ 2707 0c58 0EE0     		b	.L176
+ 2708              	.L175:
+  11:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/paddle.h **** 	} else if(this->posY + this->geo->sizeY > 127) {
+ 2709              		.loc 5 11 0
+ 2710 0c5a 7B68     		ldr	r3, [r7, #4]
+ 2711 0c5c 1A69     		ldr	r2, [r3, #16]
+ 2712 0c5e 7B68     		ldr	r3, [r7, #4]
+ 2713 0c60 1B68     		ldr	r3, [r3]
+ 2714 0c62 9B68     		ldr	r3, [r3, #8]
+ 2715 0c64 D318     		adds	r3, r2, r3
+ 2716 0c66 7F2B     		cmp	r3, #127
+ 2717 0c68 06DD     		ble	.L176
+  12:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/paddle.h **** 		this->posY = 127 - this->geo->sizeY;
+ 2718              		.loc 5 12 0
+ 2719 0c6a 7B68     		ldr	r3, [r7, #4]
+ 2720 0c6c 1B68     		ldr	r3, [r3]
+ 2721 0c6e 9B68     		ldr	r3, [r3, #8]
+ 2722 0c70 7F22     		movs	r2, #127
+ 2723 0c72 D21A     		subs	r2, r2, r3
+ 2724 0c74 7B68     		ldr	r3, [r7, #4]
+ 2725 0c76 1A61     		str	r2, [r3, #16]
+ 2726              	.L176:
+  13:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/paddle.h **** 	}
+  14:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/paddle.h **** 	
+  15:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/paddle.h **** 	this->draw(this);
+ 2727              		.loc 5 15 0
+ 2728 0c78 7B68     		ldr	r3, [r7, #4]
+ 2729 0c7a 5B69     		ldr	r3, [r3, #20]
+ 2730 0c7c 7A68     		ldr	r2, [r7, #4]
+ 2731 0c7e 1000     		movs	r0, r2
+ 2732 0c80 9847     		blx	r3
+ 2733              	.LVL0:
+  16:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/paddle.h **** }
+ 2734              		.loc 5 16 0
+ 2735 0c82 C046     		nop
+ 2736 0c84 BD46     		mov	sp, r7
+ 2737 0c86 02B0     		add	sp, sp, #8
+ 2738              		@ sp needed
+ 2739 0c88 80BD     		pop	{r7, pc}
+ 2740              		.cfi_endproc
+ 2741              	.LFE33:
+ 2743              		.global	paddle_geometry
+ 2744              		.data
+ 2745              		.align	2
+ 2748              	paddle_geometry:
+ 2749 0000 4B000000 		.word	75
+ 2750 0004 02000000 		.word	2
+ 2751 0008 19000000 		.word	25
+ 2752 000c 00       		.byte	0
+ 2753 000d 01       		.byte	1
+ 2754 000e 00       		.byte	0
+ 2755 000f 02       		.byte	2
+ 2756 0010 00       		.byte	0
+ 2757 0011 03       		.byte	3
+ 2758 0012 00       		.byte	0
+ 2759 0013 04       		.byte	4
+ 2760 0014 00       		.byte	0
+ 2761 0015 05       		.byte	5
+ 2762 0016 00       		.byte	0
+ 2763 0017 06       		.byte	6
+ 2764 0018 00       		.byte	0
+ 2765 0019 07       		.byte	7
+ 2766 001a 00       		.byte	0
+ 2767 001b 08       		.byte	8
+ 2768 001c 00       		.byte	0
+ 2769 001d 09       		.byte	9
+ 2770 001e 00       		.byte	0
+ 2771 001f 0A       		.byte	10
+ 2772 0020 00       		.byte	0
+ 2773 0021 0B       		.byte	11
+ 2774 0022 00       		.byte	0
+ 2775 0023 0C       		.byte	12
+ 2776 0024 00       		.byte	0
+ 2777 0025 0D       		.byte	13
+ 2778 0026 00       		.byte	0
+ 2779 0027 0E       		.byte	14
+ 2780 0028 00       		.byte	0
+ 2781 0029 0F       		.byte	15
+ 2782 002a 00       		.byte	0
+ 2783 002b 10       		.byte	16
+ 2784 002c 00       		.byte	0
+ 2785 002d 11       		.byte	17
+ 2786 002e 00       		.byte	0
+ 2787 002f 12       		.byte	18
+ 2788 0030 00       		.byte	0
+ 2789 0031 13       		.byte	19
+ 2790 0032 00       		.byte	0
+ 2791 0033 14       		.byte	20
+ 2792 0034 00       		.byte	0
+ 2793 0035 15       		.byte	21
+ 2794 0036 00       		.byte	0
+ 2795 0037 16       		.byte	22
+ 2796 0038 00       		.byte	0
+ 2797 0039 17       		.byte	23
+ 2798 003a 00       		.byte	0
+ 2799 003b 18       		.byte	24
+ 2800 003c 00       		.byte	0
+ 2801 003d 19       		.byte	25
+ 2802 003e 01       		.byte	1
+ 2803 003f 01       		.byte	1
+ 2804 0040 01       		.byte	1
+ 2805 0041 02       		.byte	2
+ 2806 0042 01       		.byte	1
+ 2807 0043 03       		.byte	3
+ 2808 0044 01       		.byte	1
+ 2809 0045 04       		.byte	4
+ 2810 0046 01       		.byte	1
+ 2811 0047 05       		.byte	5
+ 2812 0048 01       		.byte	1
+ 2813 0049 06       		.byte	6
+ 2814 004a 01       		.byte	1
+ 2815 004b 07       		.byte	7
+ 2816 004c 01       		.byte	1
+ 2817 004d 08       		.byte	8
+ 2818 004e 01       		.byte	1
+ 2819 004f 09       		.byte	9
+ 2820 0050 01       		.byte	1
+ 2821 0051 0A       		.byte	10
+ 2822 0052 01       		.byte	1
+ 2823 0053 0B       		.byte	11
+ 2824 0054 01       		.byte	1
+ 2825 0055 0C       		.byte	12
+ 2826 0056 01       		.byte	1
+ 2827 0057 0D       		.byte	13
+ 2828 0058 01       		.byte	1
+ 2829 0059 0E       		.byte	14
+ 2830 005a 01       		.byte	1
+ 2831 005b 0F       		.byte	15
+ 2832 005c 01       		.byte	1
+ 2833 005d 10       		.byte	16
+ 2834 005e 01       		.byte	1
+ 2835 005f 11       		.byte	17
+ 2836 0060 01       		.byte	1
+ 2837 0061 12       		.byte	18
+ 2838 0062 01       		.byte	1
+ 2839 0063 13       		.byte	19
+ 2840 0064 01       		.byte	1
+ 2841 0065 14       		.byte	20
+ 2842 0066 01       		.byte	1
+ 2843 0067 15       		.byte	21
+ 2844 0068 01       		.byte	1
+ 2845 0069 16       		.byte	22
+ 2846 006a 01       		.byte	1
+ 2847 006b 17       		.byte	23
+ 2848 006c 01       		.byte	1
+ 2849 006d 18       		.byte	24
+ 2850 006e 01       		.byte	1
+ 2851 006f 19       		.byte	25
+ 2852 0070 02       		.byte	2
+ 2853 0071 01       		.byte	1
+ 2854 0072 02       		.byte	2
+ 2855 0073 02       		.byte	2
+ 2856 0074 02       		.byte	2
+ 2857 0075 03       		.byte	3
+ 2858 0076 02       		.byte	2
+ 2859 0077 04       		.byte	4
+ 2860 0078 02       		.byte	2
+ 2861 0079 05       		.byte	5
+ 2862 007a 02       		.byte	2
+ 2863 007b 06       		.byte	6
+ 2864 007c 02       		.byte	2
+ 2865 007d 07       		.byte	7
+ 2866 007e 02       		.byte	2
+ 2867 007f 08       		.byte	8
+ 2868 0080 02       		.byte	2
+ 2869 0081 09       		.byte	9
+ 2870 0082 02       		.byte	2
+ 2871 0083 0A       		.byte	10
+ 2872 0084 02       		.byte	2
+ 2873 0085 0B       		.byte	11
+ 2874 0086 02       		.byte	2
+ 2875 0087 0C       		.byte	12
+ 2876 0088 02       		.byte	2
+ 2877 0089 0D       		.byte	13
+ 2878 008a 02       		.byte	2
+ 2879 008b 0E       		.byte	14
+ 2880 008c 02       		.byte	2
+ 2881 008d 0F       		.byte	15
+ 2882 008e 02       		.byte	2
+ 2883 008f 10       		.byte	16
+ 2884 0090 02       		.byte	2
+ 2885 0091 11       		.byte	17
+ 2886 0092 02       		.byte	2
+ 2887 0093 12       		.byte	18
+ 2888 0094 02       		.byte	2
+ 2889 0095 13       		.byte	19
+ 2890 0096 02       		.byte	2
+ 2891 0097 14       		.byte	20
+ 2892 0098 02       		.byte	2
+ 2893 0099 15       		.byte	21
+ 2894 009a 02       		.byte	2
+ 2895 009b 16       		.byte	22
+ 2896 009c 02       		.byte	2
+ 2897 009d 17       		.byte	23
+ 2898 009e 02       		.byte	2
+ 2899 009f 18       		.byte	24
+ 2900 00a0 02       		.byte	2
+ 2901 00a1 19       		.byte	25
+ 2902 00a2 0000     		.space	2
+ 2903              		.global	Rpaddle
+ 2904              		.align	2
+ 2907              	Rpaddle:
+ 2908 00a4 00000000 		.word	paddle_geometry
+ 2909 00a8 00000000 		.word	0
+ 2910 00ac 00000000 		.word	0
+ 2911 00b0 78000000 		.word	120
+ 2912 00b4 01000000 		.word	1
+ 2913 00b8 00000000 		.word	draw_object
+ 2914 00bc 00000000 		.word	clear_object
+ 2915 00c0 00000000 		.word	move_paddle
+ 2916 00c4 00000000 		.word	set_object_speed
+ 2917              		.global	Lpaddle
+ 2918              		.align	2
+ 2921              	Lpaddle:
+ 2922 00c8 00000000 		.word	paddle_geometry
+ 2923 00cc 00000000 		.word	0
+ 2924 00d0 00000000 		.word	0
+ 2925 00d4 01000000 		.word	1
+ 2926 00d8 01000000 		.word	1
+ 2927 00dc 00000000 		.word	draw_object
+ 2928 00e0 00000000 		.word	clear_object
+ 2929 00e4 00000000 		.word	move_paddle
+ 2930 00e8 00000000 		.word	set_object_speed
+ 2931              		.text
+ 2932              		.align	1
+ 2933              		.global	move_ball
+ 2934              		.syntax unified
+ 2935              		.code	16
+ 2936              		.thumb_func
+ 2937              		.fpu softvfp
+ 2939              	move_ball:
+ 2940              	.LFB34:
+ 2941              		.file 6 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h"
    1:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** #include "object.h"
    2:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** #include "paddle.h"
    3:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 
    4:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** void move_ball(POBJECT this) {
- 1685              		.loc 5 4 0
- 1686              		.cfi_startproc
- 1687              		@ args = 0, pretend = 0, frame = 8
- 1688              		@ frame_needed = 1, uses_anonymous_args = 0
- 1689 06e8 80B5     		push	{r7, lr}
- 1690              		.cfi_def_cfa_offset 8
- 1691              		.cfi_offset 7, -8
- 1692              		.cfi_offset 14, -4
- 1693 06ea 82B0     		sub	sp, sp, #8
- 1694              		.cfi_def_cfa_offset 16
- 1695 06ec 00AF     		add	r7, sp, #0
- 1696              		.cfi_def_cfa_register 7
- 1697 06ee 7860     		str	r0, [r7, #4]
-   5:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 	clear_object(this);
- 1698              		.loc 5 5 0
- 1699 06f0 7B68     		ldr	r3, [r7, #4]
- 1700 06f2 1800     		movs	r0, r3
- 1701 06f4 FFF7FEFF 		bl	clear_object
-   6:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 	this->draw(this);
- 1702              		.loc 5 6 0
- 1703 06f8 7B68     		ldr	r3, [r7, #4]
- 1704 06fa 5B69     		ldr	r3, [r3, #20]
- 1705 06fc 7A68     		ldr	r2, [r7, #4]
- 1706 06fe 1000     		movs	r0, r2
- 1707 0700 9847     		blx	r3
- 1708              	.LVL1:
-   7:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** }
- 1709              		.loc 5 7 0
- 1710 0702 C046     		nop
- 1711 0704 BD46     		mov	sp, r7
- 1712 0706 02B0     		add	sp, sp, #8
- 1713              		@ sp needed
- 1714 0708 80BD     		pop	{r7, pc}
- 1715              		.cfi_endproc
- 1716              	.LFE20:
- 1718              		.global	ball_geometry
- 1719              		.data
- 1720              		.align	2
- 1723              	ball_geometry:
- 1724 00ec 0C000000 		.word	12
- 1725 00f0 04000000 		.word	4
- 1726 00f4 04000000 		.word	4
- 1727 00f8 00       		.byte	0
- 1728 00f9 01       		.byte	1
- 1729 00fa 00       		.byte	0
- 1730 00fb 02       		.byte	2
- 1731 00fc 01       		.byte	1
- 1732 00fd 00       		.byte	0
- 1733 00fe 01       		.byte	1
- 1734 00ff 01       		.byte	1
- 1735 0100 01       		.byte	1
- 1736 0101 02       		.byte	2
- 1737 0102 01       		.byte	1
- 1738 0103 03       		.byte	3
- 1739 0104 02       		.byte	2
- 1740 0105 00       		.byte	0
- 1741 0106 02       		.byte	2
- 1742 0107 01       		.byte	1
- 1743 0108 02       		.byte	2
- 1744 0109 02       		.byte	2
- 1745 010a 02       		.byte	2
- 1746 010b 03       		.byte	3
- 1747 010c 03       		.byte	3
- 1748 010d 01       		.byte	1
- 1749 010e 03       		.byte	3
- 1750 010f 02       		.byte	2
- 1751 0110 00000000 		.space	126
- 1751      00000000 
- 1751      00000000 
- 1751      00000000 
- 1751      00000000 
- 1752 018e 0000     		.space	2
- 1753              		.global	ball
- 1754              		.align	2
- 1757              	ball:
- 1758 0190 00000000 		.word	ball_geometry
- 1759 0194 00000000 		.word	0
- 1760 0198 00000000 		.word	0
- 1761 019c 01000000 		.word	1
- 1762 01a0 01000000 		.word	1
- 1763 01a4 00000000 		.word	draw_object
- 1764 01a8 00000000 		.word	clear_object
- 1765 01ac 00000000 		.word	move_ball
- 1766 01b0 00000000 		.word	set_object_speed
- 1767              		.section	.start_section,"ax",%progbits
- 1768              		.align	1
- 1769              		.global	startup
- 1770              		.syntax unified
- 1771              		.code	16
- 1772              		.thumb_func
- 1773              		.fpu softvfp
- 1775              	startup:
- 1776              	.LFB21:
- 1777              		.file 6 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c
+ 2942              		.loc 6 4 0
+ 2943              		.cfi_startproc
+ 2944              		@ args = 0, pretend = 0, frame = 16
+ 2945              		@ frame_needed = 1, uses_anonymous_args = 0
+ 2946 0c8a 80B5     		push	{r7, lr}
+ 2947              		.cfi_def_cfa_offset 8
+ 2948              		.cfi_offset 7, -8
+ 2949              		.cfi_offset 14, -4
+ 2950 0c8c 84B0     		sub	sp, sp, #16
+ 2951              		.cfi_def_cfa_offset 24
+ 2952 0c8e 00AF     		add	r7, sp, #0
+ 2953              		.cfi_def_cfa_register 7
+ 2954 0c90 7860     		str	r0, [r7, #4]
+   5:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 	
+   6:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h ****     this->posX += this->dirX;
+ 2955              		.loc 6 6 0
+ 2956 0c92 7B68     		ldr	r3, [r7, #4]
+ 2957 0c94 DA68     		ldr	r2, [r3, #12]
+ 2958 0c96 7B68     		ldr	r3, [r7, #4]
+ 2959 0c98 5B68     		ldr	r3, [r3, #4]
+ 2960 0c9a D218     		adds	r2, r2, r3
+ 2961 0c9c 7B68     		ldr	r3, [r7, #4]
+ 2962 0c9e DA60     		str	r2, [r3, #12]
+   7:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 	this->posY += this->dirY;
+ 2963              		.loc 6 7 0
+ 2964 0ca0 7B68     		ldr	r3, [r7, #4]
+ 2965 0ca2 1A69     		ldr	r2, [r3, #16]
+ 2966 0ca4 7B68     		ldr	r3, [r7, #4]
+ 2967 0ca6 9B68     		ldr	r3, [r3, #8]
+ 2968 0ca8 D218     		adds	r2, r2, r3
+ 2969 0caa 7B68     		ldr	r3, [r7, #4]
+ 2970 0cac 1A61     		str	r2, [r3, #16]
+   8:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 	
+   9:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 	//if((this->posY < 0) ||  this->posY > 63 ) {
+  10:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 	//	this->dirY = -this->dirY;
+  11:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 	//}
+  12:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 	
+  13:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 	// Define left and right paddle
+  14:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 	POBJECT lp = &Lpaddle;
+ 2971              		.loc 6 14 0
+ 2972 0cae 234B     		ldr	r3, .L180
+ 2973 0cb0 FB60     		str	r3, [r7, #12]
+  15:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 	POBJECT rp = &Rpaddle;
+ 2974              		.loc 6 15 0
+ 2975 0cb2 234B     		ldr	r3, .L180+4
+ 2976 0cb4 BB60     		str	r3, [r7, #8]
+  16:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 	
+  17:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 	//Rpaddle collision
+  18:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 	if(this->posX <= lp->posX + lp->geo->sizeX) {
+ 2977              		.loc 6 18 0
+ 2978 0cb6 7B68     		ldr	r3, [r7, #4]
+ 2979 0cb8 DA68     		ldr	r2, [r3, #12]
+ 2980 0cba FB68     		ldr	r3, [r7, #12]
+ 2981 0cbc D968     		ldr	r1, [r3, #12]
+ 2982 0cbe FB68     		ldr	r3, [r7, #12]
+ 2983 0cc0 1B68     		ldr	r3, [r3]
+ 2984 0cc2 5B68     		ldr	r3, [r3, #4]
+ 2985 0cc4 CB18     		adds	r3, r1, r3
+ 2986 0cc6 9A42     		cmp	r2, r3
+ 2987 0cc8 14DC     		bgt	.L178
+  19:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 		if((this->posY >= lp->posY) && (this->posY <= lp->posY + lp->geo->sizeY)) {
+ 2988              		.loc 6 19 0
+ 2989 0cca 7B68     		ldr	r3, [r7, #4]
+ 2990 0ccc 1A69     		ldr	r2, [r3, #16]
+ 2991 0cce FB68     		ldr	r3, [r7, #12]
+ 2992 0cd0 1B69     		ldr	r3, [r3, #16]
+ 2993 0cd2 9A42     		cmp	r2, r3
+ 2994 0cd4 0EDB     		blt	.L178
+ 2995              		.loc 6 19 0 is_stmt 0 discriminator 1
+ 2996 0cd6 7B68     		ldr	r3, [r7, #4]
+ 2997 0cd8 1A69     		ldr	r2, [r3, #16]
+ 2998 0cda FB68     		ldr	r3, [r7, #12]
+ 2999 0cdc 1969     		ldr	r1, [r3, #16]
+ 3000 0cde FB68     		ldr	r3, [r7, #12]
+ 3001 0ce0 1B68     		ldr	r3, [r3]
+ 3002 0ce2 9B68     		ldr	r3, [r3, #8]
+ 3003 0ce4 CB18     		adds	r3, r1, r3
+ 3004 0ce6 9A42     		cmp	r2, r3
+ 3005 0ce8 04DC     		bgt	.L178
+  20:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 			this->dirX = -this->dirX;
+ 3006              		.loc 6 20 0 is_stmt 1
+ 3007 0cea 7B68     		ldr	r3, [r7, #4]
+ 3008 0cec 5B68     		ldr	r3, [r3, #4]
+ 3009 0cee 5A42     		rsbs	r2, r3, #0
+ 3010 0cf0 7B68     		ldr	r3, [r7, #4]
+ 3011 0cf2 5A60     		str	r2, [r3, #4]
+ 3012              	.L178:
+  21:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 		} else {
+  22:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 			//Print ascii string to show score
+  23:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 		}
+  24:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 	}
+  25:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 	
+  26:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 	//Lpaddle collision
+  27:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 	if(this->posX >= rp->posX) {
+ 3013              		.loc 6 27 0
+ 3014 0cf4 7B68     		ldr	r3, [r7, #4]
+ 3015 0cf6 DA68     		ldr	r2, [r3, #12]
+ 3016 0cf8 BB68     		ldr	r3, [r7, #8]
+ 3017 0cfa DB68     		ldr	r3, [r3, #12]
+ 3018 0cfc 9A42     		cmp	r2, r3
+ 3019 0cfe 14DB     		blt	.L179
+  28:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 		if((this->posY >= rp->posY) && (this->posY <= rp->posY + rp->geo->sizeY)) {
+ 3020              		.loc 6 28 0
+ 3021 0d00 7B68     		ldr	r3, [r7, #4]
+ 3022 0d02 1A69     		ldr	r2, [r3, #16]
+ 3023 0d04 BB68     		ldr	r3, [r7, #8]
+ 3024 0d06 1B69     		ldr	r3, [r3, #16]
+ 3025 0d08 9A42     		cmp	r2, r3
+ 3026 0d0a 0EDB     		blt	.L179
+ 3027              		.loc 6 28 0 is_stmt 0 discriminator 1
+ 3028 0d0c 7B68     		ldr	r3, [r7, #4]
+ 3029 0d0e 1A69     		ldr	r2, [r3, #16]
+ 3030 0d10 BB68     		ldr	r3, [r7, #8]
+ 3031 0d12 1969     		ldr	r1, [r3, #16]
+ 3032 0d14 BB68     		ldr	r3, [r7, #8]
+ 3033 0d16 1B68     		ldr	r3, [r3]
+ 3034 0d18 9B68     		ldr	r3, [r3, #8]
+ 3035 0d1a CB18     		adds	r3, r1, r3
+ 3036 0d1c 9A42     		cmp	r2, r3
+ 3037 0d1e 04DC     		bgt	.L179
+  29:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 			this->dirX = -this->dirX;
+ 3038              		.loc 6 29 0 is_stmt 1
+ 3039 0d20 7B68     		ldr	r3, [r7, #4]
+ 3040 0d22 5B68     		ldr	r3, [r3, #4]
+ 3041 0d24 5A42     		rsbs	r2, r3, #0
+ 3042 0d26 7B68     		ldr	r3, [r7, #4]
+ 3043 0d28 5A60     		str	r2, [r3, #4]
+ 3044              	.L179:
+  30:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 		} else {
+  31:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 			//Print ascii string to show score
+  32:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 		}
+  33:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 	}
+  34:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 	
+  35:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** 	this->draw(this);
+ 3045              		.loc 6 35 0
+ 3046 0d2a 7B68     		ldr	r3, [r7, #4]
+ 3047 0d2c 5B69     		ldr	r3, [r3, #20]
+ 3048 0d2e 7A68     		ldr	r2, [r7, #4]
+ 3049 0d30 1000     		movs	r0, r2
+ 3050 0d32 9847     		blx	r3
+ 3051              	.LVL1:
+  36:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/ball.h **** }
+ 3052              		.loc 6 36 0
+ 3053 0d34 C046     		nop
+ 3054 0d36 BD46     		mov	sp, r7
+ 3055 0d38 04B0     		add	sp, sp, #16
+ 3056              		@ sp needed
+ 3057 0d3a 80BD     		pop	{r7, pc}
+ 3058              	.L181:
+ 3059              		.align	2
+ 3060              	.L180:
+ 3061 0d3c 00000000 		.word	Lpaddle
+ 3062 0d40 00000000 		.word	Rpaddle
+ 3063              		.cfi_endproc
+ 3064              	.LFE34:
+ 3066              		.global	ball_geometry
+ 3067              		.data
+ 3068              		.align	2
+ 3071              	ball_geometry:
+ 3072 00ec 0C000000 		.word	12
+ 3073 00f0 04000000 		.word	4
+ 3074 00f4 04000000 		.word	4
+ 3075 00f8 00       		.byte	0
+ 3076 00f9 01       		.byte	1
+ 3077 00fa 00       		.byte	0
+ 3078 00fb 02       		.byte	2
+ 3079 00fc 01       		.byte	1
+ 3080 00fd 00       		.byte	0
+ 3081 00fe 01       		.byte	1
+ 3082 00ff 01       		.byte	1
+ 3083 0100 01       		.byte	1
+ 3084 0101 02       		.byte	2
+ 3085 0102 01       		.byte	1
+ 3086 0103 03       		.byte	3
+ 3087 0104 02       		.byte	2
+ 3088 0105 00       		.byte	0
+ 3089 0106 02       		.byte	2
+ 3090 0107 01       		.byte	1
+ 3091 0108 02       		.byte	2
+ 3092 0109 02       		.byte	2
+ 3093 010a 02       		.byte	2
+ 3094 010b 03       		.byte	3
+ 3095 010c 03       		.byte	3
+ 3096 010d 01       		.byte	1
+ 3097 010e 03       		.byte	3
+ 3098 010f 02       		.byte	2
+ 3099 0110 00000000 		.space	126
+ 3099      00000000 
+ 3099      00000000 
+ 3099      00000000 
+ 3099      00000000 
+ 3100 018e 0000     		.space	2
+ 3101              		.global	ball
+ 3102              		.align	2
+ 3105              	ball:
+ 3106 0190 00000000 		.word	ball_geometry
+ 3107 0194 00000000 		.word	0
+ 3108 0198 00000000 		.word	0
+ 3109 019c 01000000 		.word	1
+ 3110 01a0 01000000 		.word	1
+ 3111 01a4 00000000 		.word	draw_object
+ 3112 01a8 00000000 		.word	clear_object
+ 3113 01ac 00000000 		.word	move_ball
+ 3114 01b0 00000000 		.word	set_object_speed
+ 3115              		.section	.start_section,"ax",%progbits
+ 3116              		.align	1
+ 3117              		.global	startup
+ 3118              		.syntax unified
+ 3119              		.code	16
+ 3120              		.thumb_func
+ 3121              		.fpu softvfp
+ 3123              	startup:
+ 3124              	.LFB35:
+ 3125              		.file 7 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c
    1:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** /*
    2:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****  * 	startup.c
    3:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****  *
@@ -2076,179 +3594,228 @@
    5:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** #define SIMULATOR
    6:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 
    7:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** #include "registers.h"
-   8:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** #include "delay.h"
-   9:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** #include "graphics.h"
+   8:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** #include "graphics.h"
+   9:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** #include "keypad.h"
   10:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** #include "object.h"
   11:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** #include "ball.h"
-  12:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****  
-  13:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** extern OBJECT ball;
-  14:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****  
-  15:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
-  16:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 
-  17:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** void startup ( void )
-  18:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** {
- 1778              		.loc 6 18 0
- 1779              		.cfi_startproc
- 1780              		@ Naked Function: prologue and epilogue provided by programmer.
- 1781              		@ args = 0, pretend = 0, frame = 0
- 1782              		@ frame_needed = 1, uses_anonymous_args = 0
-  19:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** asm volatile(
- 1783              		.loc 6 19 0
- 1784              		.syntax divided
- 1785              	@ 19 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c" 1
- 1786 0000 0248     		 LDR R0,=0x2001C000
- 1787 0002 8546     	 MOV SP,R0
- 1788 0004 FFF7FEFF 	 BL main
- 1789 0008 FEE7     	.L1: B .L1
- 1790              	
- 1791              	@ 0 "" 2
-  20:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 	" LDR R0,=0x2001C000\n"		/* set stack */
-  21:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 	" MOV SP,R0\n"
-  22:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 	" BL main\n"				/* call main */
-  23:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 	".L1: B .L1\n"				/* never return */
-  24:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 	) ;
-  25:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** }
- 1792              		.loc 6 25 0
- 1793              		.thumb
- 1794              		.syntax unified
- 1795 000a C046     		nop
- 1796              		.cfi_endproc
- 1797              	.LFE21:
- 1799              		.text
- 1800              		.align	1
- 1801              		.global	init_app
- 1802              		.syntax unified
- 1803              		.code	16
- 1804              		.thumb_func
- 1805              		.fpu softvfp
- 1807              	init_app:
- 1808              	.LFB22:
-  26:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 
-  27:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** void init_app(void){
- 1809              		.loc 6 27 0
- 1810              		.cfi_startproc
- 1811              		@ args = 0, pretend = 0, frame = 0
- 1812              		@ frame_needed = 1, uses_anonymous_args = 0
- 1813 070a 80B5     		push	{r7, lr}
- 1814              		.cfi_def_cfa_offset 8
- 1815              		.cfi_offset 7, -8
- 1816              		.cfi_offset 14, -4
- 1817 070c 00AF     		add	r7, sp, #0
- 1818              		.cfi_def_cfa_register 7
-  28:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         *GPIO_E_MODER = 0x55555555;
- 1819              		.loc 6 28 0
- 1820 070e 034B     		ldr	r3, .L80
- 1821 0710 034A     		ldr	r2, .L80+4
- 1822 0712 1A60     		str	r2, [r3]
-  29:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     }
- 1823              		.loc 6 29 0
- 1824 0714 C046     		nop
- 1825 0716 BD46     		mov	sp, r7
- 1826              		@ sp needed
- 1827 0718 80BD     		pop	{r7, pc}
- 1828              	.L81:
- 1829 071a C046     		.align	2
- 1830              	.L80:
- 1831 071c 00100240 		.word	1073876992
- 1832 0720 55555555 		.word	1431655765
- 1833              		.cfi_endproc
- 1834              	.LFE22:
- 1836              		.align	1
- 1837              		.global	main
- 1838              		.syntax unified
- 1839              		.code	16
- 1840              		.thumb_func
- 1841              		.fpu softvfp
- 1843              	main:
- 1844              	.LFB23:
-  30:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 
-  31:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** void main(void)
-  32:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** {
- 1845              		.loc 6 32 0
- 1846              		.cfi_startproc
- 1847              		@ args = 0, pretend = 0, frame = 16
- 1848              		@ frame_needed = 1, uses_anonymous_args = 0
- 1849 0724 80B5     		push	{r7, lr}
- 1850              		.cfi_def_cfa_offset 8
- 1851              		.cfi_offset 7, -8
- 1852              		.cfi_offset 14, -4
- 1853 0726 84B0     		sub	sp, sp, #16
- 1854              		.cfi_def_cfa_offset 24
- 1855 0728 00AF     		add	r7, sp, #0
- 1856              		.cfi_def_cfa_register 7
-  33:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     init_app();
- 1857              		.loc 6 33 0
- 1858 072a FFF7FEFF 		bl	init_app
-  34:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     graphic_initialize();
- 1859              		.loc 6 34 0
- 1860 072e FFF7FEFF 		bl	graphic_initialize
-  35:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     #ifndef SIMULATOR
-  36:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         graphics_clear_screen();
-  37:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     #endif
-  38:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 
-  39:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     
-  40:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     POBJECT p = &ball;
- 1861              		.loc 6 40 0
- 1862 0732 0F4B     		ldr	r3, .L84
- 1863 0734 FB60     		str	r3, [r7, #12]
-  41:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     POBJECT Lpad = &Lpaddle;
- 1864              		.loc 6 41 0
- 1865 0736 0F4B     		ldr	r3, .L84+4
- 1866 0738 BB60     		str	r3, [r7, #8]
-  42:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     POBJECT Rpad = &Rpaddle;
- 1867              		.loc 6 42 0
- 1868 073a 0F4B     		ldr	r3, .L84+8
- 1869 073c 7B60     		str	r3, [r7, #4]
-  43:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     
-  44:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     p->set_speed(p, 4, 4);
- 1870              		.loc 6 44 0
- 1871 073e FB68     		ldr	r3, [r7, #12]
- 1872 0740 1B6A     		ldr	r3, [r3, #32]
- 1873 0742 F868     		ldr	r0, [r7, #12]
- 1874 0744 0422     		movs	r2, #4
- 1875 0746 0421     		movs	r1, #4
- 1876 0748 9847     		blx	r3
- 1877              	.LVL2:
- 1878              	.L83:
-  45:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     
-  46:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     while(1){
-  47:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         p->move(p);
- 1879              		.loc 6 47 0 discriminator 1
- 1880 074a FB68     		ldr	r3, [r7, #12]
- 1881 074c DB69     		ldr	r3, [r3, #28]
- 1882 074e FA68     		ldr	r2, [r7, #12]
- 1883 0750 1000     		movs	r0, r2
- 1884 0752 9847     		blx	r3
- 1885              	.LVL3:
-  48:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         delay_milli(40);
- 1886              		.loc 6 48 0 discriminator 1
- 1887 0754 2820     		movs	r0, #40
- 1888 0756 FFF7FEFF 		bl	delay_milli
-  49:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         Lpad->move(Lpad);
- 1889              		.loc 6 49 0 discriminator 1
- 1890 075a BB68     		ldr	r3, [r7, #8]
- 1891 075c DB69     		ldr	r3, [r3, #28]
- 1892 075e BA68     		ldr	r2, [r7, #8]
- 1893 0760 1000     		movs	r0, r2
- 1894 0762 9847     		blx	r3
- 1895              	.LVL4:
-  50:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         Rpad->move(Rpad);
- 1896              		.loc 6 50 0 discriminator 1
- 1897 0764 7B68     		ldr	r3, [r7, #4]
- 1898 0766 DB69     		ldr	r3, [r3, #28]
- 1899 0768 7A68     		ldr	r2, [r7, #4]
- 1900 076a 1000     		movs	r0, r2
- 1901 076c 9847     		blx	r3
- 1902              	.LVL5:
-  47:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         delay_milli(40);
- 1903              		.loc 6 47 0 discriminator 1
- 1904 076e ECE7     		b	.L83
- 1905              	.L85:
- 1906              		.align	2
- 1907              	.L84:
- 1908 0770 00000000 		.word	ball
- 1909 0774 00000000 		.word	Lpaddle
- 1910 0778 00000000 		.word	Rpaddle
- 1911              		.cfi_endproc
- 1912              	.LFE23:
- 1914              	.Letext0:
+  12:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 
+  13:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****  
+  14:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** extern OBJECT ball;
+  15:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****  
+  16:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
+  17:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 
+  18:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** void startup ( void )
+  19:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** {
+ 3126              		.loc 7 19 0
+ 3127              		.cfi_startproc
+ 3128              		@ Naked Function: prologue and epilogue provided by programmer.
+ 3129              		@ args = 0, pretend = 0, frame = 0
+ 3130              		@ frame_needed = 1, uses_anonymous_args = 0
+  20:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** asm volatile(
+ 3131              		.loc 7 20 0
+ 3132              		.syntax divided
+ 3133              	@ 20 "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c" 1
+ 3134 0000 0248     		 LDR R0,=0x2001C000
+ 3135 0002 8546     	 MOV SP,R0
+ 3136 0004 FFF7FEFF 	 BL main
+ 3137 0008 FEE7     	.L1: B .L1
+ 3138              	
+ 3139              	@ 0 "" 2
+  21:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 	" LDR R0,=0x2001C000\n"		/* set stack */
+  22:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 	" MOV SP,R0\n"
+  23:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 	" BL main\n"				/* call main */
+  24:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 	".L1: B .L1\n"				/* never return */
+  25:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 	) ;
+  26:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** }
+ 3140              		.loc 7 26 0
+ 3141              		.thumb
+ 3142              		.syntax unified
+ 3143 000a C046     		nop
+ 3144              		.cfi_endproc
+ 3145              	.LFE35:
+ 3147              		.text
+ 3148              		.align	1
+ 3149              		.global	init_app
+ 3150              		.syntax unified
+ 3151              		.code	16
+ 3152              		.thumb_func
+ 3153              		.fpu softvfp
+ 3155              	init_app:
+ 3156              	.LFB36:
+  27:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 
+  28:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** void init_app(void){
+ 3157              		.loc 7 28 0
+ 3158              		.cfi_startproc
+ 3159              		@ args = 0, pretend = 0, frame = 0
+ 3160              		@ frame_needed = 1, uses_anonymous_args = 0
+ 3161 0d44 80B5     		push	{r7, lr}
+ 3162              		.cfi_def_cfa_offset 8
+ 3163              		.cfi_offset 7, -8
+ 3164              		.cfi_offset 14, -4
+ 3165 0d46 00AF     		add	r7, sp, #0
+ 3166              		.cfi_def_cfa_register 7
+  29:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         *GPIO_E_MODER = 0x55555555;
+ 3167              		.loc 7 29 0
+ 3168 0d48 0C4B     		ldr	r3, .L184
+ 3169 0d4a 0D4A     		ldr	r2, .L184+4
+ 3170 0d4c 1A60     		str	r2, [r3]
+  30:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         
+  31:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         *GPIO_D_MODER = 0x55555555;
+ 3171              		.loc 7 31 0
+ 3172 0d4e 0D4B     		ldr	r3, .L184+8
+ 3173 0d50 0B4A     		ldr	r2, .L184+4
+ 3174 0d52 1A60     		str	r2, [r3]
+  32:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         
+  33:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         *GPIO_D_MODER = 0x55005555;
+ 3175              		.loc 7 33 0
+ 3176 0d54 0B4B     		ldr	r3, .L184+8
+ 3177 0d56 0C4A     		ldr	r2, .L184+12
+ 3178 0d58 1A60     		str	r2, [r3]
+  34:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****      //set all bits as push pull
+  35:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         *GPIO_D_OTYPER &= 0x0000FFFF;   
+ 3179              		.loc 7 35 0
+ 3180 0d5a 0C4B     		ldr	r3, .L184+16
+ 3181 0d5c 0B4A     		ldr	r2, .L184+16
+ 3182 0d5e 1288     		ldrh	r2, [r2]
+ 3183 0d60 92B2     		uxth	r2, r2
+ 3184 0d62 1A80     		strh	r2, [r3]
+  36:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         *GPIO_D_OTYPER |= 0x00000000;   
+ 3185              		.loc 7 36 0
+ 3186 0d64 094B     		ldr	r3, .L184+16
+ 3187 0d66 094A     		ldr	r2, .L184+16
+ 3188 0d68 1288     		ldrh	r2, [r2]
+ 3189 0d6a 92B2     		uxth	r2, r2
+ 3190 0d6c 1A80     		strh	r2, [r3]
+  37:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****      //
+  38:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****      //PORT_PUPDR = 0xzz55zzzz;   
+  39:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         *GPIO_D_PUPDR = 0x00550000;   
+ 3191              		.loc 7 39 0
+ 3192 0d6e 084B     		ldr	r3, .L184+20
+ 3193 0d70 AA22     		movs	r2, #170
+ 3194 0d72 D203     		lsls	r2, r2, #15
+ 3195 0d74 1A60     		str	r2, [r3]
+  40:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     }
+ 3196              		.loc 7 40 0
+ 3197 0d76 C046     		nop
+ 3198 0d78 BD46     		mov	sp, r7
+ 3199              		@ sp needed
+ 3200 0d7a 80BD     		pop	{r7, pc}
+ 3201              	.L185:
+ 3202              		.align	2
+ 3203              	.L184:
+ 3204 0d7c 00100240 		.word	1073876992
+ 3205 0d80 55555555 		.word	1431655765
+ 3206 0d84 000C0240 		.word	1073875968
+ 3207 0d88 55550055 		.word	1426085205
+ 3208 0d8c 040C0240 		.word	1073875972
+ 3209 0d90 0C0C0240 		.word	1073875980
+ 3210              		.cfi_endproc
+ 3211              	.LFE36:
+ 3213              		.align	1
+ 3214              		.global	main
+ 3215              		.syntax unified
+ 3216              		.code	16
+ 3217              		.thumb_func
+ 3218              		.fpu softvfp
+ 3220              	main:
+ 3221              	.LFB37:
+  41:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 
+  42:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** void main(void)
+  43:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** {
+ 3222              		.loc 7 43 0
+ 3223              		.cfi_startproc
+ 3224              		@ args = 0, pretend = 0, frame = 16
+ 3225              		@ frame_needed = 1, uses_anonymous_args = 0
+ 3226 0d94 90B5     		push	{r4, r7, lr}
+ 3227              		.cfi_def_cfa_offset 12
+ 3228              		.cfi_offset 4, -12
+ 3229              		.cfi_offset 7, -8
+ 3230              		.cfi_offset 14, -4
+ 3231 0d96 85B0     		sub	sp, sp, #20
+ 3232              		.cfi_def_cfa_offset 32
+ 3233 0d98 00AF     		add	r7, sp, #0
+ 3234              		.cfi_def_cfa_register 7
+  44:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     init_app();
+ 3235              		.loc 7 44 0
+ 3236 0d9a FFF7FEFF 		bl	init_app
+  45:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     graphic_initialize();
+ 3237              		.loc 7 45 0
+ 3238 0d9e FFF7FEFF 		bl	graphic_initialize
+  46:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     #ifndef SIMULATOR
+  47:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         graphics_clear_screen();
+  48:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     #endif
+  49:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c **** 
+  50:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     
+  51:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     POBJECT p = &ball;
+ 3239              		.loc 7 51 0
+ 3240 0da2 124B     		ldr	r3, .L188
+ 3241 0da4 FB60     		str	r3, [r7, #12]
+  52:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     POBJECT Lpad = &Lpaddle;
+ 3242              		.loc 7 52 0
+ 3243 0da6 124B     		ldr	r3, .L188+4
+ 3244 0da8 BB60     		str	r3, [r7, #8]
+  53:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     POBJECT Rpad = &Rpaddle;
+ 3245              		.loc 7 53 0
+ 3246 0daa 124B     		ldr	r3, .L188+8
+ 3247 0dac 7B60     		str	r3, [r7, #4]
+  54:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     
+  55:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     p->set_speed(p, 4, 4);
+ 3248              		.loc 7 55 0
+ 3249 0dae FB68     		ldr	r3, [r7, #12]
+ 3250 0db0 1B6A     		ldr	r3, [r3, #32]
+ 3251 0db2 F868     		ldr	r0, [r7, #12]
+ 3252 0db4 0422     		movs	r2, #4
+ 3253 0db6 0421     		movs	r1, #4
+ 3254 0db8 9847     		blx	r3
+ 3255              	.LVL2:
+ 3256              	.L187:
+ 3257              	.LBB6:
+  56:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     
+  57:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****     while(1){
+  58:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         unsigned char c = keyb();
+ 3258              		.loc 7 58 0 discriminator 1
+ 3259 0dba FC1C     		adds	r4, r7, #3
+ 3260 0dbc FFF7FEFF 		bl	keyb
+ 3261 0dc0 0300     		movs	r3, r0
+ 3262 0dc2 2370     		strb	r3, [r4]
+  59:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         p->move(p);
+ 3263              		.loc 7 59 0 discriminator 1
+ 3264 0dc4 FB68     		ldr	r3, [r7, #12]
+ 3265 0dc6 DB69     		ldr	r3, [r3, #28]
+ 3266 0dc8 FA68     		ldr	r2, [r7, #12]
+ 3267 0dca 1000     		movs	r0, r2
+ 3268 0dcc 9847     		blx	r3
+ 3269              	.LVL3:
+  60:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         Lpad->move(Lpad);
+ 3270              		.loc 7 60 0 discriminator 1
+ 3271 0dce BB68     		ldr	r3, [r7, #8]
+ 3272 0dd0 DB69     		ldr	r3, [r3, #28]
+ 3273 0dd2 BA68     		ldr	r2, [r7, #8]
+ 3274 0dd4 1000     		movs	r0, r2
+ 3275 0dd6 9847     		blx	r3
+ 3276              	.LVL4:
+  61:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         Rpad->move(Rpad);
+ 3277              		.loc 7 61 0 discriminator 1
+ 3278 0dd8 7B68     		ldr	r3, [r7, #4]
+ 3279 0dda DB69     		ldr	r3, [r3, #28]
+ 3280 0ddc 7A68     		ldr	r2, [r7, #4]
+ 3281 0dde 1000     		movs	r0, r2
+ 3282 0de0 9847     		blx	r3
+ 3283              	.LVL5:
+  62:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         delay_milli(40);
+ 3284              		.loc 7 62 0 discriminator 1
+ 3285 0de2 2820     		movs	r0, #40
+ 3286 0de4 FFF7FEFF 		bl	delay_milli
+ 3287              	.LBE6:
+  57:/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c ****         unsigned char c = keyb();
+ 3288              		.loc 7 57 0 discriminator 1
+ 3289 0de8 E7E7     		b	.L187
+ 3290              	.L189:
+ 3291 0dea C046     		.align	2
+ 3292              	.L188:
+ 3293 0dec 00000000 		.word	ball
+ 3294 0df0 00000000 		.word	Lpaddle
+ 3295 0df4 00000000 		.word	Rpaddle
+ 3296              		.cfi_endproc
+ 3297              	.LFE37:
+ 3299              	.Letext0:

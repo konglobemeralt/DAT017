@@ -5,10 +5,11 @@
 #define SIMULATOR
 
 #include "registers.h"
-#include "delay.h"
 #include "graphics.h"
+#include "keypad.h"
 #include "object.h"
 #include "ball.h"
+
  
 extern OBJECT ball;
  
@@ -26,6 +27,16 @@ asm volatile(
 
 void init_app(void){
         *GPIO_E_MODER = 0x55555555;
+        
+        *GPIO_D_MODER = 0x55555555;
+        
+        *GPIO_D_MODER = 0x55005555;
+     //set all bits as push pull
+        *GPIO_D_OTYPER &= 0x0000FFFF;   
+        *GPIO_D_OTYPER |= 0x00000000;   
+     //
+     //PORT_PUPDR = 0xzz55zzzz;   
+        *GPIO_D_PUPDR = 0x00550000;   
     }
 
 void main(void)
@@ -44,10 +55,11 @@ void main(void)
     p->set_speed(p, 4, 4);
     
     while(1){
+        unsigned char c = keyb();
         p->move(p);
-        delay_milli(40);
         Lpad->move(Lpad);
         Rpad->move(Rpad);
+        delay_milli(40);
         }
     
 }    

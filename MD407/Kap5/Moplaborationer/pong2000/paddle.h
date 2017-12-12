@@ -3,6 +3,15 @@ extern OBJECT Lpaddle;
 
 void move_paddle(POBJECT this) {
 	clear_object(this);
+	
+	this->posY += this->dirY;
+	
+	if(this->posY < 0) {
+		this->posY = 0;
+	} else if(this->posY + this->geo->sizeY > 127) {
+		this->posY = 127 - this->geo->sizeY;
+	}
+	
 	this->draw(this);
 }
 

@@ -36,6 +36,14 @@ asm volatile(
 
 void init_app(void){
         *GPIO_MODER = 0x55555555;
+        
+        *GPIOD_MODER = 0x55005555;
+     //set all bits as push pull
+        *GPIO_D_OTYPER &= 0x0000FFFF;   
+        *GPIO_D_OTYPER |= 0x00000000;   
+     //
+     //PORT_PUPDR = 0xzz55zzzz;   
+        *GPIO_D_PUPDR = 0x00AA0000;   
     }
 
 void main(void)
