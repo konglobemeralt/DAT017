@@ -36,8 +36,27 @@ void init_app(void){
         *GPIO_D_OTYPER |= 0x00000000;   
      //
      //PORT_PUPDR = 0xzz55zzzz;   
-        *GPIO_D_PUPDR = 0x00550000;   
+        *GPIO_D_PUPDR = 0x00AA0000;   
     }
+	
+void movePaddles(unsigned char c){
+	if(c == 1){Lpaddle.posY--; }
+	if(c == 4){Lpaddle.posY++; }
+	
+	if(c == 3){Rpaddle.posY--; }
+	if(c == 6){Rpaddle.posY++; }
+	
+	}
+
+	
+//void movePaddles(unsigned char player1, unsigned char player2){
+//	if(player1 == 1){Lpaddle.posY--; }
+//	if(player1 == 4){Lpaddle.posY++; }
+	
+//	if(player2 == 3){Rpaddle.posY--; }
+//	if(player2 == 6){Rpaddle.posY++; }
+	
+//	}
 
 void main(void)
 {
@@ -47,8 +66,6 @@ void main(void)
         graphics_clear_screen();
     #endif
 
-
-    
     POBJECT p = &ball;
     POBJECT Lpad = &Lpaddle;
     POBJECT Rpad = &Rpaddle;
@@ -56,11 +73,19 @@ void main(void)
     p->set_speed(p, 4, 4);
     
     while(1){
-        unsigned char c = keyb();
+		//array move
+		movePaddles(keyb());
+		//unsigned char c = keyb()[1];
+		//movePaddles(keyb()[0], keyb()[2] );
+
         p->move(p);
         Lpad->move(Lpad);
         Rpad->move(Rpad);
+
         delay_milli(40);
+        graphics_clear_screen();
         }
     
 }    
+
+

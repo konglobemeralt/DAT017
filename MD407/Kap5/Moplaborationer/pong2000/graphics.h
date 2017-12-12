@@ -66,10 +66,11 @@ void graphic_wait_ready(){
     while(1) { // Wait for display not to be busy
         graphics_ctrl_bit_set(B_E);
         delay500ns();
+		unsigned char busy = *GPIO_E_IDR_HIGH & LCD_BUSY;
         graphics_ctrl_bit_clear(B_E);
         delay500ns();
         //unsigned char i = *GPIO_IDR_HIGH;
-        if((*GPIO_E_IDR_HIGH & LCD_BUSY) == 0) {
+        if(busy == 0) {
             break;
         }
     }
@@ -170,8 +171,8 @@ void graphics_clear_screen(void){
             graphic_write_data(0, B_CS1|B_CS2);
         }
     }
+    
 }
-
 
 
 void pixel(unsigned x, unsigned y, unsigned set){

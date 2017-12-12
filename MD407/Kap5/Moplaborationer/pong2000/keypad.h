@@ -138,8 +138,7 @@ void outSeg7(unsigned char in)
 	else *GPIO_D_ODR_LOW = 0x00;
         
     }
-
-    
+	
 unsigned char keyb(void){
         unsigned char key[] = {1, 2, 3, 0xA, 4, 5, 6, 0xB, 7, 8, 9, 0xC, 0xE, 0, 0xF, 0xD};
         int row, col;
@@ -156,3 +155,25 @@ unsigned char keyb(void){
         kbdActivate(0);
         return 0xFF;
 }
+    
+	
+//Array read keyboard
+/*
+unsigned char *keyb(void){
+        unsigned char key[] = {1, 2, 3, 0xA, 4, 5, 6, 0xB, 7, 8, 9, 0xC, 0xE, 0, 0xF, 0xD};
+		static unsigned char returnKeys[4] = {0xFF,0xFF,0xFF,0xFF};
+        int row, col;
+        for(row = 1; row <= 4; row++)
+            {
+            kbdActivate(row);
+			delay_250ns();
+				if(col = kdbGetCol() )
+					{
+						kbdActivate(0);
+						returnKeys[row-3] = key[4 * (row - 1) + (col - 1)];
+					}
+				}
+        kbdActivate(0);
+        return returnKeys;
+}
+*/

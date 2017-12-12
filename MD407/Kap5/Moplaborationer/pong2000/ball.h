@@ -6,9 +6,11 @@ void move_ball(POBJECT this) {
     this->posX += this->dirX;
 	this->posY += this->dirY;
 	
-	//if((this->posY < 0) ||  this->posY > 63 ) {
-	//	this->dirY = -this->dirY;
-	//}
+	
+	
+	if((this->posY < 0) ||  this->posY > 63 ) {
+		this->dirY = -this->dirY;
+	}
 	
 	// Define left and right paddle
 	POBJECT lp = &Lpaddle;
@@ -22,6 +24,7 @@ void move_ball(POBJECT this) {
 			//Print ascii string to show score
 		}
 	}
+	
 	//Lpaddle collision
 	if(this->posX >= rp->posX) {
 		if((this->posY >= rp->posY) && (this->posY <= rp->posY + rp->geo->sizeY)) {

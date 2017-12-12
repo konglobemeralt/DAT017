@@ -8,13 +8,12 @@ void move_paddle(POBJECT this) {
 	
 	if(this->posY < 0) {
 		this->posY = 0;
-	} else if(this->posY + this->geo->sizeY > 127) {
-		this->posY = 127 - this->geo->sizeY;
+	} else if(this->posY + this->geo->sizeY > 63) {
+		this->posY = 63 - this->geo->sizeY;
 	}
 	
 	this->draw(this);
 }
-
 
 GEOMETRY paddle_geometry = {
 	75,
@@ -45,7 +44,7 @@ OBJECT Rpaddle =
 {
         &paddle_geometry, //geometri
         0, 0,           //init direction
-        120, 1,           //start init
+        125, 1,           //start init
         draw_object,
         clear_object,
         move_paddle,
@@ -62,4 +61,3 @@ OBJECT Lpaddle =
         move_paddle,
         set_object_speed
 };
-
