@@ -47,6 +47,7 @@ void main(void)
         graphics_clear_screen();
     #endif
 
+
     
     POBJECT p = &ball;
     POBJECT Lpad = &Lpaddle;
