@@ -1,6 +1,11 @@
 extern OBJECT Rpaddle;
 extern OBJECT Lpaddle;
 
+void move_paddle(POBJECT this) {
+	clear_object(this);
+	this->draw(this);
+}
+
 GEOMETRY paddle_geometry = {
 	75,
 	2, 25,
@@ -33,7 +38,7 @@ OBJECT Rpaddle =
         120, 1,           //start init
         draw_object,
         clear_object,
-        move_object,
+        move_paddle,
         set_object_speed
 };
 
@@ -44,11 +49,6 @@ OBJECT Lpaddle =
         1, 1,           //start init
         draw_object,
         clear_object,
-        move_object,
+        move_paddle,
         set_object_speed
 };
-
-void move(POBJECT this) {
-	clear_object(this);
-	this->draw(this);
-}

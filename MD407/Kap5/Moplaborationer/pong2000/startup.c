@@ -9,7 +9,6 @@
 #include "graphics.h"
 #include "object.h"
 #include "ball.h"
-#include "paddle.h"
  
 extern OBJECT ball;
  

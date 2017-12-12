@@ -1,6 +1,10 @@
 #include "object.h"
 #include "paddle.h"
 
+void move_ball(POBJECT this) {
+	clear_object(this);
+	this->draw(this);
+}
 
 GEOMETRY ball_geometry = {
 	12,
@@ -20,11 +24,6 @@ OBJECT ball =
         1, 1,           //start init
         draw_object,
         clear_object,
-        move_object,
+        move_ball,
         set_object_speed
 };
-
-void move(POBJECT this) {
-	clear_object(this);
-	this->draw(this);
-}
