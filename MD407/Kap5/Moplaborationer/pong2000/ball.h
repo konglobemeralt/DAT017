@@ -22,7 +22,6 @@ void move_ball(POBJECT this) {
 			//Print ascii string to show score
 		}
 	}
-	
 	//Lpaddle collision
 	if(this->posX >= rp->posX) {
 		if((this->posY >= rp->posY) && (this->posY <= rp->posY + rp->geo->sizeY)) {
