@@ -62,3 +62,4 @@ OBJECT Lpaddle =
         move_paddle,
         set_object_speed
 };
+
