@@ -174,6 +174,7 @@ void graphics_clear_screen(void){
 }
 
 
+
 void pixel(unsigned x, unsigned y, unsigned set){
     if((x < 0 || y < 0) || (x > SCREEN_WIDTH || y > SCREEN_HEIGHT)) return;
     
