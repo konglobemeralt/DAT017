@@ -1,13 +1,42 @@
 #include "renderer.h"
+#include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
 
 #define WINDOW_WIDTH 800 
 #define WINDOW_HEIGHT 600
 
+typedef volatile int* port32ptr;
+#define INUTPORT_X_ADDR &x;
+#define INUTPORT_X *((port32ptr)INUTPORT_X_ADDR)
+
+#define INUTPORT_Y_ADDR &y;
+#define INUTPORT_Y *((port32ptr)INUTPORT_Y_ADDR)
+
 GfxObject ship, background;
 
-void close(); 
+int t = 0;
+bool bShake = false;
+int shakeStop = 0;
+
+void close();
+void shake(int *x, int *y)
+{
+    
+    if( bShake == false && ((rand() % 60)==1) ) {
+        bShake = true;
+        shakeStop = t + (rand() % 20) + 30;
+    }
+    if( bShake && t < shakeStop) {
+        x += 2 *((t % 3) - 1);
+        *y += ((rand() % 3) - 1); 
+    }
+    if( bShake && (t >= shakeStop) ) {
+        bShake = false;
+    }
+    t++;
+}
+
 
 int main( int argc, char* args[] )
 {
@@ -21,9 +50,9 @@ int main( int argc, char* args[] )
     ship = createGfxObject(  "../ship.png" );
     ship.outputWidth  = 200;
     ship.outputHeight = 200;
-    int shipXpos = 400, shipYpos = 300, ShipSpeed = 3;
+ 
+    int x = 400, y = 300, speed = 3;
     float shipRot = 0;
-    int *px = &shipXpos, *py = &shipYpos; 
     
     background = createGfxObject( "../background.jpg" );
     background.outputWidth = WINDOW_WIDTH;
@@ -48,19 +77,19 @@ int main( int argc, char* args[] )
             }
             
               if (state[SDL_SCANCODE_D]) {
-                    *px = (*px+ShipSpeed >= 799) ? 799 :  *px+ShipSpeed;
+                    x = (x+speed >= 799) ? 799 :  x+speed;
                 }
                 
             if (state[SDL_SCANCODE_A]) {
-                    *px = (*px-ShipSpeed <= 0) ? 0 :  *px-ShipSpeed;
+                    x = (x-speed <= 0) ? 0 :  x-speed;
             }
                 
                 if (state[SDL_SCANCODE_S]) {
-                    *py = (*py+ShipSpeed >= 599) ? 599 :  *py+ShipSpeed;
+                    y = (y+speed >= 599) ? 599 :  y+speed;
             }
                 
                 if (state[SDL_SCANCODE_W]) {
-                    *py = (py-ShipSpeed <= 0) ? 0 :  *py-ShipSpeed;
+                    y = (y-speed <= 0) ? 0 :  y-speed;
             }
             
                if (state[SDL_SCANCODE_E]) {
@@ -78,9 +107,11 @@ int main( int argc, char* args[] )
         SDL_SetRenderDrawColor( gRenderer, 0x33, 0x33, 0x33, 0xFF ); 
         SDL_RenderClear( gRenderer );
 
+        shake(&x, &y);
+
         // Render our object(s) - background objects first, and then forward objects (like a painter)
         renderGfxObject(&background, 400, 300, backgroundRotAngle, backgroundZoomLevel);
-        renderGfxObject(&ship, shipXpos, shipYpos, shipRot, 1.0f);
+        renderGfxObject(&ship, x, y, shipRot, 1.0f);
         renderText("Hello World!", 300, 150);
         
         //update rotation
@@ -95,7 +126,7 @@ int main( int argc, char* args[] )
 	close(); //Free allocated resources
 	return 0;
 }
-
+        
 void close()
 {
     //Preferably, you should free all your GfxObjects, by calls to freeGfxObject(GfxObject* obj), but you don't have to.
