@@ -21,7 +21,9 @@ int main( int argc, char* args[] )
     ship = createGfxObject(  "../ship.png" );
     ship.outputWidth  = 200;
     ship.outputHeight = 200;
-    float shipXpos = 400, shipYpos = 300, ShipSpeed = 3;
+    int shipXpos = 400, shipYpos = 300, ShipSpeed = 3;
+    float shipRot = 0;
+    int *px = &shipXpos, *py = &shipYpos; 
     
     background = createGfxObject( "../background.jpg" );
     background.outputWidth = WINDOW_WIDTH;
@@ -45,21 +47,30 @@ int main( int argc, char* args[] )
                 exit(0);
             }
             
-              if (state[SDL_SCANCODE_RIGHT]) {
-                    shipXpos = (shipXpos+ShipSpeed >= 799) ? 799 :  shipXpos+ShipSpeed;
+              if (state[SDL_SCANCODE_D]) {
+                    *px = (*px+ShipSpeed >= 799) ? 799 :  *px+ShipSpeed;
                 }
                 
-            if (state[SDL_SCANCODE_LEFT]) {
-                    shipXpos = (shipXpos-ShipSpeed <= 0) ? 0 :  shipXpos-ShipSpeed;
+            if (state[SDL_SCANCODE_A]) {
+                    *px = (*px-ShipSpeed <= 0) ? 0 :  *px-ShipSpeed;
             }
                 
-                if (state[SDL_SCANCODE_DOWN]) {
-                    shipYpos = (shipYpos-ShipSpeed >= 599) ? 599 :  shipYpos-ShipSpeed;
+                if (state[SDL_SCANCODE_S]) {
+                    *py = (*py+ShipSpeed >= 599) ? 599 :  *py+ShipSpeed;
             }
                 
-                if (state[SDL_SCANCODE_UP]) {
-                    shipYpos = (shipYpos+ShipSpeed <= 0) ? 0 :  shipYpos+ShipSpeed;
+                if (state[SDL_SCANCODE_W]) {
+                    *py = (py-ShipSpeed <= 0) ? 0 :  *py-ShipSpeed;
             }
+            
+               if (state[SDL_SCANCODE_E]) {
+                    shipRot = fmod(shipRot + 0.2, 360);
+            }
+            
+               if (state[SDL_SCANCODE_Q]) {
+                    shipRot = fmod(shipRot - 0.2, -360);
+            }
+            
         }
         
         // Clear screen with a grey background color, red=0x33, blue=0x33, green=0x33, alpha=0xff. 0=minimum, 0xff=maximum.
@@ -69,7 +80,7 @@ int main( int argc, char* args[] )
 
         // Render our object(s) - background objects first, and then forward objects (like a painter)
         renderGfxObject(&background, 400, 300, backgroundRotAngle, backgroundZoomLevel);
-        renderGfxObject(&ship, shipXpos, shipYpos, 0, 1.0f);
+        renderGfxObject(&ship, shipXpos, shipYpos, shipRot, 1.0f);
         renderText("Hello World!", 300, 150);
         
         //update rotation
