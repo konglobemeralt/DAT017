@@ -21,7 +21,7 @@ int main( int argc, char* args[] )
     ship = createGfxObject(  "../ship.png" );
     ship.outputWidth  = 200;
     ship.outputHeight = 200;
-    float shipXpos = 400, shipYpos = 300, ShipSpeed = 15;
+    float shipXpos = 400, shipYpos = 300, ShipSpeed = 3;
     
     background = createGfxObject( "../background.jpg" );
     background.outputWidth = WINDOW_WIDTH;
@@ -46,19 +46,19 @@ int main( int argc, char* args[] )
             }
             
               if (state[SDL_SCANCODE_RIGHT]) {
-                    shipXpos = shipXpos + ShipSpeed;
+                    shipXpos = (shipXpos+ShipSpeed >= 799) ? 799 :  shipXpos+ShipSpeed;
                 }
                 
             if (state[SDL_SCANCODE_LEFT]) {
-                    shipXpos = shipXpos - ShipSpeed;
-            }
-                
-                if (state[SDL_SCANCODE_UP]) {
-                    shipYpos = shipYpos - ShipSpeed;
+                    shipXpos = (shipXpos-ShipSpeed <= 0) ? 0 :  shipXpos-ShipSpeed;
             }
                 
                 if (state[SDL_SCANCODE_DOWN]) {
-                    shipYpos = shipYpos + ShipSpeed;
+                    shipYpos = (shipYpos-ShipSpeed >= 599) ? 599 :  shipYpos-ShipSpeed;
+            }
+                
+                if (state[SDL_SCANCODE_UP]) {
+                    shipYpos = (shipYpos+ShipSpeed <= 0) ? 0 :  shipYpos+ShipSpeed;
             }
         }
         
@@ -73,7 +73,7 @@ int main( int argc, char* args[] )
         renderText("Hello World!", 300, 150);
         
         //update rotation
-        backgroundRotAngle += 0.1;
+        backgroundRotAngle = fmod(backgroundRotAngle +0.03, 360);
         backgroundZoomLevel += 0.001;
         
         // This function updates the screen and also sleeps ~16 ms or so (based on the screen's refresh rate),  

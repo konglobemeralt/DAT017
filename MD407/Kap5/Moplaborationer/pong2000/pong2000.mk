@@ -5,18 +5,18 @@
 ## Debug
 ProjectName            :=pong2000
 ConfigurationName      :=Debug
-WorkspacePath          :=C:/Users/jesbli/Desktop/DAT017-master/MD407/Kap5/Moplaborationer
-ProjectPath            :=C:/Users/jesbli/Desktop/DAT017-master/MD407/Kap5/Moplaborationer/pong2000
+WorkspacePath          :=/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer
+ProjectPath            :=/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000
 IntermediateDirectory  :=./Debug
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
-User                   :=jesbli
+User                   :=Jesper Blidkvist
 Date                   :=12/12/2017
-CodeLitePath           :=C:/cseapp/CodeLite
-LinkerName             :=$(CodeLiteDir)/tools/gcc-arm/bin/arm-none-eabi-g++.exe
-SharedObjectLinkerName :=$(CodeLiteDir)/tools/gcc-arm/arm-none-eabi-g++.exe -shared -fPIC
+CodeLitePath           :="/Users/konglobemeralt/Library/Application Support/codelite"
+LinkerName             :=/Applications/gcc-arm-none-eabi-6-2017-q1-update/bin/arm-none-eabi-g++
+SharedObjectLinkerName :=/Applications/gcc-arm-none-eabi-6-2017-q1-update/bin/arm-none-eabi-g++ -shared -fPIC
 ObjectSuffix           :=.o
 DependSuffix           :=.o.d
 PreprocessSuffix       :=.i
@@ -34,9 +34,7 @@ ArchiveOutputSwitch    :=
 PreprocessOnlySwitch   :=-E
 ObjectsFileList        :="pong2000.txt"
 PCHCompileFlags        :=
-MakeDirCommand         :=makedir
-RcCmpOptions           := 
-RcCompilerName         :=
+MakeDirCommand         :=mkdir -p
 LinkOptions            :=  -nostartfiles -nostdlib -T$(ProjectPath)/md407-ram.x
 IncludePath            :=  $(IncludeSwitch). $(IncludeSwitch). 
 IncludePCH             := 
@@ -49,19 +47,19 @@ LibPath                := $(LibraryPathSwitch). $(LibraryPathSwitch)$(GccArmDir)
 ## Common variables
 ## AR, CXX, CC, AS, CXXFLAGS and CFLAGS can be overriden using an environment variables
 ##
-AR       := $(CodeLiteDir)/tools/gcc-arm/bin/arm-none-eabi-ar.exe rcu
-CXX      := $(CodeLiteDir)/tools/gcc-arm/bin/arm-none-eabi-g++.exe
-CC       := $(CodeLiteDir)/tools/gcc-arm/bin/arm-none-eabi-gcc.exe
+AR       := /Applications/gcc-arm-none-eabi-6-2017-q1-update/bin/arm-none-eabi-ar rcu
+CXX      := /Applications/gcc-arm-none-eabi-6-2017-q1-update/bin/arm-none-eabi-g++
+CC       := /Applications/gcc-arm-none-eabi-6-2017-q1-update/bin/arm-none-eabi-gcc
 CXXFLAGS :=  -g -O0 -Wall $(Preprocessors)
 CFLAGS   :=  -g -O0 -mthumb -Wall -march=armv6-m -msoft-float -Wa,-adhln=test.s $(Preprocessors)
 ASFLAGS  := 
-AS       := $(CodeLiteDir)/tools/gcc-arm/bin/arm-none-eabi-as.exe
+AS       := /Applications/gcc-arm-none-eabi-6-2017-q1-update/bin/arm-none-eabi-as
 
 
 ##
 ## User defined environment variables
 ##
-CodeLiteDir:=C:\cseapp\CodeLite
+CodeLiteDir:=/Applications/codelite.app/Contents/SharedSupport/
 GccArmDir:=$(CodeLiteDir)/tools/gcc-arm
 Objects0=$(IntermediateDirectory)/startup.c$(ObjectSuffix) 
 
@@ -83,15 +81,15 @@ $(OutputFile): $(IntermediateDirectory)/.d $(Objects)
 
 PostBuild:
 	@echo Executing Post Build commands ...
-	C:\cseapp\CodeLite/tools/gcc-arm/arm-none-eabi/bin/objcopy -S -O srec  ./Debug/pong2000.elf ./Debug/pong2000.s19
+	/Applications/codelite.app/Contents/SharedSupport//tools/gcc-arm/arm-none-eabi/bin/objcopy -S -O srec  ./Debug/pong2000.elf ./Debug/pong2000.s19
 	@echo Done
 
 MakeIntermediateDirs:
-	@$(MakeDirCommand) "./Debug"
+	@test -d ./Debug || $(MakeDirCommand) ./Debug
 
 
 $(IntermediateDirectory)/.d:
-	@$(MakeDirCommand) "./Debug"
+	@test -d ./Debug || $(MakeDirCommand) ./Debug
 
 PreBuild:
 
@@ -100,7 +98,7 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/startup.c$(ObjectSuffix): startup.c $(IntermediateDirectory)/startup.c$(DependSuffix)
-	$(CC) $(SourceSwitch) "C:/Users/jesbli/Desktop/DAT017-master/MD407/Kap5/Moplaborationer/pong2000/startup.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/startup.c$(ObjectSuffix) $(IncludePath)
+	$(CC) $(SourceSwitch) "/Users/konglobemeralt/Documents/gitz/DAT017/MD407/Kap5/Moplaborationer/pong2000/startup.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/startup.c$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/startup.c$(DependSuffix): startup.c
 	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/startup.c$(ObjectSuffix) -MF$(IntermediateDirectory)/startup.c$(DependSuffix) -MM startup.c
 

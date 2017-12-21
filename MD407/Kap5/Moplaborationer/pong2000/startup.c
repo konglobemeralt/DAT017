@@ -47,6 +47,27 @@ void movePaddles(unsigned char c){
 	if(c == 6){Rpaddle.posY++; }
 	
 	}
+    
+void writeScore(){
+    char *s;
+	char test1[] = "Player1: ";
+	char test2[] = "Player2: ";
+    
+    //init_app();
+    ascii_init();
+	goToXY(1,1);
+	
+	s = test1;
+	while(*s) {
+		ascii_write_char(*s++);
+	}
+	goToXY(1,2);
+	s = test2;
+	while(*s) {
+		ascii_write_char(*s++);
+	}
+    
+    }
 
 	
 //void movePaddles(unsigned char player1, unsigned char player2){
@@ -73,7 +94,10 @@ void main(void)
     p->set_speed(p, 4, 4);
     
     while(1){
-		//array move
+        
+        //writeScore();
+		
+        //array move
 		movePaddles(keyb());
 		//unsigned char c = keyb()[1];
 		//movePaddles(keyb()[0], keyb()[2] );
