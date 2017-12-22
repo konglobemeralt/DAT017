@@ -1,4 +1,5 @@
 #include "renderer.h"
+#include "vecmath.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
@@ -32,7 +33,7 @@ void vandString(char str[]){
         }
     }
 
-void shake(int *x, int *y)
+void shake(vec2f* pos)
 {
     
     if( bShake == false && ((rand() % 60)==1) ) {
@@ -40,8 +41,8 @@ void shake(int *x, int *y)
         shakeStop = t + (rand() % 20) + 30;
     }
     if( bShake && t < shakeStop) {
-        x += 2 *((t % 3) - 1);
-        *y += ((rand() % 3) - 1); 
+        pos->x += 2 *((t % 3) - 1);
+        pos->y += ((rand() % 3) - 1); 
     }
     if( bShake && (t >= shakeStop) ) {
         bShake = false;
@@ -63,7 +64,9 @@ int main( int argc, char* args[] )
     ship.outputWidth  = 200;
     ship.outputHeight = 200;
  
-    int x = 400, y = 300, speed = 3;
+    //int x = 400, y = 300, speed = 3;
+    int speed = 3;
+    vec2f pos = {400, 300};
     float shipRot = 0;
     
     background = createGfxObject( "../background.jpg" );
@@ -91,19 +94,19 @@ int main( int argc, char* args[] )
             }
             
               if (state[SDL_SCANCODE_D]) {
-                    x = (x+speed >= 799) ? 799 :  x+speed;
+                    pos.x = (pos.x+speed >= 799) ? 799 :  pos.x+speed;
                 }
                 
             if (state[SDL_SCANCODE_A]) {
-                    x = (x-speed <= 0) ? 0 :  x-speed;
+                    pos.x = (pos.x-speed <= 0) ? 0 :  pos.x-speed;
             }
                 
                 if (state[SDL_SCANCODE_S]) {
-                    y = (y+speed >= 599) ? 599 :  y+speed;
+                    pos.y = (pos.y+speed >= 599) ? 599 :  pos.y+speed;
             }
                 
                 if (state[SDL_SCANCODE_W]) {
-                    y = (y-speed <= 0) ? 0 :  y-speed;
+                    pos.y = (pos.y-speed <= 0) ? 0 :  pos.y-speed;
             }
             
                if (state[SDL_SCANCODE_E]) {
@@ -121,11 +124,11 @@ int main( int argc, char* args[] )
         SDL_SetRenderDrawColor( gRenderer, 0x33, 0x33, 0x33, 0xFF ); 
         SDL_RenderClear( gRenderer );
 
-        shake(&x, &y);
+        shake(&pos);
 
         // Render our object(s) - background objects first, and then forward objects (like a painter)
         renderGfxObject(&background, 400, 300, backgroundRotAngle, backgroundZoomLevel);
-        renderGfxObject(&ship, x, y, shipRot, 1.0f);
+        renderGfxObject(&ship, pos.x, pos.y, shipRot, 1.0f);
         renderText(string, 300, 150);
         
         //update rotation

@@ -32,6 +32,7 @@
     <File Name="main.c"/>
     <File Name="renderer.h"/>
     <File Name="renderer.c"/>
+    <File Name="vecmath.h"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>
