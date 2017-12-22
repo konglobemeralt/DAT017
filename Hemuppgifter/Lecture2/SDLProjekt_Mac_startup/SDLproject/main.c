@@ -20,6 +20,18 @@ bool bShake = false;
 int shakeStop = 0;
 
 void close();
+
+void vandString(char str[]){
+    
+    int l = strlen(str);
+    int half_len = l/2;
+    for(int i=0; i<half_len; i++){
+        char t = str[i];
+        str[i] = str[l - i - 1];
+        str[l - i - 1] = t;
+        }
+    }
+
 void shake(int *x, int *y)
 {
     
@@ -61,6 +73,8 @@ int main( int argc, char* args[] )
     float backgroundRotAngle = 0;
     float backgroundZoomLevel = 1;
     
+    char string[] = "Hello World!";
+    int loopIter = 0;
     
     // get pointer to key states
     const Uint8 *state = SDL_GetKeyboardState(NULL); 
@@ -112,15 +126,21 @@ int main( int argc, char* args[] )
         // Render our object(s) - background objects first, and then forward objects (like a painter)
         renderGfxObject(&background, 400, 300, backgroundRotAngle, backgroundZoomLevel);
         renderGfxObject(&ship, x, y, shipRot, 1.0f);
-        renderText("Hello World!", 300, 150);
+        renderText(string, 300, 150);
         
         //update rotation
         backgroundRotAngle = fmod(backgroundRotAngle +0.03, 360);
         backgroundZoomLevel += 0.001;
         
+        
+        if((loopIter % 100) == 99){
+            vandString(string);
+            }
+        
         // This function updates the screen and also sleeps ~16 ms or so (based on the screen's refresh rate),  
         // because we used the flag SDL_RENDERER_PRESENTVSYNC in function initRenderer()
         SDL_RenderPresent( gRenderer );
+        loopIter++;
     }
 
 	close(); //Free allocated resources
