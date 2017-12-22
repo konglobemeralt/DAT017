@@ -21,6 +21,17 @@ int shakeStop = 0;
 
 void close();
 
+void printToWindow(char* str, int x, int y){
+    renderText(str, x, y);
+    }
+
+void printToConsole(char* str, int x, int y){
+    printf("%s\n", str);
+    }
+
+void (*print) (char* str, int x, int y) = printToWindow;
+bool toggle = true;
+
 void vandString(char str[]){
     
     int l = strlen(str);
@@ -92,6 +103,17 @@ int main( int argc, char* args[] )
                 exit(0);
             }
             
+            if(( e.type == SDL_KEYDOWN) && (e.key.keysym.scancode == SDL_SCANCODE_F)){
+                toggle = !toggle;
+                if(!toggle){
+                    print = printToConsole;
+                    }
+                else{
+                    print = printToWindow;
+                    }
+                
+                }
+            
               if (state[SDL_SCANCODE_D]) {
                     ship.pos.x = (ship.pos.x+ship.speed >= 799) ? 799 :  ship.pos.x+ship.speed;
                 }
@@ -122,13 +144,15 @@ int main( int argc, char* args[] )
         // Alpha is transparency: 0 = fully transparent, 0xFF = fully opaque. However, actual use of transparency requires further settings.
         SDL_SetRenderDrawColor( gRenderer, 0x33, 0x33, 0x33, 0xFF ); 
         SDL_RenderClear( gRenderer );
+        
 
         shake(&ship.pos);
 
         // Render our object(s) - background objects first, and then forward objects (like a painter)
         renderGfxObject(&background.gfxObj, 400, 300, background.angle, background.scale);
         renderGfxObject(&ship.gfxObj, ship.pos.x, ship.pos.y, ship.angle, 1.0f);
-        renderText(string, 300, 150);
+        
+        print(string, 300, 150);
         
         //update rotation
         background.angle = fmod(background.angle +0.03, 360);
@@ -153,6 +177,7 @@ void close()
 {
     //Preferably, you should free all your GfxObjects, by calls to freeGfxObject(GfxObject* obj), but you don't have to.
     freeGfxObject(&ship.gfxObj);
+    freeGfxObject(&background.gfxObj);
     
     closeRenderer(); //Free resources and close SDL
 }
