@@ -1,5 +1,4 @@
-#include "renderer.h"
-#include "vecmath.h"
+#include "gameobject.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
@@ -14,7 +13,7 @@ typedef volatile int* port32ptr;
 #define INUTPORT_Y_ADDR &y;
 #define INUTPORT_Y *((port32ptr)INUTPORT_Y_ADDR)
 
-GfxObject ship, background;
+GameObject ship, background;
 
 int t = 0;
 bool bShake = false;
@@ -60,21 +59,21 @@ int main( int argc, char* args[] )
 	initRenderer(WINDOW_WIDTH, WINDOW_HEIGHT); 
     
     // Create an object
-    ship = createGfxObject(  "../ship.png" );
-    ship.outputWidth  = 200;
-    ship.outputHeight = 200;
- 
-    //int x = 400, y = 300, speed = 3;
-    int speed = 3;
-    vec2f pos = {400, 300};
-    float shipRot = 0;
+    ship.gfxObj = createGfxObject(  "../ship.png" );
+    ship.gfxObj.outputWidth  = 200;
+    ship.gfxObj.outputHeight = 200;
+    ship.speed = 3;
+    ship.pos.x = 400;
+    ship.pos.y = 300;
+    ship.angle = 0;
+    ship.angleSpeed = 0.2;
     
-    background = createGfxObject( "../background.jpg" );
-    background.outputWidth = WINDOW_WIDTH;
-    background.outputHeight = WINDOW_HEIGHT;
+    background.gfxObj = createGfxObject( "../background.jpg" );
+    background.gfxObj.outputWidth = WINDOW_WIDTH;
+    background.gfxObj.outputHeight = WINDOW_HEIGHT;
     //Background angle osv
-    float backgroundRotAngle = 0;
-    float backgroundZoomLevel = 1;
+    background.angle = 0;
+    background.scale = 1;
     
     char string[] = "Hello World!";
     int loopIter = 0;
@@ -94,27 +93,27 @@ int main( int argc, char* args[] )
             }
             
               if (state[SDL_SCANCODE_D]) {
-                    pos.x = (pos.x+speed >= 799) ? 799 :  pos.x+speed;
+                    ship.pos.x = (ship.pos.x+ship.speed >= 799) ? 799 :  ship.pos.x+ship.speed;
                 }
                 
             if (state[SDL_SCANCODE_A]) {
-                    pos.x = (pos.x-speed <= 0) ? 0 :  pos.x-speed;
+                    ship.pos.x = (ship.pos.x-ship.speed <= 0) ? 0 :  ship.pos.x-ship.speed;
             }
                 
                 if (state[SDL_SCANCODE_S]) {
-                    pos.y = (pos.y+speed >= 599) ? 599 :  pos.y+speed;
+                    ship.pos.y = (ship.pos.y+ship.speed >= 599) ? 599 :  ship.pos.y+ship.speed;
             }
                 
                 if (state[SDL_SCANCODE_W]) {
-                    pos.y = (pos.y-speed <= 0) ? 0 :  pos.y-speed;
+                    ship.pos.y = (ship.pos.y-ship.speed <= 0) ? 0 :  ship.pos.y-ship.speed;
             }
             
                if (state[SDL_SCANCODE_E]) {
-                    shipRot = fmod(shipRot + 0.2, 360);
+                    ship.angle = fmod(ship.angle + ship.angleSpeed, 360);
             }
             
                if (state[SDL_SCANCODE_Q]) {
-                    shipRot = fmod(shipRot - 0.2, -360);
+                    ship.angle = fmod(ship.angle - ship.angleSpeed, -360);
             }
             
         }
@@ -124,16 +123,16 @@ int main( int argc, char* args[] )
         SDL_SetRenderDrawColor( gRenderer, 0x33, 0x33, 0x33, 0xFF ); 
         SDL_RenderClear( gRenderer );
 
-        shake(&pos);
+        shake(&ship.pos);
 
         // Render our object(s) - background objects first, and then forward objects (like a painter)
-        renderGfxObject(&background, 400, 300, backgroundRotAngle, backgroundZoomLevel);
-        renderGfxObject(&ship, pos.x, pos.y, shipRot, 1.0f);
+        renderGfxObject(&background.gfxObj, 400, 300, background.angle, background.scale);
+        renderGfxObject(&ship.gfxObj, ship.pos.x, ship.pos.y, ship.angle, 1.0f);
         renderText(string, 300, 150);
         
         //update rotation
-        backgroundRotAngle = fmod(backgroundRotAngle +0.03, 360);
-        backgroundZoomLevel += 0.001;
+        background.angle = fmod(background.angle +0.03, 360);
+        background.scale += 0.001;
         
         
         if((loopIter % 100) == 99){
@@ -153,7 +152,7 @@ int main( int argc, char* args[] )
 void close()
 {
     //Preferably, you should free all your GfxObjects, by calls to freeGfxObject(GfxObject* obj), but you don't have to.
-    freeGfxObject(&ship);
+    freeGfxObject(&ship.gfxObj);
     
     closeRenderer(); //Free resources and close SDL
 }
