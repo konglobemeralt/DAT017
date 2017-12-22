@@ -1,3 +1,5 @@
+#include "renderer.h"
+#include "vecmath.h"
 #include "gameobject.h"
 #include <stdlib.h>
 #include <stdio.h>
@@ -14,6 +16,47 @@ typedef volatile int* port32ptr;
 #define INUTPORT_Y *((port32ptr)INUTPORT_Y_ADDR)
 
 GameObject ship, background;
+GameObject* gameObjects[] = {&background, &ship};
+int nGameObjects = 2;
+
+const Uint8 *state;
+
+void updateShip(GameObject* this){
+    
+            if (state[SDL_SCANCODE_D]) {
+                    this->pos.x = (this->pos.x+this->speed >= 799) ? 799 :  this->pos.x+this->speed;
+                }
+                
+            if (state[SDL_SCANCODE_A]) {
+                    this->pos.x = (this->pos.x-this->speed <= 0) ? 0 :  this->pos.x-this->speed;
+            }
+                
+                if (state[SDL_SCANCODE_S]) {
+                    this->pos.y = (this->pos.y+this->speed >= 599) ? 599 :  this->pos.y+this->speed;
+            }
+                
+                if (state[SDL_SCANCODE_W]) {
+                    this->pos.y = (this->pos.y-this->speed <= 0) ? 0 :  this->pos.y-this->speed;
+            }
+            
+               if (state[SDL_SCANCODE_E]) {
+                    this->angle = fmod(this->angle + this->angleSpeed, 360);
+            }
+            
+               if (state[SDL_SCANCODE_Q]) {
+                    this->angle = fmod(this->angle - this->angleSpeed, -360);
+            }
+        }
+        
+void updateBackground(GameObject* this){
+     //update rotation
+        this->angle = fmod(this->angle +0.03, 360);
+        this->scale += 0.001;
+    }
+    
+void render(GameObject* this){
+    renderGfxObject(&this->gfxObj, this->pos.x, this->pos.y, this->angle, this->scale);
+        }
 
 int t = 0;
 bool bShake = false;
@@ -74,6 +117,7 @@ int main( int argc, char* args[] )
     ship.gfxObj.outputWidth  = 200;
     ship.gfxObj.outputHeight = 200;
     ship.speed = 3;
+    ship.scale = 1;
     ship.pos.x = 400;
     ship.pos.y = 300;
     ship.angle = 0;
@@ -82,6 +126,10 @@ int main( int argc, char* args[] )
     background.gfxObj = createGfxObject( "../background.jpg" );
     background.gfxObj.outputWidth = WINDOW_WIDTH;
     background.gfxObj.outputHeight = WINDOW_HEIGHT;
+    background.pos.x = 400;
+    background.pos.y = 300;
+    background.scale = 1.8f;
+    
     //Background angle osv
     background.angle = 0;
     background.scale = 1;
@@ -90,7 +138,13 @@ int main( int argc, char* args[] )
     int loopIter = 0;
     
     // get pointer to key states
-    const Uint8 *state = SDL_GetKeyboardState(NULL); 
+    state = SDL_GetKeyboardState(NULL); 
+    
+    ship.update = updateShip;
+    ship.render = render;
+    
+    background.update = updateBackground;
+    background.render = render;
     
     while(true) // The real-time loop
     {
@@ -114,30 +168,6 @@ int main( int argc, char* args[] )
                 
                 }
             
-              if (state[SDL_SCANCODE_D]) {
-                    ship.pos.x = (ship.pos.x+ship.speed >= 799) ? 799 :  ship.pos.x+ship.speed;
-                }
-                
-            if (state[SDL_SCANCODE_A]) {
-                    ship.pos.x = (ship.pos.x-ship.speed <= 0) ? 0 :  ship.pos.x-ship.speed;
-            }
-                
-                if (state[SDL_SCANCODE_S]) {
-                    ship.pos.y = (ship.pos.y+ship.speed >= 599) ? 599 :  ship.pos.y+ship.speed;
-            }
-                
-                if (state[SDL_SCANCODE_W]) {
-                    ship.pos.y = (ship.pos.y-ship.speed <= 0) ? 0 :  ship.pos.y-ship.speed;
-            }
-            
-               if (state[SDL_SCANCODE_E]) {
-                    ship.angle = fmod(ship.angle + ship.angleSpeed, 360);
-            }
-            
-               if (state[SDL_SCANCODE_Q]) {
-                    ship.angle = fmod(ship.angle - ship.angleSpeed, -360);
-            }
-            
         }
         
         // Clear screen with a grey background color, red=0x33, blue=0x33, green=0x33, alpha=0xff. 0=minimum, 0xff=maximum.
@@ -145,19 +175,16 @@ int main( int argc, char* args[] )
         SDL_SetRenderDrawColor( gRenderer, 0x33, 0x33, 0x33, 0xFF ); 
         SDL_RenderClear( gRenderer );
         
+        for(int i = 0; i < nGameObjects; i++){
+                gameObjects[i]->update(gameObjects[i]);
+            }
+        for(int i = 0; i < nGameObjects; i++){
+                gameObjects[i]->render(gameObjects[i]);
+            }
 
-        shake(&ship.pos);
-
-        // Render our object(s) - background objects first, and then forward objects (like a painter)
-        renderGfxObject(&background.gfxObj, 400, 300, background.angle, background.scale);
-        renderGfxObject(&ship.gfxObj, ship.pos.x, ship.pos.y, ship.angle, 1.0f);
+        shake(&gameObjects[1]->pos);
         
         print(string, 300, 150);
-        
-        //update rotation
-        background.angle = fmod(background.angle +0.03, 360);
-        background.scale += 0.001;
-        
         
         if((loopIter % 100) == 99){
             vandString(string);
