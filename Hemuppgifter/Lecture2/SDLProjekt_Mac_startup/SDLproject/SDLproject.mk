@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Jesper Blidkvist
-Date                   :=22/12/2017
+Date                   :=25/12/2017
 CodeLitePath           :="/Users/konglobemeralt/Library/Application Support/codelite"
 LinkerName             :=/usr/bin/g++
 SharedObjectLinkerName :=/usr/bin/g++ -dynamiclib -fPIC
@@ -60,7 +60,7 @@ AS       := /usr/bin/as
 ## User defined environment variables
 ##
 CodeLiteDir:=/Applications/codelite.app/Contents/SharedSupport/
-Objects0=$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/renderer.c$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/renderer.c$(ObjectSuffix) $(IntermediateDirectory)/player.c$(ObjectSuffix) $(IntermediateDirectory)/background.c$(ObjectSuffix) 
 
 
 
@@ -106,6 +106,22 @@ $(IntermediateDirectory)/renderer.c$(DependSuffix): renderer.c
 
 $(IntermediateDirectory)/renderer.c$(PreprocessSuffix): renderer.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/renderer.c$(PreprocessSuffix) renderer.c
+
+$(IntermediateDirectory)/player.c$(ObjectSuffix): player.c $(IntermediateDirectory)/player.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Lecture2/SDLProjekt_Mac_startup/SDLproject/player.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/player.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/player.c$(DependSuffix): player.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/player.c$(ObjectSuffix) -MF$(IntermediateDirectory)/player.c$(DependSuffix) -MM player.c
+
+$(IntermediateDirectory)/player.c$(PreprocessSuffix): player.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/player.c$(PreprocessSuffix) player.c
+
+$(IntermediateDirectory)/background.c$(ObjectSuffix): background.c $(IntermediateDirectory)/background.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Lecture2/SDLProjekt_Mac_startup/SDLproject/background.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/background.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/background.c$(DependSuffix): background.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/background.c$(ObjectSuffix) -MF$(IntermediateDirectory)/background.c$(DependSuffix) -MM background.c
+
+$(IntermediateDirectory)/background.c$(PreprocessSuffix): background.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/background.c$(PreprocessSuffix) background.c
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

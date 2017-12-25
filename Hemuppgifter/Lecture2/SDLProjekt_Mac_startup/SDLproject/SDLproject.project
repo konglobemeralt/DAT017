@@ -34,6 +34,10 @@
     <File Name="renderer.c"/>
     <File Name="vecmath.h"/>
     <File Name="gameobject.h"/>
+    <File Name="player.h"/>
+    <File Name="player.c"/>
+    <File Name="background.c"/>
+    <File Name="background.h"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>
