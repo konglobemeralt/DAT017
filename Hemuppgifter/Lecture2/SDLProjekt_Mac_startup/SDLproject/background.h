@@ -6,6 +6,6 @@
 extern GameObject background;
 void updateBackground(GameObject* this);
 void render(GameObject* this);
-void createBackground();
+void createBackground(int nGameObjects, GameObject* gameObjects);
 
 #endif

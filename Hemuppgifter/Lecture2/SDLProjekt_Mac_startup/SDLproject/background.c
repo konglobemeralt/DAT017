@@ -1,10 +1,13 @@
+#define WINDOW_WIDTH 800 
+#define WINDOW_HEIGHT 600
+
 #include "background.h"
 
 extern const Uint8 *state;
 
 GameObject background;
 
-void createBackground(){
+void createBackground(int nGameObjects, GameObject* gameObjects){
     background.gfxObj = createGfxObject( "../background.jpg" );
     background.gfxObj.outputWidth = WINDOW_WIDTH;
     background.gfxObj.outputHeight = WINDOW_HEIGHT;
@@ -19,7 +22,7 @@ void createBackground(){
     background.update = updateBackground;
     background.render = render;
     
-    gameObjects[nGameObjects++] = &background;
+    gameObjects[nGameObjects++] = background;
     }
 
 void updateBackground(GameObject* this){

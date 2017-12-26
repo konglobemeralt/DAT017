@@ -1,3 +1,6 @@
+#define WINDOW_WIDTH 800 
+#define WINDOW_HEIGHT 600
+
 #include "renderer.h"
 #include "vecmath.h"
 #include "gameobject.h"
@@ -7,8 +10,6 @@
 #include <stdio.h>
 #include <math.h>
 
-#define WINDOW_WIDTH 800 
-#define WINDOW_HEIGHT 600
 
 typedef volatile int* port32ptr;
 #define INUTPORT_X_ADDR &x;
@@ -55,8 +56,8 @@ int main( int argc, char* args[] )
 	// Start up SDL and create window of width=800, height = 600
 	initRenderer(WINDOW_WIDTH, WINDOW_HEIGHT); 
     
-    createShip(&nGameObjects);
-    createBackground(&nGameObjects);
+    createShip(&nGameObjects, gameObjects);
+    createBackground(&nGameObjects, gameObjects);
     
     char string[] = "Hello World!";
     int loopIter = 0;

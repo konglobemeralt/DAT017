@@ -1,1 +1,1 @@
-./Debug/main.c.o ./Debug/renderer.c.o
+./Debug/main.c.o ./Debug/renderer.c.o ./Debug/player.c.o ./Debug/background.c.o
