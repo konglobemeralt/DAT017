@@ -7,7 +7,7 @@ extern const Uint8 *state;
 
 GameObject background;
 
-void createBackground(int nGameObjects, GameObject* gameObjects){
+void createBackground(){
     background.gfxObj = createGfxObject( "../background.jpg" );
     background.gfxObj.outputWidth = WINDOW_WIDTH;
     background.gfxObj.outputHeight = WINDOW_HEIGHT;
@@ -22,7 +22,7 @@ void createBackground(int nGameObjects, GameObject* gameObjects){
     background.update = updateBackground;
     background.render = render;
     
-    gameObjects[nGameObjects++] = background;
+    gameObjects[nGameObjects++] = &background;
     }
 
 void updateBackground(GameObject* this){

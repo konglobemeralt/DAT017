@@ -11,15 +11,8 @@
 #include <math.h>
 
 
-typedef volatile int* port32ptr;
-#define INUTPORT_X_ADDR &x;
-#define INUTPORT_X *((port32ptr)INUTPORT_X_ADDR)
-
-#define INUTPORT_Y_ADDR &y;
-#define INUTPORT_Y *((port32ptr)INUTPORT_Y_ADDR)
-
-GameObject* gameObjects[] = {&background, &ship};
-int nGameObjects = 2;
+extern GameObject* gameObjects[];
+extern int nGameObjects;
 
 const Uint8 *state;
 
@@ -56,8 +49,8 @@ int main( int argc, char* args[] )
 	// Start up SDL and create window of width=800, height = 600
 	initRenderer(WINDOW_WIDTH, WINDOW_HEIGHT); 
     
-    createShip(&nGameObjects, gameObjects);
-    createBackground(&nGameObjects, gameObjects);
+    createBackground();
+    createShip();
     
     char string[] = "Hello World!";
     int loopIter = 0;
@@ -95,12 +88,15 @@ int main( int argc, char* args[] )
         SDL_SetRenderDrawColor( gRenderer, 0x33, 0x33, 0x33, 0xFF ); 
         SDL_RenderClear( gRenderer );
         
-        for(int i = 0; i < nGameObjects; i++){
-                gameObjects[i]->update(gameObjects[i]);
-            }
-        for(int i = 0; i < nGameObjects; i++){
-                gameObjects[i]->render(gameObjects[i]);
-            }
+        // Update all gameobjects
+		for(int i = 0; i < nGameObjects; i++) {
+			gameObjects[i]->update(gameObjects[i]);
+		}
+		
+		// Render all gameobjects
+		for(int i = 0; i < nGameObjects; i++) {
+			gameObjects[i]->render(gameObjects[i]);
+		}
 
         shake(&gameObjects[1]->pos);
         
@@ -123,8 +119,9 @@ int main( int argc, char* args[] )
 void close()
 {
     //Preferably, you should free all your GfxObjects, by calls to freeGfxObject(GfxObject* obj), but you don't have to.
-    freeGfxObject(&ship.gfxObj);
-    freeGfxObject(&background.gfxObj);
+	for(int i = 0; i < nGameObjects; i++) {
+		freeGfxObject(gameObjects[i]);
+	}
     
     closeRenderer(); //Free resources and close SDL
 }

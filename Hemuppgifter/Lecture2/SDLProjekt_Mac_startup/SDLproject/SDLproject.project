@@ -38,6 +38,7 @@
     <File Name="player.c"/>
     <File Name="background.c"/>
     <File Name="background.h"/>
+    <File Name="gameobject.c"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>
@@ -51,7 +52,7 @@
       </Linker>
       <ResourceCompiler Options=""/>
     </GlobalSettings>
-    <Configuration Name="Debug" CompilerType="GCC" DebuggerType="LLDB Debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+    <Configuration Name="Debug" CompilerType="GCC ( XCode )" DebuggerType="LLDB Debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
       <Compiler Options="-g;-O0;-Wall" C_Options="-g;-O0;-std=c99;-F./" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
         <IncludePath Value="."/>
       </Compiler>

@@ -5,7 +5,7 @@ GameObject ship;
 
 extern const Uint8 *state;
 
-void createShip(int nGameObjects, GameObject* gameObjects){
+void createShip(){
     // Create an object
     ship.gfxObj = createGfxObject(  "../ship.png" );
     ship.gfxObj.outputWidth  = 200;
@@ -20,7 +20,7 @@ void createShip(int nGameObjects, GameObject* gameObjects){
     ship.update = updateShip;
     ship.render = render;
     
-    gameObjects[nGameObjects++] = ship;
+    gameObjects[nGameObjects++] = &ship;
 }
 
 void shake(vec2f* pos);

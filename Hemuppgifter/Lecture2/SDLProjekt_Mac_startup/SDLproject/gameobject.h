@@ -15,5 +15,8 @@ typedef struct {
     void    (*render) (struct tGameObject* gameobj);
     
     }GameObject;
+    
+extern GameObject* gameObjects[];
+extern int nGameObjects;
 
 #endif

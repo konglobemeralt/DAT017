@@ -7,6 +7,6 @@ extern GameObject ship;
 
 void updateShip(GameObject* this);
 void render(GameObject* this);
-void createShip(int nGameObjects, GameObject* gameObjects);
+void createShip();
 
 #endif
