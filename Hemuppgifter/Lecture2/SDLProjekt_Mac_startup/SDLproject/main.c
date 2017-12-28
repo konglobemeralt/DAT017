@@ -1,8 +1,6 @@
 #define WINDOW_WIDTH 800 
 #define WINDOW_HEIGHT 600
 
-#include "renderer.h"
-#include "vecmath.h"
 #include "gameobject.h"
 #include "player.h"
 #include "background.h"

@@ -52,9 +52,7 @@ void updateShip(GameObject* this){
             }
 }
 
-void render(GameObject* this){
-    renderGfxObject(&this->gfxObj, this->pos.x, this->pos.y, this->angle, this->scale);
-    }
+
         
         
 int t = 0;

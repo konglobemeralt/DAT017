@@ -13,12 +13,12 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Jesper Blidkvist
-Date                   :=26/12/2017
+Date                   :=29/12/2017
 CodeLitePath           :="/Users/konglobemeralt/Library/Application Support/codelite"
-LinkerName             :=/Applications/Xcode.app/Contents/Developer/usr/bin/g++
-SharedObjectLinkerName :=/Applications/Xcode.app/Contents/Developer/usr/bin/g++ -dynamiclib -fPIC
+LinkerName             :=/usr/bin/g++
+SharedObjectLinkerName :=/usr/bin/g++ -dynamiclib -fPIC
 ObjectSuffix           :=.o
-DependSuffix           :=
+DependSuffix           :=.o.d
 PreprocessSuffix       :=.i
 DebugSwitch            :=-g 
 IncludeSwitch          :=-I
@@ -48,8 +48,8 @@ LibPath                := $(LibraryPathSwitch).
 ## AR, CXX, CC, AS, CXXFLAGS and CFLAGS can be overriden using an environment variables
 ##
 AR       := /usr/bin/ar rcu
-CXX      := /Applications/Xcode.app/Contents/Developer/usr/bin/g++
-CC       := /Applications/Xcode.app/Contents/Developer/usr/bin/gcc
+CXX      := /usr/bin/g++
+CC       := /usr/bin/gcc
 CXXFLAGS :=  -g -O0 -Wall $(Preprocessors)
 CFLAGS   :=  -g -O0 -std=c99 -F./ $(Preprocessors)
 ASFLAGS  := 
@@ -91,31 +91,48 @@ PreBuild:
 ##
 ## Objects
 ##
-$(IntermediateDirectory)/main.c$(ObjectSuffix): main.c 
+$(IntermediateDirectory)/main.c$(ObjectSuffix): main.c $(IntermediateDirectory)/main.c$(DependSuffix)
 	$(CC) $(SourceSwitch) "/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Lecture2/SDLProjekt_Mac_startup/SDLproject/main.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/main.c$(DependSuffix): main.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/main.c$(ObjectSuffix) -MF$(IntermediateDirectory)/main.c$(DependSuffix) -MM main.c
+
 $(IntermediateDirectory)/main.c$(PreprocessSuffix): main.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.c$(PreprocessSuffix) main.c
 
-$(IntermediateDirectory)/renderer.c$(ObjectSuffix): renderer.c 
+$(IntermediateDirectory)/renderer.c$(ObjectSuffix): renderer.c $(IntermediateDirectory)/renderer.c$(DependSuffix)
 	$(CC) $(SourceSwitch) "/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Lecture2/SDLProjekt_Mac_startup/SDLproject/renderer.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/renderer.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/renderer.c$(DependSuffix): renderer.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/renderer.c$(ObjectSuffix) -MF$(IntermediateDirectory)/renderer.c$(DependSuffix) -MM renderer.c
+
 $(IntermediateDirectory)/renderer.c$(PreprocessSuffix): renderer.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/renderer.c$(PreprocessSuffix) renderer.c
 
-$(IntermediateDirectory)/player.c$(ObjectSuffix): player.c 
+$(IntermediateDirectory)/player.c$(ObjectSuffix): player.c $(IntermediateDirectory)/player.c$(DependSuffix)
 	$(CC) $(SourceSwitch) "/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Lecture2/SDLProjekt_Mac_startup/SDLproject/player.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/player.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/player.c$(DependSuffix): player.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/player.c$(ObjectSuffix) -MF$(IntermediateDirectory)/player.c$(DependSuffix) -MM player.c
+
 $(IntermediateDirectory)/player.c$(PreprocessSuffix): player.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/player.c$(PreprocessSuffix) player.c
 
-$(IntermediateDirectory)/background.c$(ObjectSuffix): background.c 
+$(IntermediateDirectory)/background.c$(ObjectSuffix): background.c $(IntermediateDirectory)/background.c$(DependSuffix)
 	$(CC) $(SourceSwitch) "/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Lecture2/SDLProjekt_Mac_startup/SDLproject/background.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/background.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/background.c$(DependSuffix): background.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/background.c$(ObjectSuffix) -MF$(IntermediateDirectory)/background.c$(DependSuffix) -MM background.c
+
 $(IntermediateDirectory)/background.c$(PreprocessSuffix): background.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/background.c$(PreprocessSuffix) background.c
 
-$(IntermediateDirectory)/gameobject.c$(ObjectSuffix): gameobject.c 
+$(IntermediateDirectory)/gameobject.c$(ObjectSuffix): gameobject.c $(IntermediateDirectory)/gameobject.c$(DependSuffix)
 	$(CC) $(SourceSwitch) "/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Lecture2/SDLProjekt_Mac_startup/SDLproject/gameobject.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/gameobject.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/gameobject.c$(DependSuffix): gameobject.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/gameobject.c$(ObjectSuffix) -MF$(IntermediateDirectory)/gameobject.c$(DependSuffix) -MM gameobject.c
+
 $(IntermediateDirectory)/gameobject.c$(PreprocessSuffix): gameobject.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/gameobject.c$(PreprocessSuffix) gameobject.c
 
+
+-include $(IntermediateDirectory)/*$(DependSuffix)
 ##
 ## Clean
 ##
