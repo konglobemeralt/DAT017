@@ -39,6 +39,8 @@
     <File Name="background.c"/>
     <File Name="background.h"/>
     <File Name="gameobject.c"/>
+    <File Name="alien.h"/>
+    <File Name="alien.c"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>
