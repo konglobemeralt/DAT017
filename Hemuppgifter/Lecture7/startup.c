@@ -29,9 +29,13 @@ asm volatile(
 }
 
 void init_app(){
-    *GPIO_D_MODER &= ~3; // set till 00
-    *GPIO_D_MODER |= 1;   // set till x1
-    *GPIO_D_OTYPER &= ~1;   //set to x0
+    *GPIO_D_MODER = 0x00005555; 
+    *GPIO_D_PUDR = 0xAAAA0000;
+    *GPIO_D_OTYPER = 0x00000000;
+    
+    *GPIO_E_MODER = 0x4000;
+    *GPIO_E_PUPDR = 0x2AAA:
+    *GPIO_E_OTYPER = 0x0000;
     }
 
 void main(void)
