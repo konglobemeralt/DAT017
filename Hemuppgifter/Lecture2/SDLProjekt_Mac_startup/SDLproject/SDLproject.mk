@@ -60,7 +60,7 @@ AS       := /usr/bin/as
 ## User defined environment variables
 ##
 CodeLiteDir:=/Applications/codelite.app/Contents/SharedSupport/
-Objects0=$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/renderer.c$(ObjectSuffix) $(IntermediateDirectory)/player.c$(ObjectSuffix) $(IntermediateDirectory)/background.c$(ObjectSuffix) $(IntermediateDirectory)/gameobject.c$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/renderer.c$(ObjectSuffix) $(IntermediateDirectory)/player.c$(ObjectSuffix) $(IntermediateDirectory)/background.c$(ObjectSuffix) $(IntermediateDirectory)/gameobject.c$(ObjectSuffix) $(IntermediateDirectory)/alien.c$(ObjectSuffix) 
 
 
 
@@ -130,6 +130,14 @@ $(IntermediateDirectory)/gameobject.c$(DependSuffix): gameobject.c
 
 $(IntermediateDirectory)/gameobject.c$(PreprocessSuffix): gameobject.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/gameobject.c$(PreprocessSuffix) gameobject.c
+
+$(IntermediateDirectory)/alien.c$(ObjectSuffix): alien.c $(IntermediateDirectory)/alien.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Lecture2/SDLProjekt_Mac_startup/SDLproject/alien.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/alien.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/alien.c$(DependSuffix): alien.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/alien.c$(ObjectSuffix) -MF$(IntermediateDirectory)/alien.c$(DependSuffix) -MM alien.c
+
+$(IntermediateDirectory)/alien.c$(PreprocessSuffix): alien.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/alien.c$(PreprocessSuffix) alien.c
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

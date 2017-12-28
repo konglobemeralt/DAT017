@@ -1,32 +1,49 @@
-#include "player.h"
-#include <math.h>
+#include "alien.h"
 
-GameObject alien;
+GameObject aliens[3];
 
 extern const Uint8 *state;
 
-void createShip(){
-    // Create an object
-    alien.gfxObj = createGfxObject(  "../ship.png" );
-    alien.gfxObj.outputWidth  = 200;
-    alien.gfxObj.outputHeight = 200;
-    alien.speed = 3;
-    alien.scale = 1;
-    alien.pos.x = 400;
-    alien.pos.y = 300;
-    alien.angle = 0;
-    alien.angleSpeed = 0.2;
-    
-    alien.update = updateAlien;
-    alien.render = render;
-    
-    gameObjects[nGameObjects++] = &alien;
-}
-
-
-void updateShip(GameObject* this){
+void updateAlien(GameObject* this){
     //TODO: MAKE ALIEN DO STUFF
 }
+
+void createAlienShip(int i){
+    
+    static GfxObject gfx;
+    static bool first = true;
+    
+    
+    if(first){
+        first = false;
+        gfx = createGfxObject(  "../alienship.png" );
+        gfx.outputWidth = 100;
+        gfx.outputHeight = 100;
+        
+        }
+    // Create an object
+    aliens[i].gfxObj = gfx;
+    aliens[i].speed = 2;
+    aliens[i].scale = 1;
+    aliens[i].pos.x = (200 * i) + 200;
+    aliens[i].pos.y = 200;
+    aliens[i].angle = 0;
+    aliens[i].angleSpeed = 0.2;
+    
+    aliens[i].update = updateAlien;
+    aliens[i].render = render;
+    
+    gameObjects[nGameObjects++] = &aliens[i];
+}
+
+void createAliens(){
+    
+    for(int i=0; i<3; i++){
+        createAlienShip(i);
+    }
+}
+
+
 
 
         

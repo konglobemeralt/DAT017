@@ -2,6 +2,7 @@
 #define WINDOW_HEIGHT 600
 
 #include "gameobject.h"
+#include "alien.h"
 #include "player.h"
 #include "background.h"
 #include <stdlib.h>
@@ -49,6 +50,7 @@ int main( int argc, char* args[] )
     
     createBackground();
     createShip();
+    createAliens();
     
     char string[] = "Hello World!";
     int loopIter = 0;
