@@ -30,3 +30,23 @@
 .while_break
 
 
+//////////////////////
+
+	LDR	R0, x
+	LDR	R1, y
+	BL	mini
+	LDR	R1, =x
+	STR	R0, [R1]
+
+//////////////////////
+
+	LDR	R0, =x
+	LDRB	R0, [R0]
+	SXTB	R0, R0
+	LDR	R1, =y
+	LDRB	R1, [R1]
+	SXTB	R1, R1
+	BL	minc
+	LDR	R1, =x
+	STRB	R0, [R1]
+
