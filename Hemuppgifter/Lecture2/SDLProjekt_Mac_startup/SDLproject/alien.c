@@ -26,7 +26,7 @@ void createAlienShip(int i){
     aliens[i].speed = 2;
     aliens[i].scale = 1;
     aliens[i].pos.x = (200 * i) + 200;
-    aliens[i].pos.y = 200;
+    aliens[i].pos.y = 150;
     aliens[i].angle = 0;
     aliens[i].angleSpeed = 0.2;
     

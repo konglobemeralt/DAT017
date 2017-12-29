@@ -1,0 +1,12 @@
+LDR	R3, a
+LDR	R2, b
+CMP	R3, R2
+BCS	.L2
+LDR	R3, c
+LDR	R2, d
+CMP	R3, R2
+BGE 	L2
+
+.L1:
+.l2:
+
