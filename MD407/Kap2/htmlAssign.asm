@@ -1,0 +1,23 @@
+start:
+	LDR	R0, =0x00005555
+	LDR	R1, =0x40020C00
+	STR	R0, [R1]
+
+	LDR	R0, =0
+	LDR	R1, =0x40021000
+	STR	R0, [R1]
+	
+	LDR   R5,=0x40020C14
+	LDR   R6,=0x40021010
+
+main:	
+	LDRB	R0, [R6]
+	LDRB	R1, [R6, #1]
+	ADD	R0, R0, R1
+	CMP	R0, #255
+	BLE	main_2
+	MOVW	R0, #0xFF
+	
+main_2:
+	STRB	R0, [R5]
+	B	main

@@ -26,10 +26,10 @@ start:	LDR 	R0, =0x55555555
 
 2000000a <main>:
 
-main:	LDRB	R0, [R2]
-2000000a:	7810      	ldrb	r0, [r2, #0]
-	STRB	R0, [R1]
-2000000c:	7008      	strb	r0, [r1, #0]
+main:	LDRH	R0, [R2]
+2000000a:	8810      	ldrh	r0, [r2, #0]
+	STRH	R0, [R1]
+2000000c:	8008      	strh	r0, [r1, #0]
 	B	main
 2000000e:	e7fc      	b.n	2000000a <main>
 20000010:	55555555 	.word	0x55555555
