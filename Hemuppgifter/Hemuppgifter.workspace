@@ -6,7 +6,8 @@
   <Project Name="LectureSomething" Path="LectureSomething/LectureSomething.project" Active="No"/>
   <Project Name="keypad" Path="keypad/keypad.project" Active="No"/>
   <Project Name="LectureGPIO" Path="LectureGPIO/LectureGPIO.project" Active="No"/>
-  <Project Name="Lecture7" Path="Lecture7/Lecture7.project" Active="Yes"/>
+  <Project Name="Lecture7" Path="Lecture7/Lecture7.project" Active="No"/>
+  <Project Name="Lecture6" Path="Lecture6/Lecture6.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
@@ -17,6 +18,7 @@
       <Project Name="keypad" ConfigName="Debug"/>
       <Project Name="LectureGPIO" ConfigName="Debug"/>
       <Project Name="Lecture7" ConfigName="Debug"/>
+      <Project Name="Lecture6" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
@@ -27,6 +29,7 @@
       <Project Name="keypad" ConfigName="Release"/>
       <Project Name="LectureGPIO" ConfigName="Release"/>
       <Project Name="Lecture7" ConfigName="Release"/>
+      <Project Name="Lecture6" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

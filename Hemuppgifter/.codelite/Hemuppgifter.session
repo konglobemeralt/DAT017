@@ -1,33 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Session Name="/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Hemuppgifter.workspace">
-  <int Value="3" Name="m_selectedTab"/>
+  <int Value="0" Name="m_selectedTab"/>
   <wxString Value="/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Hemuppgifter.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
-      <wxString Value="/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/keypad/startup.c" Name="FileName"/>
-      <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="7" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Lecture7/startup.c" Name="FileName"/>
-      <int Value="1" Name="FirstVisibleLine"/>
-      <int Value="0" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/LectureGPIO/startup.c" Name="FileName"/>
-      <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="0" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Lecture7/GPIOPROGEXEMPEL.c" Name="FileName"/>
-      <int Value="24" Name="FirstVisibleLine"/>
-      <int Value="30" Name="CurrentLine"/>
+      <wxString Value="/Users/konglobemeralt/Documents/gitz/DAT017/Hemuppgifter/Lecture6/startup.c" Name="FileName"/>
+      <int Value="10" Name="FirstVisibleLine"/>
+      <int Value="20" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
